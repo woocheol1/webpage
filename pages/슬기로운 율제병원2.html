@@ -1,0 +1,1406 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="슬기로운 의사생활과 언젠가는 슬기로울 전공의 생활, 두 의학 드라마의 차이점을 비교 분석해봅니다. 등장인물, 이야기 전개, 분위기 등 다양한 관점에서 두 작품을 살펴보세요.">
+    <title>슬기로운 의사생활 vs 언젠가는 슬기로울 전공의 생활 비교 분석</title>
+</head>
+<style>
+    /* ==========================================================================
+       Base Styles & Typography
+       ========================================================================== */
+    
+    /* 부드러운 스크롤 (맨 위로 가기 버튼 등에 적용) */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.7;
+        font-size: 16px; /* 기본 폰트 크기 */
+        color: #1a1a2e;
+        background-color: #fafafa;
+        max-width: 850px; /* 콘텐츠 최대 너비 */
+        margin: 0 auto; /* 중앙 정렬 */
+        padding: 25px 20px; /* 내부 여백 */
+        letter-spacing: -0.01em; /* 자간 기본값 */
+    }
+    
+    /* 기본 박스 모델 설정 */
+    *, *::before, *::after {
+        box-sizing: border-box; /* padding/border를 width/height에 포함 */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    /* 긴 단어 하이픈 처리 (필요시 언어 설정 필요 - lang="ko" 등) */
+    body {
+        hyphens: auto;
+    }
+    
+    
+    /* Headings */
+    h1, h2, h3 {
+        color: #16213e;
+        font-weight: bold; /* 기본 굵기 */
+        word-break: keep-all; /* 단어 분리 방지 (한국어 등) */
+        max-width: 100%; /* 최대 너비 제한 */
+        letter-spacing: normal; /* 제목은 기본 자간 */
+        line-height: 1.3;
+    }
+    
+    h1 {
+        font-size: 2.2em;
+        border-bottom: none; /* 밑줄 제거 (아래 ::after로 대체) */
+        padding-bottom: 12px;
+        margin-bottom: 30px;
+        font-weight: 800; /* 가장 굵게 */
+        letter-spacing: -0.02em; /* 자간 좁힘 */
+        position: relative;
+    }
+    
+    h1::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background-color: #3a86ff;
+        border-radius: 3px; /* 변수 대신 값 사용 */
+    }
+    
+    h2 {
+        font-size: 1.7em;
+        margin-top: 40px;
+        margin-bottom: 20px; /* h2 다음 요소와의 간격 추가 */
+        padding-left: 0;
+        font-weight: 700; /* 굵게 */
+        letter-spacing: -0.01em; /* 자간 좁힘 */
+        position: relative;
+        padding-bottom: 8px; /* ::before 공간 확보 */
+    }
+    
+    h2::before {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background-color: rgba(58, 134, 255, 0.2);
+        border-radius: 3px; /* 변수 대신 값 사용 */
+        z-index: -1; /* 텍스트 뒤로 */
+    }
+    
+    h3 {
+        font-size: 1.3em;
+        margin-top: 30px;
+        margin-bottom: 15px; /* h3 다음 요소와의 간격 추가 */
+        font-weight: 600; /* 약간 굵게 */
+        position: relative; /* 장식 추가 대비 */
+    }
+    
+    /* --- CSS Decoration Example for H3 --- */
+    h3::before {
+        content: '';
+        display: inline-block;
+        width: 12px; /* 변수 대신 값 사용 */
+        height: 12px;
+        background-color: #3a86ff;
+        border-radius: 50%; /* 원 */
+        margin-right: 8px;
+        vertical-align: middle; /* 텍스트와 수직 정렬 */
+        opacity: 0.5;
+        transition: transform 0.3s ease; /* 변수 대신 값 사용 */
+    }
+    h3:hover::before {
+        transform: scale(1.2) rotate(45deg); /* 호버 시 약간의 효과 */
+    }
+    
+    
+    /* Paragraphs and Lists */
+    p, li {
+        margin-bottom: 1em; /* 단락/항목 간 간격 */
+    }
+    
+    ul, ol {
+        padding-left: 22px; /* 들여쓰기 */
+        margin-bottom: 20px;
+    }
+    
+    ul li, ol li {
+        margin-bottom: 8px;
+        line-height: 1.6;
+        position: relative;
+    }
+    
+    ul li::marker {
+        color: #3a86ff;
+    }
+    
+    /* Links */
+    a {
+        color: #3a86ff;
+        text-decoration: none; /* 기본 밑줄 제거 */
+        transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease, text-decoration-color 0.3s ease; /* 변수 대신 값 사용 */
+        text-decoration-line: underline;
+        text-decoration-color: transparent; /* 평소에는 투명 */
+        text-underline-offset: 3px; /* 밑줄과 텍스트 간격 */
+    }
+    
+    a:hover {
+        color: #2667ca; /* 변수 대신 값 사용 */
+        text-decoration-color: #2667ca; /* 호버 시 밑줄 색상 나타남 */
+        /* --- Enhanced Hover Effect Example --- */
+        opacity: 0.85; /* 약간 투명도 변경 */
+    }
+    
+    /* ==========================================================================
+       Text Emphasis & Highlights
+       ========================================================================== */
+    
+    .highlight {
+        background-color: rgba(255, 250, 205, 0.5);
+        padding: 1px 4px;
+        border-radius: 3px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .highlight:hover {
+        background-color: rgba(255, 250, 205, 0.8);
+    }
+    
+    .bold-red, .highlight-red {
+        color: #e63946;
+        font-weight: 600;
+    }
+    
+    .bold-blue, .highlight-blue {
+        color: #3a86ff;
+        font-weight: 600;
+    }
+    
+    .bold-green {
+        color: #2a9d8f;
+        font-weight: 600;
+    }
+    
+    .white-text {
+        color: #ffffff !important; /* 필요시 우선순위 높임 */
+    }
+    
+    /* --- Drop Cap --- */
+    /* 사용법: 드롭캡을 적용할 단락에 class="dropcap" 추가 (예: <p class="dropcap">...) */
+    .dropcap::first-letter {
+        color: #3a86ff;
+        font-size: 4em; /* 크기 조절 */
+        font-weight: 700; /* bold */
+        float: left;
+        line-height: 0.8; /* 줄 간격 조절 */
+        margin-top: 4px; /* 위치 미세 조정 */
+        margin-right: 8px;
+        margin-bottom: -4px; /* 아래 간격 조절 */
+        font-family: 'Inter', 'Noto Sans KR', sans-serif; /* 기본 헤딩 폰트 사용 */
+        text-shadow: 1px 1px 0px rgba(0,0,0,0.1); /* 입체감 */
+    }
+    
+    /* ==========================================================================
+       Boxes (Info, Warning, Solution)
+       ========================================================================== */
+    
+    .info-box, .warning-box, .solution-box {
+        padding: 22px; /* 값 유지 */
+        margin: 25px 0;
+        border-radius: 10px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+        border: none;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* 변수 대신 값 사용 */
+    }
+    
+    .info-box:hover, .warning-box:hover, .solution-box:hover {
+        transform: translateY(-3px) scale(1.01); /* 향상된 호버 효과 */
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12); /* 변수 대신 값 사용 */
+    }
+    
+    .info-box::before, .warning-box::before, .solution-box::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 4px;
+    }
+    
+    .info-box { background-color: #f0f7ff; }
+    .info-box::before { background-color: #3a86ff; }
+    
+    .warning-box { background-color: #fff5f5; }
+    .warning-box::before { background-color: #e63946; }
+    
+    .solution-box { background-color: #f0fff4; }
+    .solution-box::before { background-color: #2a9d8f; }
+    
+    /* ==========================================================================
+       Table of Contents (TOC)
+       ========================================================================== */
+    
+    .toc {
+        background-color: #f8fafc;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03); /* 변수 대신 값 사용 */
+        border: 1px solid #eaeaea;
+    }
+    
+    .toc h2 {
+        border: none;
+        margin-top: 0;
+        font-size: 1.5em;
+        color: #16213e;
+        padding-bottom: 15px; /* 값 조정 */
+        border-bottom: 2px solid #eaeaea;
+        margin-bottom: 15px;
+    }
+    
+    .toc h2::before { display: none; } /* TOC 제목 장식 제거 */
+    
+    .toc ul {
+        padding-left: 15px;
+        margin-top: 15px;
+        list-style: none;
+    }
+    
+    .toc li { margin-bottom: 8px; }
+    
+    .toc a {
+        color: #3a86ff;
+        position: relative;
+        display: inline-block;
+        padding: 4px 0; /* 값 조정 */
+        font-weight: 500;
+        font-size: 0.9em; /* 값 조정 */
+        line-height: 1.6;
+        text-decoration: none;
+        /* --- Enhanced Hover Effect --- */
+        background-image: linear-gradient(rgba(58, 134, 255, 0.2), rgba(58, 134, 255, 0.2)); /* 변수 대신 값 사용 */
+        background-position: 0% 100%;
+        background-repeat: no-repeat;
+        background-size: 0% 2px; /* 초기 밑줄 없음 */
+        transition: background-size 0.3s ease, color 0.3s ease; /* 변수 대신 값 사용 */
+    }
+    
+    .toc a:hover {
+        color: #2667ca;
+        background-size: 100% 2px; /* 호버 시 밑줄 효과 */
+    }
+    
+    /* ==========================================================================
+       Images
+       ========================================================================== */
+    
+    .img-container {
+        width: 100%;
+        margin: 30px 0;
+        text-align: center;
+    }
+    
+    .img-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; /* 변수 대신 값 사용 */
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .img-container img:hover {
+        transform: translateY(-4px) scale(1.02); /* 향상된 호버 효과 */
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+        filter: brightness(1.05); /* 약간 밝게 */
+    }
+    
+    .img-caption {
+        font-size: 0.9em;
+        color: #64748b;
+        margin-top: 15px; /* 값 조정 */
+        text-align: center;
+        font-style: italic;
+    }
+    
+    .responsive-img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+    
+    
+    /* ==========================================================================
+       Tables
+       ========================================================================== */
+    
+    .table-wrapper {
+        overflow-x: auto;
+        margin: 30px 0;
+        border-radius: 10px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    }
+    .table-wrapper table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font-size: 0.95em; /* 값 조정 */
+        background-color: #ffffff;
+    }
+    
+    th, td {
+        border: 1px solid #dddddd; /* 테이블 선 */
+        padding: 12px 15px;
+        text-align: left;
+        vertical-align: top;
+    }
+    
+    th {
+        background-color: #3a86ff;
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        border-color: #3a86ff;
+    }
+    
+    tbody tr {
+        transition: background-color 0.3s ease; /* 변수 대신 값 사용 */
+    }
+    
+    tbody tr:nth-child(even) {
+        background-color: #f8fafc;
+    }
+    
+    tbody tr:hover {
+        background-color: #f0f7ff; /* 호버 시 배경색 변경 */
+    }
+    
+    /* ==========================================================================
+       FAQ Section
+       ========================================================================== */
+    
+    .faq-item {
+        margin-bottom: 20px;
+        padding: 20px; /* 값 조정 */
+        border-radius: 10px;
+        background-color: #f8fafc;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #eaeaea;
+    }
+    
+    .faq-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05); /* 호버 시 그림자 약간 진하게 */
+    }
+    
+    .faq-question {
+        font-weight: 600;
+        color: #16213e;
+        margin: 0 0 12px 0;
+        font-size: 1.15em;
+        position: relative;
+        padding-left: 28px;
+    }
+    
+    .faq-question::before {
+        content: 'Q';
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-weight: 700;
+        color: #3a86ff;
+    }
+    
+    .faq-answer {
+        padding-left: 28px;
+        position: relative;
+        margin: 0;
+        color: #1a1a2e;
+    }
+    
+    .faq-answer::before {
+        content: 'A';
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-weight: 700;
+        color: #e63946;
+    }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    
+    /* ==========================================================================
+       Call to Action (CTA)
+       ========================================================================== */
+    
+    .cta-container {
+        background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+        color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        text-align: center;
+        margin: 40px 0;
+        box-shadow: 0 6px 25px rgba(58, 134, 255, 0.25);
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .cta-container::before { /* 장식용 요소 */
+        content: '';
+        position: absolute;
+        top: -50%; left: -50%;
+        width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+        transform: rotate(10deg);
+        pointer-events: none;
+    }
+    
+    .cta-container h3 {
+        color: #ffffff;
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.6em;
+        font-weight: 700;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: relative; z-index: 1;
+    }
+    .cta-container h3::before { display: none; } /* CTA 제목 장식 제거 */
+    
+    
+    .cta-container p {
+        position: relative; z-index: 1;
+        margin-bottom: 15px;
+        opacity: 0.9;
+    }
+    
+    .cta-button {
+        display: inline-block;
+        background-color: #ffffff;
+        color: #3a86ff;
+        padding: 12px 25px;
+        border-radius: 50px; /* 알약 모양 */
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 15px;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        font-size: 1em;
+        max-width: 80%;
+        border: none;
+        cursor: pointer;
+        position: relative; z-index: 1;
+    }
+    
+    .cta-button:hover {
+        background-color: #f8fafc;
+        transform: scale(1.05) translateY(-3px); /* 향상된 호버 효과 */
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        color: #2667ca;
+    }
+    
+    /* ==========================================================================
+       Blockquotes
+       ========================================================================== */
+    
+    blockquote {
+        border-left: none;
+        padding: 20px 25px 20px 40px; /* 값 조정 */
+        margin: 25px 0;
+        font-style: italic;
+        color: #64748b;
+        background-color: #f8fafc;
+        border-radius: 10px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+        position: relative;
+        font-size: 0.95em; /* 값 조정 */
+        border: 1px solid #eaeaea;
+    }
+    
+    blockquote::before {
+        content: '"';
+        position: absolute;
+        top: 5px;
+        left: 15px;
+        font-size: 3.5em;
+        color: rgba(58, 134, 255, 0.2);
+        font-family: Georgia, serif;
+        line-height: 1;
+        /* --- CSS Decoration Example --- */
+        transform: rotate(-5deg); /* 약간 기울이기 */
+        opacity: 0.8;
+    }
+    
+    blockquote p:last-child { margin-bottom: 0; }
+    
+    /* ==========================================================================
+       Social Share Buttons
+       ========================================================================== */
+    
+    .social-share {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 40px 0;
+        flex-wrap: wrap;
+    }
+    
+    .social-icon {
+        width: 45px; height: 45px;
+        border-radius: 50%; /* 원 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: #ffffff; /* 아이콘 색상 기본값 */
+    }
+    
+    .social-icon:hover {
+        transform: translateY(-4px) rotate(8deg) scale(1.1); /* 향상된 호버 효과 */
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+        filter: brightness(1.1); /* 약간 밝게 */
+    }
+    
+    .social-icon.twitter { background: linear-gradient(135deg, #1da1f2 0%, #1a91da 100%); }
+    .social-icon.facebook { background: linear-gradient(135deg, #4267B2 0%, #365899 100%); }
+    .social-icon.linkedin { background: linear-gradient(135deg, #0e76a8 0%, #0a5e86 100%); }
+    .social-icon.kakao { background: linear-gradient(135deg, #FEE500 0%, #E4CF00 100%); color: #3C1E1E; }
+    
+    .social-icon i { /* FontAwesome 등 사용 가정 */
+        font-size: 1.1em;
+        vertical-align: middle;
+    }
+    
+    /* ==========================================================================
+       Data Visualization Placeholder
+       ========================================================================== */
+    
+    .data-viz {
+        width: 100%;
+        height: 320px;
+        background-color: #f8fafc;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: #aaaaaa; /* 값 조정 */
+        font-size: 1.2em;
+        font-style: italic;
+        border: 1px solid #eaeaea;
+    }
+    
+    .data-viz:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    }
+    
+    /* ==========================================================================
+       Post Meta Information
+       ========================================================================== */
+    
+    .post-date {
+        font-size: 0.9em;
+        color: #64748b;
+        margin-bottom: 15px;
+        display: block;
+    }
+    
+    /* ==========================================================================
+       Banners
+       ========================================================================== */
+    
+    .banner-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 0 10px;
+    }
+    
+    .banner {
+        background-color: #2a9d8f; /* 기본 녹색 */
+        color: #ffffff;
+        padding: 20px 25px; /* 값 조정 */
+        border-radius: 15px;
+        width: 280px;
+        min-height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+    }
+    
+    .banner:hover {
+        background-color: #217e73; /* 색상 값 직접 지정 */
+        transform: scale(1.05) translateY(-5px); /* 향상된 호버 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .banner h2 {
+        margin: 0 0 5px 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        position: relative; z-index: 2;
+        color: #ffffff;
+        border: none; padding: 0; line-height: 1.3;
+    }
+    .banner h2::before { display: none; }
+    
+    
+    .banner p {
+        margin: 0;
+        font-size: 1rem;
+        opacity: 0.9;
+        position: relative; z-index: 2;
+        line-height: 1.5;
+        color: #ffffff;
+    }
+    
+    /* Banner Color Variations */
+    .banner.blue { background-color: #2271b3; }
+    .banner.blue:hover { background-color: #195a8c; }
+    .banner.purple { background-color: #7839ab; }
+    .banner.purple:hover { background-color: #5f2c87; }
+    .banner.orange { background-color: #e67e22; }
+    .banner.orange:hover { background-color: #c16a1d; }
+    .banner.teal { background-color: #2a9d8f; } /* Default */
+    .banner.teal:hover { background-color: #217e73; }
+    .banner.pink { background-color: #e84a7f; }
+    .banner.pink:hover { background-color: #c73868; }
+    
+    
+    .banner-icon {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        font-size: 2rem;
+        opacity: 0.3;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        z-index: 1;
+        pointer-events: none;
+    }
+    
+    .banner:hover .banner-icon {
+        opacity: 0.5;
+        transform: scale(1.1) rotate(-8deg); /* 향상된 호버 효과 */
+    }
+    
+    /* ==========================================================================
+       Accordion Tabs (CSS Only - Checkbox Hack)
+       ========================================================================== */
+    
+    .accordion-tabs {
+        width: 100%;
+        margin: 20px 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #dddddd;
+    }
+    
+    .tab-toggle { display: none; }
+    
+    .tab-header {
+        display: block;
+        padding: 15px 20px;
+        background-color: #f0f2f5;
+        color: #333333;
+        font-weight: 600;
+        cursor: pointer;
+        border-bottom: 1px solid #dddddd;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        position: relative;
+    }
+    
+    .accordion-tabs > div:last-of-type .tab-header { border-bottom: none; }
+    .accordion-tabs > div:last-of-type .tab-toggle:checked + .tab-header + .tab-content { border-bottom: none; }
+    
+    .tab-header:hover {
+        background-color: #e9ecef; /* 색상 값 직접 지정 */
+    }
+    
+    .tab-toggle:checked + .tab-header {
+        background-color: #3a86ff;
+        color: #ffffff;
+        border-bottom-color: #3a86ff;
+    }
+    
+    .tab-content {
+        display: none;
+        padding: 20px;
+        background-color: #ffffff;
+        border-bottom: 1px solid #dddddd;
+        color: #1a1a2e;
+    }
+    .tab-content p:last-child,
+    .tab-content ul:last-child,
+    .tab-content ol:last-child { margin-bottom: 0; }
+    
+    .tab-toggle:checked + .tab-header + .tab-content { display: block; }
+    
+    .tab-header::after { /* Indicator Icon */
+        content: '+';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2em;
+        font-weight: 400; /* normal */
+        transition: transform 0.3s ease;
+    }
+    
+    .tab-toggle:checked + .tab-header::after {
+        content: '−';
+        transform: translateY(-50%) rotate(180deg);
+    }
+    
+    /* ==========================================================================
+       Code Blocks (Basic Styling)
+       ========================================================================== */
+    pre {
+        background-color: #f8fafc;
+        border: 1px solid #eaeaea;
+        border-radius: 10px;
+        padding: 15px;
+        overflow-x: auto; /* 가로 스크롤 */
+        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* 코드용 폰트 */
+        font-size: 0.85em; /* 크기 조절 */
+        line-height: 1.6;
+        margin: 20px 0;
+        white-space: pre; /* 공백 유지 */
+        color: #1a1a2e; /* 코드 텍스트 색상 */
+    }
+    
+    code { /* Inline code */
+        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+        background-color: #f0f2f5;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-size: 0.85em;
+        color: #e63946; /* 인라인 코드 색상 강조 */
+    }
+    
+    pre code { /* Code inside pre - reset inline styles */
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
+        color: inherit; /* pre의 색상 상속 */
+        font-size: inherit; /* pre의 폰트 크기 상속 */
+    }
+    
+    
+    /* ==========================================================================
+       Utility & Accessibility
+       ========================================================================== */
+    
+    /* --- Skip Link --- */
+    /* 사용법: body 바로 다음에 <a href="#main-content" class="skip-link">본문으로 바로가기</a> 추가 */
+    /* 메인 콘텐츠 영역에 id="main-content" 추가 */
+    .skip-link {
+        position: absolute;
+        left: -9999px; /* 화면 밖으로 */
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        z-index: 9999; /* 다른 요소 위에 오도록 */
+        background-color: #3a86ff;
+        color: #ffffff;
+        padding: 12px 15px;
+        border-radius: 0 0 10px 0; /* 오른쪽 아래만 라운드 */
+        text-decoration: none;
+        font-weight: 600;
+        transition: none; /* 포커스 시 즉시 나타나도록 */
+    }
+    
+    .skip-link:focus {
+        position: fixed; /* 화면 상단 고정 */
+        left: 0;
+        top: 0;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* --- Scroll-to-Top Button (Always Visible) --- */
+    /* 사용법: body 최상단 근처에 <div id="top"></div> 추가 */
+    /* body 하단에 <a href="#top" class="scroll-to-top" aria-label="맨 위로 가기">↑</a> 추가 (아이콘 폰트 사용 가능) */
+    .scroll-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        background-color: #3a86ff;
+        color: #ffffff;
+        border-radius: 50%; /* 원 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5em; /* 아이콘 크기 */
+        font-weight: 700; /* bold */
+        text-decoration: none;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+        opacity: 0.8;
+        z-index: 1000;
+        transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .scroll-to-top:hover {
+        background-color: #2667ca;
+        opacity: 1;
+        transform: scale(1.1) translateY(-2px); /* 향상된 호버 효과 */
+    }
+    
+    
+    /* --- Focus Visible --- */
+    a:focus-visible,
+    button:focus-visible,
+    .tab-header:focus-visible,
+    input[type="checkbox"]:focus-visible + .tab-header,
+    .skip-link:focus,
+    .scroll-to-top:focus {
+        outline: 2px solid #3a86ff;
+        outline-offset: 2px;
+        box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.3);
+        border-radius: 3px; /* 포커스 스타일에 라운딩 */
+    }
+    /* 특정 요소 모양 유지 */
+    .cta-button:focus-visible { border-radius: 50px; }
+    .social-icon:focus-visible, .scroll-to-top:focus-visible { border-radius: 50%; }
+    
+    
+    /* ==========================================================================
+       Media Queries (Responsiveness)
+       ========================================================================== */
+    
+    @media (max-width: 768px) {
+        body {
+            padding: 15px 12px;
+            font-size: 15px;
+        }
+    
+        h1 { font-size: 1.8em; margin-bottom: 25px; }
+        h2 { font-size: 1.5em; margin-top: 35px; }
+        h3 { font-size: 1.2em; margin-top: 25px; }
+    
+        .img-container { margin: 20px 0; }
+        .cta-container { padding: 20px; }
+    
+        .toc, .info-box, .warning-box, .solution-box, .faq-item {
+            padding: 18px;
+            margin: 20px 0; /* 간격 살짝 줄임 */
+        }
+        blockquote { padding: 20px 25px 20px 35px; } /* 왼쪽 여백 줄임 */
+    
+        table { font-size: 0.9em; }
+        th, td { padding: 10px 12px; }
+    
+        .data-viz { height: 280px; }
+    
+        .social-icon { width: 40px; height: 40px; }
+        .social-icon i { font-size: 1em; } /* 아이콘 크기 조절 */
+    
+        .banner-container { padding: 0; }
+        .banner {
+            width: calc(50% - 10px); /* 2열 배치 (gap 고려) */
+            min-height: 90px;
+            padding: 15px 20px;
+        }
+        .banner h2 { font-size: 1.3rem; }
+        .banner p { font-size: 0.9rem; }
+    
+         .tab-header { padding: 12px 15px; }
+         .tab-content { padding: 15px; }
+         .tab-header::after { right: 15px; } /* 아이콘 위치 조정 */
+    
+         .scroll-to-top { bottom: 15px; right: 15px; width: 40px; height: 40px; font-size: 1.3em;}
+         .dropcap::first-letter { font-size: 3.5em; } /* 모바일에서 드롭캡 크기 약간 줄임 */
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding: 12px 10px;
+            font-size: 14px;
+        }
+    
+        h1 { font-size: 1.6em; }
+        h2 { font-size: 1.4em; }
+        h3 { font-size: 1.1em; }
+    
+        .cta-button { padding: 10px 20px; width: 90%; max-width: 300px; }
+    
+        table { font-size: 0.85em; }
+        th, td { padding: 8px 10px; }
+    
+        .data-viz { height: 250px; }
+    
+        .banner { width: 100%; } /* 1열 */
+        .banner h2 { font-size: 1.2rem; }
+        .banner p { font-size: 0.85rem; }
+    
+        .dropcap::first-letter { font-size: 3em; } /* 더 작은 화면에서 드롭캡 크기 더 줄임 */
+    }
+    
+    /* ==========================================================================
+       Print Stylesheet
+       ========================================================================== */
+    @media print {
+        body {
+            color: #000000;
+            background-color: #ffffff;
+            font-size: 12pt;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            max-width: 100%;
+            padding: 1in;
+        }
+    
+        h1, h2, h3 { color: #000000; }
+        a { color: #000000; text-decoration: underline; }
+    
+        /* 인쇄 시 불필요한 요소 숨김 */
+        .toc, .cta-container, .social-share, .banner-container, .faq-item, .data-viz,
+        .accordion-tabs, .skip-link, .scroll-to-top, header, nav, footer, aside,
+        .post-date {
+            display: none !important;
+        }
+        h1::after, h2::before, h3::before, blockquote::before { display: none; }
+    
+        table, blockquote { page-break-inside: avoid; border: 1px solid #ccc; box-shadow: none; }
+        th, td { border: 1px solid #ccc; }
+        th { background-color: #eee; color: #000;}
+    
+        img { max-width: 100% !important; page-break-inside: avoid; box-shadow: none; }
+        .img-caption { color: #555; font-size: 10pt; }
+    
+        pre, code { font-family: monospace; background-color: #f8f8f8; border: 1px solid #ccc; color: #000; word-wrap: break-word; white-space: pre-wrap; page-break-inside: avoid; }
+        code { background: none; padding: 0; }
+    
+        .dropcap::first-letter { all: unset; } /* 드롭캡 기본 스타일로 */
+    
+        /* 배경 제거 */
+        .info-box, .warning-box, .solution-box, .highlight { background-color: #ffffff !important; border: 1px solid #ccc; box-shadow: none;}
+        .info-box::before, .warning-box::before, .solution-box::before { display: none; }
+    }
+    
+    
+    /* ==========================================================================
+       Dark Mode Support
+       ========================================================================== */
+    
+    @media (prefers-color-scheme: dark) {
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+    
+        h1, h2, h3 { color: #f0f0f0; }
+        h1::after { background-color: #5a9bff; } /* 밝은 파랑 */
+        h2::before { background-color: rgba(90, 155, 255, 0.2); }
+        h3::before { background-color: #5a9bff; } /* 장식 색상 변경 */
+    
+        a { color: #5a9bff; }
+        a:hover { color: #8ec0ff; text-decoration-color: #8ec0ff; }
+    
+        .highlight { background-color: rgba(255, 231, 150, 0.3); }
+        .highlight:hover { background-color: rgba(255, 231, 150, 0.5); }
+    
+        .bold-red, .highlight-red { color: #ff7b81; } /* 밝은 빨강 */
+        .bold-blue, .highlight-blue { color: #5a9bff; } /* 밝은 파랑 */
+        .bold-green { color: #48d6c9; } /* 밝은 녹색 */
+        .dropcap::first-letter { color: #5a9bff; text-shadow: 1px 1px 0px rgba(255,255,255,0.1); }
+    
+        .toc, .info-box, .warning-box, .solution-box, .faq-item, blockquote, .data-viz,
+        .tab-content, .accordion-tabs, table tbody tr:nth-child(even), pre {
+            background-color: #1e1e1e; /* 어두운 배경 */
+            border-color: #333; /* 어두운 경계선 */
+            box-shadow: none; /* 다크모드에서는 그림자 제거 */
+        }
+        code { background-color: #2c2c2c; color: #ff7b81; } /* 인라인 코드 */
+        pre { color: #e0e0e0;}
+        pre code { color: inherit; background: transparent; }
+    
+        /* 박스 구분선 색상 조정 */
+        .info-box::before { background-color: #5a9bff; }
+        .warning-box::before { background-color: #ff7b81; }
+        .solution-box::before { background-color: #48d6c9; }
+    
+        .toc h2 { color: #f0f0f0; border-bottom-color: #333; }
+        .toc a { color: #5a9bff; background-image: linear-gradient(rgba(90, 155, 255, 0.2), rgba(90, 155, 255, 0.2));}
+        .toc a:hover { color: #8ec0ff; }
+    
+        th { background-color: #3a86ff; color: #ffffff; border-color: #3a86ff;} /* 테이블 헤더는 유지 */
+        td, th { border-color: #444; } /* 테이블 선 색상 */
+        tbody tr:hover { background-color: #252525; }
+    
+        .faq-question { color: #f0f0f0; }
+        .faq-question::before { color: #5a9bff; }
+        .faq-answer { color: #e0e0e0; }
+        .faq-answer::before { color: #ff7b81; }
+    
+        blockquote { color: #bdbdbd; border-color: #333; }
+        blockquote::before { color: rgba(90, 155, 255, 0.2); }
+    
+        /* CTA는 밝은 색 유지 또는 대비 조정 */
+        .cta-button { background-color: #1e1e1e; color: #5a9bff;}
+        .cta-button:hover { background-color: #2c2c2c; color: #8ec0ff; }
+    
+        /* 소셜 아이콘 배경은 유지, 아이콘 색상 필요시 조정 */
+    
+        .tab-header { background-color: #2c2c2c; color: #e0e0e0; border-color: #333;}
+        .tab-header:hover { background-color: #383838; }
+        .tab-toggle:checked + .tab-header { background-color: #3a86ff; color: #ffffff; border-bottom-color: #3a86ff;} /* 활성 탭 색상은 유지 */
+        .tab-content { border-color: #333; background-color: #1e1e1e; color: #e0e0e0;}
+    
+        /* 스킵 링크, 맨 위로 가기 버튼 */
+        .skip-link { background-color: #5a9bff; color: #121212; }
+        .scroll-to-top { background-color: #5a9bff; color: #121212; box-shadow: none; }
+        .scroll-to-top:hover { background-color: #8ec0ff; }
+    
+        /* 포커스 스타일 조정 */
+        a:focus-visible, button:focus-visible, .tab-header:focus-visible,
+        input[type="checkbox"]:focus-visible + .tab-header,
+        .skip-link:focus, .scroll-to-top:focus {
+            outline-color: #8ec0ff; /* 밝은 포커스 색상 */
+            box-shadow: 0 0 0 3px rgba(90, 155, 255, 0.4);
+        }
+    
+    }
+    </style>
+<body>
+    <a href="#main-content" class="skip-link">본문으로 바로가기</a>
+    <div id="top"></div>
+
+    <article id="main-content">
+        <header>
+            <h1>같은 '슬기로움'이지만 다른 이야기: <br>'슬기로운 의사생활'과 '언젠가는 슬기로울 전공의 생활' 차이점</h1>
+            <span class="post-date">2025년 4월 16일</span>
+        </header>
+
+        <div class="toc">
+            <h2>목차</h2>
+            <ul style="font-size: 1.2em; font-weight: 500;">
+                <li><a href="#intro">두 '슬기로움' 사이의 차이</a></li>
+                <li><a href="#characters">중심 인물: 교수진 vs 전공의</a></li>
+                <li><a href="#departments">이야기의 무대: 다양한 진료과 vs 내과 중심</a></li>
+                <li><a href="#storytelling">이야기 흐름: 에피소드 vs 성장 서사</a></li>
+                <li><a href="#atmosphere">분위기: 따뜻함 vs 현실적 냉정함</a></li>
+                <li><a href="#music">음악: 추억의 리메이크 vs 새로운 OST</a></li>
+                <li><a href="#comparison">한눈에 보는 두 드라마 비교</a></li>
+                <li><a href="#conclusion">결론: 당신의 선택은?</a></li>
+                <li><a href="#faq">자주 묻는 질문</a></li>
+            </ul>
+        </div>
+
+        <p class="dropcap">우리가 알고 있던 '슬기로운' 의사생활, 그 속편은 전혀 다른 이야기였습니다.
+        같은 제작진, 같은 병원, 같은 '슬기로움'이라는 타이틀.
+        그런데... 등장인물도, 분위기도, 전개 방식도 완전히 다르다고요?</p>
+
+        <p><span class="highlight-blue">'슬기로운 의사생활'</span>과 <span class="highlight-blue">'언젠가는 슬기로울 전공의 생활'</span>.
+        과연 이 두 작품은 어떤 차이를 가지고 있을까요?</p>
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipazd9rE2VUNUObnF7aNd7thjJ-aJRx0DaI4YZxpi_eEMJrOuJACCVpw7igzvh3afL7VuNmnrNIlvvqAFxYy7M9orL7M95PRF431X1WxEQCy40CLjqlPuatRcQcRc_T_NLPIldIamhsD9uPbjasq7EnEpy0SEa55XhEAoq7IteHGfMo2s2JsCH2hHoK_79/s1065/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202025-04-16%20005733.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="출처 - TVN 홈페이지" border="0" width="320" data-original-height="637" data-original-width="1065" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipazd9rE2VUNUObnF7aNd7thjJ-aJRx0DaI4YZxpi_eEMJrOuJACCVpw7igzvh3afL7VuNmnrNIlvvqAFxYy7M9orL7M95PRF431X1WxEQCy40CLjqlPuatRcQcRc_T_NLPIldIamhsD9uPbjasq7EnEpy0SEa55XhEAoq7IteHGfMo2s2JsCH2hHoK_79/s320/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202025-04-16%20005733.png"/></a></div>
+      <p style="text-align: center;">출처 - TVN 홈페이지</p>
+        <section id="intro">
+            <h2>두 '슬기로움' 사이의 차이</h2>
+            <p>같은 병원, 같은 의료 현장을 배경으로 하지만 완전히 다른 이야기를 들려주는 두 드라마.
+            단순한 속편이 아닌, 전혀 다른 관점에서 의사의 삶을 조명하고 있습니다.
+            이 글에서는 두 드라마의 핵심적인 차이점을 다양한 측면에서 살펴보고자 합니다.</p>
+            
+
+        <section id="characters">
+            <h2>중심 인물: 교수진 vs 전공의</h2>
+            
+            <h3>슬의생: 안정된 교수 5인방의 우정</h3>
+            <p>'슬의생'에서는 이미 자리를 잡은 교수급 전문의 5인방이 주인공입니다.
+            20년 지기 친구들이 각기 다른 진료과에서 활약하며, 환자보다 동료와의 우정, 그리고 가족 같은 일상을 보여줬죠.
+            안정된 위치에서 오는 여유로움과 동시에 책임감이 이야기의 중심축이었습니다.</p>
+            
+            <div class="info-box">
+                <p>슬기로운 의사생활의 주요 인물들은 <span class="bold-blue">전미도, 조정석, 유연석, 정경호, 김대명</span> 등이 연기한 5명의 교수진으로, 대학 시절부터 이어온 오랜 우정이 드라마의 큰 축을 이룹니다.</p>
+            </div>
+
+            <h3>언슬전: 성장 중인 전공의들의 분투</h3>
+            <p>반면, '언슬전'은 시작부터 다릅니다.
+            레지던트 1~3년차, 막내급 전공의들이 주인공입니다.
+            실수하고, 혼나고, 때로는 밤새고... 현실적인 성장통이 그려집니다.
+            동료가 아니라 선후배 관계에서 오는 갈등도 빼놓을 수 없죠.
+            어쩌면 우리가 더 공감할 수 있는 건 '언슬전'일지도 모릅니다.</p>
+            
+            <div class="warning-box">
+                <p>'언슬전'은 전공의들의 <span class="bold-red">현실적인 고충</span>을 그대로 담아내 의료계 종사자들 사이에서 "너무 현실적이라 보기 힘들다"는 반응까지 일으켰습니다.</p>
+            </div>
+        </section>
+
+        <section id="departments">
+            <h2>이야기의 무대: 다양한 진료과 vs 산부인과 중심</h2>
+            
+            <h3>슬의생: 종합병원의 다양한 풍경</h3>
+            <p>'슬의생'은 외과, 산부인과, 소아외과, 흉부외과 등 다양한 과를 넘나듭니다.
+            그래서 매회 새로운 환자, 새로운 사연이 등장하며 이야기가 전개되죠.
+            이는 시청자들에게 병원의 여러 모습을 보여주는 장점이 있었습니다.</p>
+            
+            <h3>언슬전: 산부인과 중심의 집중된 시선</h3>
+            <p>하지만 '언슬전'은 조금 더 집중형입니다.
+            산부인과 중심, 특히 '전공의가 겪는 현실'에 초점을 맞춥니다.
+            검사 하나에도 의심과 책임이 따르고, 환자의 죽음 앞에서 무력감을 느끼는 장면도 등장하죠.
+            "의사가 되기 전, 인간으로서의 혼란", 그 진짜 현장을 보여줍니다.</p>
+            
+            <div class="accordion-tabs">
+                <div>
+                    <input type="checkbox" id="tab1" class="tab-toggle">
+                    <label for="tab1" class="tab-header">다양한 진료과의 특성 (펼치기)</label>
+                    <div class="tab-content">
+                        <p>드라마에서 다뤄지는 다양한 진료과는 각각의 특성이 있습니다:</p>
+                        <ul>
+                            <li><span class="bold-blue">외과</span> - 생명을 구하기 위한 수술과 환자의 회복을 위한 극적인 순간들이 펼쳐지는 과</li>
+                            <li><span class="bold-green">소아과</span> - 어린 환자들의 성장과 발달을 지원하며, 부모와의 소통을 통해 신뢰를 쌓는 과</li>
+                            <li><span class="bold-red">응급의학과</span> - 위급한 상황에서 신속한 판단과 즉각적인 처치가 요구되는 과</li>
+                            <li><span class="bold-blue">내과</span> - 만성 질환 관리와 복잡한 진단을 통해 환자의 전반적인 건강을 돌보는 과</li>
+                        </ul>
+                        <p>이러한 다양성은 각 드라마의 분위기와 스토리텔링 방식에도 영향을 미칩니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="storytelling">
+            <h2>이야기 흐름: 에피소드 vs 성장 서사</h2>
+            
+            <p>'슬의생'은 에피소드 중심입니다.
+            병원이라는 배경 속에서 친구들과 보내는 하루하루를 조명하죠.
+            각 에피소드는 그 자체로 완결성을 가지며, 다음 에피소드와 직접적인 연관성이 적은 편입니다.</p>
+            
+            <p>하지만 '언슬전'은 연속적인 서사를 가집니다.
+            주인공들이 서서히 성장하고 변화하는 과정을 따라가게 되죠.
+            한 편으로 끝나는 이야기보다, 다음 회를 기다리게 만드는 구조입니다.</p>
+            
+            <p>"오늘도 버티는 게 성장일까?",
+            시청자도 함께 고민하게 됩니다.</p>
+
+
+        <section id="atmosphere">
+            <h2>분위기: 따뜻함 vs 현실적 냉정함</h2>
+            
+            <h3>슬의생: 힐링을 주는 따뜻함</h3>
+            <p>'슬의생'은 따뜻함 그 자체였죠.
+            삶과 죽음의 현장에서도 인간미를 잃지 않았고,
+            어느새 눈물 한 방울, 미소 한 줄기를 남기곤 했습니다.
+            많은 시청자들이 이 드라마를 '힐링물'로 기억하는 이유입니다.</p>
+            
+            <h3>언슬전: 날것 그대로의 현실</h3>
+            <p>하지만 '언슬전'은 조금 다릅니다.
+            더 현실적이고 냉정한 분위기 속에서,
+            의료진이 겪는 고충이 날 것 그대로 그려집니다.</p>
+            
+            <p>"슬기롭기 위해선 얼마나 많은 희생이 필요한 걸까?"
+            이 질문에 대답하기 위해 드라마는 꾸밈없는 현실을 선택했죠.</p>
+            
+            <div class="solution-box">
+                <p>두 드라마의 분위기 차이는 <span class="bold-green">시청자의 기대와 취향</span>에 따라 선호도가 갈릴 수 있습니다. 힐링과 위로를 원한다면 '슬의생'을, 현실적인 의료 현장의 모습을 알고 싶다면 '언슬전'을 추천합니다.</p>
+            </div>
+        </section>
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKMacpkJTww_jMlLYkyiQkM9RtIX5jNf4x2yADlfEE9nXlCVc7bBbNP9CTx8JA0IN_xUD_rcZJ_dsb8pAbCuls6PjiJdeBKHWVy7K6lNeeSi8wKrbyWBZoAjVJkdSOegyDgDNYkFctWC3hr8w7M1kSkteQUYZz37Wf5S5YuJMGJ2c-ppysyuYE3g-UaKYp/s1054/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202025-04-16%20005812.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="출처 - TVN 홈페이지" border="0" width="320" data-original-height="447" data-original-width="1054" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKMacpkJTww_jMlLYkyiQkM9RtIX5jNf4x2yADlfEE9nXlCVc7bBbNP9CTx8JA0IN_xUD_rcZJ_dsb8pAbCuls6PjiJdeBKHWVy7K6lNeeSi8wKrbyWBZoAjVJkdSOegyDgDNYkFctWC3hr8w7M1kSkteQUYZz37Wf5S5YuJMGJ2c-ppysyuYE3g-UaKYp/s320/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202025-04-16%20005812.png"/></a></div>
+          <p style="text-align: center;">출처 - TVN 홈페이지</p>
+        <section id="music">
+            <h2>음악: 추억의 리메이크 vs 새로운 OST</h2>
+            
+            <p>'슬의생'은 90~2000년대의 명곡들을 리메이크해 감성을 자극했습니다.
+            추억의 멜로디가 등장인물의 마음과 절묘하게 어우러지며,
+            "이 장면, 이 노래 때문에 기억나" 하는 순간들이 많았죠.</p>
+            
+            <p>반면 '언슬전'은 오리지널 사운드트랙을 통해
+            새로운 이야기, 새로운 감정을 만들어갑니다.
+            익숙한 노래보다는 새로운 울림을 선택한 셈이죠.</p>
+            
+            <div class="accordion-tabs">
+                <div>
+                    <input type="checkbox" id="tab2" class="tab-toggle">
+                    <label for="tab2" class="tab-header">슬의생 인기 OST 목록 (펼치기)</label>
+                    <div class="tab-content">
+                        <h3>🎵 시즌 1 인기 OST</h3>
+                        <ul>
+                            <li><span class="bold-blue">조정석 – 아로하 (Aloha)</span> - 원곡은 쿨의 노래로, 조정석의 따뜻한 음색이 더해져 큰 인기를 얻었습니다.</li>
+                            <li><span class="bold-blue">전미도 – 사랑하게 될 줄 알았어</span> - 전미도의 섬세한 감정 표현이 돋보이는 곡으로, 많은 이들의 사랑을 받았습니다.</li>
+                            <li><span class="bold-blue">미도와 파라솔 – 너에게 난, 나에게 넌</span> - 드라마 속 밴드 '미도와 파라솔'이 부른 이 곡은 원곡의 감성을 잘 살려냈습니다.</li>
+                            <li><span class="bold-blue">조이 (레드벨벳) – 좋은 사람 있으면 소개시켜줘</span> - 조이의 상큼한 보컬이 돋보이는 리메이크 곡입니다.</li>
+                            <li><span class="bold-blue">권진아 – Lonely Night</span> - 부활의 원곡을 감성적으로 재해석한 곡으로, 드라마의 분위기와 잘 어울립니다.</li>
+                        </ul>
+
+                        <h3>🎵 시즌 2 인기 OST</h3>
+                        <ul>
+                            <li><span class="bold-blue">조정석 – 좋아좋아</span> - 조정석의 밝은 에너지가 느껴지는 곡으로, 원곡은 조덕배의 노래입니다.</li>
+                            <li><span class="bold-blue">전미도 – Butterfly</span> - 전미도의 감미로운 목소리가 돋보이는 곡으로, 많은 이들의 사랑을 받았습니다.</li>
+                            <li><span class="bold-blue">미도와 파라솔 – 슈퍼스타</span> - 이한철의 원곡을 밴드 버전으로 재해석하여 새로운 매력을 선사합니다.</li>
+                            <li><span class="bold-blue">김대명 – 가을 우체국 앞에서</span> - 윤도현의 원곡을 김대명의 따뜻한 음색으로 재해석한 곡입니다.</li>
+                            <li><span class="bold-blue">정경호 – 회상</span> - 산울림의 원곡을 정경호가 감성적으로 불러 많은 이들의 공감을 얻었습니다.</li>
+                        </ul>
+
+                        <p>이 곡들은 대부분 원곡의 감성을 살리면서도 드라마 상황에 맞게 재해석된 리메이크 버전입니다. 특히 배우들이 직접 부른 노래들이 많아 더욱 의미가 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section id="comparison">
+            <h2>한눈에 보는 두 드라마 비교</h2>
+            
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>비교 항목</th>
+                            <th>슬기로운 의사생활</th>
+                            <th>언젠가는 슬기로울 전공의 생활</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>중심 인물</td>
+                            <td>교수급 전문의 5인</td>
+                            <td>전공의 4인</td>
+                        </tr>
+                        <tr>
+                            <td>진료과</td>
+                            <td>외과·산부인과 등 다양</td>
+                            <td>산부인과 중심</td>
+                        </tr>
+                        <tr>
+                            <td>이야기 흐름</td>
+                            <td>에피소드 중심</td>
+                            <td>성장형 서사</td>
+                        </tr>
+                        <tr>
+                            <td>분위기</td>
+                            <td>따뜻하고 감성적</td>
+                            <td>사실적이고 냉정함</td>
+                        </tr>
+                        <tr>
+                            <td>음악</td>
+                            <td>리메이크 명곡</td>
+                            <td>오리지널 OST</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="banner-container">
+            <a href="https://www.yuljehospital.com/ko/" class="banner blue">
+              <h2>율제병원 공식 홈페이지</h2>
+              <p>드라마 속 율제병원을 실제로 방문해보세요</p>
+              <div class="banner-icon">🏥</div>
+            </a>
+            <a href="https://tvn.cjenm.com/ko/doctorlife/" class="banner pink">
+                <h2>슬기로운 의사생활 시즌1</h2>
+                <p>원작 드라마 공식 페이지 바로가기</p>
+                <div class="banner-icon">🩺</div>
+            </a>
+              
+            <a href="https://tvn.cjenm.com/ko/doctorlife2/" class="banner green">
+                <h2>슬기로운 의사생활 시즌2</h2>
+                <p>율제병원의 두 번째 이야기 다시보기</p>
+                <div class="banner-icon">💉</div>
+            </a>
+        </div>
+
+        <section id="conclusion">
+            <h2>결론: 당신의 선택은?</h2>
+            
+            <p>같은 병원, 다른 시선.
+            '슬의생'이 우리에게 의사의 따뜻한 마음을 보여줬다면,
+            '언슬전'은 의사가 되기까지의 고통과 치열함을 그립니다.</p>
+            
+            <p>두 작품 모두 의사의 삶을 그리고 있지만, 바라보는 관점과 이야기하는 방식이 전혀 다릅니다.
+            이것이 바로 같은 '슬기로움'이라는 단어를 공유하면서도 전혀 다른 느낌을 주는 이유일 것입니다.</p>
+            
+            <div class="cta-container">
+                <h3>당신의 '슬기로움'은 무엇인가요?</h3>
+                <p>따뜻한 우정과 공감의 이야기, 아니면 현실적인 성장과 도전의 이야기.</p>
+                <p>어떤 '슬기로움'이 더 마음에 드셨나요? 아래 댓글로 여러분의 생각을 나눠주세요!</p>
+                <a href="#comments" class="cta-button">의견 남기기</a>
+            </div>
+        </section>
+
+        <section id="faq">
+            <h2>자주 묻는 질문</h2>
+            
+            <div class="faq-item">
+                <p class="faq-question">두 드라마는 같은 병원을 배경으로 하나요?</p>
+                <div class="faq-answer">
+                    <p>네, 두 드라마 모두 유세브란스병원을 모델로 한 '유가대 종합병원'을 배경으로 합니다. 다만 등장인물과 이야기는 완전히 별개로 진행됩니다.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">슬기로운 의사생활의 인기 캐릭터가 언슬전에도 출연하나요?</p>
+                <div class="faq-answer">
+                    <p>아니요, 두 드라마는 완전히 다른 캐스팅으로 제작되었습니다. 슬의생의 주요 인물들은 언슬전에 등장하지 않습니다. 다만, 슬의생 주요 인물들이 언슬전에 카메오로 등장합니다.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">언슬전을 보기 전에 슬의생을 먼저 봐야 하나요?</p>
+                <div class="faq-answer">
+                    <p>꼭 그럴 필요는 없습니다. 두 드라마는 스토리 연결성이 거의 없기 때문에 각각 독립적으로 즐길 수 있습니다. 다만, 같은 제작진의 작품이기 때문에 연출 스타일이나 병원 배경에 대한 이해를 위해 슬의생을 먼저 보는 것도 좋은 방법입니다.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-question">두 드라마 중 의학적으로 더 사실적인 작품은 무엇인가요?</p>
+                <div class="faq-answer">
+                    <p>'언젠가는 슬기로울 전공의 생활'이 의료 현장의 실제 모습을 더 사실적으로 그린다는 평가를 받고 있습니다. 특히 전공의들의 고충과 성장 과정, 의료 현장의 냉정한 현실을 적나라하게 보여줍니다.</p>
+                </div>
+            </div>
+        </section>
+
+    <div class="cta-container">
+      <h3>언젠가는 슬기로울 전공의생활 총정리: 방송일정, 등장인물, 줄거리 정보</h3>
+      <p>2025년 4월 12일 첫 방송</p>
+      <a href="https://smartjunkie.blogspot.com/2025/04/2025.html" class="cta-button">글 보러 가기</a>
+    </div>
+          
+    <!--
+    <div class="banner-container">
+        <a href="#" class="banner blue">
+            <h2>의학 드라마 추천</h2>
+            <p>국내외 인기 의학 드라마 TOP 10</p>
+            <div class="banner-icon">🏥</div>
+        </a>
+        <a href="#" class="banner purple">
+            <h2>명장면 모음</h2>
+            <p>슬의생 시즌 1,2 명장면 총정리</p>
+            <div class="banner-icon">🎬</div>
+        </a>
+    </div>
+    -->
+
+    <a href="#top" class="scroll-to-top" aria-label="맨 위로 가기">↑</a>
+</body>
+</html>
