@@ -1,1366 +1,1328 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>주 4.5일 근무제와 주 52시간제 폐지: 진정한 워라밸을 향한 걸음일까?</title>
-    <meta name="description" content="국민의힘이 제안한 주 4.5일 근무제와 주 52시간제 폐지 정책의 이면을 분석해봅니다. 진정한 워라밸 개선인지, 노동 유연화의 새로운 포장인지 함께 알아보세요.">
-    <meta name="keywords" content="주 4.5일 근무제, 주 52시간제 폐지, 워라밸, 유연근무제, 노동정책">
+    <title>대한민국 12조 원 추경예산 총정리: 국민 생활은 어떻게 바뀔까?</title>
+    <meta name="description" content="2025년 12조 원 추경예산의 모든 것! 소상공인 지원부터 AI 산업 육성까지, 국민 생활에 직접적인 영향을 미칠 정부 정책을 알기 쉽게 정리했습니다.">
+    <meta name="keywords" content="추경, 12조원, 소상공인지원, 재난대응, AI정책, 반도체산업, 상생페이백, 부담경감크레딧, 재해복구">
 </head>
 <style>
-/* ==========================================================================
-   Base Styles & Typography
-   ========================================================================== */
-
-/* 부드러운 스크롤 (맨 위로 가기 버튼 등에 적용) */
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.7;
-    font-size: 16px; /* 기본 폰트 크기 */
-    color: #1a1a2e;
-    background-color: #fafafa;
-    max-width: 850px; /* 콘텐츠 최대 너비 */
-    margin: 0 auto; /* 중앙 정렬 */
-    padding: 25px 20px; /* 내부 여백 */
-    letter-spacing: -0.01em; /* 자간 기본값 */
-}
-
-/* 기본 박스 모델 설정 */
-*, *::before, *::after {
-    box-sizing: border-box; /* padding/border를 width/height에 포함 */
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
-/* 긴 단어 하이픈 처리 (필요시 언어 설정 필요 - lang="ko" 등) */
-body {
-    hyphens: auto;
-}
-
-
-/* Headings */
-h1, h2, h3 {
-    color: #16213e;
-    font-weight: bold; /* 기본 굵기 */
-    word-break: keep-all; /* 단어 분리 방지 (한국어 등) */
-    max-width: 100%; /* 최대 너비 제한 */
-    letter-spacing: normal; /* 제목은 기본 자간 */
-    line-height: 1.3;
-}
-
-h1 {
-    font-size: 2.2em;
-    border-bottom: none; /* 밑줄 제거 (아래 ::after로 대체) */
-    padding-bottom: 12px;
-    margin-bottom: 30px;
-    font-weight: 800; /* 가장 굵게 */
-    letter-spacing: -0.02em; /* 자간 좁힘 */
-    position: relative;
-}
-
-h1::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 4px;
-    background-color: #3a86ff;
-    border-radius: 3px; /* 변수 대신 값 사용 */
-}
-
-h2 {
-    font-size: 1.7em;
-    margin-top: 40px;
-    margin-bottom: 20px; /* h2 다음 요소와의 간격 추가 */
-    padding-left: 0;
-    font-weight: 700; /* 굵게 */
-    letter-spacing: -0.01em; /* 자간 좁힘 */
-    position: relative;
-    padding-bottom: 8px; /* ::before 공간 확보 */
-}
-
-h2::before {
-    content: '';
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    background-color: rgba(58, 134, 255, 0.2);
-    border-radius: 3px; /* 변수 대신 값 사용 */
-    z-index: -1; /* 텍스트 뒤로 */
-}
-
-h3 {
-    font-size: 1.3em;
-    margin-top: 30px;
-    margin-bottom: 15px; /* h3 다음 요소와의 간격 추가 */
-    font-weight: 600; /* 약간 굵게 */
-    position: relative; /* 장식 추가 대비 */
-}
-
-/* --- CSS Decoration Example for H3 --- */
-h3::before {
-    content: '';
-    display: inline-block;
-    width: 12px; /* 변수 대신 값 사용 */
-    height: 12px;
-    background-color: #3a86ff;
-    border-radius: 50%; /* 원 */
-    margin-right: 8px;
-    vertical-align: middle; /* 텍스트와 수직 정렬 */
-    opacity: 0.5;
-    transition: transform 0.3s ease; /* 변수 대신 값 사용 */
-}
-h3:hover::before {
-    transform: scale(1.2) rotate(45deg); /* 호버 시 약간의 효과 */
-}
-
-
-/* Paragraphs and Lists */
-p, li {
-    margin-bottom: 1em; /* 단락/항목 간 간격 */
-}
-
-ul, ol {
-    padding-left: 22px; /* 들여쓰기 */
-    margin-bottom: 20px;
-}
-
-ul li, ol li {
-    margin-bottom: 8px;
-    line-height: 1.6;
-    position: relative;
-}
-
-ul li::marker {
-    color: #3a86ff;
-}
-
-/* Links */
-a {
-    color: #3a86ff;
-    text-decoration: none; /* 기본 밑줄 제거 */
-    transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease, text-decoration-color 0.3s ease; /* 변수 대신 값 사용 */
-    text-decoration-line: underline;
-    text-decoration-color: transparent; /* 평소에는 투명 */
-    text-underline-offset: 3px; /* 밑줄과 텍스트 간격 */
-}
-
-a:hover {
-    color: #2667ca; /* 변수 대신 값 사용 */
-    text-decoration-color: #2667ca; /* 호버 시 밑줄 색상 나타남 */
-    /* --- Enhanced Hover Effect Example --- */
-    opacity: 0.85; /* 약간 투명도 변경 */
-}
-
-/* ==========================================================================
-   Text Emphasis & Highlights
-   ========================================================================== */
-
-.highlight {
-    background-color: rgba(255, 250, 205, 0.5);
-    padding: 1px 4px;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
-}
-
-.highlight:hover {
-    background-color: rgba(255, 250, 205, 0.8);
-}
-
-.bold-red, .highlight-red {
-    color: #e63946;
-    font-weight: 600;
-}
-
-.bold-blue, .highlight-blue {
-    color: #3a86ff;
-    font-weight: 600;
-}
-
-.bold-green {
-    color: #2a9d8f;
-    font-weight: 600;
-}
-
-.white-text {
-    color: #ffffff !important; /* 필요시 우선순위 높임 */
-}
-
-/* --- Drop Cap --- */
-/* 사용법: 드롭캡을 적용할 단락에 class="dropcap" 추가 (예: <p class="dropcap">...) */
-.dropcap::first-letter {
-    color: #3a86ff;
-    font-size: 4em; /* 크기 조절 */
-    font-weight: 700; /* bold */
-    float: left;
-    line-height: 0.8; /* 줄 간격 조절 */
-    margin-top: 4px; /* 위치 미세 조정 */
-    margin-right: 8px;
-    margin-bottom: -4px; /* 아래 간격 조절 */
-    font-family: 'Inter', 'Noto Sans KR', sans-serif; /* 기본 헤딩 폰트 사용 */
-    text-shadow: 1px 1px 0px rgba(0,0,0,0.1); /* 입체감 */
-}
-
-/* ==========================================================================
-   Boxes (Info, Warning, Solution)
-   ========================================================================== */
-
-.info-box, .warning-box, .solution-box {
-    padding: 22px; /* 값 유지 */
-    margin: 25px 0;
-    border-radius: 10px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-    border: none;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 변수 대신 값 사용 */
-}
-
-.info-box:hover, .warning-box:hover, .solution-box:hover {
-    transform: translateY(-3px) scale(1.01); /* 향상된 호버 효과 */
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12); /* 변수 대신 값 사용 */
-}
-
-.info-box::before, .warning-box::before, .solution-box::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 4px;
-}
-
-.info-box { background-color: #f0f7ff; }
-.info-box::before { background-color: #3a86ff; }
-
-.warning-box { background-color: #fff5f5; }
-.warning-box::before { background-color: #e63946; }
-
-.solution-box { background-color: #f0fff4; }
-.solution-box::before { background-color: #2a9d8f; }
-
-/* ==========================================================================
-   Table of Contents (TOC)
-   ========================================================================== */
-
-.toc {
-    background-color: #f8fafc;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03); /* 변수 대신 값 사용 */
-    border: 1px solid #eaeaea;
-}
-
-.toc h2 {
-    border: none;
-    margin-top: 0;
-    font-size: 1.5em;
-    color: #16213e;
-    padding-bottom: 15px; /* 값 조정 */
-    border-bottom: 2px solid #eaeaea;
-    margin-bottom: 15px;
-}
-
-.toc h2::before { display: none; } /* TOC 제목 장식 제거 */
-
-.toc ul {
-    padding-left: 15px;
-    margin-top: 15px;
-    list-style: none;
-}
-
-.toc li { margin-bottom: 8px; }
-
-.toc a {
-    color: #3a86ff;
-    position: relative;
-    display: inline-block;
-    padding: 4px 0; /* 값 조정 */
-    font-weight: 500;
-    font-size: 0.9em; /* 값 조정 */
-    line-height: 1.6;
-    text-decoration: none;
-    /* --- Enhanced Hover Effect --- */
-    background-image: linear-gradient(rgba(58, 134, 255, 0.2), rgba(58, 134, 255, 0.2)); /* 변수 대신 값 사용 */
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: 0% 2px; /* 초기 밑줄 없음 */
-    transition: background-size 0.3s ease, color 0.3s ease; /* 변수 대신 값 사용 */
-}
-
-.toc a:hover {
-    color: #2667ca;
-    background-size: 100% 2px; /* 호버 시 밑줄 효과 */
-}
-
-/* ==========================================================================
-   Images
-   ========================================================================== */
-
-.img-container {
-    width: 100%;
-    margin: 30px 0;
-    text-align: center;
-}
-
-.img-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; /* 변수 대신 값 사용 */
-    display: block;
-    margin: 0 auto;
-}
-
-.img-container img:hover {
-    transform: translateY(-4px) scale(1.02); /* 향상된 호버 효과 */
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
-    filter: brightness(1.05); /* 약간 밝게 */
-}
-
-.img-caption {
-    font-size: 0.9em;
-    color: #64748b;
-    margin-top: 15px; /* 값 조정 */
-    text-align: center;
-    font-style: italic;
-}
-
-.responsive-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-
-
-/* ==========================================================================
-   Tables
-   ========================================================================== */
-
-.table-wrapper {
-    overflow-x: auto;
-    margin: 30px 0;
-    border-radius: 10px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-}
-.table-wrapper table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    font-size: 0.95em; /* 값 조정 */
-    background-color: #ffffff;
-}
-
-th, td {
-    border: 1px solid #dddddd; /* 테이블 선 */
-    padding: 12px 15px;
-    text-align: left;
-    vertical-align: top;
-}
-
-th {
-    background-color: #3a86ff;
-    color: #ffffff;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    border-color: #3a86ff;
-}
-
-tbody tr {
-    transition: background-color 0.3s ease; /* 변수 대신 값 사용 */
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f8fafc;
-}
-
-tbody tr:hover {
-    background-color: #f0f7ff; /* 호버 시 배경색 변경 */
-}
-
-/* ==========================================================================
-   FAQ Section
-   ========================================================================== */
-
-.faq-item {
-    margin-bottom: 20px;
-    padding: 20px; /* 값 조정 */
-    border-radius: 10px;
-    background-color: #f8fafc;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #eaeaea;
-}
-
-.faq-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05); /* 호버 시 그림자 약간 진하게 */
-}
-
-.faq-question {
-    font-weight: 600;
-    color: #16213e;
-    margin: 0 0 12px 0;
-    font-size: 1.15em;
-    position: relative;
-    padding-left: 28px;
-}
-
-.faq-question::before {
-    content: 'Q';
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: 700;
-    color: #3a86ff;
-}
-
-.faq-answer {
-    padding-left: 28px;
-    position: relative;
-    margin: 0;
-    color: #1a1a2e;
-}
-
-.faq-answer::before {
-    content: 'A';
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: 700;
-    color: #e63946;
-}
-.faq-answer p:last-child { margin-bottom: 0; }
-
-/* ==========================================================================
-   Call to Action (CTA)
-   ========================================================================== */
-
-.cta-container {
-    background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
-    color: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    margin: 40px 0;
-    box-shadow: 0 6px 25px rgba(58, 134, 255, 0.25);
-    overflow: hidden;
-    position: relative;
-}
-
-.cta-container::before { /* 장식용 요소 */
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-    transform: rotate(10deg);
-    pointer-events: none;
-}
-
-.cta-container h3 {
-    color: #ffffff;
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.6em;
-    font-weight: 700;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    position: relative; z-index: 1;
-}
-.cta-container h3::before { display: none; } /* CTA 제목 장식 제거 */
-
-
-.cta-container p {
-    position: relative; z-index: 1;
-    margin-bottom: 15px;
-    opacity: 0.9;
-}
-
-.cta-button {
-    display: inline-block;
-    background-color: #ffffff;
-    color: #3a86ff;
-    padding: 12px 25px;
-    border-radius: 50px; /* 알약 모양 */
-    text-decoration: none;
-    font-weight: 600;
-    margin-top: 15px;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    font-size: 1em;
-    max-width: 80%;
-    border: none;
-    cursor: pointer;
-    position: relative; z-index: 1;
-}
-
-.cta-button:hover {
-    background-color: #f8fafc;
-    transform: scale(1.05) translateY(-3px); /* 향상된 호버 효과 */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    color: #2667ca;
-}
-
-/* ==========================================================================
-   Blockquotes
-   ========================================================================== */
-
-blockquote {
-    border-left: none;
-    padding: 20px 25px 20px 40px; /* 값 조정 */
-    margin: 25px 0;
-    font-style: italic;
-    color: #64748b;
-    background-color: #f8fafc;
-    border-radius: 10px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
-    position: relative;
-    font-size: 0.95em; /* 값 조정 */
-    border: 1px solid #eaeaea;
-}
-
-blockquote::before {
-    content: '"';
-    position: absolute;
-    top: 5px;
-    left: 15px;
-    font-size: 3.5em;
-    color: rgba(58, 134, 255, 0.2);
-    font-family: Georgia, serif;
-    line-height: 1;
-    /* --- CSS Decoration Example --- */
-    transform: rotate(-5deg); /* 약간 기울이기 */
-    opacity: 0.8;
-}
-
-blockquote p:last-child { margin-bottom: 0; }
-
-/* ==========================================================================
-   Social Share Buttons
-   ========================================================================== */
-
-.social-share {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 40px 0;
-    flex-wrap: wrap;
-}
-
-.social-icon {
-    width: 45px; height: 45px;
-    border-radius: 50%; /* 원 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-    color: #ffffff; /* 아이콘 색상 기본값 */
-}
-
-.social-icon:hover {
-    transform: translateY(-4px) rotate(8deg) scale(1.1); /* 향상된 호버 효과 */
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
-    filter: brightness(1.1); /* 약간 밝게 */
-}
-
-.social-icon.twitter { background: linear-gradient(135deg, #1da1f2 0%, #1a91da 100%); }
-.social-icon.facebook { background: linear-gradient(135deg, #4267B2 0%, #365899 100%); }
-.social-icon.linkedin { background: linear-gradient(135deg, #0e76a8 0%, #0a5e86 100%); }
-.social-icon.kakao { background: linear-gradient(135deg, #FEE500 0%, #E4CF00 100%); color: #3C1E1E; }
-
-.social-icon i { /* FontAwesome 등 사용 가정 */
-    font-size: 1.1em;
-    vertical-align: middle;
-}
-
-/* ==========================================================================
-   Data Visualization Placeholder
-   ========================================================================== */
-
-.data-viz {
-    width: 100%;
-    height: 320px;
-    background-color: #f8fafc;
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 30px 0;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: #aaaaaa; /* 값 조정 */
-    font-size: 1.2em;
-    font-style: italic;
-    border: 1px solid #eaeaea;
-}
-
-.data-viz:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
-}
-
-/* ==========================================================================
-   Post Meta Information
-   ========================================================================== */
-
-.post-date {
-    font-size: 0.9em;
-    color: #64748b;
-    margin-bottom: 15px;
-    display: block;
-}
-
-/* ==========================================================================
-   Banners
-   ========================================================================== */
-
-.banner-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 10px;
-}
-
-.banner {
-    background-color: #2a9d8f; /* 기본 녹색 */
-    color: #ffffff;
-    padding: 20px 25px; /* 값 조정 */
-    border-radius: 15px;
-    width: 280px;
-    min-height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-    text-decoration: none;
-}
-
-.banner:hover {
-    background-color: #217e73; /* 색상 값 직접 지정 */
-    transform: scale(1.05) translateY(-5px); /* 향상된 호버 효과 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.banner h2 {
-    margin: 0 0 5px 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-    position: relative; z-index: 2;
-    color: #ffffff;
-    border: none; padding: 0; line-height: 1.3;
-}
-.banner h2::before { display: none; }
-
-
-.banner p {
-    margin: 0;
-    font-size: 1rem;
-    opacity: 0.9;
-    position: relative; z-index: 2;
-    line-height: 1.5;
-    color: #ffffff;
-}
-
-/* Banner Color Variations */
-.banner.blue { background-color: #2271b3; }
-.banner.blue:hover { background-color: #195a8c; }
-.banner.purple { background-color: #7839ab; }
-.banner.purple:hover { background-color: #5f2c87; }
-.banner.orange { background-color: #e67e22; }
-.banner.orange:hover { background-color: #c16a1d; }
-.banner.teal { background-color: #2a9d8f; } /* Default */
-.banner.teal:hover { background-color: #217e73; }
-.banner.pink { background-color: #e84a7f; }
-.banner.pink:hover { background-color: #c73868; }
-
-
-.banner-icon {
-    position: absolute;
-    right: 15px;
-    bottom: 15px;
-    font-size: 2rem;
-    opacity: 0.3;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.banner:hover .banner-icon {
-    opacity: 0.5;
-    transform: scale(1.1) rotate(-8deg); /* 향상된 호버 효과 */
-}
-
-/* ==========================================================================
-   Accordion Tabs (CSS Only - Checkbox Hack)
-   ========================================================================== */
-
-.accordion-tabs {
-    width: 100%;
-    margin: 20px 0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #dddddd;
-}
-
-.tab-toggle { display: none; }
-
-.tab-header {
-    display: block;
-    padding: 15px 20px;
-    background-color: #f0f2f5;
-    color: #333333;
-    font-weight: 600;
-    cursor: pointer;
-    border-bottom: 1px solid #dddddd;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    position: relative;
-}
-
-.accordion-tabs > div:last-of-type .tab-header { border-bottom: none; }
-.accordion-tabs > div:last-of-type .tab-toggle:checked + .tab-header + .tab-content { border-bottom: none; }
-
-.tab-header:hover {
-    background-color: #e9ecef; /* 색상 값 직접 지정 */
-}
-
-.tab-toggle:checked + .tab-header {
-    background-color: #3a86ff;
-    color: #ffffff;
-    border-bottom-color: #3a86ff;
-}
-
-.tab-content {
-    display: none;
-    padding: 20px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #dddddd;
-    color: #1a1a2e;
-}
-.tab-content p:last-child,
-.tab-content ul:last-child,
-.tab-content ol:last-child { margin-bottom: 0; }
-
-.tab-toggle:checked + .tab-header + .tab-content { display: block; }
-
-.tab-header::after { /* Indicator Icon */
-    content: '+';
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2em;
-    font-weight: 400; /* normal */
-    transition: transform 0.3s ease;
-}
-
-.tab-toggle:checked + .tab-header::after {
-    content: '−';
-    transform: translateY(-50%) rotate(180deg);
-}
-
-/* ==========================================================================
-   Code Blocks (Basic Styling)
-   ========================================================================== */
-pre {
-    background-color: #f8fafc;
-    border: 1px solid #eaeaea;
-    border-radius: 10px;
-    padding: 15px;
-    overflow-x: auto; /* 가로 스크롤 */
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* 코드용 폰트 */
-    font-size: 0.85em; /* 크기 조절 */
-    line-height: 1.6;
-    margin: 20px 0;
-    white-space: pre; /* 공백 유지 */
-    color: #1a1a2e; /* 코드 텍스트 색상 */
-}
-
-code { /* Inline code */
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-    background-color: #f0f2f5;
-    padding: 2px 4px;
-    border-radius: 3px;
-    font-size: 0.85em;
-    color: #e63946; /* 인라인 코드 색상 강조 */
-}
-
-pre code { /* Code inside pre - reset inline styles */
-    background-color: transparent;
-    padding: 0;
-    border-radius: 0;
-    color: inherit; /* pre의 색상 상속 */
-    font-size: inherit; /* pre의 폰트 크기 상속 */
-}
-
-
-/* ==========================================================================
-   Utility & Accessibility
-   ========================================================================== */
-
-/* --- Skip Link --- */
-/* 사용법: body 바로 다음에 <a href="#main-content" class="skip-link">본문으로 바로가기</a> 추가 */
-/* 메인 콘텐츠 영역에 id="main-content" 추가 */
-.skip-link {
-    position: absolute;
-    left: -9999px; /* 화면 밖으로 */
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    z-index: 9999; /* 다른 요소 위에 오도록 */
-    background-color: #3a86ff;
-    color: #ffffff;
-    padding: 12px 15px;
-    border-radius: 0 0 10px 0; /* 오른쪽 아래만 라운드 */
-    text-decoration: none;
-    font-weight: 600;
-    transition: none; /* 포커스 시 즉시 나타나도록 */
-}
-
-.skip-link:focus {
-    position: fixed; /* 화면 상단 고정 */
-    left: 0;
-    top: 0;
-    width: auto;
-    height: auto;
-    overflow: visible;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-}
-
-/* --- Scroll-to-Top Button (Always Visible) --- */
-/* 사용법: body 최상단 근처에 <div id="top"></div> 추가 */
-/* body 하단에 <a href="#top" class="scroll-to-top" aria-label="맨 위로 가기">↑</a> 추가 (아이콘 폰트 사용 가능) */
-.scroll-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-    background-color: #3a86ff;
-    color: #ffffff;
-    border-radius: 50%; /* 원 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5em; /* 아이콘 크기 */
-    font-weight: 700; /* bold */
-    text-decoration: none;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-    opacity: 0.8;
-    z-index: 1000;
-    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
-}
-
-.scroll-to-top:hover {
-    background-color: #2667ca;
-    opacity: 1;
-    transform: scale(1.1) translateY(-2px); /* 향상된 호버 효과 */
-}
-
-
-/* --- Focus Visible --- */
-a:focus-visible,
-button:focus-visible,
-.tab-header:focus-visible,
-input[type="checkbox"]:focus-visible + .tab-header,
-.skip-link:focus,
-.scroll-to-top:focus {
-    outline: 2px solid #3a86ff;
-    outline-offset: 2px;
-    box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.3);
-    border-radius: 3px; /* 포커스 스타일에 라운딩 */
-}
-/* 특정 요소 모양 유지 */
-.cta-button:focus-visible { border-radius: 50px; }
-.social-icon:focus-visible, .scroll-to-top:focus-visible { border-radius: 50%; }
-
-
-/* ==========================================================================
-   Media Queries (Responsiveness)
-   ========================================================================== */
-
-@media (max-width: 768px) {
+    /* ==========================================================================
+       Base Styles & Typography
+       ========================================================================== */
+    
+    /* 부드러운 스크롤 (맨 위로 가기 버튼 등에 적용) */
+    html {
+        scroll-behavior: smooth;
+    }
+    
     body {
-        padding: 15px 12px;
-        font-size: 15px;
+        font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.7;
+        font-size: 16px; /* 기본 폰트 크기 */
+        color: #1a1a2e;
+        background-color: #fafafa;
+        max-width: 850px; /* 콘텐츠 최대 너비 */
+        margin: 0 auto; /* 중앙 정렬 */
+        padding: 25px 20px; /* 내부 여백 */
+        letter-spacing: -0.01em; /* 자간 기본값 */
     }
-
-    h1 { font-size: 1.8em; margin-bottom: 25px; }
-    h2 { font-size: 1.5em; margin-top: 35px; }
-    h3 { font-size: 1.2em; margin-top: 25px; }
-
-    .img-container { margin: 20px 0; }
-    .cta-container { padding: 20px; }
-
-    .toc, .info-box, .warning-box, .solution-box, .faq-item {
-        padding: 18px;
-        margin: 20px 0; /* 간격 살짝 줄임 */
+    
+    /* 기본 박스 모델 설정 */
+    *, *::before, *::after {
+        box-sizing: border-box; /* padding/border를 width/height에 포함 */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
-    blockquote { padding: 20px 25px 20px 35px; } /* 왼쪽 여백 줄임 */
-
-    table { font-size: 0.9em; }
-    th, td { padding: 10px 12px; }
-
-    .data-viz { height: 280px; }
-
-    .social-icon { width: 40px; height: 40px; }
-    .social-icon i { font-size: 1em; } /* 아이콘 크기 조절 */
-
-    .banner-container { padding: 0; }
-    .banner {
-        width: calc(50% - 10px); /* 2열 배치 (gap 고려) */
-        min-height: 90px;
-        padding: 15px 20px;
-    }
-    .banner h2 { font-size: 1.3rem; }
-    .banner p { font-size: 0.9rem; }
-
-     .tab-header { padding: 12px 15px; }
-     .tab-content { padding: 15px; }
-     .tab-header::after { right: 15px; } /* 아이콘 위치 조정 */
-
-     .scroll-to-top { bottom: 15px; right: 15px; width: 40px; height: 40px; font-size: 1.3em;}
-     .dropcap::first-letter { font-size: 3.5em; } /* 모바일에서 드롭캡 크기 약간 줄임 */
-}
-
-@media (max-width: 480px) {
+    
+    /* 긴 단어 하이픈 처리 (필요시 언어 설정 필요 - lang="ko" 등) */
     body {
-        padding: 12px 10px;
-        font-size: 14px;
+        hyphens: auto;
     }
-
-    h1 { font-size: 1.6em; }
-    h2 { font-size: 1.4em; }
-    h3 { font-size: 1.1em; }
-
-    .cta-button { padding: 10px 20px; width: 90%; max-width: 300px; }
-
-    table { font-size: 0.85em; }
-    th, td { padding: 8px 10px; }
-
-    .data-viz { height: 250px; }
-
-    .banner { width: 100%; } /* 1열 */
-    .banner h2 { font-size: 1.2rem; }
-    .banner p { font-size: 0.85rem; }
-
-    .dropcap::first-letter { font-size: 3em; } /* 더 작은 화면에서 드롭캡 크기 더 줄임 */
-}
-
-/* ==========================================================================
-   Print Stylesheet
-   ========================================================================== */
-@media print {
-    body {
-        color: #000000;
-        background-color: #ffffff;
-        font-size: 12pt;
-        font-family: Georgia, 'Times New Roman', Times, serif;
+    
+    
+    /* Headings */
+    h1, h2, h3 {
+        color: #16213e;
+        font-weight: bold; /* 기본 굵기 */
+        word-break: keep-all; /* 단어 분리 방지 (한국어 등) */
+        max-width: 100%; /* 최대 너비 제한 */
+        letter-spacing: normal; /* 제목은 기본 자간 */
+        line-height: 1.3;
+    }
+    
+    h1 {
+        font-size: 2.2em;
+        border-bottom: none; /* 밑줄 제거 (아래 ::after로 대체) */
+        padding-bottom: 12px;
+        margin-bottom: 30px;
+        font-weight: 800; /* 가장 굵게 */
+        letter-spacing: -0.02em; /* 자간 좁힘 */
+        position: relative;
+    }
+    
+    h1::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background-color: #3a86ff;
+        border-radius: 3px; /* 변수 대신 값 사용 */
+    }
+    
+    h2 {
+        font-size: 1.7em;
+        margin-top: 40px;
+        margin-bottom: 20px; /* h2 다음 요소와의 간격 추가 */
+        padding-left: 0;
+        font-weight: 700; /* 굵게 */
+        letter-spacing: -0.01em; /* 자간 좁힘 */
+        position: relative;
+        padding-bottom: 8px; /* ::before 공간 확보 */
+    }
+    
+    h2::before {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background-color: rgba(58, 134, 255, 0.2);
+        border-radius: 3px; /* 변수 대신 값 사용 */
+        z-index: -1; /* 텍스트 뒤로 */
+    }
+    
+    h3 {
+        font-size: 1.3em;
+        margin-top: 30px;
+        margin-bottom: 15px; /* h3 다음 요소와의 간격 추가 */
+        font-weight: 600; /* 약간 굵게 */
+        position: relative; /* 장식 추가 대비 */
+    }
+    
+    /* --- CSS Decoration Example for H3 --- */
+    h3::before {
+        content: '';
+        display: inline-block;
+        width: 12px; /* 변수 대신 값 사용 */
+        height: 12px;
+        background-color: #3a86ff;
+        border-radius: 50%; /* 원 */
+        margin-right: 8px;
+        vertical-align: middle; /* 텍스트와 수직 정렬 */
+        opacity: 0.5;
+        transition: transform 0.3s ease; /* 변수 대신 값 사용 */
+    }
+    h3:hover::before {
+        transform: scale(1.2) rotate(45deg); /* 호버 시 약간의 효과 */
+    }
+    
+    
+    /* Paragraphs and Lists */
+    p, li {
+        margin-bottom: 1em; /* 단락/항목 간 간격 */
+    }
+    
+    ul, ol {
+        padding-left: 22px; /* 들여쓰기 */
+        margin-bottom: 20px;
+    }
+    
+    ul li, ol li {
+        margin-bottom: 8px;
+        line-height: 1.6;
+        position: relative;
+    }
+    
+    ul li::marker {
+        color: #3a86ff;
+    }
+    
+    /* Links */
+    a {
+        color: #3a86ff;
+        text-decoration: none; /* 기본 밑줄 제거 */
+        transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease, text-decoration-color 0.3s ease; /* 변수 대신 값 사용 */
+        text-decoration-line: underline;
+        text-decoration-color: transparent; /* 평소에는 투명 */
+        text-underline-offset: 3px; /* 밑줄과 텍스트 간격 */
+    }
+    
+    a:hover {
+        color: #2667ca; /* 변수 대신 값 사용 */
+        text-decoration-color: #2667ca; /* 호버 시 밑줄 색상 나타남 */
+        /* --- Enhanced Hover Effect Example --- */
+        opacity: 0.85; /* 약간 투명도 변경 */
+    }
+    
+    /* ==========================================================================
+       Text Emphasis & Highlights
+       ========================================================================== */
+    
+    .highlight {
+        background-color: rgba(255, 250, 205, 0.5);
+        padding: 1px 4px;
+        border-radius: 3px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .highlight:hover {
+        background-color: rgba(255, 250, 205, 0.8);
+    }
+    
+    .bold-red, .highlight-red {
+        color: #e63946;
+        font-weight: 600;
+    }
+    
+    .bold-blue, .highlight-blue {
+        color: #3a86ff;
+        font-weight: 600;
+    }
+    
+    .bold-green {
+        color: #2a9d8f;
+        font-weight: 600;
+    }
+    
+    .white-text {
+        color: #ffffff !important; /* 필요시 우선순위 높임 */
+    }
+    
+    /* --- Drop Cap --- */
+    /* 사용법: 드롭캡을 적용할 단락에 class="dropcap" 추가 (예: <p class="dropcap">...) */
+    .dropcap::first-letter {
+        color: #3a86ff;
+        font-size: 4em; /* 크기 조절 */
+        font-weight: 700; /* bold */
+        float: left;
+        line-height: 0.8; /* 줄 간격 조절 */
+        margin-top: 4px; /* 위치 미세 조정 */
+        margin-right: 8px;
+        margin-bottom: -4px; /* 아래 간격 조절 */
+        font-family: 'Inter', 'Noto Sans KR', sans-serif; /* 기본 헤딩 폰트 사용 */
+        text-shadow: 1px 1px 0px rgba(0,0,0,0.1); /* 입체감 */
+    }
+    
+    /* ==========================================================================
+       Boxes (Info, Warning, Solution)
+       ========================================================================== */
+    
+    .info-box, .warning-box, .solution-box {
+        padding: 22px; /* 값 유지 */
+        margin: 25px 0;
+        border-radius: 10px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+        border: none;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* 변수 대신 값 사용 */
+    }
+    
+    .info-box:hover, .warning-box:hover, .solution-box:hover {
+        transform: translateY(-3px) scale(1.01); /* 향상된 호버 효과 */
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12); /* 변수 대신 값 사용 */
+    }
+    
+    .info-box::before, .warning-box::before, .solution-box::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 4px;
+    }
+    
+    .info-box { background-color: #f0f7ff; }
+    .info-box::before { background-color: #3a86ff; }
+    
+    .warning-box { background-color: #fff5f5; }
+    .warning-box::before { background-color: #e63946; }
+    
+    .solution-box { background-color: #f0fff4; }
+    .solution-box::before { background-color: #2a9d8f; }
+    
+    /* ==========================================================================
+       Table of Contents (TOC)
+       ========================================================================== */
+    
+    .toc {
+        background-color: #f8fafc;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03); /* 변수 대신 값 사용 */
+        border: 1px solid #eaeaea;
+    }
+    
+    .toc h2 {
+        border: none;
+        margin-top: 0;
+        font-size: 1.5em;
+        color: #16213e;
+        padding-bottom: 15px; /* 값 조정 */
+        border-bottom: 2px solid #eaeaea;
+        margin-bottom: 15px;
+    }
+    
+    .toc h2::before { display: none; } /* TOC 제목 장식 제거 */
+    
+    .toc ul {
+        padding-left: 15px;
+        margin-top: 15px;
+        list-style: none;
+    }
+    
+    .toc li { margin-bottom: 8px; }
+    
+    .toc a {
+        color: #3a86ff;
+        position: relative;
+        display: inline-block;
+        padding: 4px 0; /* 값 조정 */
+        font-weight: 500;
+        font-size: 0.9em; /* 값 조정 */
+        line-height: 1.6;
+        text-decoration: none;
+        /* --- Enhanced Hover Effect --- */
+        background-image: linear-gradient(rgba(58, 134, 255, 0.2), rgba(58, 134, 255, 0.2)); /* 변수 대신 값 사용 */
+        background-position: 0% 100%;
+        background-repeat: no-repeat;
+        background-size: 0% 2px; /* 초기 밑줄 없음 */
+        transition: background-size 0.3s ease, color 0.3s ease; /* 변수 대신 값 사용 */
+    }
+    
+    .toc a:hover {
+        color: #2667ca;
+        background-size: 100% 2px; /* 호버 시 밑줄 효과 */
+    }
+    
+    /* ==========================================================================
+       Images
+       ========================================================================== */
+    
+    .img-container {
+        width: 100%;
+        margin: 30px 0;
+        text-align: center;
+    }
+    
+    .img-container img {
         max-width: 100%;
-        padding: 1in;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; /* 변수 대신 값 사용 */
+        display: block;
+        margin: 0 auto;
     }
-
-    h1, h2, h3 { color: #000000; }
-    a { color: #000000; text-decoration: underline; }
-
-    /* 인쇄 시 불필요한 요소 숨김 */
-    .toc, .cta-container, .social-share, .banner-container, .faq-item, .data-viz,
-    .accordion-tabs, .skip-link, .scroll-to-top, header, nav, footer, aside,
+    
+    .img-container img:hover {
+        transform: translateY(-4px) scale(1.02); /* 향상된 호버 효과 */
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+        filter: brightness(1.05); /* 약간 밝게 */
+    }
+    
+    .img-caption {
+        font-size: 0.9em;
+        color: #64748b;
+        margin-top: 15px; /* 값 조정 */
+        text-align: center;
+        font-style: italic;
+    }
+    
+    .responsive-img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+    
+    
+    /* ==========================================================================
+       Tables
+       ========================================================================== */
+    
+    .table-wrapper {
+        overflow-x: auto;
+        margin: 30px 0;
+        border-radius: 10px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    }
+    .table-wrapper table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font-size: 0.95em; /* 값 조정 */
+        background-color: #ffffff;
+    }
+    
+    th, td {
+        border: 1px solid #dddddd; /* 테이블 선 */
+        padding: 12px 15px;
+        text-align: left;
+        vertical-align: top;
+    }
+    
+    th {
+        background-color: #3a86ff;
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        border-color: #3a86ff;
+    }
+    
+    tbody tr {
+        transition: background-color 0.3s ease; /* 변수 대신 값 사용 */
+    }
+    
+    tbody tr:nth-child(even) {
+        background-color: #f8fafc;
+    }
+    
+    tbody tr:hover {
+        background-color: #f0f7ff; /* 호버 시 배경색 변경 */
+    }
+    
+    /* ==========================================================================
+       FAQ Section
+       ========================================================================== */
+    
+    .faq-item {
+        margin-bottom: 20px;
+        padding: 20px; /* 값 조정 */
+        border-radius: 10px;
+        background-color: #f8fafc;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #eaeaea;
+    }
+    
+    .faq-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05); /* 호버 시 그림자 약간 진하게 */
+    }
+    
+    .faq-question {
+        font-weight: 600;
+        color: #16213e;
+        margin: 0 0 12px 0;
+        font-size: 1.15em;
+        position: relative;
+        padding-left: 28px;
+    }
+    
+    .faq-question::before {
+        content: 'Q';
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-weight: 700;
+        color: #3a86ff;
+    }
+    
+    .faq-answer {
+        padding-left: 28px;
+        position: relative;
+        margin: 0;
+        color: #1a1a2e;
+    }
+    
+    .faq-answer::before {
+        content: 'A';
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-weight: 700;
+        color: #e63946;
+    }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    
+    /* ==========================================================================
+       Call to Action (CTA)
+       ========================================================================== */
+    
+    .cta-container {
+        background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+        color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        text-align: center;
+        margin: 40px 0;
+        box-shadow: 0 6px 25px rgba(58, 134, 255, 0.25);
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .cta-container::before { /* 장식용 요소 */
+        content: '';
+        position: absolute;
+        top: -50%; left: -50%;
+        width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+        transform: rotate(10deg);
+        pointer-events: none;
+    }
+    
+    .cta-container h3 {
+        color: #ffffff;
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.6em;
+        font-weight: 700;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: relative; z-index: 1;
+    }
+    .cta-container h3::before { display: none; } /* CTA 제목 장식 제거 */
+    
+    
+    .cta-container p {
+        position: relative; z-index: 1;
+        margin-bottom: 15px;
+        opacity: 0.9;
+    }
+    
+    .cta-button {
+        display: inline-block;
+        background-color: #ffffff;
+        color: #3a86ff;
+        padding: 12px 25px;
+        border-radius: 50px; /* 알약 모양 */
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 15px;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        font-size: 1em;
+        max-width: 80%;
+        border: none;
+        cursor: pointer;
+        position: relative; z-index: 1;
+    }
+    
+    .cta-button:hover {
+        background-color: #f8fafc;
+        transform: scale(1.05) translateY(-3px); /* 향상된 호버 효과 */
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        color: #2667ca;
+    }
+    
+    /* ==========================================================================
+       Blockquotes
+       ========================================================================== */
+    
+    blockquote {
+        border-left: none;
+        padding: 20px 25px 20px 40px; /* 값 조정 */
+        margin: 25px 0;
+        font-style: italic;
+        color: #64748b;
+        background-color: #f8fafc;
+        border-radius: 10px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+        position: relative;
+        font-size: 0.95em; /* 값 조정 */
+        border: 1px solid #eaeaea;
+    }
+    
+    blockquote::before {
+        content: '"';
+        position: absolute;
+        top: 5px;
+        left: 15px;
+        font-size: 3.5em;
+        color: rgba(58, 134, 255, 0.2);
+        font-family: Georgia, serif;
+        line-height: 1;
+        /* --- CSS Decoration Example --- */
+        transform: rotate(-5deg); /* 약간 기울이기 */
+        opacity: 0.8;
+    }
+    
+    blockquote p:last-child { margin-bottom: 0; }
+    
+    /* ==========================================================================
+       Social Share Buttons
+       ========================================================================== */
+    
+    .social-share {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 40px 0;
+        flex-wrap: wrap;
+    }
+    
+    .social-icon {
+        width: 45px; height: 45px;
+        border-radius: 50%; /* 원 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        color: #ffffff; /* 아이콘 색상 기본값 */
+    }
+    
+    .social-icon:hover {
+        transform: translateY(-4px) rotate(8deg) scale(1.1); /* 향상된 호버 효과 */
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+        filter: brightness(1.1); /* 약간 밝게 */
+    }
+    
+    .social-icon.twitter { background: linear-gradient(135deg, #1da1f2 0%, #1a91da 100%); }
+    .social-icon.facebook { background: linear-gradient(135deg, #4267B2 0%, #365899 100%); }
+    .social-icon.linkedin { background: linear-gradient(135deg, #0e76a8 0%, #0a5e86 100%); }
+    .social-icon.kakao { background: linear-gradient(135deg, #FEE500 0%, #E4CF00 100%); color: #3C1E1E; }
+    
+    .social-icon i { /* FontAwesome 등 사용 가정 */
+        font-size: 1.1em;
+        vertical-align: middle;
+    }
+    
+    /* ==========================================================================
+       Data Visualization Placeholder
+       ========================================================================== */
+    
+    .data-viz {
+        width: 100%;
+        height: 320px;
+        background-color: #f8fafc;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: #aaaaaa; /* 값 조정 */
+        font-size: 1.2em;
+        font-style: italic;
+        border: 1px solid #eaeaea;
+    }
+    
+    .data-viz:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    }
+    
+    /* ==========================================================================
+       Post Meta Information
+       ========================================================================== */
+    
     .post-date {
-        display: none !important;
+        font-size: 0.9em;
+        color: #64748b;
+        margin-bottom: 15px;
+        display: block;
     }
-    h1::after, h2::before, h3::before, blockquote::before { display: none; }
-
-    table, blockquote { page-break-inside: avoid; border: 1px solid #ccc; box-shadow: none; }
-    th, td { border: 1px solid #ccc; }
-    th { background-color: #eee; color: #000;}
-
-    img { max-width: 100% !important; page-break-inside: avoid; box-shadow: none; }
-    .img-caption { color: #555; font-size: 10pt; }
-
-    pre, code { font-family: monospace; background-color: #f8f8f8; border: 1px solid #ccc; color: #000; word-wrap: break-word; white-space: pre-wrap; page-break-inside: avoid; }
-    code { background: none; padding: 0; }
-
-    .dropcap::first-letter { all: unset; } /* 드롭캡 기본 스타일로 */
-
-    /* 배경 제거 */
-    .info-box, .warning-box, .solution-box, .highlight { background-color: #ffffff !important; border: 1px solid #ccc; box-shadow: none;}
-    .info-box::before, .warning-box::before, .solution-box::before { display: none; }
-}
-
-
-/* ==========================================================================
-   Dark Mode Support
-   ========================================================================== */
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #121212;
-        color: #e0e0e0;
+    
+    /* ==========================================================================
+       Banners
+       ========================================================================== */
+    
+    .banner-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 0 10px;
     }
-
-    h1, h2, h3 { color: #f0f0f0; }
-    h1::after { background-color: #5a9bff; } /* 밝은 파랑 */
-    h2::before { background-color: rgba(90, 155, 255, 0.2); }
-    h3::before { background-color: #5a9bff; } /* 장식 색상 변경 */
-
-    a { color: #5a9bff; }
-    a:hover { color: #8ec0ff; text-decoration-color: #8ec0ff; }
-
-    .highlight { background-color: rgba(255, 231, 150, 0.3); }
-    .highlight:hover { background-color: rgba(255, 231, 150, 0.5); }
-
-    .bold-red, .highlight-red { color: #ff7b81; } /* 밝은 빨강 */
-    .bold-blue, .highlight-blue { color: #5a9bff; } /* 밝은 파랑 */
-    .bold-green { color: #48d6c9; } /* 밝은 녹색 */
-    .dropcap::first-letter { color: #5a9bff; text-shadow: 1px 1px 0px rgba(255,255,255,0.1); }
-
-    .toc, .info-box, .warning-box, .solution-box, .faq-item, blockquote, .data-viz,
-    .tab-content, .accordion-tabs, table tbody tr:nth-child(even), pre {
-        background-color: #1e1e1e; /* 어두운 배경 */
-        border-color: #333; /* 어두운 경계선 */
-        box-shadow: none; /* 다크모드에서는 그림자 제거 */
+    
+    .banner {
+        background-color: #2a9d8f; /* 기본 녹색 */
+        color: #ffffff;
+        padding: 20px 25px; /* 값 조정 */
+        border-radius: 15px;
+        width: 280px;
+        min-height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
     }
-    code { background-color: #2c2c2c; color: #ff7b81; } /* 인라인 코드 */
-    pre { color: #e0e0e0;}
-    pre code { color: inherit; background: transparent; }
-
-    /* 박스 구분선 색상 조정 */
-    .info-box::before { background-color: #5a9bff; }
-    .warning-box::before { background-color: #ff7b81; }
-    .solution-box::before { background-color: #48d6c9; }
-
-    .toc h2 { color: #f0f0f0; border-bottom-color: #333; }
-    .toc a { color: #5a9bff; background-image: linear-gradient(rgba(90, 155, 255, 0.2), rgba(90, 155, 255, 0.2));}
-    .toc a:hover { color: #8ec0ff; }
-
-    th { background-color: #3a86ff; color: #ffffff; border-color: #3a86ff;} /* 테이블 헤더는 유지 */
-    td, th { border-color: #444; } /* 테이블 선 색상 */
-    tbody tr:hover { background-color: #252525; }
-
-    .faq-question { color: #f0f0f0; }
-    .faq-question::before { color: #5a9bff; }
-    .faq-answer { color: #e0e0e0; }
-    .faq-answer::before { color: #ff7b81; }
-
-    blockquote { color: #bdbdbd; border-color: #333; }
-    blockquote::before { color: rgba(90, 155, 255, 0.2); }
-
-    /* CTA는 밝은 색 유지 또는 대비 조정 */
-    .cta-button { background-color: #1e1e1e; color: #5a9bff;}
-    .cta-button:hover { background-color: #2c2c2c; color: #8ec0ff; }
-
-    /* 소셜 아이콘 배경은 유지, 아이콘 색상 필요시 조정 */
-
-    .tab-header { background-color: #2c2c2c; color: #e0e0e0; border-color: #333;}
-    .tab-header:hover { background-color: #383838; }
-    .tab-toggle:checked + .tab-header { background-color: #3a86ff; color: #ffffff; border-bottom-color: #3a86ff;} /* 활성 탭 색상은 유지 */
-    .tab-content { border-color: #333; background-color: #1e1e1e; color: #e0e0e0;}
-
-    /* 스킵 링크, 맨 위로 가기 버튼 */
-    .skip-link { background-color: #5a9bff; color: #121212; }
-    .scroll-to-top { background-color: #5a9bff; color: #121212; box-shadow: none; }
-    .scroll-to-top:hover { background-color: #8ec0ff; }
-
-    /* 포커스 스타일 조정 */
-    a:focus-visible, button:focus-visible, .tab-header:focus-visible,
+    
+    .banner:hover {
+        background-color: #217e73; /* 색상 값 직접 지정 */
+        transform: scale(1.05) translateY(-5px); /* 향상된 호버 효과 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .banner h2 {
+        margin: 0 0 5px 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        position: relative; z-index: 2;
+        color: #ffffff;
+        border: none; padding: 0; line-height: 1.3;
+    }
+    .banner h2::before { display: none; }
+    
+    
+    .banner p {
+        margin: 0;
+        font-size: 1rem;
+        opacity: 0.9;
+        position: relative; z-index: 2;
+        line-height: 1.5;
+        color: #ffffff;
+    }
+    
+    /* Banner Color Variations */
+    .banner.blue { background-color: #2271b3; }
+    .banner.blue:hover { background-color: #195a8c; }
+    .banner.purple { background-color: #7839ab; }
+    .banner.purple:hover { background-color: #5f2c87; }
+    .banner.orange { background-color: #e67e22; }
+    .banner.orange:hover { background-color: #c16a1d; }
+    .banner.teal { background-color: #2a9d8f; } /* Default */
+    .banner.teal:hover { background-color: #217e73; }
+    .banner.pink { background-color: #e84a7f; }
+    .banner.pink:hover { background-color: #c73868; }
+    
+    
+    .banner-icon {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        font-size: 2rem;
+        opacity: 0.3;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        z-index: 1;
+        pointer-events: none;
+    }
+    
+    .banner:hover .banner-icon {
+        opacity: 0.5;
+        transform: scale(1.1) rotate(-8deg); /* 향상된 호버 효과 */
+    }
+    
+    /* ==========================================================================
+       Accordion Tabs (CSS Only - Checkbox Hack)
+       ========================================================================== */
+    
+    .accordion-tabs {
+        width: 100%;
+        margin: 20px 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #dddddd;
+    }
+    
+    .tab-toggle { display: none; }
+    
+    .tab-header {
+        display: block;
+        padding: 15px 20px;
+        background-color: #f0f2f5;
+        color: #333333;
+        font-weight: 600;
+        cursor: pointer;
+        border-bottom: 1px solid #dddddd;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        position: relative;
+    }
+    
+    .accordion-tabs > div:last-of-type .tab-header { border-bottom: none; }
+    .accordion-tabs > div:last-of-type .tab-toggle:checked + .tab-header + .tab-content { border-bottom: none; }
+    
+    .tab-header:hover {
+        background-color: #e9ecef; /* 색상 값 직접 지정 */
+    }
+    
+    .tab-toggle:checked + .tab-header {
+        background-color: #3a86ff;
+        color: #ffffff;
+        border-bottom-color: #3a86ff;
+    }
+    
+    .tab-content {
+        display: none;
+        padding: 20px;
+        background-color: #ffffff;
+        border-bottom: 1px solid #dddddd;
+        color: #1a1a2e;
+    }
+    .tab-content p:last-child,
+    .tab-content ul:last-child,
+    .tab-content ol:last-child { margin-bottom: 0; }
+    
+    .tab-toggle:checked + .tab-header + .tab-content { display: block; }
+    
+    .tab-header::after { /* Indicator Icon */
+        content: '+';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2em;
+        font-weight: 400; /* normal */
+        transition: transform 0.3s ease;
+    }
+    
+    .tab-toggle:checked + .tab-header::after {
+        content: '−';
+        transform: translateY(-50%) rotate(180deg);
+    }
+    
+    /* ==========================================================================
+       Code Blocks (Basic Styling)
+       ========================================================================== */
+    pre {
+        background-color: #f8fafc;
+        border: 1px solid #eaeaea;
+        border-radius: 10px;
+        padding: 15px;
+        overflow-x: auto; /* 가로 스크롤 */
+        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* 코드용 폰트 */
+        font-size: 0.85em; /* 크기 조절 */
+        line-height: 1.6;
+        margin: 20px 0;
+        white-space: pre; /* 공백 유지 */
+        color: #1a1a2e; /* 코드 텍스트 색상 */
+    }
+    
+    code { /* Inline code */
+        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+        background-color: #f0f2f5;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-size: 0.85em;
+        color: #e63946; /* 인라인 코드 색상 강조 */
+    }
+    
+    pre code { /* Code inside pre - reset inline styles */
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
+        color: inherit; /* pre의 색상 상속 */
+        font-size: inherit; /* pre의 폰트 크기 상속 */
+    }
+    
+    
+    /* ==========================================================================
+       Utility & Accessibility
+       ========================================================================== */
+    
+    /* --- Skip Link --- */
+    /* 사용법: body 바로 다음에 <a href="#main-content" class="skip-link">본문으로 바로가기</a> 추가 */
+    /* 메인 콘텐츠 영역에 id="main-content" 추가 */
+    .skip-link {
+        position: absolute;
+        left: -9999px; /* 화면 밖으로 */
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        z-index: 9999; /* 다른 요소 위에 오도록 */
+        background-color: #3a86ff;
+        color: #ffffff;
+        padding: 12px 15px;
+        border-radius: 0 0 10px 0; /* 오른쪽 아래만 라운드 */
+        text-decoration: none;
+        font-weight: 600;
+        transition: none; /* 포커스 시 즉시 나타나도록 */
+    }
+    
+    .skip-link:focus {
+        position: fixed; /* 화면 상단 고정 */
+        left: 0;
+        top: 0;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* --- Scroll-to-Top Button (Always Visible) --- */
+    /* 사용법: body 최상단 근처에 <div id="top"></div> 추가 */
+    /* body 하단에 <a href="#top" class="scroll-to-top" aria-label="맨 위로 가기">↑</a> 추가 (아이콘 폰트 사용 가능) */
+    .scroll-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        background-color: #3a86ff;
+        color: #ffffff;
+        border-radius: 50%; /* 원 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5em; /* 아이콘 크기 */
+        font-weight: 700; /* bold */
+        text-decoration: none;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+        opacity: 0.8;
+        z-index: 1000;
+        transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .scroll-to-top:hover {
+        background-color: #2667ca;
+        opacity: 1;
+        transform: scale(1.1) translateY(-2px); /* 향상된 호버 효과 */
+    }
+    
+    
+    /* --- Focus Visible --- */
+    a:focus-visible,
+    button:focus-visible,
+    .tab-header:focus-visible,
     input[type="checkbox"]:focus-visible + .tab-header,
-    .skip-link:focus, .scroll-to-top:focus {
-        outline-color: #8ec0ff; /* 밝은 포커스 색상 */
-        box-shadow: 0 0 0 3px rgba(90, 155, 255, 0.4);
+    .skip-link:focus,
+    .scroll-to-top:focus {
+        outline: 2px solid #3a86ff;
+        outline-offset: 2px;
+        box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.3);
+        border-radius: 3px; /* 포커스 스타일에 라운딩 */
     }
-
-}
-</style>
+    /* 특정 요소 모양 유지 */
+    .cta-button:focus-visible { border-radius: 50px; }
+    .social-icon:focus-visible, .scroll-to-top:focus-visible { border-radius: 50%; }
+    
+    
+    /* ==========================================================================
+       Media Queries (Responsiveness)
+       ========================================================================== */
+    
+    @media (max-width: 768px) {
+        body {
+            padding: 15px 12px;
+            font-size: 15px;
+        }
+    
+        h1 { font-size: 1.8em; margin-bottom: 25px; }
+        h2 { font-size: 1.5em; margin-top: 35px; }
+        h3 { font-size: 1.2em; margin-top: 25px; }
+    
+        .img-container { margin: 20px 0; }
+        .cta-container { padding: 20px; }
+    
+        .toc, .info-box, .warning-box, .solution-box, .faq-item {
+            padding: 18px;
+            margin: 20px 0; /* 간격 살짝 줄임 */
+        }
+        blockquote { padding: 20px 25px 20px 35px; } /* 왼쪽 여백 줄임 */
+    
+        table { font-size: 0.9em; }
+        th, td { padding: 10px 12px; }
+    
+        .data-viz { height: 280px; }
+    
+        .social-icon { width: 40px; height: 40px; }
+        .social-icon i { font-size: 1em; } /* 아이콘 크기 조절 */
+    
+        .banner-container { padding: 0; }
+        .banner {
+            width: calc(50% - 10px); /* 2열 배치 (gap 고려) */
+            min-height: 90px;
+            padding: 15px 20px;
+        }
+        .banner h2 { font-size: 1.3rem; }
+        .banner p { font-size: 0.9rem; }
+    
+         .tab-header { padding: 12px 15px; }
+         .tab-content { padding: 15px; }
+         .tab-header::after { right: 15px; } /* 아이콘 위치 조정 */
+    
+         .scroll-to-top { bottom: 15px; right: 15px; width: 40px; height: 40px; font-size: 1.3em;}
+         .dropcap::first-letter { font-size: 3.5em; } /* 모바일에서 드롭캡 크기 약간 줄임 */
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding: 12px 10px;
+            font-size: 14px;
+        }
+    
+        h1 { font-size: 1.6em; }
+        h2 { font-size: 1.4em; }
+        h3 { font-size: 1.1em; }
+    
+        .cta-button { padding: 10px 20px; width: 90%; max-width: 300px; }
+    
+        table { font-size: 0.85em; }
+        th, td { padding: 8px 10px; }
+    
+        .data-viz { height: 250px; }
+    
+        .banner { width: 100%; } /* 1열 */
+        .banner h2 { font-size: 1.2rem; }
+        .banner p { font-size: 0.85rem; }
+    
+        .dropcap::first-letter { font-size: 3em; } /* 더 작은 화면에서 드롭캡 크기 더 줄임 */
+    }
+    
+    /* ==========================================================================
+       Print Stylesheet
+       ========================================================================== */
+    @media print {
+        body {
+            color: #000000;
+            background-color: #ffffff;
+            font-size: 12pt;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            max-width: 100%;
+            padding: 1in;
+        }
+    
+        h1, h2, h3 { color: #000000; }
+        a { color: #000000; text-decoration: underline; }
+    
+        /* 인쇄 시 불필요한 요소 숨김 */
+        .toc, .cta-container, .social-share, .banner-container, .faq-item, .data-viz,
+        .accordion-tabs, .skip-link, .scroll-to-top, header, nav, footer, aside,
+        .post-date {
+            display: none !important;
+        }
+        h1::after, h2::before, h3::before, blockquote::before { display: none; }
+    
+        table, blockquote { page-break-inside: avoid; border: 1px solid #ccc; box-shadow: none; }
+        th, td { border: 1px solid #ccc; }
+        th { background-color: #eee; color: #000;}
+    
+        img { max-width: 100% !important; page-break-inside: avoid; box-shadow: none; }
+        .img-caption { color: #555; font-size: 10pt; }
+    
+        pre, code { font-family: monospace; background-color: #f8f8f8; border: 1px solid #ccc; color: #000; word-wrap: break-word; white-space: pre-wrap; page-break-inside: avoid; }
+        code { background: none; padding: 0; }
+    
+        .dropcap::first-letter { all: unset; } /* 드롭캡 기본 스타일로 */
+    
+        /* 배경 제거 */
+        .info-box, .warning-box, .solution-box, .highlight { background-color: #ffffff !important; border: 1px solid #ccc; box-shadow: none;}
+        .info-box::before, .warning-box::before, .solution-box::before { display: none; }
+    }
+    
+    
+    /* ==========================================================================
+       Dark Mode Support
+       ========================================================================== */
+    
+    @media (prefers-color-scheme: dark) {
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+    
+        h1, h2, h3 { color: #f0f0f0; }
+        h1::after { background-color: #5a9bff; } /* 밝은 파랑 */
+        h2::before { background-color: rgba(90, 155, 255, 0.2); }
+        h3::before { background-color: #5a9bff; } /* 장식 색상 변경 */
+    
+        a { color: #5a9bff; }
+        a:hover { color: #8ec0ff; text-decoration-color: #8ec0ff; }
+    
+        .highlight { background-color: rgba(255, 231, 150, 0.3); }
+        .highlight:hover { background-color: rgba(255, 231, 150, 0.5); }
+    
+        .bold-red, .highlight-red { color: #ff7b81; } /* 밝은 빨강 */
+        .bold-blue, .highlight-blue { color: #5a9bff; } /* 밝은 파랑 */
+        .bold-green { color: #48d6c9; } /* 밝은 녹색 */
+        .dropcap::first-letter { color: #5a9bff; text-shadow: 1px 1px 0px rgba(255,255,255,0.1); }
+    
+        .toc, .info-box, .warning-box, .solution-box, .faq-item, blockquote, .data-viz,
+        .tab-content, .accordion-tabs, table tbody tr:nth-child(even), pre {
+            background-color: #1e1e1e; /* 어두운 배경 */
+            border-color: #333; /* 어두운 경계선 */
+            box-shadow: none; /* 다크모드에서는 그림자 제거 */
+        }
+        code { background-color: #2c2c2c; color: #ff7b81; } /* 인라인 코드 */
+        pre { color: #e0e0e0;}
+        pre code { color: inherit; background: transparent; }
+    
+        /* 박스 구분선 색상 조정 */
+        .info-box::before { background-color: #5a9bff; }
+        .warning-box::before { background-color: #ff7b81; }
+        .solution-box::before { background-color: #48d6c9; }
+    
+        .toc h2 { color: #f0f0f0; border-bottom-color: #333; }
+        .toc a { color: #5a9bff; background-image: linear-gradient(rgba(90, 155, 255, 0.2), rgba(90, 155, 255, 0.2));}
+        .toc a:hover { color: #8ec0ff; }
+    
+        th { background-color: #3a86ff; color: #ffffff; border-color: #3a86ff;} /* 테이블 헤더는 유지 */
+        td, th { border-color: #444; } /* 테이블 선 색상 */
+        tbody tr:hover { background-color: #252525; }
+    
+        .faq-question { color: #f0f0f0; }
+        .faq-question::before { color: #5a9bff; }
+        .faq-answer { color: #e0e0e0; }
+        .faq-answer::before { color: #ff7b81; }
+    
+        blockquote { color: #bdbdbd; border-color: #333; }
+        blockquote::before { color: rgba(90, 155, 255, 0.2); }
+    
+        /* CTA는 밝은 색 유지 또는 대비 조정 */
+        .cta-button { background-color: #1e1e1e; color: #5a9bff;}
+        .cta-button:hover { background-color: #2c2c2c; color: #8ec0ff; }
+    
+        /* 소셜 아이콘 배경은 유지, 아이콘 색상 필요시 조정 */
+    
+        .tab-header { background-color: #2c2c2c; color: #e0e0e0; border-color: #333;}
+        .tab-header:hover { background-color: #383838; }
+        .tab-toggle:checked + .tab-header { background-color: #3a86ff; color: #ffffff; border-bottom-color: #3a86ff;} /* 활성 탭 색상은 유지 */
+        .tab-content { border-color: #333; background-color: #1e1e1e; color: #e0e0e0;}
+    
+        /* 스킵 링크, 맨 위로 가기 버튼 */
+        .skip-link { background-color: #5a9bff; color: #121212; }
+        .scroll-to-top { background-color: #5a9bff; color: #121212; box-shadow: none; }
+        .scroll-to-top:hover { background-color: #8ec0ff; }
+    
+        /* 포커스 스타일 조정 */
+        a:focus-visible, button:focus-visible, .tab-header:focus-visible,
+        input[type="checkbox"]:focus-visible + .tab-header,
+        .skip-link:focus, .scroll-to-top:focus {
+            outline-color: #8ec0ff; /* 밝은 포커스 색상 */
+            box-shadow: 0 0 0 3px rgba(90, 155, 255, 0.4);
+        }
+    
+    }
+    </style>
 <body>
-    <div id="top"></div>
+    <!-- 본문 바로가기 -->
     <a href="#main-content" class="skip-link">본문으로 바로가기</a>
+    <div id="top"></div>
 
-    <header>
-        <span class="post-date">2025년 4월 15일</span>
-    </header>
+    <article id="main-content">
+        <header>
+            <span class="post-date">2025년 4월 15일</span>
+            <h1>2025 추경안 12조 원, 정부지원금 민생에 어떤 의미인가?</h1>
+        </header>
 
-    <main id="main-content">
-        <h1>주 4.5일 근무제와 주 52시간제 폐지: 진정한 워라밸을 향한 걸음일까? 🤔</h1>
-
+        <!-- 목차 -->
         <div class="toc">
             <h2>목차</h2>
             <ul>
-                <li><a href="#intro">주 4.5일 근무제, 그것이 알고 싶다</a></li>
-                <li><a href="#proposal">국민의힘의 새로운 근무제도 제안</a></li>
-                <li><a href="#reality">주 4.5일 근무제의 현실적 적용 가능성</a></li>
-                <li><a href="#52hours">주 52시간제 폐지의 의미와 영향</a></li>
-                <li><a href="#criticism">야당과 노동계의 비판</a></li>
-                <li><a href="#who-benefits">누가 혜택을 받고, 누가 희생될 것인가?</a></li>
-                <li><a href="#conclusion">결론: 진정한 워라밸을 향한 올바른 방향은?</a></li>
-                <li><a href="#faq">자주 묻는 질문</a></li>
+                <li><a href="#intro">12조 원의 의미: 단순한 숫자가 아닌 생존 전략</a></li>
+                <li><a href="#small-business">소상공인 및 민생 지원: 4조 원의 희망</a></li>
+                <li><a href="#disaster">재해·재난 대응: 3조 원으로 만드는 안전한 대한민국</a></li>
+                <li><a href="#industry">첨단산업과 AI 경쟁력 강화: 4조 원의 미래 투자</a></li>
+                <li><a href="#implementation">정책 시행 속도와 효과: 타이밍이 핵심이다</a></li>
+                <li><a href="#faq">자주 묻는 질문 (FAQ)</a></li>
             </ul>
         </div>
 
-        <section id="intro">
-            <p class="dropcap">"주 4.5일만 일하고, 금요일 오후는 쉴 수 있다면... 어떨까요?" 많은 직장인들이 꿈꾸는 근무 환경일 것입니다. 특히 매주 금요일 오후가 온전히 '나의 시간'이 된다면 말이죠. 2025년 4월 14일, 국민의힘이 대선 공약으로 내놓은 <span class="highlight-blue">'주 4.5일 근무제'</span> 제안은 많은 이들의 관심을 불러일으켰습니다. 하지만 이와 함께 발표된 <span class="highlight-red">'주 52시간제 폐지'</span> 추진 계획은 숙고해볼 필요가 있는 복잡한 문제를 던집니다.</p>
+        <!-- 도입부 -->
+        <p class="highlight-blue" id="intro">"12조 원." 이 엄청난 숫자, 그냥 지나치지 마세요. 정부가 발표한 2025년 추가경정예산안은 단순한 돈풀기가 아니라 <span class="highlight-blue">우리 삶에 직접적인 영향을 줄 변화</span>가 시작됩니다. 그런데... 왜 지금, 12조 원일까요?</p>
 
-            <img src="./images/1.webp" alt="1" class="responsive-img">
+        <p>고물가, 고금리, 고환율. 3고(高) 시대에 살아가는 국민들에겐 하루하루가 버겁기만 합니다. 특히 소상공인과 저소득층, 그리고 재해 피해 지역까지— <span class="highlight">한계 상황에 몰린 이들을 위한 해법이 필요했죠.</span> 그래서 정부는 당초 계획보다 2조 원 늘어난 '12조 원 추경'을 꺼내들었습니다.</p>
 
-            <p>국민의힘의 새 정책은 과연 우리 사회에 어떤 변화를 가져올까요? 진정한 워라밸 향상을 위한 진일보한 정책일까요, 아니면 노동 유연화라는 이름의 또 다른 포장일까요? 함께 그 이면을 들여다보겠습니다.</p>
-        </section>
+        <div class="img-container">
+            <img src="/api/placeholder/800/400" alt="2025년 추경예산 12조 원 인포그래픽: 소상공인 지원, 재난 대응, 첨단산업 육성 분야별 비중" class="responsive-img">
+            <p class="img-caption">2025년 추경예산 12조 원의 분야별 배분 비율 (자료: 기획재정부)</p>
+        </div>
 
-        <section id="proposal">
-            <h2>국민의힘의 새로운 근무제도 제안</h2>
+        <!-- 소상공인 및 민생 지원 -->
+        <h2 id="small-business">소상공인 및 민생 지원: 4조 원의 희망</h2>
 
-            <p>2025년 4월 14일, 국민의힘은 새로운 근무 제도 구상을 발표했습니다. 이 정책의 두 가지 핵심 축은 다음과 같습니다:</p>
+        <p>코로나19 이후 지속된 경기침체로 가장 큰 타격을 입은 건 바로 골목상권과 자영업자들입니다.<br> 이번 추경에서는 <span class="bold-blue">총 4조 원 이상</span>이 이들을 위해 투입됩니다.</p>
 
+        <h3>부담경감 크레딧: 생존을 위한 숨통</h3>
+        
+        <p>먼저, 골목상권을 살리기 위한 <span class="bold-red">'부담경감 크레딧'</span>. 공공요금과 보험료 낼 돈조차 빠듯한 자영업자에게, 연간 50만 원어치 크레딧이 지급됩니다.</p>
+        
+        <div class="info-box">
+            <p><strong>부담경감 크레딧이란?</strong></p>
             <ul>
-                <li><span class="bold-blue">유연근무제를 활용한 주 4.5일 근무제 도입</span></li>
-                <li><span class="bold-red">주 52시간 근로제 폐지</span> 추진</li>
+                <li>대상: 연 매출 8억 원 이하 소상공인 약 340만 명</li>
+                <li>지원 금액: 연간 최대 50만 원</li>
+                <li>사용처: 공공요금, 4대 보험료, 카드 수수료 등</li>
+                <li>시행 시기: 2025년 5월부터</li>
             </ul>
+        </div>
 
-            <p>권영세 비상대책위원장은 울산 중구청의 사례를 예로 들며 주 4.5일 근무제의 실행 방안을 설명했습니다. 이 모델에 따르면:</p>
+        <h3>상생페이백: 소비가 곧 상생이 되는 선순환</h3>
 
-            <div class="info-box">
-                <p><strong>주 4.5일 근무제 모델 (울산 중구청 사례)</strong></p>
-                <ul>
-                    <li>월요일~목요일: 하루 9시간 근무 (총 36시간)</li>
-                    <li>금요일: 4시간만 근무 (오후 자유)</li>
-                    <li>총 근무시간: 주 40시간 (법정 근로시간 유지)</li>
-                </ul>
-            </div>
+        <p>또 하나, <span class="bold-blue">'상생페이백' 제도.</span> 전년보다 카드 결제가 늘어난 만큼, 일정 비율을 <span class="highlight">온누리상품권</span>으로 환급해준다고요? <br>소비도 살리고, 매출도 올리고, 환급도 받는 1석 3조 효과. 이제 소비자가 쓴 돈이 곧 <span class="bold-green">소상공인의 희망</span>이 됩니다.</p>
 
-            <p>이 방식을 통해 법정 근로시간인 주 40시간은 그대로 유지하면서도, 금요일 오후를 온전히 '자기 시간'으로 활용할 수 있게 된다는 것이 주요 장점입니다. 국민의힘은 이를 "자유와 창의가 넘치는 대한민국을 위한 노동시장 개혁"의 일환으로 소개했습니다.</p>
-        </section>
+        <div class="img-container">
+            <img src="/api/placeholder/800/450" alt="상생페이백 제도의 작동 방식을 보여주는 흐름도: 소비자의 결제, 증가분 계산, 온누리상품권 환급 과정" class="responsive-img">
+            <p class="img-caption">상생페이백 제도의 작동 원리와 기대효과 (자료: 중소벤처기업부)</p>
+        </div>
 
-        <section id="reality">
-            <h3>주 4.5일 근무제의 현실적 적용 가능성</h3>
+        <h3>청년 정책자금 및 최저 신용자 지원</h3>
 
-            <p>주 4.5일 근무제가 모든 산업과 직군에 적용 가능할까요? 이 질문은 단순한 '예/아니오'로 답하기 어렵습니다.</p>
+        <p>그리고 <span class="highlight">청년과 최저 신용자</span>를 위한 정책자금 2,000억 원도 확보됐습니다. <br>최저 생계도 버거운 이들에게, '기회의 사다리'는 여전히 존재해야 하니까요.</p>
 
-            <div class="accordion-tabs">
-                <div>
-                    <input type="checkbox" id="tab1" class="tab-toggle">
-                    <label for="tab1" class="tab-header">적용 가능성이 높은 직종</label>
-                    <div class="tab-content">
-                        <ul>
-                            <li>대기업 사무직</li>
-                            <li>공공기관</li>
-                            <li>IT 산업 중 유연근무가 가능한 직군</li>
-                            <li>연구직 및 개발직</li>
-                            <li>컨설팅 및 기획 직군</li>
-                        </ul>
-                        <p>이러한 직종들은 상대적으로 시간과 장소에 구애받지 않고 업무 수행이 가능하며, 성과 중심의 평가가 이루어질 수 있는 환경입니다.</p>
-                    </div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>지원 대상</th>
+                        <th>지원 내용</th>
+                        <th>지원 규모</th>
+                        <th>특징</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>청년 창업자</td>
+                        <td>저금리 창업자금 대출</td>
+                        <td>1,200억 원</td>
+                        <td>무담보, 간소화된 심사</td>
+                    </tr>
+                    <tr>
+                        <td>최저 신용자</td>
+                        <td>생계 안정자금</td>
+                        <td>800억 원</td>
+                        <td>신용 회복 프로그램 연계</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 재해·재난 대응 -->
+        <h2 id="disaster">재해·재난 대응: 3조 원으로 만드는 안전한 대한민국</h2>
+
+        <p>2024년 전국을 휩쓴 <span class="bold-red">초대형 산불</span>, 기억하시죠? 이젠 단순한 복구가 아닌 <span class="highlight">선제적 대응</span>이 핵심입니다.</p>
+
+        <div class="warning-box">
+            <p>최근 5년간 재난 피해액은 연평균 1조 원을 넘어섰습니다. 일시적 복구 비용보다 예방 시스템 구축이 더 경제적입니다.</p>
+        </div>
+
+        <p>정부는 재해대책비를 <span class="bold-blue">두 배 이상</span> 확대하고, 중·대형 <span class="highlight">산림헬기</span>, <span class="highlight">AI 감시카메라</span>, <span class="highlight">드론</span>까지 투입합니다. 과거처럼 불 끄고 끝나는 게 아니라, 불이 나기 전부터 막는 <span class="bold-blue">스마트 대응체계</span>로 진화하는 거죠.</p>
+
+        <!-- 첨단산업과 AI 경쟁력 강화 -->
+        <h2 id="industry">첨단산업과 AI 경쟁력 강화: 4조 원의 미래 투자</h2>
+
+        <p>한편, 글로벌 경제 전쟁터에서 <span class="highlight">'기술'은 생존이고, AI는 국방'</span>입니다.</p>
+
+        <div class="accordion-tabs">
+            <div>
+                <input type="checkbox" id="tab1" class="tab-toggle">
+                <label for="tab1" class="tab-header">글로벌 무역 전쟁 대응책</label>
+                <div class="tab-content">
+                    <p>정부는 <span class="highlight">관세 피해, 수출 위기 기업</span>을 위해 <span class="bold-blue">25조 원 규모의 저리 대출과 수출 보증</span>을 새로 마련했습니다. 이제 무역 전쟁도 정책으로 방어할 수 있게 된 겁니다.</p>
+                    <ul>
+                        <li>관세 피해 기업 긴급 자금 지원: 10조 원</li>
+                        <li>수출 중소기업 보증 확대: 15조 원</li>
+                        <li>해외 인증 및 규제 대응 컨설팅: 500억 원</li>
+                    </ul>
                 </div>
-                <div>
-                    <input type="checkbox" id="tab2" class="tab-toggle">
-                    <label for="tab2" class="tab-header">적용이 어려운 직종</label>
-                    <div class="tab-content">
-                        <ul>
-                            <li>제조업 현장 근로자</li>
-                            <li>서비스업 (요식업, 판매직 등)</li>
-                            <li>의료 및 돌봄 서비스</li>
-                            <li>물류 및 운송업</li>
-                            <li>영세 자영업</li>
-                        </ul>
-                        <p>이러한 직종들은 지속적인 서비스 제공이나 생산 라인 유지가 필요하며, 대체 인력 확보 없이 근무시간을 유연하게 운영하기 어려운 구조적 한계가 있습니다.</p>
-                    </div>
+            </div>
+            <div>
+                <input type="checkbox" id="tab2" class="tab-toggle">
+                <label for="tab2" class="tab-header">AI 및 반도체 산업 육성</label>
+                <div class="tab-content">
+                    <p>결정적 한 수. <span class="bold-blue">AI와 반도체 산업에 2조 원 이상 투입.</span> R&D는 물론, 인프라, 금융지원까지— "한국형 AI 생태계"의 뿌리를 내리겠다는 의지입니다. 과연, 한국은 <span class="highlight">AI 초강국</span>으로 거듭날 수 있을까요?</p>
+                    <ul>
+                        <li>슈퍼컴퓨팅 인프라 구축: 8,000억 원</li>
+                        <li>AI 반도체 설계 지원: 5,000억 원</li>
+                        <li>AI 인재 양성 프로그램: 3,000억 원</li>
+                        <li>데이터센터 구축 및 운영: 4,000억 원</li>
+                    </ul>
                 </div>
             </div>
+        </div>
 
-            <p>국민의힘이 제시한 주 4.5일 근무제 모델은 공공기관인 울산 중구청의 사례를 기반으로 합니다. 그러나 <span class="highlight">민간 기업, 특히 중소기업과 자영업자들에게는 어떤 형태로 적용될 수 있을지 구체적인 방안이 필요합니다.</span> 이러한 현실적 장벽은 정책의 실효성에 의문을 제기하게 합니다.</p>
-            
-            <blockquote>
-                "정책의 효과는 그것이 얼마나 많은, 그리고 다양한 사람들에게 혜택을 줄 수 있느냐에 달려있다. 모두를 위한 정책이 아니라면, 그것은 특권이 될 뿐이다."
-            </blockquote>
-        </section>
+        <div class="data-viz">
+            여기에 "대한민국 AI 경쟁력 현황 및 목표" 차트가 들어갑니다
+        </div>
 
-        <section id="52hours">
-            <h2>주 52시간제 폐지의 의미와 영향</h2>
+        <!-- 정책 시행 속도와 효과 -->
+        <h2 id="implementation">정책 시행 속도와 효과: 타이밍이 핵심이다</h2>
 
-            <p>주 4.5일 근무제 도입과 함께 언급된 <span class="bold-red">주 52시간제 폐지</span> 추진 계획은 왜 함께 제시되었을까요? 국민의힘은 이에 대해 다음과 같은 설명을 제시합니다:</p>
+        <p>정부는 예타(예비타당성 조사)를 <span class="highlight">줄이고</span>, 재정사업평가위도 <span class="highlight">매달 열어</span> 속도를 끌어올린다는데요. 정책은 속도가 생명입니다. 기회는 지금이 전부니까요.</p>
 
-            <div class="warning-box">
-                <p>"획일적인 근로시간 제한으로는 다양한 산업별 특성과 속도를 반영할 수 없다. 특히 <strong>반도체 같은 첨단 산업</strong>에서는 52시간 제한이 생산성과 국제 경쟁력을 저해하고 있다."</p>
-            </div>
-
-            <p>이러한 주장의 핵심은 '유연성'입니다. 하지만 여기서 우리는 중요한 질문을 던져야 합니다:</p>
-
-            <p class="highlight">"유연한 근무제"란 실제로는 무엇을 의미하는 걸까요? 근로시간은 '유연하게' 조정할 수 있지만, 총 근로시간은 '더 늘어날 수도 있다'는 의미는 아닐까요?</p>
-
-            <img src="./images/2.webp" alt="2" class="responsive-img">
-
-            <p>주 52시간제는 노동자의 건강과 삶의 질을 보호하기 위해 도입된 제도입니다. 이를 폐지하는 것은 필연적으로 일부 산업과 기업에서 <span class="bold-red">장시간 노동 문화의 부활</span>을 초래할 위험이 있습니다. 특히 노동자의 권리가 상대적으로 약한 중소기업에서 이러한 우려는 더욱 현실적입니다.</p>
-        </section>
-
-        <section id="criticism">
-            <h3>야당과 노동계의 비판</h3>
-
-            <p>민주당은 국민의힘의 이러한 정책 제안에 강한 비판을 제기하고 있습니다:</p>
-
-            <div class="faq-item">
-                <p class="faq-question">민주당의 비판 요지는 무엇인가요?</p>
-                <p class="faq-answer">"주 4일제나 4.5일제는 급여를 유지하면서도 근로시간을 줄이려는 포퓰리즘적 접근이다. 또한 주 52시간제 폐지는 노동자 보호 장치를 해체하는 시도로, 노동 환경의 악화를 초래할 수 있다."</p>
-            </div>
-
-            <p>이에 대해 국민의힘은 다음과 같이 반박합니다:</p>
-
-            <div class="faq-item">
-                <p class="faq-question">국민의힘의 반박은 어떤 내용인가요?</p>
-                <p class="faq-answer">"우리의 제안은 오히려 현실적이며, 각 산업과 기업이 상황에 맞게 선택할 수 있는 유연근무제다. 법정 근로시간은 유지하면서도 배분을 유연하게 함으로써 생산성과 삶의 질을 모두 향상시킬 수 있다."</p>
-            </div>
-
-            <p>노동계에서는 이러한 정책 변화가 <span class="highlight-red">노동권의 후퇴</span>가 될 수 있다는 우려를 표명하고 있습니다. 특히 "유연성"이라는 이름으로 사용자 측의 요구에 따라 근로시간이 일방적으로 결정될 가능성에 대한 경계심을 드러내고 있습니다.</p>
-        </section>
-
-        <section id="who-benefits">
-            <h2>누가 혜택을 받고, 누가 희생될 것인가?</h2>
-
-            <p>모든 정책에는 수혜자와 비용 부담자가 존재합니다. 주 4.5일 근무제와 주 52시간제 폐지로 인한 변화의 분배는 어떻게 이루어질까요?</p>
-
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>구분</th>
-                            <th>주 4.5일 근무제 혜택</th>
-                            <th>주 52시간제 폐지 영향</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>대기업 사무직</td>
-                            <td>높음 (도입 가능성 높음)</td>
-                            <td>중간 (조직 문화에 따라 상이)</td>
-                        </tr>
-                        <tr>
-                            <td>IT/첨단 산업</td>
-                            <td>중간~높음</td>
-                            <td>중간 (장시간 개발 가능, 부담 증가 우려)</td>
-                        </tr>
-                        <tr>
-                            <td>공공기관</td>
-                            <td>높음 (시범 도입 중)</td>
-                            <td>낮음 (공공 부문은 규제 유지 가능성)</td>
-                        </tr>
-                        <tr>
-                            <td>제조업 생산직</td>
-                            <td>낮음</td>
-                            <td>높음 (장시간 노동 위험)</td>
-                        </tr>
-                        <tr>
-                            <td>서비스업</td>
-                            <td>낮음</td>
-                            <td>높음 (인력 부족 시 노동 강도 증가)</td>
-                        </tr>
-                        <tr>
-                            <td>중소기업</td>
-                            <td>낮음~중간</td>
-                            <td>높음 (노동 강도 증가 위험)</td>
-                        </tr>
-                        <tr>
-                            <td>자영업자</td>
-                            <td>매우 낮음</td>
-                            <td>중간 (직원 고용 시 영향)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p>이 표에서 볼 수 있듯이, 주 4.5일 근무제의 <span class="bold-blue">실질적 혜택은 상대적으로 안정된 직장과 직군에 집중될 가능성</span>이 높습니다. 반면, 주 52시간제 폐지로 인한 <span class="bold-red">부정적 영향은 제조업, 서비스업, 중소기업 등에서 더 크게 나타날 수 있습니다.</span></p>
-
-            <p>따라서 이 정책의 핵심 질문은 다음과 같습니다:</p>
-
-            <blockquote>
-                "정책의 선택권, 누가 가지게 될까요? 그리고 그 선택의 결과는 누구에게 돌아가게 될까요?"
-            </blockquote>
-
-            <p>만약 주 4.5일 근무제의 도입이 특정 계층과 직군에만 국한된다면, 이는 <span class="highlight">노동시장의 이중구조를 더욱 심화시키는 결과</span>를 초래할 수 있습니다. 반면, 주 52시간제 폐지는 노동 강도 증가와 삶의 질 저하라는 부담을 특정 계층에 더 많이 지우게 될 위험이 있습니다.</p>
-        </section>
-
-        <section id="conclusion">
-            <h2>결론: 진정한 워라밸을 향한 올바른 방향은?</h2>
-
-            <p>국민의힘이 제시한 주 4.5일 근무제와 주 52시간제 폐지 정책은 표면적으로는 '유연성'과 '선택권'이라는 매력적인 가치를 내세우고 있습니다. 그러나 그 이면에는 노동시장의 불평등을 심화시키고, 노동자 보호 장치를 약화시킬 수 있는 위험이 존재합니다.</p>
-
-            <div class="solution-box">
-                <p>진정한 워라밸 향상과 경제 성장을 동시에 추구하기 위해서는 다음과 같은 접근이 필요할 것입니다:</p>
-                <ul>
-                    <li>다양한 산업과 직군에 적합한 <strong>맞춤형 근무 모델 개발</strong></li>
-                    <li>노동자 보호와 기업 경쟁력을 모두 고려한 <strong>균형 잡힌 정책 설계</strong></li>
-                    <li>모든 노동자가 적정 수준의 <strong>여가와 휴식을 보장받을 수 있는 최소한의 안전장치 유지</strong></li>
-                    <li>정책 변화로 인한 <strong>부담이 특정 계층에게 집중되지 않도록 하는 보완책 마련</strong></li>
-                </ul>
-            </div>
-
-            <img src="./images/3.webp" alt="3" class="responsive-img">
-
-            <p>결국 중요한 것은, 정책이 내세우는 표면적 가치가 아니라 <span class="highlight-blue">정책이 실제로 어떤 변화를 가져오는가</span>입니다. 주 4.5일 근무제는 일하는 모든 사람의 삶을 개선하는 방향으로 설계되어야 하며, 주 52시간제 폐지가 노동 환경의 후퇴로 이어지지 않도록 하는 안전장치가 반드시 필요합니다.</p>
-
-            <p>우리가 지향해야 할 것은 <span class="bold-blue">모든 노동자가 차별 없이 누릴 수 있는 진정한 워라밸</span>이며, 이는 단순한 정치적 슬로건이 아닌 실질적인 제도적 뒷받침을 통해서만 가능할 것입니다.</p>
-        </section>
-
-        <section id="faq">
-            <h2>자주 묻는 질문</h2>
-
-            <div class="faq-item">
-                <p class="faq-question">주 4.5일 근무제와 주 4일 근무제는 어떻게 다른가요?</p>
-                <p class="faq-answer">주 4일 근무제는 일주일에 4일만 근무하고 3일을 쉬는 방식이며, 근로시간 자체가 줄어드는 것을 의미합니다. 반면 주 4.5일 근무제는 금요일 오전까지만 일하고 오후는 쉬는 방식으로, 주 40시간 근무시간은 유지하되 월~목요일의 근무시간을 늘리고 금요일 오후를 자유 시간으로 활용하는 방식입니다.</p>
-            </div>
-
-            <div class="faq-item">
-                <p class="faq-question">주 52시간제 폐지가 노동환경에 미치는 영향은 무엇인가요?</p>
-                <p class="faq-answer">주 52시간제는 무분별한 장시간 노동을 방지하기 위한 제도로, 이것이 폐지될 경우 산업에 따라 근로시간이 늘어날 가능성이 있습니다. 특히 제조업, 서비스업 등에서는 초과근무가 증가하거나 장시간 노동 문화가 부활할 우려가 있습니다. 다만 국민의힘은 이를 산업 특성에 맞는 유연한 운영이 가능하도록 하는 조치라고 설명하고 있습니다.</p>
-            </div>
-
-            <div class="faq-item">
-                <p class="faq-question">주 4.5일 근무제가 모든 직종에 적용 가능한가요?</p>
-                <p class="faq-answer">주 4.5일 근무제는 모든 직종에 일괄 적용하기는 어렵습니다. 특히 제조업, 서비스업, 의료 및 돌봄, 물류 등 지속적인 서비스 제공이 필요한 업종에서는 적용이 쉽지 않을 수 있습니다. 반면 사무직, 공공기관, IT 서비스 등 시간과 장소에 구애받지 않는 직종에서는 상대적으로 도입이 용이할 수 있습니다.</p>
-            </div>
-
-            <div class="faq-item">
-                <p class="faq-question">해외에서는 주 4.5일 근무제가 얼마나 도입되었나요?</p>
-                <p class="faq-answer">전 세계적으로 주 4.5일 근무제보다는 주 4일 근무제가 더 많이 시도되고 있습니다. 아이슬란드, 영국, 뉴질랜드 등에서 주 4일 근무제 실험이 진행되었으며, 대체로 긍정적인 결과를 보고하고 있습니다. 주 4.5일 근무제는 주 40시간을 유지하면서 근무 패턴을 조정하는 방식으로, 일본 일부 기업과 미국의 일부 공공기관 등에서 시도되고 있습니다.</p>
-            </div>
-        </section>
+        <div class="solution-box">
+            <p>추경예산 집행 가속화를 위한 정부 대책:</p>
+            <ol>
+                <li>예비타당성 조사 면제 대상 확대 (소요기간 6개월→0개월)</li>
+                <li>재정사업평가위원회 월 1회 정례화 (기존 분기 1회)</li>
+                <li>지방정부 매칭펀드 비율 축소로 사업 진행 속도 개선</li>
+                <li>특별교부세 신속 배정으로 지역 현안 즉시 대응</li>
+            </ol>
+        </div>
 
         <div class="cta-container">
-            <h3>여러분의 생각은 어떠신가요?</h3>
-            <p>주 4.5일 근무제와 52시간제 폐지에 대한 여러분의 의견을 댓글로 남겨주세요. 이 정책이 여러분의 삶과 일에 어떤 영향을 미칠 것이라고 생각하시나요?</p>
-            <a href="#comments" class="cta-button">의견 남기기</a>
+            <h3>추경예산, 당신의 삶을 어떻게 바꿀까요?</h3>
+            <p>소상공인, 청년, 재난 피해자... 당신이 해당된다면 지금 바로 확인하세요!</p>
+            <a href="#" class="cta-button">지원 자격 확인하기</a>
         </div>
 
+        <!-- FAQ 섹션 -->
+        <h2 id="faq">자주 묻는 질문 (FAQ)</h2>
+
+        <div class="faq-item">
+            <p class="faq-question">추경예산 12조 원은 어디서 마련되나요?</p>
+            <div class="faq-answer">
+                <p>이번 추경예산 12조 원은 세수 증가분(4.5조 원), 기금 여유자금(5조 원), 그리고 국채 발행(2.5조 원)을 통해 조달됩니다. 정부는 건전 재정을 위해 최대한 국채 발행을 줄이는 방향으로 재원을 마련했습니다.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-question">부담경감 크레딧은 어떻게 신청하나요?</p>
+            <div class="faq-answer">
+                <p>부담경감 크레딧은 2025년 5월부터 중소벤처기업부 공식 홈페이지나 소상공인진흥공단 홈페이지를 통해 온라인으로 신청할 수 있습니다. 또한, 가까운 소상공인지원센터를 방문하여 오프라인으로도 신청 가능합니다. 사업자등록증과 본인 확인 서류만 있으면 간단한 절차로 신청할 수 있습니다.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-question">상생페이백 혜택은 언제부터 받을 수 있나요?</p>
+            <div class="faq-answer">
+                <p>상생페이백 제도는 2025년 6월부터 시행되며, 2024년 동일 기간 대비 소비 증가분에 대해 분기별로 정산하여 온누리상품권으로 지급됩니다. 첫 혜택은 2025년 9월 말에 받아볼 수 있을 예정입니다. 별도 신청 없이 카드사에 등록된 연락처로 자동 안내됩니다.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <p class="faq-question">AI 산업 육성으로 일반 국민에게는 어떤 혜택이 있나요?</p>
+            <div class="faq-answer">
+                <p>AI 산업 육성은 단기적으로는 새로운 일자리 창출과 디지털 서비스 개선으로 이어집니다. 중장기적으로는 의료, 교육, 교통 등 공공서비스의 획기적 개선과 생산성 향상을 통한 경제 성장으로 국민 소득 증대 효과가 기대됩니다. 또한 정부는 AI 교육 프로그램을 일반 국민에게도 확대하여 디지털 역량 강화 기회를 제공할 계획입니다.</p>
+            </div>
+        </div>
+
+        <!-- 결론 -->
+        <h2>결론: 국가 경제의 변곡점이 될 12조 원</h2>
+
+        <p>이번 12조 원 추경안, 과연 <span class="highlight-blue">위기를 기회로 바꾸는 트리거</span>가 될 수 있을까요? 정부의 결단과 속도, 그리고 효율적인 집행이 그 성패를 가를 것입니다.</p>
+
+        <p>소상공인 지원과 재난 대응, 첨단산업 육성까지—모두 중요한 국가적 과제입니다. 당신이라면, 이 예산 어디에 가장 먼저 투자하고 싶으신가요? 댓글로 여러분의 생각을 남겨주세요. 우리가 함께 만들 미래니까요.</p>
+
+        <!-- 소셜 공유 버튼 -->
         <div class="social-share">
-            <a href="#" class="social-icon twitter" aria-label="트위터로 공유하기"><i>𝕏</i></a>
-            <a href="#" class="social-icon facebook" aria-label="페이스북으로 공유하기"><i>f</i></a>
-            <a href="#" class="social-icon linkedin" aria-label="링크드인으로 공유하기"><i>in</i></a>
+            <a href="#" class="social-icon twitter" aria-label="트위터에 공유하기"><i>T</i></a>
+            <a href="#" class="social-icon facebook" aria-label="페이스북에 공유하기"><i>F</i></a>
+            <a href="#" class="social-icon linkedin" aria-label="링크드인에 공유하기"><i>L</i></a>
             <a href="#" class="social-icon kakao" aria-label="카카오톡으로 공유하기"><i>K</i></a>
         </div>
-    </main>
 
+        <!-- 관련 글 배너 -->
+        <div class="banner-container">
+            <a href="#" class="banner blue">
+                <h2>2025 경제 전망</h2>
+                <p>전문가들이 예측하는 대한민국 경제의 미래</p>
+                <span class="banner-icon">→</span>
+            </a>
+            <a href="#" class="banner orange">
+                <h2>소상공인 지원제도</h2>
+                <p>알아두면 도움되는 모든 정부 지원책</p>
+                <span class="banner-icon">→</span>
+            </a>
+            <a href="#" class="banner purple">
+                <h2>AI와 미래 산업</h2>
+                <p>대한민국의 AI 경쟁력, 어디까지 왔나</p>
+                <span class="banner-icon">→</span>
+            </a>
+        </div>
+    </article>
+
+    <!-- 맨 위로 가기 버튼 -->
     <a href="#top" class="scroll-to-top" aria-label="맨 위로 가기">↑</a>
-
-    <footer>
-        <p>© 2025 정치경제 분석 블로그. All rights reserved.</p>
-    </footer>
 </body>
 </html>
