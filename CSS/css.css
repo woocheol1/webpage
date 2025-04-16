@@ -1,1 +1,1085 @@
-﻿
+﻿<style>
+/* ==========================================================================
+   Base Styles & Typography
+   ========================================================================== */
+
+/* 부드러운 스크롤 (맨 위로 가기 버튼 등에 적용) */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.7;
+    font-size: 16px; /* 기본 폰트 크기 */
+    color: #1a1a2e;
+    background-color: #fafafa;
+    max-width: 850px; /* 콘텐츠 최대 너비 */
+    margin: 0 auto; /* 중앙 정렬 */
+    padding: 25px 20px; /* 내부 여백 */
+    letter-spacing: -0.01em; /* 자간 기본값 */
+}
+
+/* 기본 박스 모델 설정 */
+*, *::before, *::after {
+    box-sizing: border-box; /* padding/border를 width/height에 포함 */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* 긴 단어 하이픈 처리 (필요시 언어 설정 필요 - lang="ko" 등) */
+body {
+    hyphens: auto;
+}
+
+
+/* Headings */
+h1, h2, h3 {
+    color: #16213e;
+    font-weight: bold; /* 기본 굵기 */
+    word-break: keep-all; /* 단어 분리 방지 (한국어 등) */
+    max-width: 100%; /* 최대 너비 제한 */
+    letter-spacing: normal; /* 제목은 기본 자간 */
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 2.2em;
+    border-bottom: none; /* 밑줄 제거 (아래 ::after로 대체) */
+    padding-bottom: 12px;
+    margin-bottom: 30px;
+    font-weight: 800; /* 가장 굵게 */
+    letter-spacing: -0.02em; /* 자간 좁힘 */
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: #3a86ff;
+    border-radius: 3px; /* 변수 대신 값 사용 */
+}
+
+h2 {
+    font-size: 1.7em;
+    margin-top: 40px;
+    margin-bottom: 20px; /* h2 다음 요소와의 간격 추가 */
+    padding-left: 0;
+    font-weight: 700; /* 굵게 */
+    letter-spacing: -0.01em; /* 자간 좁힘 */
+    position: relative;
+    padding-bottom: 8px; /* ::before 공간 확보 */
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background-color: rgba(58, 134, 255, 0.2);
+    border-radius: 3px; /* 변수 대신 값 사용 */
+    z-index: -1; /* 텍스트 뒤로 */
+}
+
+h3 {
+    font-size: 1.3em;
+    margin-top: 30px;
+    margin-bottom: 15px; /* h3 다음 요소와의 간격 추가 */
+    font-weight: 600; /* 약간 굵게 */
+    position: relative; /* 장식 추가 대비 */
+}
+
+/* --- CSS Decoration Example for H3 --- */
+h3::before {
+    content: '';
+    display: inline-block;
+    width: 12px; /* 변수 대신 값 사용 */
+    height: 12px;
+    background-color: #3a86ff;
+    border-radius: 50%; /* 원 */
+    margin-right: 8px;
+    vertical-align: middle; /* 텍스트와 수직 정렬 */
+    opacity: 0.5;
+    transition: transform 0.3s ease; /* 변수 대신 값 사용 */
+}
+h3:hover::before {
+    transform: scale(1.2) rotate(45deg); /* 호버 시 약간의 효과 */
+}
+
+
+/* Paragraphs and Lists */
+p, li {
+    margin-bottom: 1em; /* 단락/항목 간 간격 */
+}
+
+ul, ol {
+    padding-left: 22px; /* 들여쓰기 */
+    margin-bottom: 20px;
+}
+
+ul li, ol li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+    position: relative;
+}
+
+ul li::marker {
+    color: #3a86ff;
+}
+
+  .responsive-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+/* Links */
+a {
+    color: #3a86ff;
+    text-decoration: none; /* 기본 밑줄 제거 */
+    transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease, text-decoration-color 0.3s ease; /* 변수 대신 값 사용 */
+    text-decoration-line: underline;
+    text-decoration-color: transparent; /* 평소에는 투명 */
+    text-underline-offset: 3px; /* 밑줄과 텍스트 간격 */
+}
+
+a:hover {
+    color: #2667ca; /* 변수 대신 값 사용 */
+    text-decoration-color: #2667ca; /* 호버 시 밑줄 색상 나타남 */
+    /* --- Enhanced Hover Effect Example --- */
+    opacity: 0.85; /* 약간 투명도 변경 */
+}
+
+/* ==========================================================================
+   Text Emphasis & Highlights
+   ========================================================================== */
+
+.highlight {
+    background-color: rgba(255, 250, 205, 0.5);
+    padding: 1px 4px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.highlight:hover {
+    background-color: rgba(255, 250, 205, 0.8);
+}
+
+.bold-red, .highlight-red {
+    color: #e63946;
+    font-weight: 600;
+}
+
+.bold-blue, .highlight-blue {
+    color: #3a86ff;
+    font-weight: 600;
+}
+
+.bold-green {
+    color: #2a9d8f;
+    font-weight: 600;
+}
+
+.white-text {
+    color: #ffffff !important; /* 필요시 우선순위 높임 */
+}
+
+/* --- Drop Cap --- */
+/* 사용법: 드롭캡을 적용할 단락에 class="dropcap" 추가 (예: <p class="dropcap">...) */
+.dropcap::first-letter {
+    color: #3a86ff;
+    font-size: 4em; /* 크기 조절 */
+    font-weight: 700; /* bold */
+    float: left;
+    line-height: 0.8; /* 줄 간격 조절 */
+    margin-top: 4px; /* 위치 미세 조정 */
+    margin-right: 8px;
+    margin-bottom: -4px; /* 아래 간격 조절 */
+    font-family: 'Inter', 'Noto Sans KR', sans-serif; /* 기본 헤딩 폰트 사용 */
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.1); /* 입체감 */
+}
+
+/* ==========================================================================
+   Boxes (Info, Warning, Solution)
+   ========================================================================== */
+
+.info-box, .warning-box, .solution-box {
+    padding: 22px; /* 값 유지 */
+    margin: 25px 0;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 변수 대신 값 사용 */
+}
+
+.info-box:hover, .warning-box:hover, .solution-box:hover {
+    transform: translateY(-3px) scale(1.01); /* 향상된 호버 효과 */
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12); /* 변수 대신 값 사용 */
+}
+
+.info-box::before, .warning-box::before, .solution-box::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+}
+
+.info-box { background-color: #f0f7ff; }
+.info-box::before { background-color: #3a86ff; }
+
+.warning-box { background-color: #fff5f5; }
+.warning-box::before { background-color: #e63946; }
+
+.solution-box { background-color: #f0fff4; }
+.solution-box::before { background-color: #2a9d8f; }
+
+/* ==========================================================================
+   Table of Contents (TOC)
+   ========================================================================== */
+
+.toc {
+    background-color: #f8fafc;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03); /* 변수 대신 값 사용 */
+    border: 1px solid #eaeaea;
+}
+
+.toc h2 {
+    border: none;
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #16213e;
+    padding-bottom: 15px; /* 값 조정 */
+    border-bottom: 2px solid #eaeaea;
+    margin-bottom: 15px;
+}
+
+.toc h2::before { display: none; } /* TOC 제목 장식 제거 */
+
+.toc ul {
+    padding-left: 15px;
+    margin-top: 15px;
+    list-style: none;
+}
+
+.toc li { margin-bottom: 8px; }
+
+.toc a {
+    color: #3a86ff;
+    position: relative;
+    display: inline-block;
+    padding: 4px 0; /* 값 조정 */
+    font-weight: 500;
+    font-size: 0.9em; /* 값 조정 */
+    line-height: 1.6;
+    text-decoration: none;
+    /* --- Enhanced Hover Effect --- */
+    background-image: linear-gradient(rgba(58, 134, 255, 0.2), rgba(58, 134, 255, 0.2)); /* 변수 대신 값 사용 */
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px; /* 초기 밑줄 없음 */
+    transition: background-size 0.3s ease, color 0.3s ease; /* 변수 대신 값 사용 */
+}
+
+.toc a:hover {
+    color: #2667ca;
+    background-size: 100% 2px; /* 호버 시 밑줄 효과 */
+}
+
+/* ==========================================================================
+   Images
+   ========================================================================== */
+
+.img-container {
+    width: 100%;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.img-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; /* 변수 대신 값 사용 */
+    display: block;
+    margin: 0 auto;
+}
+
+.img-container img:hover {
+    transform: translateY(-4px) scale(1.02); /* 향상된 호버 효과 */
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    filter: brightness(1.05); /* 약간 밝게 */
+}
+
+.img-caption {
+    font-size: 0.9em;
+    color: #64748b;
+    margin-top: 15px; /* 값 조정 */
+    text-align: center;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+.table-wrapper {
+    overflow-x: auto;
+    margin: 30px 0;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+.table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 0.95em; /* 값 조정 */
+    background-color: #ffffff;
+}
+
+th, td {
+    border: 1px solid #dddddd; /* 테이블 선 */
+    padding: 12px 15px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #3a86ff;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-color: #3a86ff;
+}
+
+tbody tr {
+    transition: background-color 0.3s ease; /* 변수 대신 값 사용 */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+tbody tr:hover {
+    background-color: #f0f7ff; /* 호버 시 배경색 변경 */
+}
+
+/* ==========================================================================
+   FAQ Section
+   ========================================================================== */
+
+.faq-item {
+    margin-bottom: 20px;
+    padding: 20px; /* 값 조정 */
+    border-radius: 10px;
+    background-color: #f8fafc;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eaeaea;
+}
+
+.faq-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05); /* 호버 시 그림자 약간 진하게 */
+}
+
+.faq-question {
+    font-weight: 600;
+    color: #16213e;
+    margin: 0 0 12px 0;
+    font-size: 1.15em;
+    position: relative;
+    padding-left: 28px;
+}
+
+.faq-question::before {
+    content: 'Q';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    color: #3a86ff;
+}
+
+.faq-answer {
+    padding-left: 28px;
+    position: relative;
+    margin: 0;
+    color: #1a1a2e;
+}
+
+.faq-answer::before {
+    content: 'A';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    color: #e63946;
+}
+.faq-answer p:last-child { margin-bottom: 0; }
+
+/* ==========================================================================
+   Call to Action (CTA)
+   ========================================================================== */
+
+.cta-container {
+    background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 40px 0;
+    box-shadow: 0 6px 25px rgba(58, 134, 255, 0.25);
+    overflow: hidden;
+    position: relative;
+}
+
+.cta-container::before { /* 장식용 요소 */
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+    transform: rotate(10deg);
+    pointer-events: none;
+}
+
+.cta-container h3 {
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative; z-index: 1;
+}
+.cta-container h3::before { display: none; } /* CTA 제목 장식 제거 */
+
+
+.cta-container p {
+    position: relative; z-index: 1;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #3a86ff;
+    padding: 12px 25px;
+    border-radius: 50px; /* 알약 모양 */
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    max-width: 80%;
+    border: none;
+    cursor: pointer;
+    position: relative; z-index: 1;
+}
+
+.cta-button:hover {
+    background-color: #f8fafc;
+    transform: scale(1.05) translateY(-3px); /* 향상된 호버 효과 */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    color: #2667ca;
+}
+
+/* ==========================================================================
+   Blockquotes
+   ========================================================================== */
+
+blockquote {
+    border-left: none;
+    padding: 20px 25px 20px 40px; /* 값 조정 */
+    margin: 25px 0;
+    font-style: italic;
+    color: #64748b;
+    background-color: #f8fafc;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+    position: relative;
+    font-size: 0.95em; /* 값 조정 */
+    border: 1px solid #eaeaea;
+}
+
+blockquote::before {
+    content: '"';
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    font-size: 3.5em;
+    color: rgba(58, 134, 255, 0.2);
+    font-family: Georgia, serif;
+    line-height: 1;
+    /* --- CSS Decoration Example --- */
+    transform: rotate(-5deg); /* 약간 기울이기 */
+    opacity: 0.8;
+}
+
+blockquote p:last-child { margin-bottom: 0; }
+
+/* ==========================================================================
+   Social Share Buttons
+   ========================================================================== */
+
+.social-share {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    width: 45px; height: 45px;
+    border-radius: 50%; /* 원 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #ffffff; /* 아이콘 색상 기본값 */
+}
+
+.social-icon:hover {
+    transform: translateY(-4px) rotate(8deg) scale(1.1); /* 향상된 호버 효과 */
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    filter: brightness(1.1); /* 약간 밝게 */
+}
+
+.social-icon.twitter { background: linear-gradient(135deg, #1da1f2 0%, #1a91da 100%); }
+.social-icon.facebook { background: linear-gradient(135deg, #4267B2 0%, #365899 100%); }
+.social-icon.linkedin { background: linear-gradient(135deg, #0e76a8 0%, #0a5e86 100%); }
+.social-icon.kakao { background: linear-gradient(135deg, #FEE500 0%, #E4CF00 100%); color: #3C1E1E; }
+
+.social-icon i { /* FontAwesome 등 사용 가정 */
+    font-size: 1.1em;
+    vertical-align: middle;
+}
+
+/* ==========================================================================
+   Data Visualization Placeholder
+   ========================================================================== */
+
+.data-viz {
+    width: 100%;
+    height: 320px;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #aaaaaa; /* 값 조정 */
+    font-size: 1.2em;
+    font-style: italic;
+    border: 1px solid #eaeaea;
+}
+
+.data-viz:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   Post Meta Information
+   ========================================================================== */
+
+.post-date {
+    font-size: 0.9em;
+    color: #64748b;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* ==========================================================================
+   Banners
+   ========================================================================== */
+
+.banner-container {
+    display: flex;
+    flex-direction: column; /* ← 한 줄씩 세로 정렬 */
+    gap: 20px;
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 0 10px;
+}
+
+.banner {
+    background-color: #2a9d8f; /* 기본 녹색 */
+    color: #ffffff;
+    padding: 20px 25px; /* 값 조정 */
+    border-radius: 15px;
+    width: 100%; /* 전체 너비 사용 */
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.banner:hover {
+    background-color: #217e73; /* 색상 값 직접 지정 */
+    transform: scale(1.05) translateY(-5px); /* 향상된 호버 효과 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.banner h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    position: relative; z-index: 2;
+    color: #ffffff;
+    border: none; padding: 0; line-height: 1.3;
+}
+.banner h2::before { display: none; }
+
+
+.banner p {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.9;
+    position: relative; z-index: 2;
+    line-height: 1.5;
+    color: #ffffff;
+}
+
+/* Banner Color Variations */
+.banner.blue { background-color: #2271b3; }
+.banner.blue:hover { background-color: #195a8c; }
+.banner.purple { background-color: #7839ab; }
+.banner.purple:hover { background-color: #5f2c87; }
+.banner.orange { background-color: #e67e22; }
+.banner.orange:hover { background-color: #c16a1d; }
+.banner.teal { background-color: #2a9d8f; } /* Default */
+.banner.teal:hover { background-color: #217e73; }
+.banner.pink { background-color: #e84a7f; }
+.banner.pink:hover { background-color: #c73868; }
+
+
+.banner-icon {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    font-size: 2rem;
+    opacity: 0.3;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.banner:hover .banner-icon {
+    opacity: 0.5;
+    transform: scale(1.1) rotate(-8deg); /* 향상된 호버 효과 */
+}
+
+/* ==========================================================================
+   Accordion Tabs (CSS Only - Checkbox Hack)
+   ========================================================================== */
+
+.accordion-tabs {
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dddddd;
+}
+
+.tab-toggle { display: none; }
+
+.tab-header {
+    display: block;
+    padding: 15px 20px;
+    background-color: #f0f2f5;
+    color: #333333;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 1px solid #dddddd;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+.accordion-tabs > div:last-of-type .tab-header { border-bottom: none; }
+.accordion-tabs > div:last-of-type .tab-toggle:checked + .tab-header + .tab-content { border-bottom: none; }
+
+.tab-header:hover {
+    background-color: #e9ecef; /* 색상 값 직접 지정 */
+}
+
+.tab-toggle:checked + .tab-header {
+    background-color: #3a86ff;
+    color: #ffffff;
+    border-bottom-color: #3a86ff;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dddddd;
+    color: #1a1a2e;
+}
+.tab-content p:last-child,
+.tab-content ul:last-child,
+.tab-content ol:last-child { margin-bottom: 0; }
+
+.tab-toggle:checked + .tab-header + .tab-content { display: block; }
+
+.tab-header::after { /* Indicator Icon */
+    content: '+';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    font-weight: 400; /* normal */
+    transition: transform 0.3s ease;
+}
+
+.tab-toggle:checked + .tab-header::after {
+    content: '−';
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* ==========================================================================
+   Code Blocks (Basic Styling)
+   ========================================================================== */
+pre {
+    background-color: #f8fafc;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    padding: 15px;
+    overflow-x: auto; /* 가로 스크롤 */
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* 코드용 폰트 */
+    font-size: 0.85em; /* 크기 조절 */
+    line-height: 1.6;
+    margin: 20px 0;
+    white-space: pre; /* 공백 유지 */
+    color: #1a1a2e; /* 코드 텍스트 색상 */
+}
+
+code { /* Inline code */
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    background-color: #f0f2f5;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 0.85em;
+    color: #e63946; /* 인라인 코드 색상 강조 */
+}
+
+pre code { /* Code inside pre - reset inline styles */
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    color: inherit; /* pre의 색상 상속 */
+    font-size: inherit; /* pre의 폰트 크기 상속 */
+}
+
+
+/* ==========================================================================
+   Utility & Accessibility
+   ========================================================================== */
+
+/* --- Skip Link --- */
+/* 사용법: body 바로 다음에 <a href="#main-content" class="skip-link">본문으로 바로가기</a> 추가 */
+/* 메인 콘텐츠 영역에 id="main-content" 추가 */
+.skip-link {
+    position: absolute;
+    left: -9999px; /* 화면 밖으로 */
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 9999; /* 다른 요소 위에 오도록 */
+    background-color: #3a86ff;
+    color: #ffffff;
+    padding: 12px 15px;
+    border-radius: 0 0 10px 0; /* 오른쪽 아래만 라운드 */
+    text-decoration: none;
+    font-weight: 600;
+    transition: none; /* 포커스 시 즉시 나타나도록 */
+}
+
+.skip-link:focus {
+    position: fixed; /* 화면 상단 고정 */
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Scroll-to-Top Button (Always Visible) --- */
+/* 사용법: body 최상단 근처에 <div id="top"></div> 추가 */
+/* body 하단에 <a href="#top" class="scroll-to-top" aria-label="맨 위로 가기">↑</a> 추가 (아이콘 폰트 사용 가능) */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background-color: #3a86ff;
+    color: #ffffff;
+    border-radius: 50%; /* 원 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em; /* 아이콘 크기 */
+    font-weight: 700; /* bold */
+    text-decoration: none;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    opacity: 0.8;
+    z-index: 1000;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.scroll-to-top:hover {
+    background-color: #2667ca;
+    opacity: 1;
+    transform: scale(1.1) translateY(-2px); /* 향상된 호버 효과 */
+}
+
+
+/* --- Focus Visible --- */
+a:focus-visible,
+button:focus-visible,
+.tab-header:focus-visible,
+input[type="checkbox"]:focus-visible + .tab-header,
+.skip-link:focus,
+.scroll-to-top:focus {
+    outline: 2px solid #3a86ff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.3);
+    border-radius: 3px; /* 포커스 스타일에 라운딩 */
+}
+/* 특정 요소 모양 유지 */
+.cta-button:focus-visible { border-radius: 50px; }
+.social-icon:focus-visible, .scroll-to-top:focus-visible { border-radius: 50%; }
+
+
+/* ==========================================================================
+   Media Queries (Responsiveness)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px 12px;
+        font-size: 15px;
+    }
+
+    h1 { font-size: 1.8em; margin-bottom: 25px; }
+    h2 { font-size: 1.5em; margin-top: 35px; }
+    h3 { font-size: 1.2em; margin-top: 25px; }
+
+    .img-container { margin: 20px 0; }
+    .cta-container { padding: 20px; }
+
+    .toc, .info-box, .warning-box, .solution-box, .faq-item {
+        padding: 18px;
+        margin: 20px 0; /* 간격 살짝 줄임 */
+    }
+    blockquote { padding: 20px 25px 20px 35px; } /* 왼쪽 여백 줄임 */
+
+    table { font-size: 0.9em; }
+    th, td { padding: 10px 12px; }
+
+    .data-viz { height: 280px; }
+
+    .social-icon { width: 40px; height: 40px; }
+    .social-icon i { font-size: 1em; } /* 아이콘 크기 조절 */
+
+    .banner-container { padding: 0; }
+    .banner {
+        width: calc(50% - 10px); /* 2열 배치 (gap 고려) */
+        min-height: 90px;
+        padding: 15px 20px;
+    }
+    .banner h2 { font-size: 1.3rem; }
+    .banner p { font-size: 0.9rem; }
+
+     .tab-header { padding: 12px 15px; }
+     .tab-content { padding: 15px; }
+     .tab-header::after { right: 15px; } /* 아이콘 위치 조정 */
+
+     .scroll-to-top { bottom: 15px; right: 15px; width: 40px; height: 40px; font-size: 1.3em;}
+     .dropcap::first-letter { font-size: 3.5em; } /* 모바일에서 드롭캡 크기 약간 줄임 */
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 12px 10px;
+        font-size: 14px;
+    }
+
+    h1 { font-size: 1.6em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.1em; }
+
+    .cta-button { padding: 10px 20px; width: 90%; max-width: 300px; }
+
+    table { font-size: 0.85em; }
+    th, td { padding: 8px 10px; }
+
+    .data-viz { height: 250px; }
+
+    .banner { width: 100%; } /* 1열 */
+    .banner h2 { font-size: 1.2rem; }
+    .banner p { font-size: 0.85rem; }
+
+    .dropcap::first-letter { font-size: 3em; } /* 더 작은 화면에서 드롭캡 크기 더 줄임 */
+}
+
+/* ==========================================================================
+   Print Stylesheet
+   ========================================================================== */
+@media print {
+    body {
+        color: #000000;
+        background-color: #ffffff;
+        font-size: 12pt;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        max-width: 100%;
+        padding: 1in;
+    }
+
+    h1, h2, h3 { color: #000000; }
+    a { color: #000000; text-decoration: underline; }
+
+    /* 인쇄 시 불필요한 요소 숨김 */
+    .toc, .cta-container, .social-share, .banner-container, .faq-item, .data-viz,
+    .accordion-tabs, .skip-link, .scroll-to-top, header, nav, footer, aside,
+    .post-date {
+        display: none !important;
+    }
+    h1::after, h2::before, h3::before, blockquote::before { display: none; }
+
+    table, blockquote { page-break-inside: avoid; border: 1px solid #ccc; box-shadow: none; }
+    th, td { border: 1px solid #ccc; }
+    th { background-color: #eee; color: #000;}
+
+    img { max-width: 100% !important; page-break-inside: avoid; box-shadow: none; }
+    .img-caption { color: #555; font-size: 10pt; }
+
+    pre, code { font-family: monospace; background-color: #f8f8f8; border: 1px solid #ccc; color: #000; word-wrap: break-word; white-space: pre-wrap; page-break-inside: avoid; }
+    code { background: none; padding: 0; }
+
+    .dropcap::first-letter { all: unset; } /* 드롭캡 기본 스타일로 */
+
+    /* 배경 제거 */
+    .info-box, .warning-box, .solution-box, .highlight { background-color: #ffffff !important; border: 1px solid #ccc; box-shadow: none;}
+    .info-box::before, .warning-box::before, .solution-box::before { display: none; }
+}
+
+
+/* ==========================================================================
+   Dark Mode Support
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+
+    h1, h2, h3 { color: #f0f0f0; }
+    h1::after { background-color: #5a9bff; } /* 밝은 파랑 */
+    h2::before { background-color: rgba(90, 155, 255, 0.2); }
+    h3::before { background-color: #5a9bff; } /* 장식 색상 변경 */
+
+    a { color: #5a9bff; }
+    a:hover { color: #8ec0ff; text-decoration-color: #8ec0ff; }
+
+    .highlight { background-color: rgba(255, 231, 150, 0.3); }
+    .highlight:hover { background-color: rgba(255, 231, 150, 0.5); }
+
+    .bold-red, .highlight-red { color: #ff7b81; } /* 밝은 빨강 */
+    .bold-blue, .highlight-blue { color: #5a9bff; } /* 밝은 파랑 */
+    .bold-green { color: #48d6c9; } /* 밝은 녹색 */
+    .dropcap::first-letter { color: #5a9bff; text-shadow: 1px 1px 0px rgba(255,255,255,0.1); }
+
+    .toc, .info-box, .warning-box, .solution-box, .faq-item, blockquote, .data-viz,
+    .tab-content, .accordion-tabs, table tbody tr:nth-child(even), pre {
+        background-color: #1e1e1e; /* 어두운 배경 */
+        border-color: #333; /* 어두운 경계선 */
+        box-shadow: none; /* 다크모드에서는 그림자 제거 */
+    }
+    code { background-color: #2c2c2c; color: #ff7b81; } /* 인라인 코드 */
+    pre { color: #e0e0e0;}
+    pre code { color: inherit; background: transparent; }
+
+    /* 박스 구분선 색상 조정 */
+    .info-box::before { background-color: #5a9bff; }
+    .warning-box::before { background-color: #ff7b81; }
+    .solution-box::before { background-color: #48d6c9; }
+
+    .toc h2 { color: #f0f0f0; border-bottom-color: #333; }
+    .toc a { color: #5a9bff; background-image: linear-gradient(rgba(90, 155, 255, 0.2), rgba(90, 155, 255, 0.2));}
+    .toc a:hover { color: #8ec0ff; }
+
+    th { background-color: #3a86ff; color: #ffffff; border-color: #3a86ff;} /* 테이블 헤더는 유지 */
+    td, th { border-color: #444; } /* 테이블 선 색상 */
+    tbody tr:hover { background-color: #252525; }
+
+    .faq-question { color: #f0f0f0; }
+    .faq-question::before { color: #5a9bff; }
+    .faq-answer { color: #e0e0e0; }
+    .faq-answer::before { color: #ff7b81; }
+
+    blockquote { color: #bdbdbd; border-color: #333; }
+    blockquote::before { color: rgba(90, 155, 255, 0.2); }
+
+    /* CTA는 밝은 색 유지 또는 대비 조정 */
+    .cta-button { background-color: #1e1e1e; color: #5a9bff;}
+    .cta-button:hover { background-color: #2c2c2c; color: #8ec0ff; }
+
+    /* 소셜 아이콘 배경은 유지, 아이콘 색상 필요시 조정 */
+
+    .tab-header { background-color: #2c2c2c; color: #e0e0e0; border-color: #333;}
+    .tab-header:hover { background-color: #383838; }
+    .tab-toggle:checked + .tab-header { background-color: #3a86ff; color: #ffffff; border-bottom-color: #3a86ff;} /* 활성 탭 색상은 유지 */
+    .tab-content { border-color: #333; background-color: #1e1e1e; color: #e0e0e0;}
+
+    /* 스킵 링크, 맨 위로 가기 버튼 */
+    .skip-link { background-color: #5a9bff; color: #121212; }
+    .scroll-to-top { background-color: #5a9bff; color: #121212; box-shadow: none; }
+    .scroll-to-top:hover { background-color: #8ec0ff; }
+
+    /* 포커스 스타일 조정 */
+    a:focus-visible, button:focus-visible, .tab-header:focus-visible,
+    input[type="checkbox"]:focus-visible + .tab-header,
+    .skip-link:focus, .scroll-to-top:focus {
+        outline-color: #8ec0ff; /* 밝은 포커스 색상 */
+        box-shadow: 0 0 0 3px rgba(90, 155, 255, 0.4);
+    }
+
+}
+</style>
