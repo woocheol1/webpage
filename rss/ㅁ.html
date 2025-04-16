@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="우주쓰레기의 실체와 위험성, 그리고 우리가 직면한 문제점과 해결책에 대한 심층 분석. 지구 궤도를 떠도는 우주쓰레기가 우리의 일상에 미치는 영향을 알아봅니다.">
+    <title>🚀 우주쓰레기의 실체: 매일 3개씩 지구로 떨어지는 우주 위험 | 스페이스 클린업</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* 전체 스타일 */
+body {
+    font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.8;
+    color: #1a1a2e;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    background-color: #fafafa;
+}
+
+/* 제목 스타일 */
+h1 {
+    font-size: 2.5em;
+    color: #16213e;
+    border-bottom: none;
+    padding-bottom: 15px;
+    margin-bottom: 35px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 5px;
+    background-color: #3a86ff;
+    border-radius: 5px;
+}
+
+h2 {
+    font-size: 1.9em;
+    color: #16213e;
+    margin-top: 50px;
+    border-left: none;
+    padding-left: 0;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    position: relative;
+    display: inline-block;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: rgba(58, 134, 255, 0.2);
+    border-radius: 5px;
+    z-index: -1;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: #16213e;
+    margin-top: 35px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* 강조 텍스트 */
+.highlight {
+    background-color: rgba(255, 250, 205, 0.6);
+    padding: 2px 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.highlight:hover {
+    background-color: rgba(255, 250, 205, 0.9);
+}
+
+.bold-red {
+    color: #e63946;
+    font-weight: 600;
+}
+
+.bold-blue {
+    color: #3a86ff;
+    font-weight: 600;
+}
+
+.bold-green {
+    color: #2a9d8f;
+    font-weight: 600;
+}
+
+/* 박스 스타일 */
+.info-box, .warning-box, .solution-box {
+    padding: 25px;
+    margin: 30px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-box:hover, .warning-box:hover, .solution-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+.info-box {
+    background-color: #f0f7ff;
+}
+
+.info-box::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background-color: #3a86ff;
+}
+
+.warning-box {
+    background-color: #fff5f5;
+}
+
+.warning-box::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background-color: #e63946;
+}
+
+.solution-box {
+    background-color: #f0fff4;
+}
+
+.solution-box::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background-color: #2a9d8f;
+}
+
+/* 목차 스타일 */
+.toc {
+    background-color: #f8fafc;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    border: 1px solid #eaeaea;
+}
+
+.toc h2 {
+    border: none;
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #16213e;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eaeaea;
+    display: block;
+}
+
+.toc h2::before {
+    display: none;
+}
+
+.toc ul {
+    padding-left: 20px;
+    margin-top: 15px;
+}
+
+.toc a {
+    text-decoration: none;
+    color: #3a86ff;
+    position: relative;
+    display: inline-block;
+    padding: 3px 0;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.toc a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #3a86ff;
+    transition: width 0.3s ease;
+}
+
+.toc a:hover {
+    color: #2667ca;
+    text-decoration: none;
+}
+
+.toc a:hover::after {
+    width: 100%;
+}
+
+/* 이미지 스타일 */
+.img-container {
+    width: 100%;
+    margin: 35px 0;
+    text-align: center;
+}
+
+.img-container img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-container img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.img-caption {
+    font-size: 0.95em;
+    color: #64748b;
+    margin-top: 12px;
+    text-align: center;
+    font-style: italic;
+}
+
+/* 표 스타일 */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 35px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+    border: none;
+    padding: 14px 18px;
+    text-align: left;
+}
+
+th {
+    background-color: #3a86ff;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+tr {
+    transition: background-color 0.2s ease;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+tr:hover {
+    background-color: #f0f7ff;
+}
+
+/* FAQ 스타일 */
+.faq-item {
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #f8fafc;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.faq-question {
+    font-weight: 600;
+    color: #16213e;
+    margin-bottom: 15px;
+    font-size: 1.25em;
+    position: relative;
+    padding-left: 30px;
+}
+
+.faq-question::before {
+    content: 'Q';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    color: #3a86ff;
+}
+
+.faq-answer {
+    padding-left: 30px;
+    position: relative;
+}
+
+.faq-answer::before {
+    content: 'A';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    color: #e63946;
+}
+
+/* CTA 스타일 */
+.cta-container {
+    background: linear-gradient(135deg, #3a86ff 0%, #4361ee 100%);
+    color: white;
+    padding: 35px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 50px 0;
+    box-shadow: 0 8px 30px rgba(58, 134, 255, 0.3);
+    overflow: hidden;
+    position: relative;
+}
+
+.cta-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+    transform: rotate(10deg);
+}
+
+.cta-container h3 {
+    color: white;
+    margin-top: 0;
+    font-size: 1.8em;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: white;
+    color: #3a86ff;
+    padding: 14px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+    background-color: #f8fafc;
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* 리스트 스타일 */
+ul, ol {
+    padding-left: 25px;
+    margin-bottom: 25px;
+}
+
+ul li, ol li {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+ul li::marker {
+    color: #3a86ff;
+}
+
+/* 인용 스타일 */
+blockquote {
+    border-left: none;
+    padding: 25px 30px;
+    margin: 30px 0;
+    font-style: italic;
+    color: #475569;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    position: relative;
+}
+
+blockquote::before {
+    content: '"';
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    font-size: 4em;
+    color: rgba(58, 134, 255, 0.2);
+    font-family: Georgia, serif;
+}
+
+/* 소셜 공유 버튼 */
+.social-share {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 50px 0;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.social-icon:hover {
+    transform: translateY(-5px) rotate(8deg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.twitter {
+    background: linear-gradient(135deg, #1da1f2 0%, #1a91da 100%);
+}
+
+.facebook {
+    background: linear-gradient(135deg, #4267B2 0%, #365899 100%);
+}
+
+.linkedin {
+    background: linear-gradient(135deg, #0e76a8 0%, #0a5e86 100%);
+}
+
+.kakao {
+    background: linear-gradient(135deg, #FEE500 0%, #E4CF00 100%);
+}
+
+.social-icon i {
+    color: white;
+    font-size: 1.2em;
+}
+
+/* 데이터 시각화 */
+.data-viz {
+    width: 100%;
+    height: 350px;
+    background-color: #f8fafc;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 35px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.data-viz:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.6em;
+    }
+    
+    h3 {
+        font-size: 1.3em;
+    }
+    
+    .img-container {
+        margin: 25px 0;
+    }
+    
+    .cta-container {
+        padding: 25px;
+    }
+    
+    .toc, .info-box, .warning-box, .solution-box {
+        padding: 20px;
+    }
+}
+
+/* 다크 모드 지원 */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+    
+    h1, h2, h3 {
+        color: #f0f0f0;
+    }
+    
+    .toc, .info-box, .warning-box, .solution-box, .faq-item, blockquote, .data-viz {
+        background-color: #1e1e1e;
+    }
+    
+    .toc {
+        border-color: #333;
+    }
+    
+    .toc h2 {
+        border-bottom-color: #333;
+        color: #f0f0f0;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #1e1e1e;
+    }
+    
+    tr:hover {
+        background-color: #252525;
+    }
+}
+
+/* 이모티콘 스타일 */
+.emoji {
+    font-size: 1.2em;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* 애니메이션 효과 */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+    display: inline-block;
+}
+
+/* 태그 스타일 */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.tag {
+    background-color: #f0f7ff;
+    color: #3a86ff;
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-size: 0.85em;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    background-color: #3a86ff;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* 숫자 카운터 스타일 */
+.stat-counter {
+    font-size: 2.5em;
+    font-weight: 800;
+    color: #3a86ff;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.stat-label {
+    font-size: 1em;
+    color: #64748b;
+}
+</style>
+/* 콘텐츠 넣을 곳은 <div class="blog-content"> 태그 사이에 넣으세요 */
+</head>
+<body>
+    <div class="blog-content">
+        <h1>🚀 우주쓰레기의 실체: 매일 3개씩 지구로 떨어지는 우주 위험</h1>
+        
+        <div class="toc">
+            <h2>목차</h2>
+            <ul>
+                <li><a href="#intro">우주쓰레기란 무엇인가?</a></li>
+                <li><a href="#scale">현재 지구 궤도의 오염 상태</a></li>
+                <li><a href="#dangers">우주쓰레기의 실질적 위험</a></li>
+                <li><a href="#solutions">우주쓰레기 문제 해결을 위한 노력</a></li>
+                <li><a href="#future">지속가능한 우주 활동의 미래</a></li>
+                <li><a href="#faq">자주 묻는 질문</a></li>
+            </ul>
+        </div>
+        
+        <p><span class="highlight">매일 지구로 떨어지는 우주쓰레기만 <strong>3개</strong>.</span> 그 중 일부는 실제로 '우리 머리 위'까지 떨어집니다.</p>
+        
+        <p>여러분, 지금 머리 위에 수천 개의 금속 덩어리가 떠다니고 있다면, 믿으시겠어요?</p>
+        
+        <section id="intro">
+            <h2>🛰️ 우주쓰레기란 무엇인가?</h2>
+            
+            <p>우주쓰레기(Space Debris). 더 이상 공상과학 영화의 이야기가 아닙니다. 우주 개발이 본격화되면서 지구 궤도는 <span class="bold-blue">위성, 로켓, 파편</span>으로 넘쳐나기 시작했죠.</p>
+            
+            <div class="img-container">
+                <img src="https://via.placeholder.com/800x450" alt="지구 궤도를 떠다니는 다양한 우주쓰레기의 모습">
+                <p class="img-caption">지구 궤도에 떠다니는 다양한 형태의 우주쓰레기 (출처: NASA)</p>
+            </div>
+            
+            <p>작게는 볼트 하나부터, 크게는 자동차만 한 로켓 잔해까지. 심지어 그 속도는 <span class="bold-red">초속 11km</span>. 총알보다 10배 빠른 속도로 지구를 돌고 있습니다.</p>
+            
+            <div class="info-box">
+                <h3>우주쓰레기의 주요 원인</h3>
+                <ul>
+                    <li>수명이 다한 인공위성</li>
+                    <li>로켓 발사체 잔해</li>
+                    <li>우주선 폭발 또는 충돌로 인한 파편</li>
+                    <li>우주인의 작업 중 유실된 장비</li>
+                    <li>위성 미션 종료 후 남겨진 부품</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="scale">
+            <h2>📊 현재 지구 궤도의 오염 상태</h2>
+            
+            <p>그렇다면 지금, <span class="bold-blue">지구 궤도는 얼마나 오염됐을까요?</span></p>
+            
+            <div class="data-viz">
+                <!-- 이 부분에 데이터 시각화 차트가 들어갈 예정입니다 -->
+                <img src="https://via.placeholder.com/800x350" alt="지구 궤도 우주쓰레기 현황 차트">
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>수량</th>
+                        <th>위험도</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>추적 가능한 우주쓰레기</td>
+                        <td><span class="bold-red">18,997개</span></td>
+                        <td>높음</td>
+                    </tr>
+                    <tr>
+                        <td>고장 난 위성</td>
+                        <td>2,991개</td>
+                        <td>중간</td>
+                    </tr>
+                    <tr>
+                        <td>우주 발사체 및 부품</td>
+                        <td>2,339개</td>
+                        <td>중간</td>
+                    </tr>
+                    <tr>
+                        <td>미세 파편</td>
+                        <td><span class="bold-red">약 90만 개</span></td>
+                        <td>중간~높음</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>상상해보세요. 하늘에 90만 개의 날카로운 파편이 떠 있는 모습을요.</p>
+        </section>
+        
+        <section id="dangers">
+            <h2>🔥 우주쓰레기의 실질적 위험</h2>
+            
+            <h3>지구 추락 위험</h3>
+            
+            <p>더 놀라운 건, 이 파편 중 일부는 <span class="bold-red">매일 지구로 떨어진다는 사실</span>.</p>
+            
+            <p>2024년 기준, <span class="highlight">하루 평균 3개</span>. 연간으로 따지면 <span class="bold-blue">2,461개</span>가 대기권을 뚫고 떨어집니다.</p>
+            
+            <p>대부분은 공기 마찰로 불타 사라지지만, <span class="bold-red">모든 게 다 소멸되는 건 아닙니다</span>.</p>
+            
+            <div class="warning-box">
+                <h3>실제 추락 사례</h3>
+                <ul>
+                    <li>2024년 3월, <strong>미국 텍사스</strong>에 떨어진 연료 탱크 조각으로 농장 피해 발생</li>
+                    <li>2023년 12월, <strong>한국 충청도 상공</strong>에서 러시아 로켓 잔해 포착</li>
+                    <li>2022년 8월, <strong>호주 시드니</strong> 인근에 SpaceX 로켓 파편 발견</li>
+                    <li>2021년 5월, <strong>인도양</strong>에 중국 로켓 '창정 5B호' 잔해 추락</li>
+                </ul>
+            </div>
+            
+            <p>과연, 다음에는 어디로 떨어질까요?</p>
+            
+            <h3>충돌 위험</h3>
+            
+            <p>그리고 또 하나의 위험. <span class="bold-blue">충돌</span>. 한국천문연구원에 따르면, 하루 평균 <span class="bold-red">46건의 위성 충돌 경보</span>가 발령되고 있습니다.</p>
+            
+            <ul>
+                <li>국제우주정거장(ISS)은 파편을 피해 정기적으로 궤도 조정</li>
+                <li>스타링크 등 상용 위성망도 <span class="bold-red">지속적인 충돌 위험에 노출</span></li>
+            </ul>
+            
+            <div class="img-container">
+                <img src="https://via.placeholder.com/800x450" alt="위성 충돌의 결과로 생성된 수천 개의 파편">
+                <p class="img-caption">2009년 Iridium 33과 Cosmos 2251 위성 충돌로 생성된 파편 구름 시뮬레이션 (출처: ESA)</p>
+            </div>
+            
+            <blockquote>
+                "한 번의 충돌이 통신 두절, 항공기 혼선, GPS 마비를 부를 수 있습니다. 이건 단순한 우주 문제가 아니죠. <span class="bold-blue">우리 삶 전체에 영향을 주는 위험</span>입니다."
+                <footer>— 한국항공우주연구원 우주쓰레기 대응팀</footer>
+            </blockquote>
+        </section>
+        
+        <section id="solutions">
+            <h2>🔧 우주쓰레기 문제 해결을 위한 노력</h2>
+            
+            <h3>국내 대응 현황</h3>
+            
+            <p>한국 정부는 우주쓰레기 추락을 <span class="bold-blue">사회재난으로 포함</span>하는 법안을 발의하고, <span class="bold-green">정밀 추적 시스템</span>을 구축 중입니다.</p>
+            
+            <div class="solution-box">
+                <h3>한국의 우주쓰레기 대응책</h3>
+                <ul>
+                    <li>우주쓰레기 감시 레이더 구축 (2025년 완공 예정)</li>
+                    <li>'우주위험관리법' 제정 추진</li>
+                    <li>한국천문연구원 우주물체 감시센터 운영</li>
+                    <li>KARI(한국항공우주연구원)의 우주쓰레기 제거 기술 개발</li>
+                </ul>
+            </div>
+            
+            <h3>국제적 대응 현황</h3>
+            
+            <p>국제적으로는 <span class="bold-blue">UN COPUOS(우주평화이용 위원회)</span>가 국가별 쓰레기 감축을 권고하고 있고, <span class="bold-green">그물 포획, 레이저 요격, 마그넷 로봇</span> 같은 '우주 청소 기술'도 개발되고 있습니다.</p>
+            
+            <div class="img-container">
+                <img src="https://via.placeholder.com/800x450" alt="우주쓰레기 제거를 위한 로봇 기술">
+                <p class="img-caption">ClearSpace-1 우주쓰레기 수거 미션 개념도 (출처: ESA)</p>
+            </div>
+        </section>
+        
+        <section id="future">
+            <h2>🌌 지속가능한 우주 활동의 미래</h2>
+            
+            <p>하지만, 상황은 더 긴박해지고 있습니다. 지금 우주산업은 <span class="bold-red">'저궤도 상업 위성 전쟁'</span> 중. 앞으로 하늘 위 쓰레기는 기하급수적으로 증가할 전망입니다.</p>
+            
+            <p>그래서 우리는 <span class="bold-green">'지속 가능한 우주 활동'</span>을 고민해야 합니다.</p>
+            
+            <ul>
+                <li>위성 발사부터 <span class="bold-green">쓰레기 최소화 설계</span></li>
+                <li><span class="bold-blue">우주환경 보호법</span> 제정</li>
+                <li><span class="bold-green">우주 청소 기술 상용화</span> 지원</li>
+            </ul>
+            
+            <div class="cta-container">
+                <h3>우주쓰레기 문제, 함께 해결해요!</h3>
+                <p>이제는 <span class="bold-green">우주도 환경 보호 대상</span>이 된 시대. 지구에서만 '제로 웨이스트'를 외칠 게 아니라, <span class="bold-blue">우주에서도 쓰레기를 줄여야 할 때</span>입니다.</p>
+                <a href="#" class="cta-button">우주쓰레기 캠페인 참여하기</a>
+            </div>
+        </section>
+        
+        <section id="faq">
+            <h2>❓ 자주 묻는 질문</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">우주쓰레기가 직접 사람에게 떨어질 확률은 얼마나 될까요?</div>
+                <div class="faq-answer">
+                    우주쓰레기가 사람에게 직접 떨어질 확률은 극히 낮습니다. NASA의 계산에 따르면 약 1/13,000 정도로, 번개에 맞을 확률보다 훨씬 낮습니다. 하지만 위성과 우주 활동이
+                    증가함에 따라 이 확률은 점차 높아질 수 있습니다.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">우주쓰레기는 어떻게 추적하나요?</div>
+                <div class="faq-answer">
+                    우주쓰레기는 주로 지상 레이더와 광학 망원경을 통해 추적합니다. 미국 우주군은 Space Fence라는 첨단 레이더 시스템을 운영하여 10cm 이상의 물체를 추적하고 있으며, 전 세계 약 30개 이상의 관측소가 우주쓰레기 감시 네트워크를 형성하고 있습니다.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">일반 시민들이 우주쓰레기 문제 해결에 기여할 수 있는 방법이 있을까요?</div>
+                <div class="faq-answer">
+                    일반 시민들도 우주쓰레기 문제에 기여할 수 있습니다. 우주 환경 보호 캠페인 참여하기, 관련 정책 지지하기, 우주쓰레기 관련 교육 프로그램 참여하기, 그리고 친환경적인 우주 탐사를 지향하는 기업과 프로젝트를 지원하는 등의 방법이 있습니다.
+                </div>
+            </div>
+        </section>
+        
+        <blockquote>
+            "지금 이 순간에도 당신의 머리 위 어딘가에선 금속 파편 하나가 초속 8km로 지구를 돌고 있습니다. 우주쓰레기 문제, 더 이상 우주만의 이야기가 아닙니다. <span class="bold-blue">우리의 위성, 통신, 인터넷, 심지어 생명까지 영향을 받는 현실</span>. 그리고 이것은, <span class="bold-green">우리 모두의 책임</span>입니다."
+        </blockquote>
+        
+        <p>우리는 아직 늦지 않았습니다. 기술은 준비되고 있고, 정책은 만들어지고 있으며, 당신의 관심 하나가 변화를 만들 수 있습니다.</p>
+        
+        <p><span class="bold-green">깨끗한 우주.</span> 지금, 여기서 시작됩니다.</p>
+        
+        <div class="social-share">
+            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon kakao"><i class="fas fa-comment"></i></a>
+        </div>
+        
+        <div class="tags">
+            <span class="tag">#우주쓰레기</span>
+            <span class="tag">#스페이스데브리</span>
+            <span class="tag">#인공위성</span>
+            <span class="tag">#로켓파편</span>
+            <span class="tag">#우주충돌</span>
+            <span class="tag">#지구위험</span>
+            <span class="tag">#우주청소</span>
+            <span class="tag">#위성추락</span>
+            <span class="tag">#ISS</span>
+            <span class="tag">#스타링크</span>
+        </div>
+    </div>
+    
+    <script>
+        // 추가적인 자바스크립트 코드가 필요하다면 여기에 작성하세요
+    </script>
+</body>
+</html>
