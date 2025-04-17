@@ -1,0 +1,1207 @@
+﻿[source: 1] /* ==========================================================================
+   mypost-container Base Styles & Typography
+   ========================================================================== */
+
+/* ★ 중요: 이 CSS가 제대로 작동하려면 HTML <head> 안에 다음 메타 태그가 있어야 합니다: ★ */
+/* <meta name="viewport" content="width=device-width, initial-scale=1.0"> */
+
+/* 기본 HTML 태그 및 전체 선택자 스타일을 .mypost-container 내부로 제한 */
+.mypost-container *,
+.mypost-container *::before,
+.mypost-container *::after {
+    box-sizing: border-box;
+[source: 2] word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* 기존 body 스타일 중 콘텐츠 영역에 필요한 부분을 .mypost-container 에 적용 */
+.mypost-container {
+    font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+[source: 3] line-height: 1.7;
+    font-size: 16px; /* 기본 폰트 크기 */
+    color: #1a1a2e;
+    /* background-color: #fafafa; /* 웹사이트 배경을 따르도록 제거하거나 필요시 유지 */
+[source: 4] max-width: 850px; /* 콘텐츠 최대 너비 */
+    margin: 0 auto; /* 중앙 정렬 */
+    padding: 25px 20px; /* 내부 여백 */
+    letter-spacing: -0.01em; /* 자간 기본값 */
+[source: 5] /* hyphens: auto; /* 전역 설정일 수 있으므로 제거하거나 필요시 유지 */
+}
+
+/* 헤딩 기본 스타일 */
+.mypost-container h1,
+.mypost-container h2,
+.mypost-container h3 {
+    color: #16213e;
+    font-weight: bold;
+[source: 6] word-break: keep-all; /* 단어 중간 줄바꿈 방지 (한글 등) */
+    max-width: 100%;
+    letter-spacing: normal;
+    line-height: 1.3;
+}
+
+.mypost-container h1 {
+    font-size: 2.2em; /* 기본 35.2px */
+    border-bottom: none;
+    padding-bottom: 12px;
+[source: 7] margin-bottom: 30px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    position: relative;
+}
+
+.mypost-container h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+[source: 8] left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: #3a86ff;
+    border-radius: 3px;
+}
+
+.mypost-container h2 {
+    font-size: 1.7em; /* 기본 27.2px */
+    margin-top: 40px;
+[source: 9] margin-bottom: 20px;
+    padding-left: 0;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.mypost-container h2::before {
+    content: '';
+[source: 10] position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background-color: rgba(58, 134, 255, 0.2);
+    border-radius: 3px;
+    z-index: -1;
+}
+
+.mypost-container h3 {
+    font-size: 1.3em; /* 기본 20.8px */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    position: relative;
+}
+
+.mypost-container h3::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #3a86ff;
+    border-radius: 50%;
+    margin-right: 8px;
+[source: 11] vertical-align: middle;
+    opacity: 0.5;
+    transition: transform 0.3s ease;
+}
+.mypost-container h3:hover::before {
+    transform: scale(1.2) rotate(45deg);
+}
+
+/* 문단, 리스트 아이템 기본 스타일 */
+.mypost-container p,
+.mypost-container li {
+    margin-bottom: 1em; /* 줄 간격 역할 */
+}
+
+.mypost-container ul,
+.mypost-container ol {
+    padding-left: 22px; /* 들여쓰기 */
+    margin-bottom: 20px;
+}
+
+.mypost-container ul li,
+.mypost-container ol li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+    position: relative;
+}
+
+.mypost-container ul li::marker {
+    color: #3a86ff; /* 불릿 색상 */
+}
+
+/* 반응형 이미지 기본 */
+.mypost-container .mypost-responsive-img {
+    max-width: 100%; /* 항상 부모 너비 초과하지 않음 */
+    height: auto; /* 비율 유지 */
+[source: 12] display: block; /* 하단 여백 제거 */
+    margin: 0 auto; /* 중앙 정렬 (필요시) */
+}
+
+/* 링크 스타일 */
+.mypost-container a {
+    color: #3a86ff;
+    text-decoration: none;
+[source: 13] transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease, text-decoration-color 0.3s ease;
+    text-decoration-line: underline;
+    text-decoration-color: transparent; /* 기본 밑줄 숨김 */
+    text-underline-offset: 3px;
+}
+
+.mypost-container a:hover {
+    color: #2667ca;
+    text-decoration-color: #2667ca; /* 호버 시 밑줄 표시 */
+    opacity: 0.85;
+}
+
+/* ==========================================================================
+   mypost-container Text Emphasis & Highlights
+   ========================================================================== */
+
+.mypost-container .mypost-highlight {
+    background-color: rgba(255, 250, 205, 0.5); /* 연한 노랑 배경 */
+[source: 14] padding: 1px 4px; /* 약간의 내부 여백 */
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.mypost-container .mypost-highlight:hover {
+    background-color: rgba(255, 250, 205, 0.8);
+}
+
+.mypost-container .mypost-bold-red,
+.mypost-container .mypost-highlight-red {
+    color: #e63946; /* 빨강 */
+    font-weight: 600;
+}
+
+.mypost-container .mypost-bold-blue,
+.mypost-container .mypost-highlight-blue {
+    color: #3a86ff; /* 파랑 */
+[source: 15] font-weight: 600;
+}
+
+.mypost-container .mypost-bold-green {
+    color: #2a9d8f; /* 초록 */
+    font-weight: 600;
+}
+
+.mypost-container .mypost-white-text {
+    color: #ffffff !important; /* 흰색 텍스트 강제 */
+}
+
+.mypost-container .mypost-dropcap::first-letter {
+    color: #3a86ff;
+    font-size: 4em; /* 첫 글자 크게 */
+[source: 16] font-weight: 700;
+    float: left; /* 텍스트 감싸기 */
+    line-height: 0.8;
+    margin-top: 4px;
+    margin-right: 8px;
+    margin-bottom: -4px;
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
+[source: 17] text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+}
+
+/* ==========================================================================
+   mypost-container Boxes (Info, Warning, Solution)
+   ========================================================================== */
+
+.mypost-container .mypost-info-box,
+.mypost-container .mypost-warning-box,
+.mypost-container .mypost-solution-box {
+    padding: 22px;
+[source: 18] margin: 25px 0;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    border: none; /* 테두리 없음 */
+    position: relative;
+    overflow: hidden; /* 내부 요소 넘침 방지 */
+[source: 19] transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mypost-container .mypost-info-box:hover,
+.mypost-container .mypost-warning-box:hover,
+.mypost-container .mypost-solution-box:hover {
+    transform: translateY(-3px) scale(1.01);
+[source: 20] box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+}
+
+.mypost-container .mypost-info-box::before,
+.mypost-container .mypost-warning-box::before,
+.mypost-container .mypost-solution-box::before {
+    content: '';
+    position: absolute;
+[source: 21] left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px; /* 왼쪽 세로 선 */
+}
+
+.mypost-container .mypost-info-box { background-color: #f0f7ff; } /* 정보: 연한 파랑 배경 */
+.mypost-container .mypost-info-box::before { background-color: #3a86ff; }
+
+.mypost-container .mypost-warning-box { background-color: #fff5f5; } /* 경고: 연한 빨강 배경 */
+.mypost-container .mypost-warning-box::before { background-color: #e63946; }
+
+.mypost-container .mypost-solution-box { background-color: #f0fff4; } /* 해결: 연한 초록 배경 */
+.mypost-container .mypost-solution-box::before { background-color: #2a9d8f; }
+
+/* ==========================================================================
+   mypost-container Table of Contents (TOC)
+   ========================================================================== */
+
+.mypost-container .mypost-toc {
+    background-color: #f8fafc;
+[source: 22] padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+    border: 1px solid #eaeaea;
+}
+
+.mypost-container .mypost-toc h2 {
+    border: none;
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #16213e;
+    padding-bottom: 15px;
+[source: 23] border-bottom: 2px solid #eaeaea; /* 목차 제목 하단 선 */
+    margin-bottom: 15px;
+}
+
+.mypost-container .mypost-toc h2::before { display: none; /* 목차 h2 앞 아이콘 숨김 */ }
+
+.mypost-container .mypost-toc ul {
+    padding-left: 15px;
+    margin-top: 15px;
+    list-style: none; /* 기본 불릿 숨김 */
+}
+
+.mypost-container .mypost-toc li { margin-bottom: 8px; }
+
+.mypost-container .mypost-toc a {
+    color: #3a86ff;
+    position: relative;
+    display: inline-block;
+    padding: 4px 0;
+    font-weight: 500;
+    font-size: 0.9em;
+[source: 24] line-height: 1.6;
+    text-decoration: none;
+    /* 호버 시 밑줄 효과 */
+    background-image: linear-gradient(rgba(58, 134, 255, 0.2), rgba(58, 134, 255, 0.2));
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+[source: 25] background-size: 0% 2px; /* 초기 밑줄 숨김 */
+    transition: background-size 0.3s ease, color 0.3s ease;
+}
+
+.mypost-container .mypost-toc a:hover {
+    color: #2667ca;
+[source: 26] background-size: 100% 2px; /* 호버 시 밑줄 나타남 */
+}
+
+/* ==========================================================================
+   mypost-container Images
+   ========================================================================== */
+
+.mypost-container .mypost-img-container {
+    width: 100%;
+[source: 27] margin: 30px 0;
+    text-align: center; /* 내부 이미지/캡션 중앙 정렬 */
+}
+
+.mypost-container .mypost-img-container img {
+    max-width: 100%; /* 너비 제한 */
+    height: auto; /* 비율 유지 */
+    border-radius: 10px;
+[source: 28] box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    display: block; /* 하단 여백 제거 및 중앙 정렬 용이 */
+[source: 29] margin: 0 auto; /* 이미지 중앙 정렬 */
+}
+
+.mypost-container .mypost-img-container img:hover {
+    transform: translateY(-4px) scale(1.02);
+[source: 30] box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    filter: brightness(1.05);
+}
+
+.mypost-container .mypost-img-caption {
+    font-size: 0.9em;
+    color: #64748b;
+[source: 31] margin-top: 15px;
+    text-align: center;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   mypost-container Tables
+   ========================================================================== */
+
+.mypost-container .mypost-table-wrapper {
+    overflow-x: auto; /* ★ 중요: 테이블 내용이 넘칠 경우 가로 스크롤 생성 ★ */
+[source: 32] margin: 30px 0;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+[source: 33] border: 1px solid #dddddd; /* 테이블 테두리 (선택 사항) */
+}
+.mypost-container .mypost-table-wrapper table {
+    width: 100%;
+    min-width: 600px; /* ★ 모바일에서 최소 너비 지정하여 가로 스크롤 유도 (필요시 조정) ★ */
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 0.95em;
+    background-color: #ffffff;
+[source: 34] border-radius: 10px; /* wrapper에 radius가 있으므로 불필요할 수 있음 */
+    overflow: hidden; /* radius 적용 위함 */
+}
+
+.mypost-container .mypost-table-wrapper th,
+.mypost-container .mypost-table-wrapper td {
+    border: 1px solid #dddddd;
+    padding: 12px 15px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.mypost-container .mypost-table-wrapper th {
+    background-color: #3a86ff;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-color: #3a86ff; /* th 테두리 색상 일치 */
+}
+
+.mypost-container .mypost-table-wrapper tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.mypost-container .mypost-table-wrapper tbody tr:nth-child(even) {
+    background-color: #f8fafc; /* 짝수 행 배경색 */
+}
+
+.mypost-container .mypost-table-wrapper tbody tr:hover {
+    background-color: #f0f7ff; /* 행 호버 효과 */
+}
+
+/* 탭 내부 테이블 스타일링 (더 작은 여백 등) */
+.mypost-container .mypost-tab-content .mypost-table-wrapper {
+    margin: 20px 0;
+}
+
+.mypost-container .mypost-tab-content .mypost-table-wrapper table {
+    width: 100%; /* 탭 내부는 100% */
+    min-width: auto; /* 탭 내부는 최소 너비 제거 */
+}
+
+.mypost-container .mypost-tab-content .mypost-table-wrapper th,
+.mypost-container .mypost-tab-content .mypost-table-wrapper td {
+    padding: 10px 12px; /* 탭 내부 테이블 여백 축소 */
+}
+
+/* ==========================================================================
+   mypost-container FAQ Section
+   ========================================================================== */
+
+.mypost-container .mypost-faq-item {
+    margin-bottom: 20px;
+    padding: 20px;
+[source: 35] border-radius: 10px;
+    background-color: #f8fafc;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+[source: 36] border: 1px solid #eaeaea;
+}
+
+.mypost-container .mypost-faq-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+.mypost-container .mypost-faq-question {
+    font-weight: 600;
+    color: #16213e;
+    margin: 0 0 12px 0;
+    font-size: 1.15em;
+    position: relative;
+[source: 37] padding-left: 28px; /* Q 아이콘 공간 확보 */
+}
+
+.mypost-container .mypost-faq-question::before {
+    content: 'Q'; /* 질문 아이콘 */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    color: #3a86ff;
+}
+
+.mypost-container .mypost-faq-answer {
+    padding-left: 28px; /* A 아이콘 공간 확보 */
+    position: relative;
+    margin: 0;
+    color: #1a1a2e;
+}
+
+.mypost-container .mypost-faq-answer::before {
+    content: 'A'; /* 답변 아이콘 */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    color: #e63946;
+}
+.mypost-container .mypost-faq-answer p:last-child { margin-bottom: 0; }
+
+/* ==========================================================================
+   mypost-container Call to Action (CTA)
+   ========================================================================== */
+
+.mypost-container .mypost-cta-container {
+    background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+[source: 38] color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 40px 0;
+    box-shadow: 0 6px 25px rgba(58, 134, 255, 0.25);
+[source: 39] overflow: hidden;
+    position: relative;
+}
+
+.mypost-container .mypost-cta-container::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%;
+[source: 40] height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+    transform: rotate(10deg);
+    pointer-events: none; /* 장식 요소 클릭 방지 */
+}
+
+.mypost-container .mypost-cta-container h3 {
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    font-weight: 700;
+[source: 41] text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative; z-index: 1; /* 장식 요소 위로 */
+}
+.mypost-container .mypost-cta-container h3::before { display: none; /* CTA 내부 h3 아이콘 숨김 */ }
+
+.mypost-container .mypost-cta-container p {
+    position: relative; z-index: 1;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.mypost-container .mypost-cta-button {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #3a86ff;
+    padding: 12px 25px;
+    border-radius: 50px; /* 알약 모양 버튼 */
+    text-decoration: none;
+[source: 42] font-weight: 600;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+[source: 43] box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    /* max-width: 80%; /* 너무 길어지지 않도록 제한 (필요시) */
+    border: none;
+    cursor: pointer;
+    position: relative; z-index: 1;
+}
+
+.mypost-container .mypost-cta-button:hover {
+    background-color: #f8fafc;
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+[source: 44] color: #2667ca;
+}
+
+/* ==========================================================================
+   mypost-container Blockquotes
+   ========================================================================== */
+
+.mypost-container blockquote {
+    border-left: none; /* 기본 왼쪽 선 제거 (커스텀 스타일 사용) */
+[source: 45] padding: 20px 25px 20px 40px; /* 왼쪽 아이콘 공간 확보 */
+    margin: 25px 0;
+    font-style: italic;
+    color: #64748b;
+    background-color: #f8fafc;
+    border-radius: 10px;
+[source: 46] box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+    position: relative;
+    font-size: 0.95em;
+    border: 1px solid #eaeaea;
+}
+
+.mypost-container blockquote::before {
+    content: '"'; /* 큰 따옴표 아이콘 */
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    font-size: 3.5em;
+    color: rgba(58, 134, 255, 0.2);
+    font-family: Georgia, serif;
+    line-height: 1;
+    transform: rotate(-5deg);
+    opacity: 0.8;
+}
+
+.mypost-container blockquote p:last-child { margin-bottom: 0; }
+
+/* ==========================================================================
+   mypost-container Social Share Buttons (예시)
+   ========================================================================== */
+
+.mypost-container .mypost-social-share {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* 아이콘 간격 */
+    margin: 40px 0;
+[source: 47] flex-wrap: wrap; /* 아이콘 많을 시 줄바꿈 */
+}
+
+.mypost-container .mypost-social-icon {
+    width: 45px; height: 45px;
+    border-radius: 50%; /* 원형 아이콘 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+[source: 48] text-decoration: none;
+    color: #ffffff; /* 아이콘 색상 (기본 흰색) */
+}
+
+.mypost-container .mypost-social-icon:hover {
+    transform: translateY(-4px) rotate(8deg) scale(1.1);
+[source: 49] box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    filter: brightness(1.1);
+}
+
+/* 각 소셜 미디어 배경색 (예시) */
+.mypost-container .mypost-social-icon.twitter { background: linear-gradient(135deg, #1da1f2 0%, #1a91da 100%); }
+.mypost-container .mypost-social-icon.facebook { background: linear-gradient(135deg, #4267B2 0%, #365899 100%); }
+.mypost-container .mypost-social-icon.linkedin { background: linear-gradient(135deg, #0e76a8 0%, #0a5e86 100%); }
+.mypost-container .mypost-social-icon.kakao { background: linear-gradient(135deg, #FEE500 0%, #E4CF00 100%); color: #3C1E1E; } /* 카카오 */
+
+.mypost-container .mypost-social-icon i {
+    font-size: 1.1em; /* FontAwesome 등 아이콘 폰트 크기 */
+[source: 50] vertical-align: middle;
+}
+
+/* ==========================================================================
+   mypost-container Data Visualization Placeholder
+   ========================================================================== */
+
+.mypost-container .mypost-data-viz {
+    width: 100%;
+[source: 51] height: 320px; /* 시각화 영역 높이 (조정 가능) */
+    background-color: #f8fafc;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+[source: 52] box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+[source: 53] color: #aaaaaa; /* 플레이스홀더 텍스트 색상 */
+    font-size: 1.2em;
+    font-style: italic;
+    border: 1px solid #eaeaea;
+}
+
+.mypost-container .mypost-data-viz:hover {
+    transform: translateY(-3px);
+[source: 54] box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   mypost-container Post Meta Information
+   ========================================================================== */
+
+.mypost-container .mypost-post-date {
+    font-size: 0.9em;
+[source: 55] color: #64748b;
+    margin-bottom: 15px;
+    display: block; /* 위쪽 여백 확보 */
+}
+
+/* ==========================================================================
+   mypost-container Banners
+   ========================================================================== */
+
+.mypost-container .mypost-banner-container {
+    display: flex;
+[source: 56] flex-direction: column; /* 기본 세로 정렬 */
+    gap: 20px;
+    margin: 30px 0;
+[source: 57] padding: 0;
+}
+
+.mypost-container .mypost-banner {
+    background-color: #2a9d8f; /* 기본 배너 색상 */
+    color: #ffffff;
+    padding: 20px 25px;
+    border-radius: 15px;
+    width: 100%;
+[source: 58] min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+[source: 59] box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none; /* 링크로 사용할 경우 밑줄 제거 */
+}
+
+.mypost-container .mypost-banner:hover {
+    background-color: #217e73; /* 호버 시 약간 어둡게 */
+    transform: scale(1.03) translateY(-4px); /* 약간 확대 및 위로 이동 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mypost-container .mypost-banner h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.5rem; /* rem 단위 사용 (루트 폰트 크기 기준) */
+    font-weight: 600;
+    position: relative; z-index: 2;
+[source: 60] color: #ffffff;
+    border: none; padding: 0; line-height: 1.3;
+}
+.mypost-container .mypost-banner h2::before { display: none; /* 배너 내부 h2 아이콘 숨김 */ }
+
+.mypost-container .mypost-banner p {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.9;
+    position: relative; z-index: 2;
+    line-height: 1.5;
+[source: 61] color: #ffffff;
+}
+
+/* 다양한 배너 색상 */
+.mypost-container .mypost-banner.blue { background-color: #2271b3; }
+.mypost-container .mypost-banner.blue:hover { background-color: #195a8c; }
+.mypost-container .mypost-banner.purple { background-color: #7839ab; }
+.mypost-container .mypost-banner.purple:hover { background-color: #5f2c87; }
+.mypost-container .mypost-banner.orange { background-color: #e67e22; }
+.mypost-container .mypost-banner.orange:hover { background-color: #c16a1d; }
+.mypost-container .mypost-banner.teal { background-color: #2a9d8f; }
+.mypost-container .mypost-banner.teal:hover { background-color: #217e73; }
+.mypost-container .mypost-banner.pink { background-color: #e84a7f; }
+.mypost-container .mypost-banner.pink:hover { background-color: #c73868; }
+
+/* 배너 우측 하단 아이콘 (장식용) */
+.mypost-container .mypost-banner-icon {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    font-size: 2rem;
+    opacity: 0.3;
+[source: 62] transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.mypost-container .mypost-banner:hover .mypost-banner-icon {
+    opacity: 0.5;
+[source: 63] transform: scale(1.1) rotate(-8deg);
+}
+
+
+/* ==========================================================================
+   mypost-container Code Blocks (Basic Styling)
+   ========================================================================== */
+.mypost-container pre {
+    background-color: #f8fafc;
+[source: 64] border: 1px solid #eaeaea;
+    border-radius: 10px;
+    padding: 15px;
+    overflow-x: auto; /* 코드 길면 가로 스크롤 */
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* 고정폭 글꼴 */
+    font-size: 0.85em;
+[source: 65] line-height: 1.6;
+    margin: 20px 0;
+    white-space: pre; /* 공백/줄바꿈 유지 */
+    color: #1a1a2e;
+}
+
+.mypost-container code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+[source: 66] background-color: #f0f2f5;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 0.85em;
+    color: #e63946; /* 인라인 코드 색상 */
+[source: 67] /* white-space: nowrap; /* 인라인 코드 줄바꿈 방지 (선택) */
+}
+
+.mypost-container pre code { /* pre 내부의 code는 스타일 리셋 */
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+[source: 68] color: inherit; /* pre 색상 상속 */
+    font-size: inherit; /* pre 폰트 크기 상속 */
+    font-family: inherit; /* pre 폰트 상속 */
+    white-space: inherit; /* pre의 white-space 설정 따름 */
+}
+
+
+/* ==========================================================================
+   Utility & Accessibility (Scope 적용 안함 - 페이지 전체 기준)
+   ========================================================================== */
+
+/* --- Skip Link (페이지 전체 기준이므로 Scope 미적용) --- */
+.mypost-skip-link {
+    position: absolute;
+[source: 69] left: -9999px; /* 화면 밖으로 숨김 */
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 9999; /* 최상단 */
+    background-color: #3a86ff;
+    color: #ffffff;
+    padding: 12px 15px;
+[source: 70] border-radius: 0 0 10px 0;
+    text-decoration: none;
+    font-weight: 600;
+    transition: none; /* 포커스 이동 시 즉시 표시 */
+}
+
+.mypost-skip-link:focus {
+    position: fixed; /* 화면 이동해도 고정 */
+[source: 71] left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    overflow: visible; /* 내용 보이게 */
+[source: 72] box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Scroll-to-Top Button (페이지 전체 기준이므로 Scope 미적용) --- */
+.mypost-scroll-to-top {
+    position: fixed; /* 화면 이동해도 고정 */
+[source: 73] bottom: 20px;
+    right: 50px; /* 위치 조정 */
+    width: 45px;
+    height: 45px;
+    background-color: #3a86ff;
+[source: 74] color: #ffffff;
+    border-radius: 50%; /* 원형 버튼 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em; /* 화살표 아이콘 크기 */
+    font-weight: 700;
+    text-decoration: none;
+[source: 75] box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    opacity: 0.8; /* 기본 반투명 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+[source: 76] transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    /* ★ JavaScript로 스크롤 시 보이거나 숨기도록 제어 필요 ★ */
+    /* display: none; /* 초기 숨김 (JS 제어) */
+}
+
+.mypost-scroll-to-top:hover {
+    background-color: #2667ca;
+    opacity: 1; /* 호버 시 완전 불투명 */
+[source: 77] transform: scale(1.1) translateY(-2px); /* 약간 커지고 위로 */
+}
+
+
+/* --- Focus Visible (웹 접근성 향상) --- */
+/* Scope 외부 요소 Focus */
+.mypost-skip-link:focus,
+.mypost-scroll-to-top:focus {
+    outline: 2px solid #3a86ff;
+[source: 78] outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.3);
+    /* border-radius 유지 위해 아래에서 개별 설정 */
+}
+/* Scope 내부 요소 Focus */
+.mypost-container a:focus-visible,
+.mypost-container button:focus-visible,
+.mypost-container input:focus-visible, /* input 요소 추가 */
+.mypost-container textarea:focus-visible, /* textarea 요소 추가 */
+.mypost-container select:focus-visible, /* select 요소 추가 */
+.mypost-container .mypost-cta-button:focus-visible,
+.mypost-container .mypost-social-icon:focus
+/* Artifact 2 탭 라벨 포커스 예시 */
+/* .mypost-container input[type="radio"]:focus-visible + .mypost-tab-label */
+ {
+    outline: 2px solid #3a86ff; /* 포커스 시 파란 외곽선 */
+[source: 79] outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.3); /* 파란 그림자 효과 */
+    border-radius: 3px; /* 기본 사각 포커스 */
+}
+/* 특정 요소 모양 유지 */
+.mypost-container .mypost-cta-button:focus-visible { border-radius: 50px; } /* 알약 모양 유지 */
+.mypost-container .mypost-social-icon:focus { border-radius: 50%; } /* 원형 유지 */
+.mypost-scroll-to-top:focus { border-radius: 50%; } /* 원형 유지 */
+
+
+/* ==========================================================================
+   ★★ Media Queries (반응형 디자인 - 모바일 최적화) ★★
+   ========================================================================== */
+
+/* --- 중간 화면 (태블릿 등, 768px 이하) --- */
+@media (max-width: 768px) {
+    .mypost-container {
+        padding: 20px 15px; /* 좌우 여백 약간 줄임 */
+[source: 80] font-size: 15px; /* 기본 폰트 약간 줄임 */
+    }
+
+    .mypost-container h1 { font-size: 1.9em; /* 약 28.5px */ margin-bottom: 25px; }
+    .mypost-container h2 { font-size: 1.5em; /* 약 22.5px */ margin-top: 35px; }
+    .mypost-container h3 { font-size: 1.2em; /* 약 18px */ margin-top: 25px; }
+
+    /* 첫 글자 장식 크기 줄임 */
+    .mypost-container .mypost-dropcap::first-letter { font-size: 3.5em; }
+
+    /* 이미지 상하 여백 줄임 */
+    .mypost-container .mypost-img-container { margin: 25px 0; }
+
+    /* 각종 박스 패딩 줄임 */
+    .mypost-container .mypost-toc,
+    .mypost-container .mypost-info-box,
+    .mypost-container .mypost-warning-box,
+    .mypost-container .mypost-solution-box,
+    .mypost-container .mypost-faq-item {
+        padding: 18px;
+[source: 81] margin: 20px 0; /* 상하 여백 줄임 */
+    }
+    /* 인용구 패딩 조정 */
+    .mypost-container blockquote { padding: 20px 20px 20px 35px; }
+
+     /* 테이블 래퍼 상하 여백 줄임 */
+    .mypost-container .mypost-table-wrapper { margin: 25px 0; }
+    /* 테이블 내부 폰트/패딩 조정 */
+    .mypost-container .mypost-table-wrapper table { font-size: 0.9em; min-width: 500px; /* 최소 너비 조정 */}
+    .mypost-container .mypost-table-wrapper th,
+    .mypost-container .mypost-table-wrapper td { padding: 10px 12px; }
+
+    /* 데이터 시각화 영역 높이 줄임 */
+    .mypost-container .mypost-data-viz { height: 280px; margin: 25px 0; }
+
+    /* CTA 컨테이너 패딩 줄임 */
+    .mypost-container .mypost-cta-container { padding: 25px 20px; margin: 35px 0; }
+
+    /* 소셜 아이콘 크기 약간 줄임 */
+    .mypost-container .mypost-social-icon { width: 40px; height: 40px; }
+    .mypost-container .mypost-social-icon i { font-size: 1em; }
+
+    /* 배너 컨테이너: 가로 2열 배치 */
+    .mypost-container .mypost-banner-container {
+        flex-direction: row; /* 가로 배치 */
+        flex-wrap: wrap; /* 줄바꿈 허용 */
+        gap: 15px; /* 간격 조정 */
+        margin: 25px 0;
+    }
+    .mypost-container .mypost-banner {
+        width: calc(50% - 7.5px); /* 2열 배치 (gap 고려) */
+[source: 82] min-height: 90px;
+        padding: 15px 20px;
+    }
+    .mypost-container .mypost-banner h2 { font-size: 1.3rem; }
+    .mypost-container .mypost-banner p { font-size: 0.9rem; }
+
+    /* Scope 외부 요소 위치/크기 조정 */
+     .mypost-scroll-to-top {
+        bottom: 15px;
+[source: 83] right: 15px; /* 화면 가장자리에 더 가깝게 */
+        width: 40px; height: 40px;
+        font-size: 1.3em;
+     }
+
+     /* 반응형 탭 스타일 (Artifact 2 CSS 에서 @media 규칙 확인) */
+     /* 반응형 카드 스타일 (Artifact 3 CSS 에서 @media 규칙 확인) */
+}
+
+/* --- 작은 화면 (스마트폰 등, 480px 이하) --- */
+@media (max-width: 480px) {
+    .mypost-container {
+        padding: 15px 12px; /* 좌우 여백 더 줄임 */
+[source: 84] font-size: 14px; /* 기본 폰트 더 줄임 */
+    }
+
+    .mypost-container h1 { font-size: 1.7em; /* 약 23.8px */ }
+    .mypost-container h2 { font-size: 1.4em; /* 약 19.6px */ }
+    .mypost-container h3 { font-size: 1.15em; /* 약 16.1px */ }
+
+    .mypost-container .mypost-dropcap::first-letter { font-size: 3em; } /* 첫 글자 장식 더 줄임 */
+
+    /* CTA 버튼 패딩 줄이고 너비 조정 */
+    .mypost-container .mypost-cta-button {
+        padding: 10px 20px;
+[source: 85] width: 90%; /* 너비 늘림 */
+        max-width: 300px; /* 최대 너비 제한 */
+    }
+
+    /* 테이블 래퍼 상하 여백 더 줄임 */
+    .mypost-container .mypost-table-wrapper { margin: 20px 0; }
+    /* 테이블 내부 폰트/패딩 더 줄임 */
+    .mypost-container .mypost-table-wrapper table { font-size: 0.85em; min-width: 400px; /* 최소 너비 더 줄임 */ }
+    .mypost-container .mypost-table-wrapper th,
+    .mypost-container .mypost-table-wrapper td { padding: 8px 10px; }
+
+    /* 데이터 시각화 영역 높이 더 줄임 */
+    .mypost-container .mypost-data-viz { height: 250px; margin: 20px 0; }
+
+     /* 각종 박스 패딩/마진 더 줄임 */
+    .mypost-container .mypost-toc,
+    .mypost-container .mypost-info-box,
+    .mypost-container .mypost-warning-box,
+    .mypost-container .mypost-solution-box,
+    .mypost-container .mypost-faq-item {
+        padding: 15px;
+[source: 86] margin: 15px 0;
+    }
+    .mypost-container blockquote { padding: 15px 15px 15px 30px; }
+
+    /* 배너 컨테이너: 세로 1열 배치 */
+    .mypost-container .mypost-banner-container {
+        flex-direction: column; /* 세로 배치 */
+        gap: 12px; /* 간격 조정 */
+        margin: 20px 0;
+    }
+    .mypost-container .mypost-banner {
+        width: 100%; /* 1열 전체 너비 */
+[source: 87] min-height: auto; /* 최소 높이 자동 */
+        padding: 15px;
+    }
+    .mypost-container .mypost-banner h2 { font-size: 1.2rem; }
+    .mypost-container .mypost-banner p { font-size: 0.85rem; }
+
+    /* Scope 외부 요소 위치/크기 유지 (768px 설정 따름) */
+    /* .mypost-scroll-to-top { ... } */
+
+    /* 반응형 탭 스타일 (Artifact 2 CSS 에서 @media 규칙 확인) */
+    /* 반응형 카드 스타일 (Artifact 3 CSS 에서 @media 규칙 확인) */
+}
+
+/* ==========================================================================
+   Print Stylesheet (인쇄 시 불필요 요소 제거 및 스타일 조정)
+   ========================================================================== */
+@media print {
+    /* 인쇄 시에는 Scope 내부 요소만 보이도록 설정 */
+    body > *:not(.mypost-container) {
+        display: none !important; /* mypost-container 외부의 모든 요소 숨김 */
+    }
+    .mypost-container {
+        color: #000000 !important;
+[source: 88] background-color: #ffffff !important;
+        font-size: 12pt !important; /* 인쇄 기본 폰트 크기 */
+        font-family: Georgia, 'Times New Roman', Times, serif !important; /* 인쇄용 세리프 글꼴 */
+        max-width: 100% !important;
+        padding: 1in !important; /* 인쇄 여백 */
+[source: 89] margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+
+    .mypost-container h1,
+    .mypost-container h2,
+    .mypost-container h3 { color: #000000 !important; }
+    .mypost-container a { color: #000000 !important; text-decoration: underline !important; }
+
+    /* 인쇄 시 불필요한 mypost- 요소 숨김 */
+    .mypost-container .mypost-toc,
+    .mypost-container .mypost-cta-container,
+    .mypost-container .mypost-social-share,
+    .mypost-container .mypost-banner-container,
+    .mypost-container .mypost-faq-item,
+    .mypost-container .mypost-data-viz,
+    .mypost-container .mypost-post-date,
+    /* Artifact 2 탭 컨테이너 예시 */
+    /* .mypost-container .mypost-tab-container */
+    /* Scope 외부 요소도 확실히 숨김 */
+    .mypost-skip-link, .mypost-scroll-to-top {
+        display: none !important;
+    }
+
+    /* 장식용 ::before, ::after 요소 숨김 */
+    .mypost-container h1::after,
+    .mypost-container h2::before,
+    .mypost-container h3::before,
+    .mypost-container blockquote::before,
+    .mypost-container .mypost-info-box::before,
+    .mypost-container .mypost-warning-box::before,
+    .mypost-container .mypost-solution-box::before {
+        display: none !important;
+    }
+
+    /* 페이지 나누기 방지 및 테두리 */
+    .mypost-container table,
+    .mypost-container blockquote,
+    .mypost-container pre,
+    .mypost-container img,
+    .mypost-container .mypost-img-container {
+         page-break-inside: avoid !important;
+         box-shadow: none !important;
+    }
+     .mypost-container .mypost-table-wrapper,
+     .mypost-container .mypost-table-wrapper table,
+     .mypost-container blockquote,
+     .mypost-container pre {
+        border: 1px solid #ccc !important;
+     }
+
+    .mypost-container th,
+    .mypost-container td { border: 1px solid #ccc !important; }
+    .mypost-container th { background-color: #eee !important; color: #000 !important;}
+
+    .mypost-container img { max-width: 100% !important; }
+    .mypost-container .mypost-img-caption { color: #555 !important; font-size: 10pt !important; }
+
+    /* 코드 블록 스타일 */
+    .mypost-container pre,
+    .mypost-container code {
+        font-family: monospace !important;
+        background-color: #f8f8f8 !important;
+        color: #000 !important;
+        word-wrap: break-word !important;
+        white-space: pre-wrap !important; /* 줄바꿈 허용 */
+    }
+    .mypost-container code { background: none !important; padding: 0 !important; border: none !important; }
+    .mypost-container pre code { background: none !important; color: inherit !important; }
+
+    /* 첫 글자 장식 제거 */
+    .mypost-container .mypost-dropcap::first-letter { all: unset !important; }
+
+    /* 배경색 제거 및 테두리 추가 */
+    .mypost-container .mypost-info-box,
+    .mypost-container .mypost-warning-box,
+    .mypost-container .mypost-solution-box,
+    .mypost-container .mypost-highlight {
+        background-color: #ffffff !important;
+[source: 90] border: 1px solid #ccc !important;
+        box-shadow: none !important;
+    }
+}
+
+
+/* ==========================================================================
+   Dark Mode Support (.mypost-container 내부 스타일 조정)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    .mypost-container {
+        background-color: #121212; /* 다크모드 배경 */
+[source: 91] color: #e0e0e0; /* 다크모드 기본 텍스트 */
+    }
+
+    .mypost-container h1,
+    .mypost-container h2,
+    .mypost-container h3 { color: #f0f0f0; /* 다크모드 헤딩 */ }
+    .mypost-container h1::after { background-color: #5a9bff; }
+    .mypost-container h2::before { background-color: rgba(90, 155, 255, 0.2); }
+    .mypost-container h3::before { background-color: #5a9bff; }
+
+    .mypost-container a { color: #5a9bff; /* 다크모드 링크 */ }
+    .mypost-container a:hover { color: #8ec0ff; text-decoration-color: #8ec0ff; }
+
+    .mypost-container .mypost-highlight { background-color: rgba(255, 231, 150, 0.3); }
+    .mypost-container .mypost-highlight:hover { background-color: rgba(255, 231, 150, 0.5); }
+
+    .mypost-container .mypost-bold-red, .mypost-highlight-red { color: #ff7b81; }
+    .mypost-container .mypost-bold-blue, .mypost-highlight-blue { color: #5a9bff; }
+    .mypost-container .mypost-bold-green { color: #48d6c9; }
+    .mypost-container .mypost-dropcap::first-letter { color: #5a9bff; text-shadow: 1px 1px 0px rgba(255,255,255,0.1); }
+
+    /* 다크모드 배경/테두리 */
+    .mypost-container .mypost-toc,
+    .mypost-container .mypost-info-box,
+    .mypost-container .mypost-warning-box,
+    .mypost-container .mypost-solution-box,
+    .mypost-container .mypost-faq-item,
+    .mypost-container blockquote,
+    .mypost-container .mypost-data-viz,
+    .mypost-container .mypost-table-wrapper,
+    .mypost-container .mypost-table-wrapper tbody tr:nth-child(even),
+    .mypost-container pre {
+        background-color: #1e1e1e; /* 어두운 배경 */
+[source: 92] border-color: #333; /* 어두운 테두리 */
+        box-shadow: none; /* 그림자 제거 */
+    }
+    /* Artifact 2 탭 콘텐츠 다크모드 배경 예시 */
+    /* .mypost-container .mypost-tab-content { background-color: #1e1e1e; border-color: #333; } */
+
+    /* 코드 블록 다크모드 */
+    .mypost-container code { background-color: #2c2c2c; color: #ff7b81; }
+    .mypost-container pre { color: #e0e0e0;}
+    .mypost-container pre code { color: inherit; background: transparent; }
+
+    /* 박스 왼쪽 선 색상 */
+    .mypost-container .mypost-info-box::before { background-color: #5a9bff; }
+    .mypost-container .mypost-warning-box::before { background-color: #ff7b81; }
+    .mypost-container .mypost-solution-box::before { background-color: #48d6c9; }
+
+    /* 목차 다크모드 */
+    .mypost-container .mypost-toc h2 { color: #f0f0f0; border-bottom-color: #333; }
+    .mypost-container .mypost-toc a { color: #5a9bff; background-image: linear-gradient(rgba(90, 155, 255, 0.2), rgba(90, 155, 255, 0.2));}
+    .mypost-container .mypost-toc a:hover { color: #8ec0ff; }
+
+    /* 테이블 다크모드 */
+    .mypost-container .mypost-table-wrapper th { background-color: #3a86ff; color: #ffffff; border-color: #3a86ff;}
+    .mypost-container .mypost-table-wrapper td,
+    .mypost-container .mypost-table-wrapper th { border-color: #444; /* 테이블 선 색상 */ }
+    .mypost-container .mypost-table-wrapper tbody tr:hover { background-color: #252525; /* 행 호버 배경 */ }
+
+    /* FAQ 다크모드 */
+    .mypost-container .mypost-faq-question { color: #f0f0f0; }
+    .mypost-container .mypost-faq-question::before { color: #5a9bff; }
+    .mypost-container .mypost-faq-answer { color: #e0e0e0; }
+    .mypost-container .mypost-faq-answer::before { color: #ff7b81; }
+
+    /* 인용구 다크모드 */
+    .mypost-container blockquote { color: #bdbdbd; border-color: #333; }
+    .mypost-container blockquote::before { color: rgba(90, 155, 255, 0.2); }
+
+    /* CTA 버튼 다크모드 */
+    .mypost-container .mypost-cta-button { background-color: #1e1e1e; color: #5a9bff;}
+    .mypost-container .mypost-cta-button:hover { background-color: #2c2c2c; color: #8ec0ff; }
+
+    /* 탭 관련 다크모드 스타일 (Artifact 2 CSS 에서 @media 규칙 확인) */
+    /* 카드 관련 다크모드 스타일 (Artifact 3 CSS 에서 @media 규칙 확인) */
+
+    /* Scope 외부 요소 다크모드 스타일 */
+    .mypost-skip-link { background-color: #5a9bff; color: #121212; }
+    .mypost-scroll-to-top { background-color: #5a9bff; color: #121212; box-shadow: none; }
+    .mypost-scroll-to-top:hover { background-color: #8ec0ff; }
+
+    /* 포커스 스타일 조정 */
+    /* Scope 외부 */
+    .mypost-skip-link:focus,
+    .mypost-scroll-to-top:focus {
+        outline-color: #8ec0ff;
+[source: 93] box-shadow: 0 0 0 3px rgba(90, 155, 255, 0.4);
+    }
+    /* Scope 내부 */
+     .mypost-container a:focus-visible,
+     .mypost-container button:focus-visible,
+     .mypost-container input:focus-visible,
+     .mypost-container textarea:focus-visible,
+     .mypost-container select:focus-visible,
+     .mypost-container .mypost-cta-button:focus-visible,
+     .mypost-container .mypost-social-icon:focus
+     /* .mypost-container input[type="radio"]:focus-visible + .mypost-tab-label */
+     {
+        outline-color: #8ec0ff;
+[source: 94] box-shadow: 0 0 0 3px rgba(90, 155, 255, 0.4);
+    }
+}
