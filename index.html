@@ -3,1326 +3,845 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>대한민국 12조 원 추경예산 총정리: 국민 생활은 어떻게 바뀔까?</title>
-    <meta name="description" content="2025년 12조 원 추경예산의 모든 것! 소상공인 지원부터 AI 산업 육성까지, 국민 생활에 직접적인 영향을 미칠 정부 정책을 알기 쉽게 정리했습니다.">
-    <meta name="keywords" content="추경, 12조원, 소상공인지원, 재난대응, AI정책, 반도체산업, 상생페이백, 부담경감크레딧, 재해복구">
+    <title>2025년 고용시장 분석: 지표와 현실 사이</title>
+    <link rel="stylesheet" href="CSS.css">
 </head>
-<style>
-    /* ==========================================================================
-       Base Styles & Typography
-       ========================================================================== */
-    
-    /* 부드러운 스크롤 (맨 위로 가기 버튼 등에 적용) */
-    html {
-        scroll-behavior: smooth;
-    }
-    
-    body {
-        font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-        line-height: 1.7;
-        font-size: 16px; /* 기본 폰트 크기 */
-        color: #1a1a2e;
-        background-color: #fafafa;
-        max-width: 850px; /* 콘텐츠 최대 너비 */
-        margin: 0 auto; /* 중앙 정렬 */
-        padding: 25px 20px; /* 내부 여백 */
-        letter-spacing: -0.01em; /* 자간 기본값 */
-    }
-    
-    /* 기본 박스 모델 설정 */
-    *, *::before, *::after {
-        box-sizing: border-box; /* padding/border를 width/height에 포함 */
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-    
-    /* 긴 단어 하이픈 처리 (필요시 언어 설정 필요 - lang="ko" 등) */
-    body {
-        hyphens: auto;
-    }
-    
-    
-    /* Headings */
-    h1, h2, h3 {
-        color: #16213e;
-        font-weight: bold; /* 기본 굵기 */
-        word-break: keep-all; /* 단어 분리 방지 (한국어 등) */
-        max-width: 100%; /* 최대 너비 제한 */
-        letter-spacing: normal; /* 제목은 기본 자간 */
-        line-height: 1.3;
-    }
-    
-    h1 {
-        font-size: 2.2em;
-        border-bottom: none; /* 밑줄 제거 (아래 ::after로 대체) */
-        padding-bottom: 12px;
-        margin-bottom: 30px;
-        font-weight: 800; /* 가장 굵게 */
-        letter-spacing: -0.02em; /* 자간 좁힘 */
-        position: relative;
-    }
-    
-    h1::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 60px;
-        height: 4px;
-        background-color: #3a86ff;
-        border-radius: 3px; /* 변수 대신 값 사용 */
-    }
-    
-    h2 {
-        font-size: 1.7em;
-        margin-top: 40px;
-        margin-bottom: 20px; /* h2 다음 요소와의 간격 추가 */
-        padding-left: 0;
-        font-weight: 700; /* 굵게 */
-        letter-spacing: -0.01em; /* 자간 좁힘 */
-        position: relative;
-        padding-bottom: 8px; /* ::before 공간 확보 */
-    }
-    
-    h2::before {
-        content: '';
-        position: absolute;
-        bottom: 2px;
-        left: 0;
-        width: 100%;
-        height: 6px;
-        background-color: rgba(58, 134, 255, 0.2);
-        border-radius: 3px; /* 변수 대신 값 사용 */
-        z-index: -1; /* 텍스트 뒤로 */
-    }
-    
-    h3 {
-        font-size: 1.3em;
-        margin-top: 30px;
-        margin-bottom: 15px; /* h3 다음 요소와의 간격 추가 */
-        font-weight: 600; /* 약간 굵게 */
-        position: relative; /* 장식 추가 대비 */
-    }
-    
-    /* --- CSS Decoration Example for H3 --- */
-    h3::before {
-        content: '';
-        display: inline-block;
-        width: 12px; /* 변수 대신 값 사용 */
-        height: 12px;
-        background-color: #3a86ff;
-        border-radius: 50%; /* 원 */
-        margin-right: 8px;
-        vertical-align: middle; /* 텍스트와 수직 정렬 */
-        opacity: 0.5;
-        transition: transform 0.3s ease; /* 변수 대신 값 사용 */
-    }
-    h3:hover::before {
-        transform: scale(1.2) rotate(45deg); /* 호버 시 약간의 효과 */
-    }
-    
-    
-    /* Paragraphs and Lists */
-    p, li {
-        margin-bottom: 1em; /* 단락/항목 간 간격 */
-    }
-    
-    ul, ol {
-        padding-left: 22px; /* 들여쓰기 */
-        margin-bottom: 20px;
-    }
-    
-    ul li, ol li {
-        margin-bottom: 8px;
-        line-height: 1.6;
-        position: relative;
-    }
-    
-    ul li::marker {
-        color: #3a86ff;
-    }
-    
-    /* Links */
-    a {
-        color: #3a86ff;
-        text-decoration: none; /* 기본 밑줄 제거 */
-        transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease, text-decoration-color 0.3s ease; /* 변수 대신 값 사용 */
-        text-decoration-line: underline;
-        text-decoration-color: transparent; /* 평소에는 투명 */
-        text-underline-offset: 3px; /* 밑줄과 텍스트 간격 */
-    }
-    
-    a:hover {
-        color: #2667ca; /* 변수 대신 값 사용 */
-        text-decoration-color: #2667ca; /* 호버 시 밑줄 색상 나타남 */
-        /* --- Enhanced Hover Effect Example --- */
-        opacity: 0.85; /* 약간 투명도 변경 */
-    }
-    
-    /* ==========================================================================
-       Text Emphasis & Highlights
-       ========================================================================== */
-    
-    .highlight {
-        background-color: rgba(255, 250, 205, 0.5);
-        padding: 1px 4px;
-        border-radius: 3px;
-        transition: background-color 0.3s ease;
-    }
-    
-    .highlight:hover {
-        background-color: rgba(255, 250, 205, 0.8);
-    }
-    
-    .bold-red, .highlight-red {
-        color: #e63946;
-        font-weight: 600;
-    }
-    
-    .bold-blue, .highlight-blue {
-        color: #3a86ff;
-        font-weight: 600;
-    }
-    
-    .bold-green {
-        color: #2a9d8f;
-        font-weight: 600;
-    }
-    
-    .white-text {
-        color: #ffffff !important; /* 필요시 우선순위 높임 */
-    }
-    
-    /* --- Drop Cap --- */
-    /* 사용법: 드롭캡을 적용할 단락에 class="dropcap" 추가 (예: <p class="dropcap">...) */
-    .dropcap::first-letter {
-        color: #3a86ff;
-        font-size: 4em; /* 크기 조절 */
-        font-weight: 700; /* bold */
-        float: left;
-        line-height: 0.8; /* 줄 간격 조절 */
-        margin-top: 4px; /* 위치 미세 조정 */
-        margin-right: 8px;
-        margin-bottom: -4px; /* 아래 간격 조절 */
-        font-family: 'Inter', 'Noto Sans KR', sans-serif; /* 기본 헤딩 폰트 사용 */
-        text-shadow: 1px 1px 0px rgba(0,0,0,0.1); /* 입체감 */
-    }
-    
-    /* ==========================================================================
-       Boxes (Info, Warning, Solution)
-       ========================================================================== */
-    
-    .info-box, .warning-box, .solution-box {
-        padding: 22px; /* 값 유지 */
-        margin: 25px 0;
-        border-radius: 10px;
-        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-        border: none;
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease; /* 변수 대신 값 사용 */
-    }
-    
-    .info-box:hover, .warning-box:hover, .solution-box:hover {
-        transform: translateY(-3px) scale(1.01); /* 향상된 호버 효과 */
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12); /* 변수 대신 값 사용 */
-    }
-    
-    .info-box::before, .warning-box::before, .solution-box::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 4px;
-    }
-    
-    .info-box { background-color: #f0f7ff; }
-    .info-box::before { background-color: #3a86ff; }
-    
-    .warning-box { background-color: #fff5f5; }
-    .warning-box::before { background-color: #e63946; }
-    
-    .solution-box { background-color: #f0fff4; }
-    .solution-box::before { background-color: #2a9d8f; }
-    
-    /* ==========================================================================
-       Table of Contents (TOC)
-       ========================================================================== */
-    
-    .toc {
-        background-color: #f8fafc;
-        padding: 20px;
-        border-radius: 10px;
-        margin-bottom: 30px;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03); /* 변수 대신 값 사용 */
-        border: 1px solid #eaeaea;
-    }
-    
-    .toc h2 {
-        border: none;
-        margin-top: 0;
-        font-size: 1.5em;
-        color: #16213e;
-        padding-bottom: 15px; /* 값 조정 */
-        border-bottom: 2px solid #eaeaea;
-        margin-bottom: 15px;
-    }
-    
-    .toc h2::before { display: none; } /* TOC 제목 장식 제거 */
-    
-    .toc ul {
-        padding-left: 15px;
-        margin-top: 15px;
-        list-style: none;
-    }
-    
-    .toc li { margin-bottom: 8px; }
-    
-    .toc a {
-        color: #3a86ff;
-        position: relative;
-        display: inline-block;
-        padding: 4px 0; /* 값 조정 */
-        font-weight: 500;
-        font-size: 0.9em; /* 값 조정 */
-        line-height: 1.6;
-        text-decoration: none;
-        /* --- Enhanced Hover Effect --- */
-        background-image: linear-gradient(rgba(58, 134, 255, 0.2), rgba(58, 134, 255, 0.2)); /* 변수 대신 값 사용 */
-        background-position: 0% 100%;
-        background-repeat: no-repeat;
-        background-size: 0% 2px; /* 초기 밑줄 없음 */
-        transition: background-size 0.3s ease, color 0.3s ease; /* 변수 대신 값 사용 */
-    }
-    
-    .toc a:hover {
-        color: #2667ca;
-        background-size: 100% 2px; /* 호버 시 밑줄 효과 */
-    }
-    
-    /* ==========================================================================
-       Images
-       ========================================================================== */
-    
-    .img-container {
-        width: 100%;
-        margin: 30px 0;
-        text-align: center;
-    }
-    
-    .img-container img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; /* 변수 대신 값 사용 */
-        display: block;
-        margin: 0 auto;
-    }
-    
-    .img-container img:hover {
-        transform: translateY(-4px) scale(1.02); /* 향상된 호버 효과 */
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
-        filter: brightness(1.05); /* 약간 밝게 */
-    }
-    
-    .img-caption {
-        font-size: 0.9em;
-        color: #64748b;
-        margin-top: 15px; /* 값 조정 */
-        text-align: center;
-        font-style: italic;
-    }
-    
-    .responsive-img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-      }
-    
-    
-    /* ==========================================================================
-       Tables
-       ========================================================================== */
-    
-    .table-wrapper {
-        overflow-x: auto;
-        margin: 30px 0;
-        border-radius: 10px;
-        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-    }
-    .table-wrapper table {
-        width: 100%;
-        border-collapse: collapse;
-        border-spacing: 0;
-        font-size: 0.95em; /* 값 조정 */
-        background-color: #ffffff;
-    }
-    
-    th, td {
-        border: 1px solid #dddddd; /* 테이블 선 */
-        padding: 12px 15px;
-        text-align: left;
-        vertical-align: top;
-    }
-    
-    th {
-        background-color: #3a86ff;
-        color: #ffffff;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-        border-color: #3a86ff;
-    }
-    
-    tbody tr {
-        transition: background-color 0.3s ease; /* 변수 대신 값 사용 */
-    }
-    
-    tbody tr:nth-child(even) {
-        background-color: #f8fafc;
-    }
-    
-    tbody tr:hover {
-        background-color: #f0f7ff; /* 호버 시 배경색 변경 */
-    }
-    
-    /* ==========================================================================
-       FAQ Section
-       ========================================================================== */
-    
-    .faq-item {
-        margin-bottom: 20px;
-        padding: 20px; /* 값 조정 */
-        border-radius: 10px;
-        background-color: #f8fafc;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 1px solid #eaeaea;
-    }
-    
-    .faq-item:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05); /* 호버 시 그림자 약간 진하게 */
-    }
-    
-    .faq-question {
-        font-weight: 600;
-        color: #16213e;
-        margin: 0 0 12px 0;
-        font-size: 1.15em;
-        position: relative;
-        padding-left: 28px;
-    }
-    
-    .faq-question::before {
-        content: 'Q';
-        position: absolute;
-        left: 0;
-        top: 0;
-        font-weight: 700;
-        color: #3a86ff;
-    }
-    
-    .faq-answer {
-        padding-left: 28px;
-        position: relative;
-        margin: 0;
-        color: #1a1a2e;
-    }
-    
-    .faq-answer::before {
-        content: 'A';
-        position: absolute;
-        left: 0;
-        top: 0;
-        font-weight: 700;
-        color: #e63946;
-    }
-    .faq-answer p:last-child { margin-bottom: 0; }
-    
-    /* ==========================================================================
-       Call to Action (CTA)
-       ========================================================================== */
-    
-    .cta-container {
-        background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
-        color: #ffffff;
-        padding: 30px;
-        border-radius: 12px;
-        text-align: center;
-        margin: 40px 0;
-        box-shadow: 0 6px 25px rgba(58, 134, 255, 0.25);
-        overflow: hidden;
-        position: relative;
-    }
-    
-    .cta-container::before { /* 장식용 요소 */
-        content: '';
-        position: absolute;
-        top: -50%; left: -50%;
-        width: 200%; height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-        transform: rotate(10deg);
-        pointer-events: none;
-    }
-    
-    .cta-container h3 {
-        color: #ffffff;
-        margin-top: 0;
-        margin-bottom: 15px;
-        font-size: 1.6em;
-        font-weight: 700;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        position: relative; z-index: 1;
-    }
-    .cta-container h3::before { display: none; } /* CTA 제목 장식 제거 */
-    
-    
-    .cta-container p {
-        position: relative; z-index: 1;
-        margin-bottom: 15px;
-        opacity: 0.9;
-    }
-    
-    .cta-button {
-        display: inline-block;
-        background-color: #ffffff;
-        color: #3a86ff;
-        padding: 12px 25px;
-        border-radius: 50px; /* 알약 모양 */
-        text-decoration: none;
-        font-weight: 600;
-        margin-top: 15px;
-        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        font-size: 1em;
-        max-width: 80%;
-        border: none;
-        cursor: pointer;
-        position: relative; z-index: 1;
-    }
-    
-    .cta-button:hover {
-        background-color: #f8fafc;
-        transform: scale(1.05) translateY(-3px); /* 향상된 호버 효과 */
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        color: #2667ca;
-    }
-    
-    /* ==========================================================================
-       Blockquotes
-       ========================================================================== */
-    
-    blockquote {
-        border-left: none;
-        padding: 20px 25px 20px 40px; /* 값 조정 */
-        margin: 25px 0;
-        font-style: italic;
-        color: #64748b;
-        background-color: #f8fafc;
-        border-radius: 10px;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
-        position: relative;
-        font-size: 0.95em; /* 값 조정 */
-        border: 1px solid #eaeaea;
-    }
-    
-    blockquote::before {
-        content: '"';
-        position: absolute;
-        top: 5px;
-        left: 15px;
-        font-size: 3.5em;
-        color: rgba(58, 134, 255, 0.2);
-        font-family: Georgia, serif;
-        line-height: 1;
-        /* --- CSS Decoration Example --- */
-        transform: rotate(-5deg); /* 약간 기울이기 */
-        opacity: 0.8;
-    }
-    
-    blockquote p:last-child { margin-bottom: 0; }
-    
-    /* ==========================================================================
-       Social Share Buttons
-       ========================================================================== */
-    
-    .social-share {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin: 40px 0;
-        flex-wrap: wrap;
-    }
-    
-    .social-icon {
-        width: 45px; height: 45px;
-        border-radius: 50%; /* 원 */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
-        text-decoration: none;
-        color: #ffffff; /* 아이콘 색상 기본값 */
-    }
-    
-    .social-icon:hover {
-        transform: translateY(-4px) rotate(8deg) scale(1.1); /* 향상된 호버 효과 */
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
-        filter: brightness(1.1); /* 약간 밝게 */
-    }
-    
-    .social-icon.twitter { background: linear-gradient(135deg, #1da1f2 0%, #1a91da 100%); }
-    .social-icon.facebook { background: linear-gradient(135deg, #4267B2 0%, #365899 100%); }
-    .social-icon.linkedin { background: linear-gradient(135deg, #0e76a8 0%, #0a5e86 100%); }
-    .social-icon.kakao { background: linear-gradient(135deg, #FEE500 0%, #E4CF00 100%); color: #3C1E1E; }
-    
-    .social-icon i { /* FontAwesome 등 사용 가정 */
-        font-size: 1.1em;
-        vertical-align: middle;
-    }
-    
-    /* ==========================================================================
-       Data Visualization Placeholder
-       ========================================================================== */
-    
-    .data-viz {
-        width: 100%;
-        height: 320px;
-        background-color: #f8fafc;
-        border-radius: 12px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 30px 0;
-        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-        overflow: hidden;
-        position: relative;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        color: #aaaaaa; /* 값 조정 */
-        font-size: 1.2em;
-        font-style: italic;
-        border: 1px solid #eaeaea;
-    }
-    
-    .data-viz:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
-    }
-    
-    /* ==========================================================================
-       Post Meta Information
-       ========================================================================== */
-    
-    .post-date {
-        font-size: 0.9em;
-        color: #64748b;
-        margin-bottom: 15px;
-        display: block;
-    }
-    
-    /* ==========================================================================
-       Banners
-       ========================================================================== */
-    
-    .banner-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-        max-width: 1200px;
-        margin: 30px auto;
-        padding: 0 10px;
-    }
-    
-    .banner {
-        background-color: #2a9d8f; /* 기본 녹색 */
-        color: #ffffff;
-        padding: 20px 25px; /* 값 조정 */
-        border-radius: 15px;
-        width: 280px;
-        min-height: 100px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-        cursor: pointer;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        position: relative;
-        overflow: hidden;
-        text-decoration: none;
-    }
-    
-    .banner:hover {
-        background-color: #217e73; /* 색상 값 직접 지정 */
-        transform: scale(1.05) translateY(-5px); /* 향상된 호버 효과 */
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
-    
-    .banner h2 {
-        margin: 0 0 5px 0;
-        font-size: 1.5rem;
-        font-weight: 600;
-        position: relative; z-index: 2;
-        color: #ffffff;
-        border: none; padding: 0; line-height: 1.3;
-    }
-    .banner h2::before { display: none; }
-    
-    
-    .banner p {
-        margin: 0;
-        font-size: 1rem;
-        opacity: 0.9;
-        position: relative; z-index: 2;
-        line-height: 1.5;
-        color: #ffffff;
-    }
-    
-    /* Banner Color Variations */
-    .banner.blue { background-color: #2271b3; }
-    .banner.blue:hover { background-color: #195a8c; }
-    .banner.purple { background-color: #7839ab; }
-    .banner.purple:hover { background-color: #5f2c87; }
-    .banner.orange { background-color: #e67e22; }
-    .banner.orange:hover { background-color: #c16a1d; }
-    .banner.teal { background-color: #2a9d8f; } /* Default */
-    .banner.teal:hover { background-color: #217e73; }
-    .banner.pink { background-color: #e84a7f; }
-    .banner.pink:hover { background-color: #c73868; }
-    
-    
-    .banner-icon {
-        position: absolute;
-        right: 15px;
-        bottom: 15px;
-        font-size: 2rem;
-        opacity: 0.3;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        z-index: 1;
-        pointer-events: none;
-    }
-    
-    .banner:hover .banner-icon {
-        opacity: 0.5;
-        transform: scale(1.1) rotate(-8deg); /* 향상된 호버 효과 */
-    }
-    
-    /* ==========================================================================
-       Accordion Tabs (CSS Only - Checkbox Hack)
-       ========================================================================== */
-    
-    .accordion-tabs {
-        width: 100%;
-        margin: 20px 0;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        border: 1px solid #dddddd;
-    }
-    
-    .tab-toggle { display: none; }
-    
-    .tab-header {
-        display: block;
-        padding: 15px 20px;
-        background-color: #f0f2f5;
-        color: #333333;
-        font-weight: 600;
-        cursor: pointer;
-        border-bottom: 1px solid #dddddd;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        position: relative;
-    }
-    
-    .accordion-tabs > div:last-of-type .tab-header { border-bottom: none; }
-    .accordion-tabs > div:last-of-type .tab-toggle:checked + .tab-header + .tab-content { border-bottom: none; }
-    
-    .tab-header:hover {
-        background-color: #e9ecef; /* 색상 값 직접 지정 */
-    }
-    
-    .tab-toggle:checked + .tab-header {
-        background-color: #3a86ff;
-        color: #ffffff;
-        border-bottom-color: #3a86ff;
-    }
-    
-    .tab-content {
-        display: none;
-        padding: 20px;
-        background-color: #ffffff;
-        border-bottom: 1px solid #dddddd;
-        color: #1a1a2e;
-    }
-    .tab-content p:last-child,
-    .tab-content ul:last-child,
-    .tab-content ol:last-child { margin-bottom: 0; }
-    
-    .tab-toggle:checked + .tab-header + .tab-content { display: block; }
-    
-    .tab-header::after { /* Indicator Icon */
-        content: '+';
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 1.2em;
-        font-weight: 400; /* normal */
-        transition: transform 0.3s ease;
-    }
-    
-    .tab-toggle:checked + .tab-header::after {
-        content: '−';
-        transform: translateY(-50%) rotate(180deg);
-    }
-    
-    /* ==========================================================================
-       Code Blocks (Basic Styling)
-       ========================================================================== */
-    pre {
-        background-color: #f8fafc;
-        border: 1px solid #eaeaea;
-        border-radius: 10px;
-        padding: 15px;
-        overflow-x: auto; /* 가로 스크롤 */
-        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* 코드용 폰트 */
-        font-size: 0.85em; /* 크기 조절 */
-        line-height: 1.6;
-        margin: 20px 0;
-        white-space: pre; /* 공백 유지 */
-        color: #1a1a2e; /* 코드 텍스트 색상 */
-    }
-    
-    code { /* Inline code */
-        font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-        background-color: #f0f2f5;
-        padding: 2px 4px;
-        border-radius: 3px;
-        font-size: 0.85em;
-        color: #e63946; /* 인라인 코드 색상 강조 */
-    }
-    
-    pre code { /* Code inside pre - reset inline styles */
-        background-color: transparent;
-        padding: 0;
-        border-radius: 0;
-        color: inherit; /* pre의 색상 상속 */
-        font-size: inherit; /* pre의 폰트 크기 상속 */
-    }
-    
-    
-    /* ==========================================================================
-       Utility & Accessibility
-       ========================================================================== */
-    
-    /* --- Skip Link --- */
-    /* 사용법: body 바로 다음에 <a href="#main-content" class="skip-link">본문으로 바로가기</a> 추가 */
-    /* 메인 콘텐츠 영역에 id="main-content" 추가 */
-    .skip-link {
-        position: absolute;
-        left: -9999px; /* 화면 밖으로 */
-        top: auto;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        z-index: 9999; /* 다른 요소 위에 오도록 */
-        background-color: #3a86ff;
-        color: #ffffff;
-        padding: 12px 15px;
-        border-radius: 0 0 10px 0; /* 오른쪽 아래만 라운드 */
-        text-decoration: none;
-        font-weight: 600;
-        transition: none; /* 포커스 시 즉시 나타나도록 */
-    }
-    
-    .skip-link:focus {
-        position: fixed; /* 화면 상단 고정 */
-        left: 0;
-        top: 0;
-        width: auto;
-        height: auto;
-        overflow: visible;
-        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-    }
-    
-    /* --- Scroll-to-Top Button (Always Visible) --- */
-    /* 사용법: body 최상단 근처에 <div id="top"></div> 추가 */
-    /* body 하단에 <a href="#top" class="scroll-to-top" aria-label="맨 위로 가기">↑</a> 추가 (아이콘 폰트 사용 가능) */
-    .scroll-to-top {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 45px;
-        height: 45px;
-        background-color: #3a86ff;
-        color: #ffffff;
-        border-radius: 50%; /* 원 */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5em; /* 아이콘 크기 */
-        font-weight: 700; /* bold */
-        text-decoration: none;
-        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-        opacity: 0.8;
-        z-index: 1000;
-        transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
-    }
-    
-    .scroll-to-top:hover {
-        background-color: #2667ca;
-        opacity: 1;
-        transform: scale(1.1) translateY(-2px); /* 향상된 호버 효과 */
-    }
-    
-    
-    /* --- Focus Visible --- */
-    a:focus-visible,
-    button:focus-visible,
-    .tab-header:focus-visible,
-    input[type="checkbox"]:focus-visible + .tab-header,
-    .skip-link:focus,
-    .scroll-to-top:focus {
-        outline: 2px solid #3a86ff;
-        outline-offset: 2px;
-        box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.3);
-        border-radius: 3px; /* 포커스 스타일에 라운딩 */
-    }
-    /* 특정 요소 모양 유지 */
-    .cta-button:focus-visible { border-radius: 50px; }
-    .social-icon:focus-visible, .scroll-to-top:focus-visible { border-radius: 50%; }
-    
-    
-    /* ==========================================================================
-       Media Queries (Responsiveness)
-       ========================================================================== */
-    
-    @media (max-width: 768px) {
-        body {
-            padding: 15px 12px;
-            font-size: 15px;
-        }
-    
-        h1 { font-size: 1.8em; margin-bottom: 25px; }
-        h2 { font-size: 1.5em; margin-top: 35px; }
-        h3 { font-size: 1.2em; margin-top: 25px; }
-    
-        .img-container { margin: 20px 0; }
-        .cta-container { padding: 20px; }
-    
-        .toc, .info-box, .warning-box, .solution-box, .faq-item {
-            padding: 18px;
-            margin: 20px 0; /* 간격 살짝 줄임 */
-        }
-        blockquote { padding: 20px 25px 20px 35px; } /* 왼쪽 여백 줄임 */
-    
-        table { font-size: 0.9em; }
-        th, td { padding: 10px 12px; }
-    
-        .data-viz { height: 280px; }
-    
-        .social-icon { width: 40px; height: 40px; }
-        .social-icon i { font-size: 1em; } /* 아이콘 크기 조절 */
-    
-        .banner-container { padding: 0; }
-        .banner {
-            width: calc(50% - 10px); /* 2열 배치 (gap 고려) */
-            min-height: 90px;
-            padding: 15px 20px;
-        }
-        .banner h2 { font-size: 1.3rem; }
-        .banner p { font-size: 0.9rem; }
-    
-         .tab-header { padding: 12px 15px; }
-         .tab-content { padding: 15px; }
-         .tab-header::after { right: 15px; } /* 아이콘 위치 조정 */
-    
-         .scroll-to-top { bottom: 15px; right: 15px; width: 40px; height: 40px; font-size: 1.3em;}
-         .dropcap::first-letter { font-size: 3.5em; } /* 모바일에서 드롭캡 크기 약간 줄임 */
-    }
-    
-    @media (max-width: 480px) {
-        body {
-            padding: 12px 10px;
-            font-size: 14px;
-        }
-    
-        h1 { font-size: 1.6em; }
-        h2 { font-size: 1.4em; }
-        h3 { font-size: 1.1em; }
-    
-        .cta-button { padding: 10px 20px; width: 90%; max-width: 300px; }
-    
-        table { font-size: 0.85em; }
-        th, td { padding: 8px 10px; }
-    
-        .data-viz { height: 250px; }
-    
-        .banner { width: 100%; } /* 1열 */
-        .banner h2 { font-size: 1.2rem; }
-        .banner p { font-size: 0.85rem; }
-    
-        .dropcap::first-letter { font-size: 3em; } /* 더 작은 화면에서 드롭캡 크기 더 줄임 */
-    }
-    
-    /* ==========================================================================
-       Print Stylesheet
-       ========================================================================== */
-    @media print {
-        body {
-            color: #000000;
-            background-color: #ffffff;
-            font-size: 12pt;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            max-width: 100%;
-            padding: 1in;
-        }
-    
-        h1, h2, h3 { color: #000000; }
-        a { color: #000000; text-decoration: underline; }
-    
-        /* 인쇄 시 불필요한 요소 숨김 */
-        .toc, .cta-container, .social-share, .banner-container, .faq-item, .data-viz,
-        .accordion-tabs, .skip-link, .scroll-to-top, header, nav, footer, aside,
-        .post-date {
-            display: none !important;
-        }
-        h1::after, h2::before, h3::before, blockquote::before { display: none; }
-    
-        table, blockquote { page-break-inside: avoid; border: 1px solid #ccc; box-shadow: none; }
-        th, td { border: 1px solid #ccc; }
-        th { background-color: #eee; color: #000;}
-    
-        img { max-width: 100% !important; page-break-inside: avoid; box-shadow: none; }
-        .img-caption { color: #555; font-size: 10pt; }
-    
-        pre, code { font-family: monospace; background-color: #f8f8f8; border: 1px solid #ccc; color: #000; word-wrap: break-word; white-space: pre-wrap; page-break-inside: avoid; }
-        code { background: none; padding: 0; }
-    
-        .dropcap::first-letter { all: unset; } /* 드롭캡 기본 스타일로 */
-    
-        /* 배경 제거 */
-        .info-box, .warning-box, .solution-box, .highlight { background-color: #ffffff !important; border: 1px solid #ccc; box-shadow: none;}
-        .info-box::before, .warning-box::before, .solution-box::before { display: none; }
-    }
-    
-    
-    /* ==========================================================================
-       Dark Mode Support
-       ========================================================================== */
-    
-    @media (prefers-color-scheme: dark) {
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-        }
-    
-        h1, h2, h3 { color: #f0f0f0; }
-        h1::after { background-color: #5a9bff; } /* 밝은 파랑 */
-        h2::before { background-color: rgba(90, 155, 255, 0.2); }
-        h3::before { background-color: #5a9bff; } /* 장식 색상 변경 */
-    
-        a { color: #5a9bff; }
-        a:hover { color: #8ec0ff; text-decoration-color: #8ec0ff; }
-    
-        .highlight { background-color: rgba(255, 231, 150, 0.3); }
-        .highlight:hover { background-color: rgba(255, 231, 150, 0.5); }
-    
-        .bold-red, .highlight-red { color: #ff7b81; } /* 밝은 빨강 */
-        .bold-blue, .highlight-blue { color: #5a9bff; } /* 밝은 파랑 */
-        .bold-green { color: #48d6c9; } /* 밝은 녹색 */
-        .dropcap::first-letter { color: #5a9bff; text-shadow: 1px 1px 0px rgba(255,255,255,0.1); }
-    
-        .toc, .info-box, .warning-box, .solution-box, .faq-item, blockquote, .data-viz,
-        .tab-content, .accordion-tabs, table tbody tr:nth-child(even), pre {
-            background-color: #1e1e1e; /* 어두운 배경 */
-            border-color: #333; /* 어두운 경계선 */
-            box-shadow: none; /* 다크모드에서는 그림자 제거 */
-        }
-        code { background-color: #2c2c2c; color: #ff7b81; } /* 인라인 코드 */
-        pre { color: #e0e0e0;}
-        pre code { color: inherit; background: transparent; }
-    
-        /* 박스 구분선 색상 조정 */
-        .info-box::before { background-color: #5a9bff; }
-        .warning-box::before { background-color: #ff7b81; }
-        .solution-box::before { background-color: #48d6c9; }
-    
-        .toc h2 { color: #f0f0f0; border-bottom-color: #333; }
-        .toc a { color: #5a9bff; background-image: linear-gradient(rgba(90, 155, 255, 0.2), rgba(90, 155, 255, 0.2));}
-        .toc a:hover { color: #8ec0ff; }
-    
-        th { background-color: #3a86ff; color: #ffffff; border-color: #3a86ff;} /* 테이블 헤더는 유지 */
-        td, th { border-color: #444; } /* 테이블 선 색상 */
-        tbody tr:hover { background-color: #252525; }
-    
-        .faq-question { color: #f0f0f0; }
-        .faq-question::before { color: #5a9bff; }
-        .faq-answer { color: #e0e0e0; }
-        .faq-answer::before { color: #ff7b81; }
-    
-        blockquote { color: #bdbdbd; border-color: #333; }
-        blockquote::before { color: rgba(90, 155, 255, 0.2); }
-    
-        /* CTA는 밝은 색 유지 또는 대비 조정 */
-        .cta-button { background-color: #1e1e1e; color: #5a9bff;}
-        .cta-button:hover { background-color: #2c2c2c; color: #8ec0ff; }
-    
-        /* 소셜 아이콘 배경은 유지, 아이콘 색상 필요시 조정 */
-    
-        .tab-header { background-color: #2c2c2c; color: #e0e0e0; border-color: #333;}
-        .tab-header:hover { background-color: #383838; }
-        .tab-toggle:checked + .tab-header { background-color: #3a86ff; color: #ffffff; border-bottom-color: #3a86ff;} /* 활성 탭 색상은 유지 */
-        .tab-content { border-color: #333; background-color: #1e1e1e; color: #e0e0e0;}
-    
-        /* 스킵 링크, 맨 위로 가기 버튼 */
-        .skip-link { background-color: #5a9bff; color: #121212; }
-        .scroll-to-top { background-color: #5a9bff; color: #121212; box-shadow: none; }
-        .scroll-to-top:hover { background-color: #8ec0ff; }
-    
-        /* 포커스 스타일 조정 */
-        a:focus-visible, button:focus-visible, .tab-header:focus-visible,
-        input[type="checkbox"]:focus-visible + .tab-header,
-        .skip-link:focus, .scroll-to-top:focus {
-            outline-color: #8ec0ff; /* 밝은 포커스 색상 */
-            box-shadow: 0 0 0 3px rgba(90, 155, 255, 0.4);
-        }
-    
-    }
-    </style>
 <body>
-    <!-- 본문 바로가기 -->
-    <a href="#main-content" class="skip-link">본문으로 바로가기</a>
-    <div id="top"></div>
+    <!-- 스킵 네비게이션 (접근성) -->
+    <a href="#main-content" class="mypost-skip-link">본문 바로가기</a>
 
-    <article id="main-content">
-        <header>
-            <span class="post-date">2025년 4월 15일</span>
-            <h1>2025 추경안 12조 원, 정부지원금 민생에 어떤 의미인가?</h1>
-        </header>
+    <div class="mypost-container">
+        <h1>2025년 고용시장 분석: 지표와 현실 사이</h1>
+        <span class="mypost-post-date">2025년 04월 17일</span>
 
-        <!-- 목차 -->
-        <div class="toc">
-            <h2>목차</h2>
-            <ul>
-                <li><a href="#intro">12조 원의 의미: 단순한 숫자가 아닌 생존 전략</a></li>
-                <li><a href="#small-business">소상공인 및 민생 지원: 4조 원의 희망</a></li>
-                <li><a href="#disaster">재해·재난 대응: 3조 원으로 만드는 안전한 대한민국</a></li>
-                <li><a href="#industry">첨단산업과 AI 경쟁력 강화: 4조 원의 미래 투자</a></li>
-                <li><a href="#implementation">정책 시행 속도와 효과: 타이밍이 핵심이다</a></li>
-                <li><a href="#faq">자주 묻는 질문 (FAQ)</a></li>
-            </ul>
+        <div id="main-content">
+            <p class="mypost-dropcap">"2025년 1월, 취업자 수가 13만 명 넘게 늘었습니다. 실업률도 3.7%로 안정적이죠. 그런데..." <strong class="mypost-highlight-blue">"왜 다들 이렇게 불안해할까요?"</strong></p>
+            
+            <p>누군가는 말합니다. <em>"이직보다 퇴사부터 하고 싶지만... 겁나서 못 하겠어요."</em> <em>"대기업도 잘리는데, 중소기업은 어떻게 버텨요?"</em></p>
+            
+            <p>숫자는 '좋다'고 말하는데, 현장은 '위기'라고 소리칩니다. 2025년 대한민국 고용시장, 과연 <strong class="mypost-highlight">진짜 상황은 어떤 걸까요?</strong></p>
+
+            <!-- 목차 -->
+            <div class="mypost-toc">
+                <h2>목차</h2>
+                <ul>
+                    <li><a href="#official-stats">공식 통계로 보는 고용시장</a></li>
+                    <li><a href="#industry-trends">업종별 고용 동향</a></li>
+                    <li><a href="#reality-gap">지표와 현장의 괴리</a></li>
+                    <li><a href="#future-outlook">앞으로의 전망</a></li>
+                    <li><a href="#action-plan">어떻게 준비해야 할까?</a></li>
+                </ul>
+            </div>
+
+            <!-- 섹션 1: 공식 통계 -->
+            <h2 id="official-stats">공식 통계로 보는 고용시장</h2>
+            
+            <p>📈 <strong>공식 통계부터 살펴보죠.</strong> 2025년 1월, 우리나라의 <strong class="mypost-highlight">전체 취업자 수는 2,787만 8천 명.</strong> 전년보다 13만 5천 명이 늘었습니다. 고용률은 68.8%, 고용보험 가입자도 1,500만 명을 넘겼습니다.</p>
+            
+            <p>겉보기에는 '고용 호조'입니다. 그런데... 이 수치는 어떤 일자리에서 늘어난 걸까요?</p>
+
+            <!-- 데이터 시각화 영역 -->
+            <div class="mypost-data-viz">
+                고용 통계 그래프 (연도별 취업자 수 변화)
+            </div>
+
+            <!-- 정보 박스 -->
+            <div class="mypost-info-box">
+                <h3>주요 고용 지표 (2025년 1월 기준)</h3>
+                <ul>
+                    <li>취업자 수: 2,787만 8천 명 (전년 대비 +13만 5천 명)</li>
+                    <li>고용률: 68.8% (+0.2%p)</li>
+                    <li>실업률: 3.7% (-0.1%p)</li>
+                    <li>고용보험 가입자: 1,500만 명 이상</li>
+                </ul>
+            </div>
+
+            <!-- 섹션 2: 업종별 고용 동향 -->
+            <h2 id="industry-trends">업종별 고용 동향</h2>
+            
+            <p>🔍 <strong>증가한 업종을 보면,</strong> 보건복지, IT, 전문서비스 중심입니다. 복지 수요 증가와 정부 재정 일자리가 주요 원인이죠.</p>
+            
+            <p>반면, <strong class="mypost-highlight-red">제조업과 건설업, 도소매업은 일자리가 줄고 있습니다.</strong></p>
+            
+            <p>이 말은 곧, '정부가 만든 일자리는 늘었지만, 시장 자체는 여전히 얼어붙어 있다'는 뜻입니다.</p>
+
+            <!-- 테이블: 업종별 고용 변화 -->
+            <div class="mypost-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>업종</th>
+                            <th>고용 변화 (전년 대비)</th>
+                            <th>주요 원인</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>보건복지</td>
+                            <td>+5.8만 명</td>
+                            <td>고령화 및 복지 정책 확대</td>
+                        </tr>
+                        <tr>
+                            <td>IT·정보서비스</td>
+                            <td>+3.2만 명</td>
+                            <td>디지털 전환 가속화</td>
+                        </tr>
+                        <tr>
+                            <td>전문·과학·기술 서비스</td>
+                            <td>+2.7만 명</td>
+                            <td>정부 R&D 투자 확대</td>
+                        </tr>
+                        <tr>
+                            <td>제조업</td>
+                            <td>-2.1만 명</td>
+                            <td>글로벌 경기 둔화, 자동화</td>
+                        </tr>
+                        <tr>
+                            <td>건설업</td>
+                            <td>-3.5만 명</td>
+                            <td>부동산 침체</td>
+                        </tr>
+                        <tr>
+                            <td>도소매업</td>
+                            <td>-1.8만 명</td>
+                            <td>온라인 전환, 소비 위축</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 섹션 3: 지표와 현장의 괴리 -->
+            <h2 id="reality-gap">지표와 현장의 괴리</h2>
+            
+            <p>🧠 <strong>실제 커뮤니티의 반응은 훨씬 냉담합니다.</strong> "퇴사 고민하던 사람들, 그냥 붙어있기로 했다" "공무원 준비 다시 해볼까 진지하게 고민 중" "건설업 줄도산 오면, 나라 허리 나간다"</p>
+            
+            <p>실제 고용자 수는 늘고 있지만, 사람들의 <strong class="mypost-highlight">심리는 오히려 '버티기 모드'에 가까워요.</strong></p>
+            
+            <p>과연 왜 이런 괴리가 생긴 걸까요?</p>
+            
+            <blockquote>
+                <p>📉 <strong>전문가들은 이렇게 분석합니다.</strong></p>
+                <p>정부 재정이 뒷받침하는 공공부문 중심의 고용이 늘면서 겉으로는 일자리 숫자가 증가한 것처럼 보입니다.</p>
+                <p>하지만 정작 <strong>민간 제조업과 건설업, 도소매 등 '현장 중심 산업'은 위축세.</strong></p>
+                <p>즉, 실제 일하는 사람들의 체감은 '불황이 계속되고 있다'는 겁니다.</p>
+            </blockquote>
+            
+            <p>💬 <strong>사람들의 생각은 명확합니다.</strong> "언제 구조조정 당할지 모르겠어요" "민간 고용이 이렇게 죽어 있는데, 정부 일자리 몇 개 늘었다고 안정된 건가요?"</p>
+            
+            <p>2025년 한국 고용시장. <strong class="mypost-highlight">지표와 현실의 간극이 유난히 큽니다.</strong></p>
+
+            <!-- 경고 박스 -->
+            <div class="mypost-warning-box">
+                <h3>왜 통계와 체감이 다른가?</h3>
+                <ul>
+                    <li>고용 증가는 주로 공공부문과 정부 지원 일자리에서 발생</li>
+                    <li>민간 제조업, 건설업, 도소매업 등 핵심 산업 위축</li>
+                    <li>임시직, 단기 일자리 위주의 고용 증가</li>
+                    <li>양질의 정규직 일자리 감소</li>
+                    <li>고용 불안정성 증가로 인한 심리적 위축</li>
+                </ul>
+            </div>
+
+            <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고용시장 분석 탭 컴포넌트</title>
+    <style>
+        /* 전체 컨테이너 */
+        .mypost {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            max-width: 850px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+
+        /* 탭 입력 숨기기 */
+        .tab-input {
+            display: none;
+        }
+
+        /* 탭 레이블 컨테이너 */
+        .tab-label-container {
+            display: flex;
+            margin-bottom: -1px;
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 탭 헤더(레이블) 기본 스타일 */
+        .tab-header {
+            flex: 1;
+            padding: 15px 20px;
+            background-color: #edf2f7;
+            color: #4a5568;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        /* 호버 효과 */
+        .tab-header:hover {
+            background-color: #e2e8f0;
+        }
+
+        /* 활성화된 탭 스타일 (라디오 버튼 체크 시) */
+        #employment-tab1:checked ~ .tab-label-container label[for="employment-tab1"],
+        #employment-tab2:checked ~ .tab-label-container label[for="employment-tab2"],
+        #employment-tab3:checked ~ .tab-label-container label[for="employment-tab3"] {
+            background-color: #3a86ff;
+            color: #ffffff;
+            border-bottom-color: #3a86ff;
+        }
+
+        /* 콘텐츠 컨테이너 */
+        .content-container {
+            background-color: #ffffff;
+            border-radius: 0 0 10px 10px;
+            border: 1px solid #eaeaea;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            position: relative;
+            z-index: 0;
+        }
+
+        /* 탭 콘텐츠 기본 숨김 */
+        .tab-content {
+            display: none;
+            padding: 25px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* 활성화된 콘텐츠 표시 (라디오 버튼 체크 시) */
+        #employment-tab1:checked ~ .content-container #employment-content1,
+        #employment-tab2:checked ~ .content-container #employment-content2,
+        #employment-tab3:checked ~ .content-container #employment-content3 {
+            display: block;
+        }
+
+        /* 페이드인 애니메이션 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 제목 스타일 */
+        .mypost-h2 {
+            color: #16213e;
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+            position: relative;
+        }
+
+        .mypost-h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #3a86ff;
+            border-radius: 3px;
+        }
+
+        /* 목록 스타일 */
+        ul {
+            padding-left: 5px;
+            list-style: none;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #3a86ff;
+        }
+
+        /* 강조 스타일 */
+        .mypost-highlight {
+            background-color: rgba(255, 250, 205, 0.5);
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+        .mypost-highlight-blue { color: #3a86ff; font-weight: 600; }
+        .mypost-highlight-red { color: #e63946; font-weight: 600; }
+        .highlight-quote { 
+            margin: 20px 0; 
+            padding: 15px; 
+            background-color: #f8fafc; 
+            border-left: 4px solid #3a86ff; 
+            font-style: italic; 
+            color: #4a5568; 
+        }
+
+        /* 반응형 조정 */
+        @media (max-width: 768px) {
+            .tab-label-container {
+                flex-wrap: wrap;
+                border-radius: 10px 10px 0 0;
+                margin-bottom: 0;
+            }
+            .tab-header {
+                flex-basis: 100%;
+                border-radius: 0;
+                padding: 12px 15px;
+                border-bottom: 1px solid #eaeaea;
+            }
+            .tab-label-container label:last-of-type {
+               border-bottom: none;
+            }
+
+            /* 모바일에서 활성 탭 테두리 조정 */
+             #employment-tab1:checked ~ .tab-label-container label[for="employment-tab1"],
+             #employment-tab2:checked ~ .tab-label-container label[for="employment-tab2"],
+             #employment-tab3:checked ~ .tab-label-container label[for="employment-tab3"] {
+                border-bottom: 1px solid #3a86ff !important;
+            }
+
+            /* 모바일 마지막 탭 활성 시, 그 아래 테두리 없애기 위한 추가 */
+            #employment-tab3:checked ~ .tab-label-container label[for="employment-tab3"] {
+                 border-bottom-color: #3a86ff !important;
+            }
+
+            .content-container {
+                 border-radius: 0 0 10px 10px;
+                 border-top: none;
+             }
+            .tab-content {
+                padding: 20px 15px;
+            }
+        }
+
+        /* 다크 모드 지원 */
+        @media (prefers-color-scheme: dark) {
+            .mypost {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+            
+            .tab-header {
+                background-color: #1e1e1e;
+                color: #d0d0d0;
+                border-bottom-color: #333;
+            }
+            
+            .tab-header:hover {
+                background-color: #252525;
+            }
+            
+            #employment-tab1:checked ~ .tab-label-container label[for="employment-tab1"],
+            #employment-tab2:checked ~ .tab-label-container label[for="employment-tab2"],
+            #employment-tab3:checked ~ .tab-label-container label[for="employment-tab3"] {
+                background-color: #5a9bff;
+                color: #ffffff;
+                border-bottom-color: #5a9bff;
+            }
+            
+            .content-container {
+                background-color: #1e1e1e;
+                border-color: #333;
+                box-shadow: none;
+            }
+            
+            .mypost-h2 {
+                color: #f0f0f0;
+                border-bottom-color: #333;
+            }
+            
+            .mypost-h2::after {
+                background-color: #5a9bff;
+            }
+            
+            ul li::before {
+                background-color: #5a9bff;
+            }
+            
+            .mypost-highlight {
+                background-color: rgba(255, 231, 150, 0.2);
+            }
+            
+            .mypost-highlight-blue { color: #5a9bff; }
+            .mypost-highlight-red { color: #ff7b81; }
+            
+            .highlight-quote {
+                background-color: #252525;
+                border-left-color: #5a9bff;
+                color: #d0d0d0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mypost">
+        <input type="radio" id="employment-tab1" name="employment-tabs" class="tab-input" checked>
+        <input type="radio" id="employment-tab2" name="employment-tabs" class="tab-input">
+        <input type="radio" id="employment-tab3" name="employment-tabs" class="tab-input">
+
+        <div class="tab-label-container">
+            <label for="employment-tab1" class="tab-header">고용 통계</label>
+            <label for="employment-tab2" class="tab-header">산업별 전망</label>
+            <label for="employment-tab3" class="tab-header">취업 준비 전략</label>
         </div>
 
-        <!-- 도입부 -->
-        <p class="highlight-blue" id="intro">"12조 원." 이 엄청난 숫자, 그냥 지나치지 마세요. 정부가 발표한 2025년 추가경정예산안은 단순한 돈풀기가 아니라 <span class="highlight-blue">우리 삶에 직접적인 영향을 줄 변화</span>가 시작됩니다. 그런데... 왜 지금, 12조 원일까요?</p>
-
-        <p>고물가, 고금리, 고환율. 3고(高) 시대에 살아가는 국민들에겐 하루하루가 버겁기만 합니다. 특히 소상공인과 저소득층, 그리고 재해 피해 지역까지— <span class="highlight">한계 상황에 몰린 이들을 위한 해법이 필요했죠.</span> 그래서 정부는 당초 계획보다 2조 원 늘어난 '12조 원 추경'을 꺼내들었습니다.</p>
-
-        <div class="img-container">
-            <img src="/api/placeholder/800/400" alt="2025년 추경예산 12조 원 인포그래픽: 소상공인 지원, 재난 대응, 첨단산업 육성 분야별 비중" class="responsive-img">
-            <p class="img-caption">2025년 추경예산 12조 원의 분야별 배분 비율 (자료: 기획재정부)</p>
+        <div class="content-container">
+            <div id="employment-content1" class="tab-content">
+                <h2 class="mypost-h2">2025년 고용 통계 분석</h2>
+                <ul>
+                    <li>취업자 수: <span class="mypost-highlight">2,787만 8천 명</span> (전년 대비 +13만 5천 명)</li>
+                    <li>실업률: <span class="mypost-highlight-blue">3.7%</span> (전년 대비 -0.1%p)</li>
+                    <li>고용률: 68.8% (전년 대비 +0.2%p)</li>
+                    <li>경제활동참가율: 64.5% (전년 대비 +0.3%p)</li>
+                    <li>고용보험 가입자: 1,500만 명 이상 (전년 대비 +2.3%)</li>
+                    <li>정규직 비율: 52.1% (전년 대비 -0.5%p)</li>
+                    <li>20대 청년 실업률: <span class="mypost-highlight-red">7.8%</span> (전년 대비 +0.2%p)</li>
+                </ul>
+                
+                <p class="highlight-quote">표면적 지표는 개선세를 보이고 있지만, 세부 항목을 살펴보면 고용의 질적 측면에서 여전히 개선이 필요한 상황입니다. 특히 청년 실업과 비정규직 증가는 주목해야 할 부분입니다.</p>
+            </div>
+            
+            <div id="employment-content2" class="tab-content">
+                <h2 class="mypost-h2">산업별 고용 전망</h2>
+                <ul>
+                    <li><span class="mypost-highlight-blue">성장 산업:</span> 보건복지(+5.8만 명), IT·정보서비스(+3.2만 명), 전문·과학·기술 서비스(+2.7만 명)</li>
+                    <li><span class="mypost-highlight-red">침체 산업:</span> 건설업(-3.5만 명), 제조업(-2.1만 명), 도소매업(-1.8만 명)</li>
+                    <li>공공부문 및 정부 재정 지원 일자리는 꾸준한 증가세 유지</li>
+                    <li>4차 산업혁명 관련 직종(AI, 빅데이터, 로봇)은 2025년 이후 연평균 4.5% 성장 예상</li>
+                    <li>친환경·신재생 에너지 분야는 정부 정책에 힘입어 연평균 3.8% 성장 예상</li>
+                </ul>
+                
+                <p class="highlight-quote">제조업과 건설업은 침체가 계속되는 반면, 기술 집약적 분야와 사회 서비스업은 성장할 것으로 보입니다. 산업 구조 변화에 따른 직무 전환 및 리스킬링 수요가 증가할 것으로 예상됩니다.</p>
+            </div>
+            
+            <div id="employment-content3" class="tab-content">
+                <h2 class="mypost-h2">효과적인 취업 준비 전략</h2>
+                <ul>
+                    <li><span class="mypost-highlight-blue">직무 전환을 고려하세요</span> - 침체 산업에서 성장 산업으로의 전환을 위한 역량 개발</li>
+                    <li><span class="mypost-highlight-blue">디지털 역량 강화</span> - 기본적인 데이터 분석, AI 활용 능력은 이제 거의 모든 산업에서 요구됨</li>
+                    <li><span class="mypost-highlight-blue">네트워킹 확대</span> - 업계 동향을 파악하고 숨겨진 채용 기회를 발견할 수 있는 가장 좋은 방법</li>
+                    <li><span class="mypost-highlight-blue">포트폴리오 구축</span> - 실무 경험과 결과물을 보여줄 수 있는 증거 자료 확보</li>
+                    <li><span class="mypost-highlight-blue">틈새시장 발굴</span> - 대기업보다 성장하는 중소기업, 스타트업에서 기회 모색</li>
+                </ul>
+                
+                <p class="highlight-quote">현재의 고용시장은 '평생직장'보다 '평생직업'의 관점에서 접근해야 합니다. 지속적인 자기개발과 변화에 대한 유연한 대응 능력이 무엇보다 중요합니다.</p>
+            </div>
         </div>
+    </div>
+</body>
+</html>
 
-        <!-- 소상공인 및 민생 지원 -->
-        <h2 id="small-business">소상공인 및 민생 지원: 4조 원의 희망</h2>
+            <!-- 섹션 4: 앞으로의 전망 -->
+            <h2 id="future-outlook">앞으로의 전망</h2>
+            
+            <p>🔮 <strong>그렇다면 앞으로는 어떨까요?</strong></p>
+            
+            <p>전문가들은 📉 제조업·건설업의 침체는 당분간 계속될 거라고 봅니다. 반면 🧓 돌봄, 복지, IT 중심의 업종은 점진적인 고용 증가세를 유지할 가능성이 높습니다.</p>
+            
+            <p>하지만! 정부 일자리만으로는 한계가 있습니다. <strong class="mypost-highlight">민간 부문의 회복 없이, 지속 가능한 고용 개선은 어렵다는 것.</strong></p>
 
-        <p>코로나19 이후 지속된 경기침체로 가장 큰 타격을 입은 건 바로 골목상권과 자영업자들입니다.<br> 이번 추경에서는 <span class="bold-blue">총 4조 원 이상</span>이 이들을 위해 투입됩니다.</p>
+            <!-- 해결책 박스 -->
+            <div class="mypost-solution-box">
+                <h3>주목해야 할 신흥 직종</h3>
+                <ul>
+                    <li><strong>디지털 헬스케어:</strong> 의료 데이터 분석, 원격 의료 전문가</li>
+                    <li><strong>친환경 에너지:</strong> 신재생 에너지 기술자, ESG 컨설턴트</li>
+                    <li><strong>AI 및 자동화:</strong> AI 윤리 전문가, 로봇 프로세스 자동화 개발자</li>
+                    <li><strong>실버 산업:</strong> 노인 돌봄 서비스, 액티브 시니어 전문가</li>
+                    <li><strong>디지털 콘텐츠:</strong> 메타버스 디자이너, 가상 경험 기획자</li>
+                </ul>
+            </div>
 
-        <h3>부담경감 크레딧: 생존을 위한 숨통</h3>
-        
-        <p>먼저, 골목상권을 살리기 위한 <span class="bold-red">'부담경감 크레딧'</span>. 공공요금과 보험료 낼 돈조차 빠듯한 자영업자에게, 연간 50만 원어치 크레딧이 지급됩니다.</p>
-        
-        <div class="info-box">
-            <p><strong>부담경감 크레딧이란?</strong></p>
-            <ul>
-                <li>대상: 연 매출 8억 원 이하 소상공인 약 340만 명</li>
-                <li>지원 금액: 연간 최대 50만 원</li>
-                <li>사용처: 공공요금, 4대 보험료, 카드 수수료 등</li>
-                <li>시행 시기: 2025년 5월부터</li>
-            </ul>
-        </div>
+            <!-- 섹션 5: 어떻게 준비해야 할까? -->
+            <h2 id="action-plan">어떻게 준비해야 할까?</h2>
+            
+            <p>📌 <strong>그래서 지금 필요한 건,</strong> '무작정 퇴사'가 아니라, '전략적인 이직 준비'입니다.</p>
+            
+            <p>✔ 내 직무를 다시 설계하고 ✔ 재교육과 리스킬링을 고민하며 ✔ 업종 변화에 따른 이직 전략을 세워야 할 때.</p>
+            
+            <p><strong>지금 고용시장은 말합니다.</strong> "숫자가 전부가 아니다." "당신이 느끼는 불안은, 실제입니다."</p>
+            
+            <p>그렇다면 이제, 우리는 어떻게 준비해야 할까요?</p>
 
-        <h3>상생페이백: 소비가 곧 상생이 되는 선순환</h3>
+            <!-- CTA 컨테이너 -->
+            <div class="mypost-cta-container">
+                <h3>변화하는 고용시장, 함께 준비하세요</h3>
+                <p>불안정한 고용환경 속에서 내 커리어를 어떻게 설계해야 할지 고민되시나요?</p>
+                <p>지금 바로 '2025 직무 전환 가이드'를 다운로드 받아보세요.</p>
+            </div>
 
-        <p>또 하나, <span class="bold-blue">'상생페이백' 제도.</span> 전년보다 카드 결제가 늘어난 만큼, 일정 비율을 <span class="highlight">온누리상품권</span>으로 환급해준다고요? <br>소비도 살리고, 매출도 올리고, 환급도 받는 1석 3조 효과. 이제 소비자가 쓴 돈이 곧 <span class="bold-green">소상공인의 희망</span>이 됩니다.</p>
+            <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고용시장 정보 카드 컴포넌트</title>
+    <style>
+        /* 기본 설정 */
+        body {
+            font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
 
-        <div class="img-container">
-            <img src="/api/placeholder/800/450" alt="상생페이백 제도의 작동 방식을 보여주는 흐름도: 소비자의 결제, 증가분 계산, 온누리상품권 환급 과정" class="responsive-img">
-            <p class="img-caption">상생페이백 제도의 작동 원리와 기대효과 (자료: 중소벤처기업부)</p>
-        </div>
+        /* 카드 컨테이너 */
+        .custom_card-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px 0;
+        }
 
-        <h3>청년 정책자금 및 최저 신용자 지원</h3>
+        /* 개별 카드 스타일 */
+        .custom_card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 1 1 calc(25% - 20px);
+            min-width: 240px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border-top: 4px solid #3a86ff;
+        }
 
-        <p>그리고 <span class="highlight">청년과 최저 신용자</span>를 위한 정책자금 2,000억 원도 확보됐습니다. <br>최저 생계도 버거운 이들에게, '기회의 사다리'는 여전히 존재해야 하니까요.</p>
+        /* 카드 호버 효과 */
+        .custom_card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
 
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>지원 대상</th>
-                        <th>지원 내용</th>
-                        <th>지원 규모</th>
-                        <th>특징</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>청년 창업자</td>
-                        <td>저금리 창업자금 대출</td>
-                        <td>1,200억 원</td>
-                        <td>무담보, 간소화된 심사</td>
-                    </tr>
-                    <tr>
-                        <td>최저 신용자</td>
-                        <td>생계 안정자금</td>
-                        <td>800억 원</td>
-                        <td>신용 회복 프로그램 연계</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        /* 카드 내부 패딩 */
+        .custom_card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
 
-        <!-- 재해·재난 대응 -->
-        <h2 id="disaster">재해·재난 대응: 3조 원으로 만드는 안전한 대한민국</h2>
+        /* 카드 색상 변형 */
+        .custom_card.blue { border-top-color: #3a86ff; }
+        .custom_card.red { border-top-color: #e63946; }
+        .custom_card.green { border-top-color: #2a9d8f; }
+        .custom_card.purple { border-top-color: #8338ec; }
 
-        <p>2024년 전국을 휩쓴 <span class="bold-red">초대형 산불</span>, 기억하시죠? 이젠 단순한 복구가 아닌 <span class="highlight">선제적 대응</span>이 핵심입니다.</p>
+        /* 카드 항목별 스타일 */
+        .custom_card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            color: #16213e;
+            position: relative;
+            padding-bottom: 12px;
+        }
 
-        <div class="warning-box">
-            <p>최근 5년간 재난 피해액은 연평균 1조 원을 넘어섰습니다. 일시적 복구 비용보다 예방 시스템 구축이 더 경제적입니다.</p>
-        </div>
+        .custom_card-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: currentColor;
+            border-radius: 2px;
+        }
 
-        <p>정부는 재해대책비를 <span class="bold-blue">두 배 이상</span> 확대하고, 중·대형 <span class="highlight">산림헬기</span>, <span class="highlight">AI 감시카메라</span>, <span class="highlight">드론</span>까지 투입합니다. 과거처럼 불 끄고 끝나는 게 아니라, 불이 나기 전부터 막는 <span class="bold-blue">스마트 대응체계</span>로 진화하는 거죠.</p>
+        .custom_card.blue .custom_card-title::after { background-color: #3a86ff; }
+        .custom_card.red .custom_card-title::after { background-color: #e63946; }
+        .custom_card.green .custom_card-title::after { background-color: #2a9d8f; }
+        .custom_card.purple .custom_card-title::after { background-color: #8338ec; }
 
-        <!-- 첨단산업과 AI 경쟁력 강화 -->
-        <h2 id="industry">첨단산업과 AI 경쟁력 강화: 4조 원의 미래 투자</h2>
+        .custom_card-subtitle {
+            font-size: 0.95rem;
+            color: #64748b;
+            margin: 0 0 20px 0;
+            flex-grow: 1;
+        }
 
-        <p>한편, 글로벌 경제 전쟁터에서 <span class="highlight">'기술'은 생존이고, AI는 국방'</span>입니다.</p>
+        .custom_card-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0 0 5px 0;
+            line-height: 1.1;
+        }
 
-        <div class="accordion-tabs">
-            <div>
-                <input type="checkbox" id="tab1" class="tab-toggle">
-                <label for="tab1" class="tab-header">글로벌 무역 전쟁 대응책</label>
-                <div class="tab-content">
-                    <p>정부는 <span class="highlight">관세 피해, 수출 위기 기업</span>을 위해 <span class="bold-blue">25조 원 규모의 저리 대출과 수출 보증</span>을 새로 마련했습니다. 이제 무역 전쟁도 정책으로 방어할 수 있게 된 겁니다.</p>
-                    <ul>
-                        <li>관세 피해 기업 긴급 자금 지원: 10조 원</li>
-                        <li>수출 중소기업 보증 확대: 15조 원</li>
-                        <li>해외 인증 및 규제 대응 컨설팅: 500억 원</li>
-                    </ul>
+        .custom_card.blue .custom_card-number { color: #3a86ff; }
+        .custom_card.red .custom_card-number { color: #e63946; }
+        .custom_card.green .custom_card-number { color: #2a9d8f; }
+        .custom_card.purple .custom_card-number { color: #8338ec; }
+
+        .custom_card-metric {
+            font-size: 0.9rem;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .custom_card-metric-positive,
+        .custom_card-metric-negative {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 6px;
+            font-weight: 600;
+        }
+
+        .custom_card-metric-positive { color: #2a9d8f; }
+        .custom_card-metric-negative { color: #e63946; }
+
+        .custom_card-metric-positive::before,
+        .custom_card-metric-negative::before {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-right: 4px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+
+        .custom_card-metric-positive::before {
+            border-bottom: 6px solid #2a9d8f;
+        }
+
+        .custom_card-metric-negative::before {
+            border-top: 6px solid #e63946;
+        }
+
+        .custom_card-context {
+            font-size: 0.85rem;
+            color: #64748b;
+            background-color: #f8fafc;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: auto;
+        }
+
+        /* 반응형 설정 */
+        @media (max-width: 1024px) {
+            .custom_card {
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .custom_card-container {
+                flex-direction: column;
+            }
+            
+            .custom_card {
+                width: 100%;
+                flex: 1 1 100%;
+                margin-bottom: 20px;
+            }
+            
+            .custom_card-content {
+                padding: 20px;
+            }
+            
+            .custom_card-title {
+                font-size: 1.3rem;
+            }
+            
+            .custom_card-number {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* 다크 모드 지원 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+            
+            .custom_card {
+                background-color: #1e1e1e;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            }
+            
+            .custom_card:hover {
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            }
+            
+            .custom_card-title {
+                color: #f0f0f0;
+            }
+            
+            .custom_card-subtitle,
+            .custom_card-metric {
+                color: #bdbdbd;
+            }
+            
+            .custom_card.blue { border-top-color: #5a9bff; }
+            .custom_card.red { border-top-color: #ff7b81; }
+            .custom_card.green { border-top-color: #48d6c9; }
+            .custom_card.purple { border-top-color: #a77dff; }
+            
+            .custom_card.blue .custom_card-number { color: #5a9bff; }
+            .custom_card.red .custom_card-number { color: #ff7b81; }
+            .custom_card.green .custom_card-number { color: #48d6c9; }
+            .custom_card.purple .custom_card-number { color: #a77dff; }
+            
+            .custom_card.blue .custom_card-title::after { background-color: #5a9bff; }
+            .custom_card.red .custom_card-title::after { background-color: #ff7b81; }
+            .custom_card.green .custom_card-title::after { background-color: #48d6c9; }
+            .custom_card.purple .custom_card-title::after { background-color: #a77dff; }
+            
+            .custom_card-metric-positive { color: #48d6c9; }
+            .custom_card-metric-negative { color: #ff7b81; }
+            
+            .custom_card-metric-positive::before {
+                border-bottom-color: #48d6c9;
+            }
+            
+            .custom_card-metric-negative::before {
+                border-top-color: #ff7b81;
+            }
+            
+            .custom_card-context {
+                background-color: #252525;
+                color: #bdbdbd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="custom_card-container">
+        <!-- 카드 1: 취업자 수 -->
+        <div class="custom_card blue">
+            <div class="custom_card-content">
+                <h3 class="custom_card-title">취업자 수</h3>
+                <p class="custom_card-subtitle">2025년 1월 기준 전체 취업자 수</p>
+                <div class="custom_card-number">2,787.8만</div>
+                <div class="custom_card-metric">
+                    전년 대비
+                    <span class="custom_card-metric-positive">+13.5만 명</span>
+                </div>
+                <div class="custom_card-context">
+                    고용률 68.8%, 전년 대비 0.2%p 상승. 주로 보건복지 및 IT 분야 일자리 증가가 기여.
                 </div>
             </div>
-            <div>
-                <input type="checkbox" id="tab2" class="tab-toggle">
-                <label for="tab2" class="tab-header">AI 및 반도체 산업 육성</label>
-                <div class="tab-content">
-                    <p>결정적 한 수. <span class="bold-blue">AI와 반도체 산업에 2조 원 이상 투입.</span> R&D는 물론, 인프라, 금융지원까지— "한국형 AI 생태계"의 뿌리를 내리겠다는 의지입니다. 과연, 한국은 <span class="highlight">AI 초강국</span>으로 거듭날 수 있을까요?</p>
-                    <ul>
-                        <li>슈퍼컴퓨팅 인프라 구축: 8,000억 원</li>
-                        <li>AI 반도체 설계 지원: 5,000억 원</li>
-                        <li>AI 인재 양성 프로그램: 3,000억 원</li>
-                        <li>데이터센터 구축 및 운영: 4,000억 원</li>
-                    </ul>
+        </div>
+
+        <!-- 카드 2: 실업률 -->
+        <div class="custom_card green">
+            <div class="custom_card-content">
+                <h3 class="custom_card-title">실업률</h3>
+                <p class="custom_card-subtitle">2025년 1월 기준 전체 실업률</p>
+                <div class="custom_card-number">3.7%</div>
+                <div class="custom_card-metric">
+                    전년 대비
+                    <span class="custom_card-metric-positive">-0.1%p</span>
+                </div>
+                <div class="custom_card-context">
+                    전반적 실업률은 개선되고 있으나, 청년(20대) 실업률은 7.8%로 여전히 높은 수준 유지.
                 </div>
             </div>
         </div>
 
-        <div class="data-viz">
-            여기에 "대한민국 AI 경쟁력 현황 및 목표" 차트가 들어갑니다
-        </div>
-
-        <!-- 정책 시행 속도와 효과 -->
-        <h2 id="implementation">정책 시행 속도와 효과: 타이밍이 핵심이다</h2>
-
-        <p>정부는 예타(예비타당성 조사)를 <span class="highlight">줄이고</span>, 재정사업평가위도 <span class="highlight">매달 열어</span> 속도를 끌어올린다는데요. 정책은 속도가 생명입니다. 기회는 지금이 전부니까요.</p>
-
-        <div class="solution-box">
-            <p>추경예산 집행 가속화를 위한 정부 대책:</p>
-            <ol>
-                <li>예비타당성 조사 면제 대상 확대 (소요기간 6개월→0개월)</li>
-                <li>재정사업평가위원회 월 1회 정례화 (기존 분기 1회)</li>
-                <li>지방정부 매칭펀드 비율 축소로 사업 진행 속도 개선</li>
-                <li>특별교부세 신속 배정으로 지역 현안 즉시 대응</li>
-            </ol>
-        </div>
-
-        <div class="cta-container">
-            <h3>추경예산, 당신의 삶을 어떻게 바꿀까요?</h3>
-            <p>소상공인, 청년, 재난 피해자... 당신이 해당된다면 지금 바로 확인하세요!</p>
-            <a href="#" class="cta-button">지원 자격 확인하기</a>
-        </div>
-
-        <!-- FAQ 섹션 -->
-        <h2 id="faq">자주 묻는 질문 (FAQ)</h2>
-
-        <div class="faq-item">
-            <p class="faq-question">추경예산 12조 원은 어디서 마련되나요?</p>
-            <div class="faq-answer">
-                <p>이번 추경예산 12조 원은 세수 증가분(4.5조 원), 기금 여유자금(5조 원), 그리고 국채 발행(2.5조 원)을 통해 조달됩니다. 정부는 건전 재정을 위해 최대한 국채 발행을 줄이는 방향으로 재원을 마련했습니다.</p>
+        <!-- 카드 3: 제조업 고용 -->
+        <div class="custom_card red">
+            <div class="custom_card-content">
+                <h3 class="custom_card-title">제조업 고용</h3>
+                <p class="custom_card-subtitle">제조업 일자리 변화</p>
+                <div class="custom_card-number">-2.1만</div>
+                <div class="custom_card-metric">
+                    전년 대비
+                    <span class="custom_card-metric-negative">-0.8%</span>
+                </div>
+                <div class="custom_card-context">
+                    글로벌 경기 둔화와 자동화 영향으로 제조업 일자리 감소세 지속. 특히 전통 제조업 위주로 감소.
+                </div>
             </div>
         </div>
 
-        <div class="faq-item">
-            <p class="faq-question">부담경감 크레딧은 어떻게 신청하나요?</p>
-            <div class="faq-answer">
-                <p>부담경감 크레딧은 2025년 5월부터 중소벤처기업부 공식 홈페이지나 소상공인진흥공단 홈페이지를 통해 온라인으로 신청할 수 있습니다. 또한, 가까운 소상공인지원센터를 방문하여 오프라인으로도 신청 가능합니다. 사업자등록증과 본인 확인 서류만 있으면 간단한 절차로 신청할 수 있습니다.</p>
+        <!-- 카드 4: IT 산업 고용 -->
+        <div class="custom_card purple">
+            <div class="custom_card-content">
+                <h3 class="custom_card-title">IT·정보서비스</h3>
+                <p class="custom_card-subtitle">IT 및 정보서비스 일자리 변화</p>
+                <div class="custom_card-number">+3.2만</div>
+                <div class="custom_card-metric">
+                    전년 대비
+                    <span class="custom_card-metric-positive">+4.3%</span>
+                </div>
+                <div class="custom_card-context">
+                    디지털 전환 가속화로 AI, 클라우드, 빅데이터 관련 직종 수요 증가. 향후 5년간 연평균 4.5% 성장 전망.
+                </div>
             </div>
         </div>
+    </div>
+</body>
+</html>
 
-        <div class="faq-item">
-            <p class="faq-question">상생페이백 혜택은 언제부터 받을 수 있나요?</p>
-            <div class="faq-answer">
-                <p>상생페이백 제도는 2025년 6월부터 시행되며, 2024년 동일 기간 대비 소비 증가분에 대해 분기별로 정산하여 온누리상품권으로 지급됩니다. 첫 혜택은 2025년 9월 말에 받아볼 수 있을 예정입니다. 별도 신청 없이 카드사에 등록된 연락처로 자동 안내됩니다.</p>
+            <!-- FAQ 섹션 -->
+            <h2>자주 묻는 질문</h2>
+            
+            <div class="mypost-faq-item">
+                <p class="mypost-faq-question">정부 통계는 신뢰할 수 있나요?</p>
+                <div class="mypost-faq-answer">
+                    <p>정부 통계 자체는 객관적 기준에 따라 수집된 데이터입니다. 다만, 통계가 포착하지 못하는 '고용의 질'이나 '일자리 안정성' 같은 측면이 있어 현실과 괴리를 느낄 수 있습니다. 통계와 함께 다양한 산업 현장의 목소리를 함께 들어보는 것이 중요합니다.</p>
+                </div>
+            </div>
+            
+            <div class="mypost-faq-item">
+                <p class="mypost-faq-question">지금이 이직하기 좋은 시기인가요?</p>
+                <div class="mypost-faq-answer">
+                    <p>업종과 직무에 따라 다릅니다. IT, 보건복지, 전문서비스 분야는 여전히 인력 수요가 있는 반면, 제조업이나 건설업은 신중한 접근이 필요합니다. 무조건적인 이직보다는 시장 조사와 자기 역량 강화 후 전략적으로 접근하는 것이 좋습니다.</p>
+                </div>
+            </div>
+            
+            <div class="mypost-faq-item">
+                <p class="mypost-faq-question">앞으로 없어질 직업과 새로 생길 직업은 무엇인가요?</p>
+                <div class="mypost-faq-answer">
+                    <p>반복적이고 자동화 가능한 업무는 AI와 로봇으로 대체될 가능성이 높습니다. 반면, 창의성, 감성 지능, 복잡한 문제 해결 능력이 필요한 직무는 여전히 중요할 것입니다. 특히 AI와 인간의 협업 능력, 디지털 전환 관련 직무, 기후변화 대응 관련 분야의 새로운 직업이 부상할 것으로 예상됩니다.</p>
+                </div>
+            </div>
+
+            <!-- 마무리 -->
+            <p>📣 <strong>여러분은 지금 고용시장을 어떻게 체감하고 계신가요?</strong> 댓글로 여러분의 이야기도 남겨주세요. 지표 너머의 '진짜 현실', 함께 들여다보겠습니다.</p>
+
+            <!-- 소셜 공유 버튼 -->
+            <div class="mypost-social-share">
+                <a href="#" class="mypost-social-icon twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="mypost-social-icon facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="mypost-social-icon linkedin"><i class="fa fa-linkedin"></i></a>
+                <a href="#" class="mypost-social-icon kakao"><i class="fa fa-comment"></i></a>
             </div>
         </div>
+    </div>
 
-        <div class="faq-item">
-            <p class="faq-question">AI 산업 육성으로 일반 국민에게는 어떤 혜택이 있나요?</p>
-            <div class="faq-answer">
-                <p>AI 산업 육성은 단기적으로는 새로운 일자리 창출과 디지털 서비스 개선으로 이어집니다. 중장기적으로는 의료, 교육, 교통 등 공공서비스의 획기적 개선과 생산성 향상을 통한 경제 성장으로 국민 소득 증대 효과가 기대됩니다. 또한 정부는 AI 교육 프로그램을 일반 국민에게도 확대하여 디지털 역량 강화 기회를 제공할 계획입니다.</p>
-            </div>
-        </div>
+    <!-- 스크롤 투 탑 버튼 -->
+    <a href="#" class="mypost-scroll-to-top">↑</a>
 
-        <!-- 결론 -->
-        <h2>결론: 국가 경제의 변곡점이 될 12조 원</h2>
-
-        <p>이번 12조 원 추경안, 과연 <span class="highlight-blue">위기를 기회로 바꾸는 트리거</span>가 될 수 있을까요? 정부의 결단과 속도, 그리고 효율적인 집행이 그 성패를 가를 것입니다.</p>
-
-        <p>소상공인 지원과 재난 대응, 첨단산업 육성까지—모두 중요한 국가적 과제입니다. 당신이라면, 이 예산 어디에 가장 먼저 투자하고 싶으신가요? 댓글로 여러분의 생각을 남겨주세요. 우리가 함께 만들 미래니까요.</p>
-
-        <!-- 소셜 공유 버튼 -->
-        <div class="social-share">
-            <a href="#" class="social-icon twitter" aria-label="트위터에 공유하기"><i>T</i></a>
-            <a href="#" class="social-icon facebook" aria-label="페이스북에 공유하기"><i>F</i></a>
-            <a href="#" class="social-icon linkedin" aria-label="링크드인에 공유하기"><i>L</i></a>
-            <a href="#" class="social-icon kakao" aria-label="카카오톡으로 공유하기"><i>K</i></a>
-        </div>
-
-        <!-- 관련 글 배너 -->
-        <div class="banner-container">
-            <a href="#" class="banner blue">
-                <h2>2025 경제 전망</h2>
-                <p>전문가들이 예측하는 대한민국 경제의 미래</p>
-                <span class="banner-icon">→</span>
-            </a>
-            <a href="#" class="banner orange">
-                <h2>소상공인 지원제도</h2>
-                <p>알아두면 도움되는 모든 정부 지원책</p>
-                <span class="banner-icon">→</span>
-            </a>
-            <a href="#" class="banner purple">
-                <h2>AI와 미래 산업</h2>
-                <p>대한민국의 AI 경쟁력, 어디까지 왔나</p>
-                <span class="banner-icon">→</span>
-            </a>
-        </div>
-    </article>
-
-    <!-- 맨 위로 가기 버튼 -->
-    <a href="#top" class="scroll-to-top" aria-label="맨 위로 가기">↑</a>
+    <!-- 자바스크립트는 필요시 여기에 추가 -->
 </body>
 </html>
