@@ -1,0 +1,87 @@
+<div class="mypost-tab-container">
+                <input type="radio" id="mypost-employment-tab1" name="mypost-employment-tabs" class="mypost-tab-input" checked> <input type="radio" id="mypost-employment-tab2" name="mypost-employment-tabs" class="mypost-tab-input"> <input type="radio" id="mypost-employment-tab3" name="mypost-employment-tabs" class="mypost-tab-input"> <div class="mypost-tab-label-container">
+                    <label for="mypost-employment-tab1" class="mypost-tab-header">[탭 제목 1]</label> <label for="mypost-employment-tab2" class="mypost-tab-header">[탭 제목 2]</label> <label for="mypost-employment-tab3" class="mypost-tab-header">[탭 제목 3]</label> </div>
+
+                <div class="mypost-tab-content-container">
+                    <div id="mypost-employment-content1" class="mypost-tab-content"> <h3 class="mypost-tab-content-title">[탭 1 콘텐츠 제목]</h3>
+                        <p>[탭 1의 내용을 여기에 입력하세요.]</p>
+                        <ul>
+                            <li>[탭 1 목록 항목 1]</li>
+                            <li>[탭 1 목록 항목 2]</li>
+                        </ul>
+                        <div class="mypost-tab-highlight-quote">
+                            [탭 1의 강조 인용구 내용]
+                        </div>
+                    </div>
+
+                    <div id="mypost-employment-content2" class="mypost-tab-content"> <h3 class="mypost-tab-content-title">[탭 2 콘텐츠 제목]</h3>
+                        <p>[탭 2의 내용을 여기에 입력하세요.]</p>
+                        <ul>
+                            <li>[탭 2 목록 항목 1]</li>
+                        </ul>
+                        <div class="mypost-tab-highlight-quote">
+                           [탭 2의 강조 인용구 내용]
+                        </div>
+                    </div>
+
+                    <div id="mypost-employment-content3" class="mypost-tab-content"> <h3 class="mypost-tab-content-title">[탭 3 콘텐츠 제목]</h3>
+                        <p>[탭 3의 내용을 여기에 입력하세요.]</p>
+                        <ul>
+                            <li>[탭 3 목록 항목 1]</li>
+                        </ul>
+                        <div class="mypost-tab-highlight-quote">
+                           [탭 3의 강조 인용구 내용]
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="mypost-card-container">
+                <div class="mypost-card blue">
+                    <div class="mypost-card-content">
+                        <h3 class="mypost-card-title">[카드 제목 1]</h3>
+                        <p class="mypost-card-subtitle">[카드 부제 1]</p>
+                        <div class="mypost-card-number">[숫자/값 1]</div>
+                        <div class="mypost-card-metric">
+                            [지표 설명]
+                            <span class="mypost-card-metric-positive">[+증감값]</span>
+                        </div>
+                        <div class="mypost-card-context">[부가 설명]</div>
+                    </div>
+                </div>
+
+                <div class="mypost-card green">
+                     <div class="mypost-card-content">
+                        <h3 class="mypost-card-title">[카드 제목 2]</h3>
+                        <p class="mypost-card-subtitle">[카드 부제 2]</p>
+                        <div class="mypost-card-number">[숫자/값 2]</div>
+                        <div class="mypost-card-metric">
+                             [지표 설명]
+                            <span class="mypost-card-metric-positive">[+증감값]</span> </div>
+                        <div class="mypost-card-context">[부가 설명]</div>
+                     </div>
+                </div>
+
+                <div class="mypost-card red">
+                    <div class="mypost-card-content">
+                        <h3 class="mypost-card-title">[카드 제목 3]</h3>
+                        <p class="mypost-card-subtitle">[카드 부제 3]</p>
+                        <div class="mypost-card-number">[숫자/값 3]</div>
+                        <div class="mypost-card-metric">
+                            [지표 설명]
+                            <span class="mypost-card-metric-negative">[-증감값]</span> </div>
+                        <div class="mypost-card-context">[부가 설명]</div>
+                    </div>
+                </div>
+
+                <div class="mypost-card purple">
+                    <div class="mypost-card-content">
+                        <h3 class="mypost-card-title">[카드 제목 4]</h3>
+                        <p class="mypost-card-subtitle">[카드 부제 4]</p>
+                        <div class="mypost-card-number">[숫자/값 4]</div>
+                        <div class="mypost-card-metric">
+                             [지표 설명]
+                            <span class="mypost-card-metric-negative">[-증감값]</span> </div>
+                        <div class="mypost-card-context">[부가 설명]</div>
+                    </div>
+                </div>
+            </div>
