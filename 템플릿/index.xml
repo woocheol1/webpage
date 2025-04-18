@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skin>
+    <information>
+        <name>Laggoz 스타일 심플 스킨</name> <version>1.0</version> <description>
+            <![CDATA[ Laggoz.com의 디자인을 참고한 깔끔한 1단형 티스토리 스킨입니다. ]]>
+        </description> <license>
+            <![CDATA[ MIT License | 제작자: [Your Name/Blog Name] ]]>
+        </license> <preview>./images/preview_large.png</preview> <preview_small>./images/preview_small.png</preview_small> <author>
+            <name>[Your Name/Blog Name]</name> <homepage>[Your Website or Blog URL]</homepage> <email>[Your Email Address]</email> </author>
+    </information>
+
+    <default>
+        <entriesOnPage>10</entriesOnPage> <entriesOnList>5</entriesOnList> <entriesOnRecent>5</entriesOnRecent> <entriesOnRelated>5</entriesOnRelated> <showListOnCategory>true</showListOnCategory> <showListOnArchive>true</showListOnArchive> <commentMessage>
+             <none>댓글이 없습니다.</none>
+             <single>댓글 &lt;span class="count"&gt;[##_count_##]&lt;/span&gt; 개</single>
+        </commentMessage>
+        <trackbackMessage>
+            <none>엮인글이 없습니다.</none>
+            <single>엮인글 &lt;span class="count"&gt;[##_count_##]&lt;/span&gt; 개</single>
+        </trackbackMessage>
+        <cover>
+             <item>
+                 <name>List</name>
+                 <label><![CDATA[리스트]]></label>
+                 <description><![CDATA[기본적인 글 목록 형태의 커버입니다.]]></description>
+             </item>
+             </cover>
+
+        <variable>
+             <variable name="accentColor" label="강조 색상" type="color" default="#4CAF50"/>
+             <variable name="textColor" label="기본 텍스트 색상" type="color" default="#333333"/>
+             <variable name="linkColor" label="링크 색상" type="color" default="#555555"/>
+             <variable name="backgroundColor" label="배경 색상" type="color" default="#FFFFFF"/>
+             <variable name="borderColor" label="구분선 색상" type="color" default="#EEEEEE"/>
+
+             <variable name="contentWidth" label="콘텐츠 영역 너비 (예: 1100px, 90%)" type="string" default="1100px"/>
+
+             <variable name="showCategoryInList" label="글 목록에서 카테고리 표시" type="boolean" default="true"/>
+             <variable name="showThumbnailInList" label="글 목록에서 썸네일 표시" type="boolean" default="true"/>
+        </variable>
+    </default>
+</skin>

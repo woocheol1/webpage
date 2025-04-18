@@ -1,0 +1,797 @@
+/* =====================================================================
+ * Reset & Basic Styles
+ * ===================================================================== */
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; /* 시스템 폰트 우선 사용 */
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333; /* 기본 텍스트 색상 */
+    background-color: #fff; /* 기본 배경 흰색 */
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: inherit; /* 링크 색상은 기본적으로 부모 요소 따름 */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #007bff; /* 호버 시 색상 변경 (예시) */
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    background: none;
+}
+
+input, textarea, button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* =====================================================================
+ * Layout
+ * ===================================================================== */
+#wrap {
+    max-width: 1100px; /* Laggoz 처럼 콘텐츠 폭 제한 */
+    margin: 0 auto; /* 중앙 정렬 */
+    padding: 0 20px; /* 좌우 여백 */
+}
+
+.inner {
+    width: 100%;
+}
+
+#header {
+    padding: 30px 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 40px;
+}
+
+#header h1 {
+    font-size: 2em; /* 블로그 제목 크기 */
+    font-weight: bold;
+    text-align: center; /* Laggoz 로고처럼 중앙 정렬 */
+}
+
+#header h1 a {
+    color: #222; /* 제목 색상 */
+    text-decoration: none;
+}
+#header h1 a:hover {
+    color: #000;
+}
+
+/* --- 네비게이션 (GNB) 스타일 --- */
+#gnb {
+    margin-top: 15px;
+    text-align: center; /* 네비 중앙 정렬 */
+}
+#gnb ul {
+    display: inline-block; /* 중앙 정렬 위해 */
+}
+#gnb ul li {
+    display: inline-block; /* 메뉴 가로 배치 */
+    margin: 0 15px;
+}
+#gnb ul li a {
+    font-size: 0.95em;
+    color: #555;
+    text-decoration: none;
+    padding-bottom: 5px;
+}
+#gnb ul li a:hover,
+#gnb ul li.current a { /* 현재 카테고리 표시 (치환자 필요) */
+    color: #000;
+    border-bottom: 2px solid #555; /* Laggoz 메뉴 언더라인 느낌 */
+}
+
+
+#content {
+    min-height: 500px; /* 푸터가 따라올라오지 않게 최소 높이 */
+    padding-bottom: 60px; /* 푸터와의 간격 */
+}
+
+#footer {
+    padding: 30px 0;
+    border-top: 1px solid #eee;
+    text-align: center;
+    font-size: 0.85em;
+    color: #888;
+}
+#footer a {
+    color: #666;
+    text-decoration: underline;
+}
+#footer a:hover {
+    color: #333;
+}
+
+/* =====================================================================
+ * Content Styles (List, Article, Comments etc.)
+ * ===================================================================== */
+
+/* --- 공지사항 --- */
+.notice-box {
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+.notice-box h2 {
+    display: inline-block;
+    font-size: 1em;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.notice-box a {
+    text-decoration: none;
+}
+.notice-box a:hover {
+    text-decoration: underline;
+}
+
+/* --- 글 목록 (List View) --- */
+.list-container {
+    /* 필요시 그리드 또는 Flex 레이아웃 적용 */
+}
+
+.list-item {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.list-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.list-item .item-link {
+    display: block; /* 전체 영역 링크 */
+    text-decoration: none;
+    color: inherit;
+}
+.list-item .item-link:hover .item-title {
+    color: #007bff; /* 제목 호버 효과 */
+}
+
+/* 썸네일이 있을 경우 (Flex 예시) */
+.list-item .item-link {
+    display: flex;
+    gap: 20px; /* 썸네일과 텍스트 간격 */
+}
+.list-item .item-thumbnail {
+    flex-shrink: 0; /* 이미지 줄어들지 않게 */
+    width: 200px; /* 썸네일 너비 고정 (조정 필요) */
+    overflow: hidden;
+}
+.list-item .item-thumbnail img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3; /* 썸네일 비율 유지 */
+    object-fit: cover; /* 이미지가 영역을 채우도록 */
+}
+.list-item .item-content {
+    flex-grow: 1;
+}
+
+/* 썸네일 없을 경우 기본 스타일 */
+.list-item .item-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.list-item .item-excerpt {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.list-item .item-meta {
+    font-size: 0.85em;
+    color: #888;
+}
+.list-item .item-meta .category a {
+    color: #888;
+}
+.list-item .item-meta .category a:hover {
+    color: #555;
+    text-decoration: underline;
+}
+
+/* --- 페이지네이션 --- */
+.pagination {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+.pagination a,
+.pagination strong {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 3px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #555;
+}
+.pagination a:hover {
+    background-color: #f0f0f0;
+    color: #333;
+    border-color: #ccc;
+}
+.pagination strong {
+    font-weight: bold;
+    background-color: #007bff; /* 현재 페이지 강조 (Laggoz 버튼 색상 참고) */
+    color: #fff;
+    border-color: #007bff;
+}
+
+/* --- 개별 글 (Article View) --- */
+.entry-article {
+    padding-bottom: 40px; /* 댓글 영역과의 간격 */
+}
+
+.entry-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.entry-title {
+    font-size: 2.2em; /* 글 제목 크게 */
+    font-weight: bold;
+    line-height: 1.3;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.entry-meta {
+    font-size: 0.9em;
+    color: #777;
+}
+.entry-meta .category a {
+    color: #777;
+    text-decoration: none;
+}
+.entry-meta .category a:hover {
+    text-decoration: underline;
+    color: #333;
+}
+.entry-meta .date::before {
+    content: "|";
+    margin: 0 8px;
+    color: #ccc;
+}
+
+/* --- 본문 내용 스타일 --- */
+.entry-content {
+    font-size: 1.05em; /* 기본 글자 크기 살짝 키움 */
+    line-height: 1.8; /* 가독성을 위한 줄 간격 */
+    color: #333;
+}
+
+.entry-content p {
+    margin-bottom: 1.5em;
+}
+
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #222;
+}
+.entry-content h1 { font-size: 1.8em; }
+.entry-content h2 { font-size: 1.6em; }
+.entry-content h3 { font-size: 1.4em; }
+.entry-content h4 { font-size: 1.2em; }
+.entry-content h5 { font-size: 1.1em; }
+.entry-content h6 { font-size: 1em; }
+
+.entry-content ul,
+.entry-content ol {
+    margin: 1.5em 0;
+    padding-left: 1.5em; /* 들여쓰기 */
+}
+.entry-content ul li {
+    list-style-type: disc;
+    margin-bottom: 0.5em;
+}
+.entry-content ol li {
+    list-style-type: decimal;
+    margin-bottom: 0.5em;
+}
+
+.entry-content blockquote {
+    margin: 2em 0;
+    padding: 1em 1.5em;
+    border-left: 4px solid #4CAF50; /* Laggoz 녹색 계열 */
+    background-color: #f9f9f9;
+    color: #555;
+    font-style: italic;
+}
+.entry-content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.entry-content img {
+    display: block;
+    margin: 2em auto; /* 이미지 중앙 정렬 및 상하 여백 */
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px; /* 약간의 둥근 모서리 */
+}
+
+.entry-content figure { /* 티스토리 에디터 figure 요소 */
+    margin: 2em 0;
+}
+.entry-content figure img {
+    margin: 0 auto;
+}
+.entry-content figure figcaption {
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 0.8em;
+}
+
+.entry-content hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 3em 0;
+}
+
+.entry-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2em 0;
+    border: 1px solid #ddd;
+}
+.entry-content th,
+.entry-content td {
+    border: 1px solid #ddd;
+    padding: 0.8em;
+    text-align: left;
+}
+.entry-content th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+/* 코드 블록 스타일 (티스토리 기본 또는 플러그인 스타일 고려) */
+.entry-content pre {
+    background-color: #2d2d2d; /* 어두운 배경 */
+    color: #ccc; /* 밝은 텍스트 */
+    padding: 1.5em;
+    margin: 2em 0;
+    overflow-x: auto;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    line-height: 1.5;
+    border-radius: 4px;
+}
+.entry-content code {
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    background-color: #f0f0f0;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    color: #c7254e; /* 인라인 코드 색상 */
+}
+.entry-content pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+
+/* --- 태그 --- */
+.entry-tags {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    font-size: 0.9em;
+}
+.entry-tags span {
+    font-weight: bold;
+    margin-right: 5px;
+}
+.entry-tags a {
+    display: inline-block;
+    background-color: #eee;
+    color: #555;
+    padding: 3px 8px;
+    margin: 3px 5px 3px 0;
+    border-radius: 3px;
+    text-decoration: none;
+}
+.entry-tags a:hover {
+    background-color: #ddd;
+    color: #333;
+}
+
+/* --- 이전/다음 글 --- */
+.article-neighbor {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9em;
+}
+.article-neighbor a {
+    display: block;
+    max-width: 48%;
+    text-decoration: none;
+    color: #555;
+}
+.article-neighbor a:hover {
+    color: #000;
+}
+.article-neighbor .prev {
+    text-align: left;
+}
+.article-neighbor .next {
+    text-align: right;
+}
+.article-neighbor span { /* '이전글'/'다음글' 텍스트 */
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #aaa;
+}
+
+/* --- 관련 글 --- */
+.related-articles {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+.related-articles h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+.related-articles ul li {
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+.related-articles ul li a {
+    text-decoration: none;
+}
+.related-articles ul li a:hover {
+    text-decoration: underline;
+}
+.related-articles ul li span { /* 날짜 */
+    color: #888;
+    margin-left: 5px;
+}
+
+/* --- 댓글 --- */
+.comments {
+    margin-top: 40px;
+}
+.comments h3 {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+.comments h3 .count {
+    color: #007bff; /* 댓글 수 강조 */
+}
+
+.comment-item {
+    padding: 20px 0;
+    border-bottom: 1px dotted #ddd;
+}
+.comment-item:last-child {
+    border-bottom: none;
+}
+
+/* 대댓글 들여쓰기 */
+.comment-item .comment-item { /* 대댓글 스타일 */
+    margin-left: 40px;
+    padding: 15px 0;
+    border-top: 1px dotted #ddd;
+    border-bottom: none;
+}
+
+.comment-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+.comment-author img { /* 프로필 이미지 */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.comment-author strong {
+    font-weight: bold;
+    margin-right: 10px;
+}
+.comment-author .date {
+    color: #888;
+    margin-right: 10px;
+}
+.comment-author a { /* #, 수정, 삭제 링크 */
+    color: #aaa;
+    margin-left: 5px;
+    font-size: 0.9em;
+    text-decoration: none;
+}
+.comment-author a:hover {
+    text-decoration: underline;
+    color: #555;
+}
+
+.comment-content {
+    font-size: 0.95em;
+    line-height: 1.7;
+    color: #444;
+}
+.comment-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* 댓글 버튼 (댓글쓰기) */
+.comment-item .comment-item a[onclick*="reply"] { /* 대댓글 쓰기 버튼 */
+    display: inline-block;
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 10px;
+    text-decoration: none;
+}
+.comment-item .comment-item a[onclick*="reply"]:hover {
+    text-decoration: underline;
+}
+
+
+/* --- 댓글 폼 --- */
+.comment-form {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+.comment-form textarea {
+    display: block;
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+.comment-form .comment-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* 작은 화면에서 줄바꿈 */
+    gap: 10px;
+}
+.comment-form .comment-info input[type="text"],
+.comment-form .comment-info input[type="password"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.9em;
+    flex-grow: 1; /* 공간 채우기 */
+    min-width: 100px; /* 최소 너비 */
+}
+.comment-form .comment-info label {
+    font-size: 0.9em;
+    margin-left: 3px;
+    margin-right: 10px;
+    color: #555;
+    cursor: pointer;
+}
+.comment-form button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Laggoz 버튼 색상 */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.95em;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+.comment-form button[type="submit"]:hover {
+    background-color: #45a049; /* 버튼 호버 색상 */
+}
+
+/* =====================================================================
+ * Responsive Styles (Mobile First or Desktop First)
+ * ===================================================================== */
+
+@media (max-width: 768px) { /* 768px 이하 화면 */
+    #wrap {
+        padding: 0 15px;
+    }
+
+    #header {
+        padding: 20px 0;
+        margin-bottom: 30px;
+    }
+    #header h1 {
+        font-size: 1.8em;
+    }
+    #gnb ul li {
+        margin: 0 10px;
+    }
+    #gnb ul li a {
+        font-size: 0.9em;
+    }
+
+    .entry-title {
+        font-size: 1.8em;
+    }
+    .entry-content {
+        font-size: 1em;
+    }
+
+    /* 글 목록 썸네일 + 텍스트 레이아웃 변경 */
+    .list-item .item-link {
+        flex-direction: column; /* 세로 배치 */
+        gap: 15px;
+    }
+    .list-item .item-thumbnail {
+        width: 100%; /* 너비 100% */
+        max-height: 250px; /* 최대 높이 제한 (선택사항) */
+    }
+    .list-item .item-title {
+        font-size: 1.3em;
+    }
+
+    .article-neighbor {
+        flex-direction: column; /* 세로 배치 */
+        gap: 15px;
+    }
+     .article-neighbor a {
+        max-width: 100%;
+        text-align: left !important; /* 정렬 통일 */
+    }
+
+    /* 댓글 폼 요소 배치 */
+    .comment-form .comment-info {
+        flex-direction: column;
+        align-items: flex-start; /* 왼쪽 정렬 */
+    }
+    .comment-form .comment-info input[type="text"],
+    .comment-form .comment-info input[type="password"] {
+        width: 100%; /* 너비 100% */
+    }
+     .comment-form button[type="submit"] {
+        width: 100%; /* 버튼 너비 100% */
+        margin-top: 10px;
+    }
+}
+/* 기존 색상 값 대신 변수 사용 */
+:root {
+    /* index.xml에서 정의한 변수들의 기본값을 CSS 변수로 선언 */
+    --accentColor: #4CAF50;
+    --textColor: #333333;
+    --linkColor: #555555;
+    --backgroundColor: #FFFFFF;
+    --borderColor: #EEEEEE;
+    --contentWidth: 1100px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--textColor); /* var() 함수로 색상 변수 사용 */
+    background-color: var(--backgroundColor); /* 배경색 변수 사용 */
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: var(--linkColor); /* 링크 색상 변수 사용 */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--accentColor); /* 호버 시 강조 색상 변수 사용 */
+    text-decoration: underline;
+}
+
+#wrap {
+    max-width: var(--contentWidth); /* 콘텐츠 너비 변수 사용 */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+#header {
+    padding: 30px 0;
+    border-bottom: 1px solid var(--borderColor); /* 구분선 색상 변수 사용 */
+    margin-bottom: 40px;
+}
+
+/* ... (다른 CSS 요소들도 필요한 경우 var() 로 수정) ... */
+
+.entry-content blockquote {
+    border-left: 4px solid var(--accentColor); /* 강조 색상 변수 사용 */
+    /* ... */
+}
+
+.comment-form button[type="submit"] {
+    background-color: var(--accentColor); /* 강조 색상 변수 사용 */
+    /* ... */
+}
+.comment-form button[type="submit"]:hover {
+    filter: brightness(95%); /* 호버 시 약간 어둡게 (색상 변수를 직접 조작하기 어려울 때 filter 사용) */
+}
+
+.pagination strong {
+    background-color: var(--accentColor); /* 강조 색상 변수 사용 */
+    border-color: var(--accentColor);
+    color: #fff;
+}
+
+/* 글 목록 카테고리/썸네일 표시 여부 제어 (CSS만으로는 완벽히 제어하기 어려울 수 있으며, skin.html 수정이 더 확실할 수 있음) */
+/* 예시: 썸네일 숨기기 (index.xml의 showThumbnailInList가 false일 때 적용되도록 skin.html에서 클래스 추가 필요) */
+body.hide-thumbnail .list-item .item-thumbnail {
+    display: none;
+}
+body.hide-thumbnail .list-item .item-link {
+    /* 썸네일 없을 때 레이아웃 조정 */
+    display: block; /* Flex 대신 기본 블록으로 */
+}
+
+/* 예시: 카테고리 숨기기 */
+body.hide-category .list-item .item-meta .category,
+body.hide-category .entry-meta .category {
+    display: none;
+}
+/* 카테고리 숨길 때 날짜 앞 구분선(|) 제거 */
+body.hide-category .entry-meta .date::before {
+    display: none;
+}
