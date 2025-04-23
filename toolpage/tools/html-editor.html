@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML/CSS 에디터 - 웹 도구 모음집</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="html-css-editor/styles.css">
+    <style>
+        /* 기본 레이아웃 스타일 */
+        .editor-container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 200px);
+            min-height: 500px;
+            margin-bottom: 20px;
+        }
+
+        .editor-toolbar {
+            display: flex;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 4px 4px 0 0;
+            border: 1px solid #ddd;
+            border-bottom: none;
+        }
+
+        .editor-toolbar button {
+            margin-right: 5px;
+        }
+
+        .editor-main {
+            display: flex;
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .editor-panels {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            border-right: 1px solid #ddd;
+        }
+
+        .editor-tabs {
+            display: flex;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .editor-tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border: none;
+            border-right: 1px solid #ddd;
+        }
+
+        .editor-tab.active {
+            background-color: #fff;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .editor-area {
+            flex: 1;
+            display: none;
+        }
+
+        .editor-area.active {
+            display: block;
+        }
+
+        .editor-textarea {
+            width: 100%;
+            height: 100%;
+            border: none;
+            resize: none;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .preview-panel {
+            width: 50%;
+            position: relative;
+        }
+
+        .preview-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: white;
+        }
+
+        .responsive-controls {
+            display: flex;
+            padding: 5px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+            justify-content: center;
+        }
+
+        .responsive-controls button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            font-size: 12px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .responsive-controls button.active {
+            background-color: #3498db;
+            color: white;
+            border-color: #2980b9;
+        }
+
+        .status-bar {
+            background-color: #f5f5f5;
+            padding: 5px 10px;
+            font-size: 12px;
+            color: #555;
+            border-top: 1px solid #ddd;
+        }
+
+        /* 다크 모드 지원 */
+        .dark-mode .editor-toolbar,
+        .dark-mode .editor-tabs,
+        .dark-mode .responsive-controls,
+        .dark-mode .status-bar {
+            background-color: #34495e;
+            border-color: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        .dark-mode .editor-tab {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            border-color: #2c3e50;
+        }
+
+        .dark-mode .editor-tab.active {
+            background-color: #1a252f;
+            border-bottom-color: #3498db;
+        }
+
+        .dark-mode .editor-textarea {
+            background-color: #1a252f;
+            color: #ecf0f1;
+        }
+
+        .dark-mode .preview-iframe {
+            background-color: white; /* 미리보기는 항상 밝은 배경 */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HTML/CSS 에디터</h1>
+        <p>실시간 미리보기로 HTML과 CSS 코드를 작성하고 테스트하세요</p>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌓</button>
+    </header>
+
+    <div class="container">
+        <button class="back-button" onclick="window.location.href='../index.html'">← 메인으로 돌아가기</button>
+
+        <div class="tool-interface">
+            <h2 class="page-title">실시간 코드 에디터</h2>
+
+            <div class="editor-container">
+                <div class="editor-toolbar">
+                    <button id="newBtn" class="btn">새로 만들기</button>
+                    <button id="loadBtn" class="btn">불러오기</button>
+                    <button id="saveBtn" class="btn">저장하기</button>
+                    <button id="downloadBtn" class="btn">다운로드</button>
+                    <button id="shareBtn" class="btn">공유하기</button>
+                    <select id="templateSelect" class="form-select">
+                        <option value="">템플릿 선택...</option>
+                        <option value="blank">빈 페이지</option>
+                        <option value="basic">기본 HTML 페이지</option>
+                        <option value="bootstrap">Bootstrap 템플릿</option>
+                        <option value="tailwind">Tailwind CSS 템플릿</option>
+                        <option value="landing">랜딩 페이지</option>
+                    </select>
+                </div>
+
+                <div class="editor-main">
+                    <div class="editor-panels">
+                        <div class="editor-tabs">
+                            <button class="editor-tab active" data-target="html-area">HTML</button>
+                            <button class="editor-tab" data-target="css-area">CSS</button>
+                            <button class="editor-tab" data-target="js-area">JavaScript</button>
+                        </div>
+                        <div id="html-area" class="editor-area active">
+                            <textarea id="html-editor" class="editor-textarea" placeholder="HTML 코드를 입력하세요..."></textarea>
+                        </div>
+                        <div id="css-area" class="editor-area">
+                            <textarea id="css-editor" class="editor-textarea" placeholder="CSS 코드를 입력하세요..."></textarea>
+                        </div>
+                        <div id="js-area" class="editor-area">
+                            <textarea id="js-editor" class="editor-textarea" placeholder="JavaScript 코드를 입력하세요..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="preview-panel">
+                        <div class="responsive-controls">
+                            <button class="device-btn active" data-width="100%">데스크톱</button>
+                            <button class="device-btn" data-width="768px">태블릿</button>
+                            <button class="device-btn" data-width="375px">모바일</button>
+                        </div>
+                        <iframe id="preview" class="preview-iframe" srcdoc=""></iframe>
+                    </div>
+                </div>
+
+                <div class="status-bar">
+                    <span id="status-message">준비 완료</span>
+                </div>
+            </div>
+
+            <div class="tool-features">
+                <h3>도구 기능 설명</h3>
+                <ul>
+                    <li><strong>실시간 미리보기</strong> - 코드를 입력하면 오른쪽에 결과가 즉시 표시됩니다.</li>
+                    <li><strong>HTML, CSS, JavaScript</strong> - 세 가지 언어를 모두 편집할 수 있습니다.</li>
+                    <li><strong>반응형 디자인 테스트</strong> - 다양한 화면 크기에서 결과를 확인할 수 있습니다.</li>
+                    <li><strong>템플릿</strong> - 다양한 시작 템플릿을 사용할 수 있습니다.</li>
+                    <li><strong>저장 및 공유</strong> - 작업을 저장하고 다른 사람과 공유할 수 있습니다.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 웹 도구 모음집 | 개인 프로젝트</p>
+    </footer>
+
+    <script src="../js/common.js"></script>
+    <script src="html-css-editor/highlighter.js"></script>
+    <script src="html-css-editor/editor.js"></script>
+    <script src="html-css-editor/preview.js"></script>
+    <script src="html-css-editor/storage.js"></script>
+    <script src="html-css-editor/templates.js"></script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>피치 조정 비율 계산기 - 웹 도구 모음집</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .preset-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .preset-button {
+            padding: 8px 15px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .preset-button:hover {
+            background-color: #d0d0d0;
+        }
+        
+        .result-box {
+            background-color: #f5f5f5;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+        
+        .copy-result {
+            margin-top: 15px;
+            text-align: right;
+        }
+        
+        .explanation {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .calculation-steps {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .slider-container {
+            margin: 20px 0;
+        }
+        
+        #speedSlider {
+            width: 100%;
+        }
+        
+        #speedOutput {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .dark-mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #333;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>피치 조정 비율 계산기</h1>
+        <p>속도 변경에 따른 음성/오디오 피치 조절 비율을 계산합니다</p>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌓</button>
+    </header>
+    
+    <div class="container">
+        <button class="back-button" onclick="window.location.href='../index.html'">← 메인으로 돌아가기</button>
+        
+        <div class="tool-interface">
+            <h2 class="page-title">속도에 따른 피치 조정 계산</h2>
+            
+            <div class="form-group">
+                <label for="speedInput">변경된 속도 (%) 입력:</label>
+                <input type="number" id="speedInput" min="1" max="1000" value="100">
+            </div>
+            
+            <div class="slider-container">
+                <input type="range" id="speedSlider" min="10" max="300" value="100" step="5">
+                <p>현재 값: <span id="speedOutput">100%</span></p>
+            </div>
+            
+            <div class="preset-buttons">
+                <p>자주 사용하는 값:</p>
+                <button class="preset-button" data-value="50">50%</button>
+                <button class="preset-button" data-value="75">75%</button>
+                <button class="preset-button" data-value="125">125%</button>
+                <button class="preset-button" data-value="150">150%</button>
+                <button class="preset-button" data-value="200">200%</button>
+            </div>
+            
+            <button id="calculateBtn" onclick="calculate()">계산하기</button>
+            
+            <div id="resultContainer" class="result-box" style="display: none;">
+                <h3>계산 결과</h3>
+                <p id="result1">피치 조정 비율 = 100 / 100 = 1.00</p>
+                <p id="result2">피치 조정 비율 (약) = 1.00</p>
+                <div id="presetMessage"></div>
+                <div class="copy-result">
+                    <button onclick="copyResult()">결과 복사</button>
+                </div>
+            </div>
+            
+            <div class="explanation">
+                <h3>피치 조정 비율이란?</h3>
+                <p>비디오 또는 오디오 편집 프로그램에서 영상/음성의 속도를 변경하면 피치(음높이)도 함께 변하게 됩니다. 속도가 빨라지면 피치가 올라가고, 속도가 느려지면 피치가 내려갑니다.</p>
+                <p>피치 조정 비율은 다음 공식으로 계산됩니다:</p>
+                <div class="calculation-steps">피치 조정 비율 = 원래 속도(%) / 변경된 속도(%)</div>
+                <p>예시:</p>
+                <ul>
+                    <li>속도를 <strong>두 배(200%)</strong>로 높이면 피치 비율은 <strong>0.5</strong>가 됩니다.</li>
+                    <li>속도를 <strong>절반(50%)</strong>으로 낮추면 피치 비율은 <strong>2.0</strong>이 됩니다.</li>
+                </ul>
+                <p>이 피치 조정 비율을 편집 프로그램의 피치 조절 설정에 입력하면 원래 음높이를 유지하면서 속도만 변경할 수 있습니다.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 웹 도구 모음집 | 개인 프로젝트</p>
+    </footer>
+    
+    <script src="../js/common.js"></script>
+    <script>
+        // 페이지 로드 시 실행
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('피치 조정 비율 계산기 페이지 로드됨');
+            
+            // 슬라이더 이벤트 연결
+            const speedSlider = document.getElementById('speedSlider');
+            const speedInput = document.getElementById('speedInput');
+            const speedOutput = document.getElementById('speedOutput');
+            
+            speedSlider.addEventListener('input', function() {
+                speedInput.value = this.value;
+                speedOutput.textContent = this.value + '%';
+                console.log('슬라이더 값 변경:', this.value);
+            });
+            
+            speedInput.addEventListener('input', function() {
+                // 입력값이 슬라이더 범위를 벗어나면 슬라이더는 업데이트하지 않음
+                if (this.value >= 10 && this.value <= 300) {
+                    speedSlider.value = this.value;
+                }
+                speedOutput.textContent = this.value + '%';
+                console.log('입력 필드 값 변경:', this.value);
+            });
+            
+            // 프리셋 버튼 이벤트 연결
+            document.querySelectorAll('.preset-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    speedInput.value = value;
+                    
+                    // 슬라이더 범위 내의 값이면 슬라이더도 업데이트
+                    if (value >= 10 && value <= 300) {
+                        speedSlider.value = value;
+                    }
+                    speedOutput.textContent = value + '%';
+                    
+                    // 클릭 시 자동으로 계산 실행
+                    calculate();
+                    
+                    console.log('프리셋 버튼 클릭:', value);
+                });
+            });
+            
+            // 엔터 키 눌렀을 때 계산 실행
+            speedInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    calculate();
+                }
+            });
+        });
+        
+        // 계산 함수
+        function calculate() {
+            try {
+                const originalSpeed = 100;
+                
+                // 변경된 속도 가져오기
+                const changedSpeed = parseFloat(document.getElementById('speedInput').value);
+                
+                // 입력값 검증
+                if (isNaN(changedSpeed) || changedSpeed <= 0) {
+                    showNotification('유효한 속도 값을 입력하세요.', 'error');
+                    console.error('잘못된 입력값:', changedSpeed);
+                    return;
+                }
+                
+                // 피치 조정 비율 계산
+                const pitchAdjustmentRatio = originalSpeed / changedSpeed;
+                
+                // 결과 표시
+                document.getElementById('result1').innerText = `피치 조정 비율 = ${originalSpeed} / ${changedSpeed} = ${pitchAdjustmentRatio.toFixed(2)}`;
+                document.getElementById('result2').innerText = `피치 조정 비율 (약) = ${pitchAdjustmentRatio.toFixed(2)}`;
+                
+                // 결과 컨테이너 표시
+                document.getElementById('resultContainer').style.display = 'block';
+                
+                // 특정 프리셋에 대한 메시지 추가
+                const presetMessage = document.getElementById('presetMessage');
+                if (changedSpeed === 200) {
+                    presetMessage.innerHTML = '<p><strong>팁:</strong> 2배속에서는 피치 키를 -12 반음 또는 -1 옥타브로 설정하세요.</p>';
+                } else if (changedSpeed === 50) {
+                    presetMessage.innerHTML = '<p><strong>팁:</strong> 0.5배속에서는 피치 키를 +12 반음 또는 +1 옥타브로 설정하세요.</p>';
+                } else {
+                    presetMessage.innerHTML = '';
+                }
+                
+                console.log('계산 완료:', { changedSpeed, pitchAdjustmentRatio });
+                logAction('피치 비율 계산', { speed: changedSpeed, ratio: pitchAdjustmentRatio });
+                
+                return pitchAdjustmentRatio;
+            } catch (error) {
+                console.error('계산 중 오류 발생:', error);
+                showNotification('계산 중 오류가 발생했습니다.', 'error');
+            }
+        }
+        
+        // 결과 복사 함수
+        function copyResult() {
+            try {
+                const result = document.getElementById('result2').innerText;
+                copyToClipboard(result);
+                console.log('결과 복사됨');
+            } catch (error) {
+                console.error('결과 복사 중 오류 발생:', error);
+                showNotification('결과 복사 중 오류가 발생했습니다.', 'error');
+            }
+        }
+    </script>
+</body>
+</html>
