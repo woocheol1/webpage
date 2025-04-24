@@ -1,1 +1,166 @@
-﻿
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <!-- 배경 -->
+  <rect width="800" height="500" fill="#f8fafc" rx="10" ry="10" />
+  
+  <!-- 선택적 모병제 개념도 -->
+  <g id="diagram">
+    <!-- 타이틀 -->
+    <text x="400" y="50" font-family="'Inter', sans-serif" font-size="24" fill="#16213e" text-anchor="middle" font-weight="bold">선택적 모병제 개념도</text>
+    <line x1="280" y1="60" x2="520" y2="60" stroke="#3a86ff" stroke-width="3" />
+    
+    <!-- 두 시스템 원형 -->
+    <g id="circles">
+      <!-- 징병제 원 -->
+      <circle cx="250" cy="200" r="120" fill="#e2e8f0" stroke="#3a86ff" stroke-width="2" opacity="0.8" />
+      <text x="280" y="200" font-family="'Inter', sans-serif" font-size="22" fill="#16213e" text-anchor="middle" font-weight="bold">징병제</text>
+      <text x="280" y="230" font-family="'Inter', sans-serif" font-size="14" fill="#4a5568" text-anchor="middle">국방의 의무</text>
+      
+      <!-- 모병제 원 -->
+      <circle cx="550" cy="200" r="120" fill="#e2e8f0" stroke="#e63946" stroke-width="2" opacity="0.8" />
+      <text x="520" y="200" font-family="'Inter', sans-serif" font-size="22" fill="#16213e" text-anchor="middle" font-weight="bold">모병제</text>
+      <text x="520" y="230" font-family="'Inter', sans-serif" font-size="14" fill="#4a5568" text-anchor="middle">직업으로서의 군대</text>
+      
+      <!-- 교집합 영역 (선택적 모병제) -->
+      <g id="intersection">
+        <path d="M 345 140 
+                 A 120 120 0 0 1 345 260 
+                 A 120 120 0 0 0 455 260 
+                 A 120 120 0 0 0 455 140 
+                 A 120 120 0 0 1 345 140" 
+              fill="#3a86ff" opacity="0.3" />
+        <text x="400" y="180" font-family="'Inter', sans-serif" font-size="20" fill="#16213e" text-anchor="middle" font-weight="bold">선택적 모병제</text>
+        <text x="400" y="205" font-family="'Inter', sans-serif" font-size="14" fill="#16213e" text-anchor="middle">의무 + 전문성</text>
+        <text x="400" y="225" font-family="'Inter', sans-serif" font-size="14" fill="#16213e" text-anchor="middle">국방의 효율화</text>
+      </g>
+    </g>
+    
+    <!-- 특징 설명 -->
+    <g id="feature-points">
+      <!-- 징병제 특징 -->
+      <g class="feature-point" id="conscription-features">
+        <circle cx="170" cy="140" r="5" fill="#3a86ff" />
+        <text x="175" y="145" font-family="'Inter', sans-serif" font-size="14" fill="#4a5568" text-anchor="start">모든 청년 대상</text>
+        
+        <circle cx="170" cy="170" r="5" fill="#3a86ff" />
+        <text x="175" y="175" font-family="'Inter', sans-serif" font-size="14" fill="#4a5568" text-anchor="start">단기 복무</text>
+        
+        <circle cx="170" cy="200" r="5" fill="#3a86ff" />
+        <text x="175" y="205" font-family="'Inter', sans-serif" font-size="14" fill="#4a5568" text-anchor="start">대규모 병력</text>
+      </g>
+      
+      <!-- 모병제 특징 -->
+      <g class="feature-point" id="voluntary-features">
+        <circle cx="580" cy="140" r="5" fill="#e63946" />
+        <text x="585" y="145" font-family="'Inter', sans-serif" font-size="14" fill="#4a5568" text-anchor="start">지원자 선발</text>
+        
+        <circle cx="580" cy="170" r="5" fill="#e63946" />
+        <text x="585" y="175" font-family="'Inter', sans-serif" font-size="14" fill="#4a5568" text-anchor="start">장기 직업군인</text>
+        
+        <circle cx="580" cy="200" r="5" fill="#e63946" />
+        <text x="585" y="205" font-family="'Inter', sans-serif" font-size="14" fill="#4a5568" text-anchor="start">전문성 중심</text>
+      </g>
+      
+      <!-- 선택적 모병제 특징 (화살표로 연결) -->
+      <g id="selective-features">
+        <!-- 특징 박스 -->
+        <rect x="250" y="330" width="300" height="130" rx="10" ry="10" fill="#ffffff" stroke="#3a86ff" stroke-width="2" />
+        <text x="400" y="355" font-family="'Inter', sans-serif" font-size="18" fill="#16213e" text-anchor="middle" font-weight="bold">선택적 모병제 특징</text>
+        
+        <!-- 특징 목록 -->
+        <circle cx="280" cy="380" r="5" fill="#3a86ff" />
+        <text x="295" y="385" font-family="'Inter', sans-serif" font-size="14" fill="#4a5568" text-anchor="start">기본 징병제 유지</text>
+        
+        <circle cx="280" cy="410" r="5" fill="#3a86ff" />
+        <text x="295" y="415" font-family="'Inter', sans-serif" font-size="14" fill="#4a5568" text-anchor="start">전문분야 지원 가능</text>
+        
+        <circle cx="280" cy="440" r="5" fill="#3a86ff" />
+        <text x="295" y="445" font-family="'Inter', sans-serif" font-size="14" fill="#4a5568" text-anchor="start">직업군인 경로 확대</text>
+        
+        <!-- 연결 화살표 -->
+        <path d="M 400 240 L 400 320" stroke="#3a86ff" stroke-width="2" stroke-dasharray="5,5" />
+        <polygon points="400,330 395,320 405,320" fill="#3a86ff" />
+      </g>
+    </g>
+  </g>
+  
+  <!-- 호버 효과를 위한 애니메이션 및 스타일 -->
+  <style>
+    @keyframes pulse {
+      0% { opacity: 0.3; }
+      50% { opacity: 0.5; }
+      100% { opacity: 0.3; }
+    }
+    
+    #intersection {
+      animation: pulse 3s infinite;
+      cursor: pointer;
+    }
+    
+    #intersection:hover {
+      opacity: 0.7;
+      animation: none;
+    }
+    
+    .feature-point circle {
+      transition: r 0.3s ease, fill 0.3s ease;
+    }
+    
+    .feature-point text {
+      transition: font-weight 0.3s ease, fill 0.3s ease;
+    }
+    
+    .feature-point:hover circle {
+      r: 7;
+      fill: #2667ca;
+    }
+    
+    .feature-point:hover text {
+      font-weight: bold;
+      fill: #16213e;
+    }
+    
+    #selective-features rect {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    #selective-features:hover rect {
+      transform: translateY(-5px);
+      filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+    }
+    
+    /* 다크모드 지원을 위한 미디어 쿼리 */
+    @media (prefers-color-scheme: dark) {
+      #diagram rect {
+        fill: #121212;
+      }
+      
+      #diagram text {
+        fill: #f5f5f7;
+      }
+      
+      #circles circle {
+        fill: #2c2c2c;
+      }
+      
+      #intersection path {
+        fill: #5a9bff;
+      }
+      
+      #intersection text {
+        fill: #f5f5f7;
+      }
+      
+      .feature-point text {
+        fill: #bdbdbd;
+      }
+      
+      #selective-features rect {
+        fill: #1e1e1e;
+      }
+      
+      .feature-point:hover text {
+        fill: #f5f5f7;
+      }
+    }
+  </style>
+</svg>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML, CSS & JS Editor & Preview</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/theme/material.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/split.js/dist/split.min.js"></script>
+</head>
+<body>
+    <div class="container split-container">
+        <div id="editor-section" class="editor-section split">
+            
+            <div class="editor-tabs">
+                <button id="tab-html" class="tab-button active">HTML</button>
+                <button id="tab-css" class="tab-button">CSS</button>
+                <button id="tab-js" class="tab-button">JavaScript</button>
+            </div>
+            <div class="editor-panes">
+                {/* HTML 에디터 Pane */}
+                <div id="html-editor-pane" class="pane editor-pane active">
+                    <textarea id="html-editor"></textarea>
+                </div>
+                {/* CSS 에디터 Pane */}
+                <div id="css-editor-pane" class="pane editor-pane">
+                    <textarea id="css-editor"></textarea>
+                </div>
+                {/* JavaScript 에디터 Pane (추가) */}
+                <div id="js-editor-pane" class="pane editor-pane">
+                    <textarea id="js-editor"></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <div id="preview-section" class="preview-section split">
+            <div class="preview-controls">
+                <span>Preview Size:</span>
+                <button class="size-button active" data-size="100%">Fit</button>
+                <button class="size-button" data-size="1024px">Desktop</button>
+                <button class="size-button" data-size="768px">Tablet</button>
+                <button class="size-button" data-size="375px">Mobile</button>
+            </div>
+            <div id="preview-wrapper">
+                <iframe id="preview"></iframe>
+            </div>
+        </div>
+    </div>
+
+    {/* CodeMirror JS (변경 없음) */}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/javascript/javascript.min.js"></script> {/* JS 모드 이미 포함됨 */}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/css/css.min.js"></script>
+
+    {/* 사용자 정의 스크립트 */}
+    <script src="script.js"></script>
+</body>
+</html>
