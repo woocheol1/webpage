@@ -1,9 +1,9 @@
 /**
- * script.js - HTML, CSS & JS Editor with Live Preview (v5)
+ * script.js - HTML, CSS & JS Editor with Live Preview (v5.1 - Cursor Sync & Folding Fix)
  * Features: Tabs (HTML, CSS, JS), Syntax Highlighting (CodeMirror),
  * Live Preview (iframe), Debounced Updates, Scroll Position Persistence,
- * Scroll Sync (HTML), Line Highlight (HTML), Resizable Panes (Split.js),
- * Responsive Preview Sizes.
+ * Cursor-based Scroll Sync (HTML), Line Highlight (HTML), Resizable Panes (Split.js),
+ * Responsive Preview Sizes, Code Folding Controls.
  */
 
 // --- 전역 변수 ---
@@ -11,6 +11,7 @@ let htmlEditor, cssEditor, jsEditor; // CodeMirror 인스턴스
 const previewFrame = document.getElementById('preview'); // 미리보기 iframe
 let previousHighlightElement = null; // 이전에 하이라이트된 요소 추적
 let currentEditor = 'html'; // 현재 활성 에디터 ('html', 'css', 'js')
+let scrollTimeoutId; // 스크롤 중복 실행 방지용 타이머 ID
 
 // DOM 요소 참조
 const tabHtml = document.getElementById('tab-html');
@@ -21,6 +22,8 @@ const cssEditorPane = document.getElementById('css-editor-pane');
 const jsEditorPane = document.getElementById('js-editor-pane');
 const previewWrapper = document.getElementById('preview-wrapper');
 const sizeButtons = document.querySelectorAll('.size-button');
+const foldAllButton = document.getElementById('btn-fold-all');
+const unfoldAllButton = document.getElementById('btn-unfold-all');
 
 
 // --- 디바운스 헬퍼 함수 ---
@@ -41,6 +44,15 @@ function debounce(func, delay) {
 }
 // --------------------------
 
+// --- 추가: 현재 활성 에디터 인스턴스 반환 함수 ---
+function getCurrentActiveEditor() {
+    if (currentEditor === 'html') return htmlEditor;
+    if (currentEditor === 'css') return cssEditor;
+    if (currentEditor === 'js') return jsEditor;
+    return null; // 활성 에디터가 없거나 식별할 수 없을 때 null 반환
+}
+// --- 추가 끝 ---
+
 
 /**
  * 애플리케이션 (에디터, Splitter 등) 초기화 함수
@@ -49,26 +61,55 @@ function initializeApp() {
     // --- 에디터 초기화 ---
     try {
         htmlEditor = CodeMirror.fromTextArea(document.getElementById('html-editor'), {
-            mode: 'htmlmixed', theme: 'material', lineNumbers: true, lineWrapping: true,
-            // 추가 옵션 예시
-            // autoCloseBrackets: true,
-            // autoCloseTags: true,
-            // matchBrackets: true,
+            mode: 'htmlmixed',
+            theme: 'material',
+            lineNumbers: true,
+            lineWrapping: true,
+            foldGutter: true,
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
         });
         cssEditor = CodeMirror.fromTextArea(document.getElementById('css-editor'), {
-            mode: 'css', theme: 'material', lineNumbers: true, lineWrapping: true,
-            // autoCloseBrackets: true,
-            // matchBrackets: true,
+            mode: 'css',
+            theme: 'material',
+            lineNumbers: true,
+            lineWrapping: true,
+            foldGutter: true,
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
         });
         jsEditor = CodeMirror.fromTextArea(document.getElementById('js-editor'), {
-            mode: 'javascript', theme: 'material', lineNumbers: true, lineWrapping: true,
-            // autoCloseBrackets: true,
-            // matchBrackets: true,
+            mode: 'javascript',
+            theme: 'material',
+            lineNumbers: true,
+            lineWrapping: true,
+            foldGutter: true,
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
         });
+
+        // --- 각 에디터에 폴딩 기능 초기화 ---
+        if (typeof initializeFolding === 'function') {
+             initializeFolding(htmlEditor, 'htmlmixed');
+             initializeFolding(cssEditor, 'css');
+             initializeFolding(jsEditor, 'javascript');
+        } else {
+            console.error("initializeFolding function not found. Make sure folding.js is loaded.");
+        }
+
+        if (typeof initializeColorTools === 'function') {
+            initializeColorTools(cssEditor); // CSS 에디터 인스턴스를 전달
+       } else {
+           console.error("initializeColorTools function not found. Make sure color-tools.js is loaded.");
+       }
+
+       if (typeof initializeFormatter === 'function') {
+        initializeFormatter(getCurrentActiveEditor); // 활성 에디터 반환 함수를 전달
+   } else {
+       console.error("initializeFormatter function not found. Make sure formatter.js is loaded.");
+   }
+
     } catch (e) {
         console.error("CodeMirror initialization failed:", e);
         alert("CodeMirror 에디터를 초기화하는 중 오류가 발생했습니다. 페이지를 새로고침하거나 라이브러리 로드를 확인하세요.");
-        return; // 초기화 실패 시 중단
+        return;
     }
 
     // --- 초기 콘텐츠 설정 ---
@@ -79,7 +120,7 @@ function initializeApp() {
     <title>Preview Content</title>
     </head>
 <body>
-    <h1>HTML, CSS & JS 실시간 미리보기 (v5)</h1>
+    <h1>HTML, CSS & JS 실시간 미리보기 (v5.1)</h1>
     <p>이제 <span class="highlight" id="js-highlight">JavaScript 탭</span>에서 코드를 작성하여 미리보기를 동적으로 제어할 수 있습니다.</p>
     <button id="action-button">클릭해보세요!</button>
     <p id="message-area"></p>
@@ -93,7 +134,8 @@ function initializeApp() {
         <li>편집 시 스크롤 위치 유지</li>
         <li>창 너비 조절 가능 (드래그)</li>
         <li>미리보기 반응형 크기 변경 (버튼)</li>
-        <li>HTML 스크롤/라인 동기화</li>
+        <li>HTML 커서 기반 스크롤 동기화</li>
+        <li>코드 접기/펼치기 (폴딩)</li>
     </ul>
 
     <div class="spacer">스크롤 테스트 영역<br/>(2)</div>
@@ -138,29 +180,23 @@ if (button) {
         console.log('Action button clicked!');
         if (messageArea) {
             messageArea.textContent = '버튼 클릭! (' + new Date().toLocaleTimeString() + ')';
-            // 이전 메시지 제거 타이머 취소
             clearTimeout(messageTimeout);
-            // 5초 후 메시지 초기화 타이머 설정
             messageTimeout = setTimeout(function() {
                 messageArea.textContent = '';
                  if (jsHighlight) {
-                     jsHighlight.style.backgroundColor = ''; // 원래 스타일로 복원
+                     jsHighlight.style.backgroundColor = '';
                  }
             }, 5000);
         }
-        // 하이라이트 색상 변경 (예시)
         if (jsHighlight) {
             jsHighlight.style.backgroundColor = 'lightblue';
-            jsHighlight.style.transition = 'background-color 0.3s'; // 부드러운 변경
+            jsHighlight.style.transition = 'background-color 0.3s';
         }
     });
     console.log('Button event listener added.');
 } else {
     console.warn('Action button not found.');
 }
-
-// 추가적인 JS 코드 예시 (예: body 배경색 변경)
-// document.body.style.backgroundColor = '#f0f8ff'; // AliceBlue
 
 console.log('미리보기 JavaScript 로드 완료!');
 `;
@@ -176,8 +212,11 @@ console.log('미리보기 JavaScript 로드 완료!');
     htmlEditor.on('change', debouncedUpdatePreview);
     cssEditor.on('change', debouncedUpdatePreview);
     jsEditor.on('change', debouncedUpdatePreview);
-    htmlEditor.on('scroll', () => { if (currentEditor === 'html') syncScroll(); });
-    htmlEditor.on('cursorActivity', () => { if (currentEditor === 'html') highlightPreviewLine(); });
+    htmlEditor.on('cursorActivity', debounce(() => {
+        if (currentEditor === 'html') {
+            highlightAndScrollPreview();
+        }
+    }, 150));
 
     // --- 탭 기능 초기화 ---
     if (tabHtml && tabCss && tabJs) {
@@ -186,6 +225,47 @@ console.log('미리보기 JavaScript 로드 완료!');
         tabJs.addEventListener('click', () => switchTab('js'));
     } else {
         console.error("Tab buttons not found!");
+    }
+
+    // --- 전체 접기/펼치기 버튼 이벤트 리스너 ---
+    if (foldAllButton) {
+        foldAllButton.addEventListener('click', () => {
+            console.log("Fold All button clicked.");
+            const activeEditor = getCurrentActiveEditor(); // 이 함수가 정의되어 있어야 함
+            console.log("Active editor instance:", activeEditor);
+            if (activeEditor && typeof activeEditor.execCommand === 'function') {
+                try {
+                    activeEditor.execCommand("foldAll");
+                    console.log("Fold all executed for", currentEditor);
+                } catch (e) {
+                    console.error("Error executing foldAll command:", e);
+                }
+            } else {
+                console.error("Failed to get active editor or execCommand is not available.");
+            }
+        });
+    } else {
+        console.warn("Fold All button not found!");
+    }
+
+    if (unfoldAllButton) {
+        unfoldAllButton.addEventListener('click', () => {
+            console.log("Unfold All button clicked.");
+            const activeEditor = getCurrentActiveEditor(); // 이 함수가 정의되어 있어야 함
+            console.log("Active editor instance:", activeEditor);
+             if (activeEditor && typeof activeEditor.execCommand === 'function') {
+                try {
+                    activeEditor.execCommand("unfoldAll");
+                    console.log("Unfold all executed for", currentEditor);
+                } catch (e) {
+                    console.error("Error executing unfoldAll command:", e);
+                }
+            } else {
+                 console.error("Failed to get active editor or execCommand is not available.");
+            }
+        });
+    } else {
+        console.warn("Unfold All button not found!");
     }
 
     // --- Split.js 초기화 ---
@@ -197,10 +277,8 @@ console.log('미리보기 JavaScript 로드 완료!');
             cursor: 'col-resize',
             direction: 'horizontal',
             onDrag: function() {
-                 // 활성 에디터만 리프레시
-                 if (currentEditor === 'html' && htmlEditor) htmlEditor.refresh();
-                 else if (currentEditor === 'css' && cssEditor) cssEditor.refresh();
-                 else if (currentEditor === 'js' && jsEditor) jsEditor.refresh();
+                 const activeEditor = getCurrentActiveEditor();
+                 if(activeEditor) activeEditor.refresh();
             }
         });
     } catch (e) {
@@ -218,9 +296,9 @@ console.log('미리보기 JavaScript 로드 완료!');
     }
 
     // --- 초기 상태 설정 ---
-    switchTab('html'); // 기본 HTML 탭
-    updatePreview();   // 초기 미리보기
-    setTimeout(highlightPreviewLine, 250); // 초기 하이라이트 (지연 시간 약간 늘림)
+    switchTab('html');
+    updatePreview();
+    setTimeout(highlightAndScrollPreview, 250);
 }
 
 
@@ -238,51 +316,43 @@ function switchTab(targetEditor) {
     tabCss.classList.toggle('active', targetEditor === 'css');
     tabJs.classList.toggle('active', targetEditor === 'js');
 
-    // 하이라이트 제거 공통 로직
     if (previousHighlightElement) {
         previousHighlightElement.classList.remove('preview-highlight');
         previousHighlightElement = null;
     }
 
-    // 활성화된 에디터 새로고침 및 관련 기능 실행
-    if (targetEditor === 'html') {
-        if (htmlEditor) htmlEditor.refresh();
-        // HTML 탭 활성 시 스크롤/하이라이트 즉시 반영 시도
-        syncScroll();
-        highlightPreviewLine();
-    } else if (targetEditor === 'css') {
-        if (cssEditor) cssEditor.refresh();
-    } else { // 'js'
-        if (jsEditor) jsEditor.refresh();
+    const activeEditor = getCurrentActiveEditor();
+    if(activeEditor) {
+        activeEditor.refresh(); // 탭 전환 시 해당 에디터 리프레시
+        if (targetEditor === 'html') {
+            highlightAndScrollPreview();
+        }
     }
 }
 
 
 /**
- * HTML 문자열에 data-source-line 속성 추가 함수 (정규식 개선)
+ * HTML 문자열에 data-source-line 속성 추가 함수
  */
 function addSourceLineMarkers(htmlString) {
     const lines = htmlString.split('\n');
-    const blockTagsRegex = /^\s*<(p|h[1-6]|div|ul|ol|li|blockquote|section|article|header|footer|aside|table|tr|hr|pre|form|details|summary|figure|figcaption|fieldset|legend)([\s>])/i;
-    let inBlock = false; // <script>, <style> 등 제외
+    const blockTagsRegex = /^\s*<(p|h[1-6]|div|ul|ol|li|blockquote|section|article|header|footer|aside|table|tr|hr|pre|form|details|summary|figure|figcaption|fieldset|legend|span|a|button|label)([\s>])/i;
+    let inBlock = false;
 
     return lines.map((line, index) => {
         const lineNumber = index + 1;
-        // 간단한 블록 체크 (정확성 한계 있음)
-        if (line.includes('<script') || line.includes('<style') || line.includes('')) inBlock = false;
+        if (line.includes('<script') || line.includes('<style')) inBlock = true;
+        if (line.includes('</script') || line.includes('</style')) inBlock = false;
 
-        if (!inBlock && blockTagsRegex.test(line) && !line.includes('data-source-line')) {
+        if (!inBlock && blockTagsRegex.test(line)) {
             try {
-                 // 첫 번째 태그에만 속성 추가 시도
                  return line.replace(/<([a-zA-Z0-9]+)((?:\s+[^>]*)?)>/, (match, tagName, existingAttrs) => {
-                     // 이미 속성이 있거나 빈 태그(<br>, <hr> 등)가 아니면 추가
-                     if (!existingAttrs.includes('data-source-line') && !match.endsWith('/>')) {
-                         return `<${tagName} data-source-line="${lineNumber}"${existingAttrs}>`;
+                     if (!existingAttrs?.includes('data-source-line') && !match.startsWith('</') && !match.endsWith('/>')) {
+                         return `<${tagName} data-source-line="${lineNumber}"${existingAttrs || ''}>`;
                      }
                      return match;
                  });
             } catch(e) {
-                 // console.warn("Regex error in addSourceLineMarkers:", line, e);
                  return line;
             }
         }
@@ -292,7 +362,7 @@ function addSourceLineMarkers(htmlString) {
 
 
 /**
- * 미리보기 업데이트 함수 (JS 코드 및 오류 처리 포함)
+ * 미리보기 업데이트 함수
  */
 function updatePreview() {
     const previewWindow = previewFrame.contentWindow;
@@ -304,7 +374,6 @@ function updatePreview() {
     }
 
     try {
-        // 에디터 인스턴스 존재 확인
         if (!htmlEditor || !cssEditor || !jsEditor) {
             console.error("One or more editors not initialized!");
             return;
@@ -313,40 +382,43 @@ function updatePreview() {
         const rawHtml = htmlEditor.getValue();
         const cssContent = cssEditor.getValue();
         const jsContent = jsEditor.getValue();
-        const processedHtmlBody = addSourceLineMarkers(rawHtml); // Body 내용만 처리한다고 가정
+        const processedHtml = addSourceLineMarkers(rawHtml);
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(processedHtml, 'text/html');
+        const headContent = doc.head.innerHTML;
+        const bodyContent = doc.body.innerHTML;
 
         const finalHtml = `<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Preview</title>
+    ${headContent}
     <style id="preview-injected-styles">
         /* User CSS */
         ${cssContent}
-        /* Highlight CSS 는 CSS 초기값에 포함됨 */
     </style>
 </head>
 <body>
-    ${processedHtmlBody}
-
+    ${bodyContent}
     <script id="preview-injected-script">
-        // 스크립트 실행 오류를 잡기 위한 래퍼
         (function() {
             try {
                 ${jsContent}
             } catch (e) {
                 console.error("Error executing preview script:", e);
-                // 오류 메시지를 미리보기 하단에 표시
                 const errorDiv = document.createElement('div');
                 errorDiv.style.cssText = 'position:fixed; bottom:10px; left:10px; padding:10px; background-color:rgba(220, 53, 69, 0.9); color:white; font-family:monospace; font-size:13px; z-index:10000; border-radius:5px; max-width: calc(100% - 20px); overflow:auto; max-height: 100px;';
                 errorDiv.textContent = 'JS Error: ' + e.message;
-                // 기존 오류 메시지 제거 후 추가
                 const existingError = document.getElementById('preview-js-error');
                 if (existingError) existingError.remove();
                 errorDiv.id = 'preview-js-error';
-                document.body.appendChild(errorDiv);
-                // 자동으로 사라지게 하려면 아래 주석 해제
-                // setTimeout(() => { if (errorDiv.parentNode) errorDiv.remove(); }, 7000);
+                if (document.body) {
+                   document.body.appendChild(errorDiv);
+                } else {
+                   window.addEventListener('DOMContentLoaded', () => document.body.appendChild(errorDiv));
+                }
             }
         })();
     </script>
@@ -356,6 +428,7 @@ function updatePreview() {
         const restoreScroll = () => {
             if (previewFrame.contentWindow) {
                 previewFrame.contentWindow.scrollTo(previousScrollLeft, previousScrollTop);
+                 setTimeout(highlightAndScrollPreview, 50);
             }
         };
 
@@ -364,45 +437,14 @@ function updatePreview() {
 
     } catch (e) {
         console.error("Error updating preview:", e);
-        // 미리보기 업데이트 자체의 오류 처리
-        previewFrame.srcdoc = `<html><body><h1 style="color:red;">Preview Update Error</h1><pre>${e.message}</pre></body></html>`;
+        previewFrame.srcdoc = `<html><head><title>Error</title></head><body><h1 style="color:red;">Preview Update Error</h1><pre>${e.message}\n${e.stack}</pre></body></html>`;
     }
 }
 
-
 /**
- * 스크롤 동기화 함수 (HTML 에디터 활성 시)
+ * 미리보기 하이라이트 및 스크롤 함수
  */
-function syncScroll() {
-    if (currentEditor !== 'html' || !htmlEditor) return;
-    try {
-        const scrollInfo = htmlEditor.getScrollInfo();
-        const editorScrollTop = scrollInfo.top;
-        const editorScrollHeight = scrollInfo.height;
-        const editorClientHeight = scrollInfo.clientHeight;
-        const editorScrollableHeight = editorScrollHeight - editorClientHeight;
-        if (editorScrollableHeight <= 0) return;
-        const scrollPercent = editorScrollTop / editorScrollableHeight;
-
-        const previewWindow = previewFrame.contentWindow;
-        const previewDoc = previewWindow?.document;
-        if (previewDoc?.documentElement) {
-            const previewScrollHeight = previewDoc.documentElement.scrollHeight;
-            const previewClientHeight = previewDoc.documentElement.clientHeight;
-            const previewScrollableHeight = previewScrollHeight - previewClientHeight;
-            if (previewScrollableHeight > 0) {
-                const previewTargetScrollTop = scrollPercent * previewScrollableHeight;
-                previewWindow.scrollTo(0, previewTargetScrollTop);
-            }
-        }
-    } catch (e) { /* 에러 무시 또는 로깅 */ }
-}
-
-
-/**
- * 미리보기 하이라이트 함수 (HTML 에디터 활성 시)
- */
-function highlightPreviewLine() {
+function highlightAndScrollPreview() {
     if (currentEditor !== 'html' || !htmlEditor) {
          if (previousHighlightElement) {
             try { previousHighlightElement.classList.remove('preview-highlight'); } catch (e) {}
@@ -410,22 +452,35 @@ function highlightPreviewLine() {
          }
         return;
     }
+
     try {
         const previewDoc = previewFrame.contentDocument || previewFrame.contentWindow?.document;
         if (!previewDoc) return;
+
         if (previousHighlightElement) {
             previousHighlightElement.classList.remove('preview-highlight');
             previousHighlightElement = null;
         }
+
         const currentLine = htmlEditor.getCursor().line + 1;
-        const targetElement = previewDoc.querySelector(`[data-source-line="${currentLine}"]`);
+        const targetElements = previewDoc.querySelectorAll(`[data-source-line="${currentLine}"]`);
+        const targetElement = targetElements.length > 0 ? targetElements[0] : null;
+
         if (targetElement) {
             targetElement.classList.add('preview-highlight');
             previousHighlightElement = targetElement;
+
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+                inline: 'nearest'
+            });
+             console.log(`Scrolled to element with data-source-line: ${currentLine}`);
         }
     } catch (e) {
+         console.error("Error during highlight/scroll:", e);
          if (previousHighlightElement) {
-            try { previousHighlightElement.classList.remove('preview-highlight'); } catch (e) {}
+            try { previousHighlightElement.classList.remove('preview-highlight'); } catch (ignore) {}
             previousHighlightElement = null;
          }
     }
@@ -437,7 +492,7 @@ function highlightPreviewLine() {
  */
 function handleSizeButtonClick(event) {
     const targetButton = event.currentTarget;
-    if (!targetButton || !previewWrapper) return; // 요소 없으면 중단
+    if (!targetButton || !previewWrapper) return;
 
     const newSize = targetButton.dataset.size;
 
@@ -451,6 +506,8 @@ function handleSizeButtonClick(event) {
         previewWrapper.style.width = newSize;
         previewWrapper.style.maxWidth = newSize;
     }
+    const activeEditor = getCurrentActiveEditor();
+    if(activeEditor) activeEditor.refresh();
 }
 
 

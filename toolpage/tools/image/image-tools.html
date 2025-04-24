@@ -1,0 +1,682 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이미지 도구 - 웹 도구 모음집</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <style>
+      /* 이미지 도구 페이지 특정 스타일 - 개선안 */
+
+      /* 전체 컨테이너 및 인터페이스 */
+      .container {
+          max-width: 1800px; /* 최대 너비 설정 */
+          margin: 20px auto;
+      }
+      .tool-interface {
+          background-color: #fff;
+          padding: 25px;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+          margin-top: 20px;
+      }
+      .page-title {
+          margin-top: 0;
+          margin-bottom: 25px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #eee;
+          color: #333;
+          font-size: 1.4em;
+      }
+
+      /* 메인 레이아웃 (2단 컬럼) */
+      .main-layout {
+          display: flex;
+          flex-wrap: wrap; /* 화면 작을 때 줄바꿈 허용 */
+          gap: 30px; /* 컬럼 사이 간격 */
+      }
+
+      /* 왼쪽 이미지 컬럼 */
+      .image-column {
+          flex: 1; /* 남은 공간 차지 */
+          min-width: 300px; /* 최소 너비 */
+      }
+      .image-area {
+          /* position: sticky; /* 스크롤 시 상단에 고정 (선택 사항) */
+          /* top: 20px; /* 상단 고정 시 여백 */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 30px;
+          border: 2px dashed #e0e0e0;
+          background-color: #fdfdfd;
+          min-height: 400px; /* 최소 높이 유지 */
+          border-radius: 5px;
+          text-align: center;
+          height: auto;
+      }
+      #image-canvas {
+          max-width: 100%;
+          max-height: 500px; /* 캔버스 최대 높이 증가 */
+          object-fit: contain;
+          display: none; /* 처음엔 숨김 */
+          margin-top: 20px;
+          border: 1px solid #e0e0e0;
+          background-color: #fff;
+      }
+      #upload-prompt {
+          color: #888;
+          margin-top: 15px;
+      }
+      .image-area .action-button.primary {
+          padding: 10px 20px;
+          font-size: 1em;
+      }
+
+      /* 오른쪽 컨트롤 컬럼 */
+      .controls-column {
+          flex: 1; /* 남은 공간 차지 */
+          min-width: 300px; /* 최소 너비 */
+          display: flex;
+          flex-direction: column;
+          gap: 20px; /* 컨트롤 섹션 간 기본 간격 */
+      }
+
+      /* 컨트롤 그리드 조정 (세로 배치) */
+      .controls-grid {
+          display: grid;
+          grid-template-columns: 1fr; /* 1열로 고정 */
+          gap: 20px; /* 섹션 간 간격 */
+      }
+
+      /* 개별 컨트롤 섹션 */
+      .control-section {
+          background-color: #f8f9fa;
+          padding: 20px;
+          border-radius: 6px;
+          border: 1px solid #e9ecef;
+          display: flex;
+          flex-direction: column;
+      }
+      .control-section h4 {
+          margin-top: 0;
+          margin-bottom: 20px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #e0e0e0;
+          color: #495057;
+          font-size: 1.1em;
+          font-weight: 600;
+      }
+
+      /* 폼 그룹 (라벨 + 입력 요소) */
+      .form-group {
+          margin-bottom: 15px;
+      }
+      .form-group label {
+          display: block;
+          margin-bottom: 6px;
+          font-weight: 600;
+          font-size: 0.9em;
+          color: #495057;
+      }
+      /* 체크박스 라벨 스타일 */
+      .form-group label input[type="checkbox"] {
+           margin-right: 5px;
+           vertical-align: middle;
+      }
+      .form-group label span {
+          vertical-align: middle;
+          font-weight: normal;
+      }
+
+      /* 입력 요소 */
+      .form-group input[type="number"],
+      .form-group input[type="text"],
+      .form-group select {
+          width: 100%;
+          padding: 9px 12px;
+          border: 1px solid #ced4da;
+          border-radius: 4px;
+          box-sizing: border-box;
+          font-size: 0.95em;
+      }
+      .form-group input:focus,
+      .form-group select:focus {
+          border-color: #80bdff;
+          outline: 0;
+          box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+      }
+
+      /* 범위 슬라이더 스타일 */
+      .form-group input[type="range"] {
+          width: calc(100% - 65px);
+          vertical-align: middle;
+          padding: 0;
+          height: 8px;
+          cursor: pointer;
+          margin-top: 5px;
+      }
+      .form-group span { /* 슬라이더 값 표시 */
+          display: inline-block;
+          width: 50px;
+          text-align: right;
+          font-size: 0.9em;
+          vertical-align: middle;
+          color: #555;
+          font-weight: 600;
+      }
+
+      /* 버튼 그룹 */
+      .button-group {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin-top: 15px;
+      }
+      .action-button {
+          padding: 8px 15px;
+          font-size: 0.9em;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.2s, box-shadow 0.2s;
+          background-color: #6c757d;
+          color: white;
+      }
+      .action-button.primary { background-color: #007bff; }
+      .action-button.secondary { background-color: #6c757d; }
+      .action-button:hover {
+          opacity: 0.9;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      .action-button.primary:hover { background-color: #0056b3; }
+      .action-button.secondary:hover { background-color: #5a6268; }
+
+
+      /* 출력 옵션 섹션 */
+      .output-options {
+          background-color: #f8f9fa;
+          padding: 20px;
+          border-radius: 6px;
+          border: 1px solid #e9ecef;
+      }
+      .output-options h4 {
+          margin-top: 0;
+          margin-bottom: 20px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #e0e0e0;
+          color: #495057;
+          font-size: 1.1em;
+          font-weight: 600;
+      }
+      .output-options .form-group {
+          display: inline-block;
+          margin-right: 20px;
+          margin-bottom: 10px;
+          vertical-align: bottom;
+      }
+      .output-options label {
+          display: inline-block;
+          margin-right: 8px;
+          margin-bottom: 0;
+          font-weight: normal;
+      }
+      .output-options select,
+      .output-options input[type="range"] {
+          width: auto;
+          padding: 6px 10px;
+          vertical-align: middle;
+      }
+      .output-options #jpeg-quality { width: 120px; }
+
+      /* --- 다크 모드 --- */
+      .dark-mode body { background-color: #1a1a1a; } /* 전체 배경 어둡게 */
+      .dark-mode .tool-interface {
+          background-color: #212529;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      }
+      .dark-mode .page-title { color: #fff; border-color: #444;}
+      .dark-mode .image-area { background-color: #2c3e50; border-color: #444; }
+      .dark-mode #upload-prompt { color: #aaa; }
+      .dark-mode #image-canvas { border-color: #555; background-color: #333;}
+      .dark-mode .control-section { background-color: #34495e; border-color: #444; }
+      .dark-mode .control-section h4 { color: #ecf0f1; border-color: #555;}
+      .dark-mode .form-group label { color: #ecf0f1; }
+      .dark-mode .form-group input, .dark-mode .form-group select {
+          background-color: #455a64; border-color: #555; color: #fff;
+      }
+      .dark-mode .form-group input:focus,
+      .dark-mode .form-group select:focus {
+          border-color: #5897fb;
+          box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+      .dark-mode .form-group span { color: #ccc; }
+      .dark-mode .output-options { background-color: #34495e; border-color: #444; }
+      .dark-mode .output-options h4 { color: #ecf0f1; border-color: #555;}
+      .dark-mode .output-options label { color: #ecf0f1; }
+      .dark-mode .action-button { background-color: #5a6268; }
+      .dark-mode .action-button.primary { background-color: #007bff; }
+      .dark-mode .action-button:hover { opacity: 0.85; }
+      .dark-mode .action-button.primary:hover { background-color: #0056b3; }
+      .dark-mode .action-button.secondary:hover { background-color: #495057; }
+
+      /* 반응형: 화면 너비가 작아지면 세로로 배치 */
+      @media (max-width: 800px) {
+          .main-layout {
+              flex-direction: column; /* 세로 배치 */
+          }
+          .image-column, .controls-column {
+              max-width: 100%; /* 너비 제한 해제 */
+          }
+          .image-area {
+              position: static; /* 고정 해제 */
+          }
+      }
+      /* --- 기존 CSS 끝에 추가 --- */
+
+      /* 자르기 모드 시 캔버스 커서 변경 */
+      #image-canvas.cropping {
+          cursor: crosshair;
+      }
+
+      /* 자르기 선택 영역 (JS에서 생성/제거) */
+      .crop-selection-overlay {
+          position: absolute;
+          border: 1px dashed #fff;
+          box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5); /* 바깥 영역 어둡게 */
+          pointer-events: none; /* 내부 요소 클릭 방지 */
+      }
+
+      /* 워터마크 색상 선택기 입력칸 크기 조정 */
+      #watermark-color-input {
+           height: 36px; /* 다른 입력칸과 높이 유사하게 */
+           box-sizing: border-box;
+      }
+      /* --- 기존 CSS 끝에 추가 또는 수정 --- */
+
+      /* 메인 레이아웃 (2단 컬럼) */
+      .main-layout {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 30px;
+          /* --- 추가 시작: 레이아웃 높이 제한 --- */
+          /* 뷰포트 높이에서 헤더, 푸터, 상하 여백 등의 예상 높이를 빼서 계산 */
+          /* 예: 100vh - 헤더 높이(약 70px) - 컨테이너 상하 패딩/마진(약 40px) - 푸터 높이(약 60px) - 추가 여유분(약 20px) */
+          /* 실제 값은 페이지 구성에 따라 조정 필요 */
+          max-height: calc(100vh - 200px);
+          height: calc(100vh - 200px); /* max-height와 동일하게 설정하거나 필요시 조정 */
+          /* --- 추가 끝 --- */
+      }
+
+      /* 왼쪽 이미지 컬럼 */
+      .image-column {
+          flex: 1;
+          min-width: 300px;
+          /* --- 추가: 컬럼 자체 높이 및 스크롤 방지 --- */
+          height: 100%; /* 부모(.main-layout) 높이에 맞춤 */
+          overflow: hidden; /* 내부 스크롤 방지 */
+          display: flex; /* 내부 .image-area 정렬 위해 */
+          flex-direction: column;
+          /* --- 추가 끝 --- */
+      }
+      .image-area {
+          /* position: sticky; */ /* <-- 스티키 제거 확인 */
+          /* top: 20px; */
+          position: relative; /* 자르기 영역 기준점 유지 */
+          /* --- 수정: flex-grow 추가하여 남은 공간 채우기 --- */
+          flex-grow: 1;
+          /* --- 수정 끝 --- */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 30px;
+          border: 2px dashed #e0e0e0;
+          background-color: #fdfdfd;
+          min-height: 400px;
+          border-radius: 5px;
+          text-align: center;
+          overflow: hidden;
+      }
+      #image-canvas {
+           max-width: 100%;
+           /* max-height 제거 또는 조정: 부모 높이에 맞춰지도록 */
+           /* max-height: 90%; */ /* 부모 영역 대비 최대 높이 설정 가능 */
+           object-fit: contain;
+           display: none;
+           margin-top: 20px;
+           border: 1px solid #e0e0e0;
+           background-color: #fff;
+      }
+
+
+      /* 오른쪽 컨트롤 컬럼 */
+      .controls-column {
+          flex: 1;
+          min-width: 300px;
+           /* --- 추가: 컬럼 높이 및 스크롤 설정 --- */
+          height: 100%; /* 부모(.main-layout) 높이에 맞춤 */
+          overflow-y: auto; /* 내용이 넘칠 경우 세로 스크롤바 표시 */
+          /* --- 추가 끝 --- */
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          /* 스크롤바 디자인 (선택 사항) */
+          scrollbar-width: thin; /* Firefox */
+          scrollbar-color: #ccc #f0f0f0; /* Firefox */
+      }
+      /* 스크롤바 디자인 (Webkit - Chrome, Safari, Edge) */
+      .controls-column::-webkit-scrollbar {
+          width: 8px;
+      }
+      .controls-column::-webkit-scrollbar-track {
+          background: #f0f0f0;
+          border-radius: 4px;
+      }
+      .controls-column::-webkit-scrollbar-thumb {
+          background-color: #ccc;
+          border-radius: 4px;
+          border: 2px solid #f0f0f0;
+      }
+      .controls-column::-webkit-scrollbar-thumb:hover {
+          background-color: #aaa;
+      }
+
+
+      /* 컨트롤 그리드 조정 */
+      .controls-grid {
+         /* 기존 스타일 유지 */
+      }
+
+      /* 개별 컨트롤 섹션 */
+      .control-section {
+         /* 기존 스타일 유지 */
+      }
+
+      /* 출력 옵션 섹션 */
+      .output-options {
+         /* 기존 스타일 유지 */
+      }
+
+      /* 반응형 조정: 세로 배치 시 높이 제한 해제 */
+      @media (max-width: 800px) {
+          .main-layout {
+              flex-direction: column;
+              max-height: none; /* 높이 제한 해제 */
+              height: auto; /* 높이 자동 */
+          }
+          .image-column, .controls-column {
+              max-width: 100%;
+              height: auto; /* 높이 자동 */
+              overflow: visible; /* 스크롤 해제 */
+          }
+          .image-area {
+              position: relative; /* static 대신 relative 유지 */
+              min-height: 300px; /* 모바일에서 최소 높이 조정 */
+          }
+           #image-canvas {
+               max-height: 400px; /* 모바일 캔버스 최대 높이 조정 */
+           }
+      }
+
+      /* 다크 모드 스크롤바 (선택 사항) */
+      .dark-mode .controls-column {
+          scrollbar-color: #555 #333; /* Firefox */
+      }
+      .dark-mode .controls-column::-webkit-scrollbar-track {
+          background: #333;
+      }
+      .dark-mode .controls-column::-webkit-scrollbar-thumb {
+          background-color: #555;
+          border-color: #333;
+      }
+       .dark-mode .controls-column::-webkit-scrollbar-thumb:hover {
+          background-color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>이미지 도구</h1>
+      <p>이미지 크기 조절, 회전, 필터 적용, 포맷 변환 등 다양한 기능</p>
+      <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌓</button>
+    </header>
+
+    <div class="container">
+      <button class="back-button">← 메인으로 돌아가기</button>
+
+      <div class="tool-interface">
+        <h2 class="page-title">이미지 편집 및 변환</h2>
+
+        <div class="main-layout">
+          <div class="image-column">
+            <div class="image-area">
+              <input
+                type="file"
+                id="image-upload"
+                accept="image/*"
+                style="display: none;"
+              />
+              <button
+                class="action-button primary"
+                onclick="document.getElementById('image-upload').click();"
+              >
+                이미지 업로드
+              </button>
+              <p id="upload-prompt" style="margin-top: 15px;">
+                편집할 이미지를 업로드하세요.
+              </p>
+              <canvas id="image-canvas"></canvas>
+            </div>
+          </div>
+          <div class="controls-column">
+            <div class="controls-grid">
+              <div class="control-section">
+                <h4>크기 조절</h4>
+                <div class="form-group">
+                  <label for="resize-width">너비 (px):</label>
+                  <input type="number" id="resize-width" placeholder="자동" />
+                </div>
+                <div class="form-group">
+                  <label for="resize-height">높이 (px):</label>
+                  <input type="number" id="resize-height" placeholder="자동" />
+                </div>
+                <div class="form-group">
+                  <label>
+                    <input type="checkbox" id="aspect-ratio" checked />
+                    <span>비율유지</span>
+                  </label>
+                </div>
+                <div class="button-group">
+                  <button class="action-button" id="btn-resize">적용</button>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h4>회전 & 자르기</h4>
+                <div class="button-group">
+                  <button
+                    class="action-button"
+                    id="btn-rotate-left"
+                    title="왼쪽으로 90도 회전"
+                  >
+                    좌 90°
+                  </button>
+                  <button
+                    class="action-button"
+                    id="btn-rotate-right"
+                    title="오른쪽으로 90도 회전"
+                  >
+                    우 90°
+                  </button>
+                  <button
+                    class="action-button"
+                    id="btn-flip-h"
+                    title="좌우 반전"
+                  >
+                    좌우 반전
+                  </button>
+                  <button
+                    class="action-button"
+                    id="btn-flip-v"
+                    title="상하 반전"
+                  >
+                    상하 반전
+                  </button>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h4>필터</h4>
+                <div class="button-group">
+                  <button class="action-button" data-filter="grayscale">
+                    흑백
+                  </button>
+                  <button class="action-button" data-filter="sepia">
+                    세피아
+                  </button>
+                  <button class="action-button" data-filter="invert">
+                    색상 반전
+                  </button>
+                </div>
+                <hr style="margin: 15px 0; border-color: #e0e0e0;" />
+                <button class="action-button secondary" id="btn-reset-filters">
+                  필터 초기화
+                </button>
+              </div>
+
+              <div class="control-section">
+                <h4>색상 조정</h4>
+                <div class="form-group">
+                  <label for="brightness">밝기:</label>
+                  <input
+                    type="range"
+                    id="brightness"
+                    min="0"
+                    max="200"
+                    value="100"
+                  />
+                  <span id="brightness-val">100%</span>
+                </div>
+                <div class="form-group">
+                  <label for="contrast">대비:</label>
+                  <input
+                    type="range"
+                    id="contrast"
+                    min="0"
+                    max="200"
+                    value="100"
+                  />
+                  <span id="contrast-val">100%</span>
+                </div>
+                <div class="form-group">
+                  <label for="saturation">채도:</label>
+                  <input
+                    type="range"
+                    id="saturation"
+                    min="0"
+                    max="200"
+                    value="100"
+                  />
+                  <span id="saturation-val">100%</span>
+                </div>
+                <button class="action-button secondary" id="btn-reset-adj">
+                  조정 초기화
+                </button>
+              </div>
+            </div>
+            <div class="output-options control-section">
+              <h4>저장 옵션</h4>
+              <div class="form-group">
+                <label for="output-format">포맷:</label>
+                <select id="output-format">
+                  <option value="image/png">PNG</option>
+                  <option value="image/jpeg">JPEG</option>
+                  <option value="image/webp">WebP</option>
+                </select>
+              </div>
+              <div
+                class="form-group"
+                id="jpeg-quality-group"
+                style="display:inline-block;"
+              >
+                <label for="jpeg-quality">품질 (JPEG/WebP):</label>
+                <input
+                  type="range"
+                  id="jpeg-quality"
+                  min="10"
+                  max="100"
+                  value="90"
+                  step="5"
+                />
+                <span id="jpeg-quality-val">90%</span>
+              </div>
+              <div class="button-group" style="margin-top: 20px;">
+                <button class="action-button primary" id="btn-download">
+                  이미지 다운로드
+                </button>
+                <button class="action-button secondary" id="btn-reset-all">
+                  모두 초기화
+                </button>
+              </div>
+            </div>
+            
+            <div class="control-section">
+                <h4>회전 & 자르기</h4>
+                 <div class="button-group" id="crop-actions" >
+                     <button class="action-button" id="btn-crop-start" title="캔버스에서 영역을 드래그하세요">자르기 시작</button>
+                     <button class="action-button primary" id="btn-crop-apply" style="display: none;" title="선택한 영역으로 자르기">자르기 적용</button>
+                     <button class="action-button secondary" id="btn-crop-cancel" style="display: none;" title="자르기 취소">취소</button>
+                 </div>
+                 <p id="crop-info" style="font-size: 0.85em; color: #666; margin-top: 10px;"></p>
+            </div>
+
+            <div class="control-section">
+                <h4>워터마크</h4>
+                <div class="form-group">
+                    <label for="watermark-text">텍스트:</label>
+                    <input type="text" id="watermark-text" placeholder="워터마크 내용 입력">
+                </div>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;"> <div class="form-group" style="flex: 1; min-width: 80px;">
+                        <label for="watermark-size">크기(px):</label>
+                        <input type="number" id="watermark-size" value="30" min="10">
+                    </div>
+                    <div class="form-group" style="flex: 1; min-width: 80px;">
+                         <label for="watermark-color">색상:</label>
+                         <input type="text" id="watermark-color-input" data-coloris value="#ffffff" style="width: 100%; padding: 5px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                   <label for="watermark-opacity">불투명도:</label>
+                   <input type="range" id="watermark-opacity" min="0" max="100" value="50"> <span id="watermark-opacity-val">50%</span>
+                </div>
+                <div class="form-group">
+                    <label for="watermark-position">위치:</label>
+                    <select id="watermark-position">
+                        <option value="bottom-right">오른쪽 하단</option>
+                        <option value="bottom-left">왼쪽 하단</option>
+                        <option value="top-right">오른쪽 상단</option>
+                        <option value="top-left">왼쪽 상단</option>
+                        <option value="center">중앙</option>
+                    </select>
+                </div>
+                <div class="button-group">
+                    <button class="action-button" id="btn-add-watermark">워터마크 적용</button>
+                    </div>
+            </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 웹 도구 모음집 | 개인 프로젝트</p>
+    </footer>
+
+    <script src="../js/common.js"></script>
+    <script src="image-tools.js"></script>
+  </body>
+</html>
