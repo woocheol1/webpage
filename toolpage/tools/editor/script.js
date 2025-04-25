@@ -141,7 +141,48 @@ function initializeApp() {
     <p>마지막 내용입니다.</p>
     </body>
 </html>`;
-    const initialCssContent = `/* CSS */\nbody {\n    font-family: sans-serif;\n    line-height: 1.6;\n    padding: 15px;\n    color: #333;\n}\nh1 {\n    color: darkblue;\n    border-bottom: 1px solid #ccc;\n}\n.highlight {\n    background-color: yellow;\n    padding: 2px 4px;\n color: #555; /* 다른 color 속성 */\n}\n.spacer {\n    min-height: 150px;\n    border: 1px dashed lightgray;\n    margin: 20px 0;\n    text-align: center;\n    padding-top: 50px;\n    color: gray; /* 또 다른 color 속성 */\n}\nbutton { padding: 5px 10px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 3px; }\nbutton:hover { background-color: #0056b3; }\n.preview-highlight { box-shadow: -2px 0 0 0 blue; scroll-margin-top: 10px; }`;
+    // initialCssContent 변수를 찾아서 내부의 .preview-highlight 부분을 수정합니다.
+const initialCssContent = `/* CSS */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    padding: 15px;
+    color: #333;
+}
+h1 {
+    color: darkblue;
+    border-bottom: 1px solid #ccc;
+}
+.highlight {
+    background-color: yellow;
+    padding: 2px 4px;
+ color: #555; /* 다른 color 속성 */
+}
+.spacer {
+    min-height: 150px;
+    border: 1px dashed lightgray;
+    margin: 20px 0;
+    text-align: center;
+    padding-top: 50px;
+    color: gray; /* 또 다른 color 속성 */
+}
+button { padding: 5px 10px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 3px; }
+button:hover { background-color: #0056b3; }
+
+/* --- 여기를 수정 --- */
+.preview-highlight {
+    /* 기존 box-shadow 제거 또는 주석 처리 */
+    /* box-shadow: -2px 0 0 0 blue; */
+
+    /* 새 배경색 스타일 적용 */
+    background-color: rgba(135, 206, 250, 0.5) !important; /* LightSkyBlue 50% 투명도, !important 추가 */
+    box-shadow: none !important; /* 다른 그림자 효과 제거 */
+    transition: background-color 0.1s ease-in-out;
+    scroll-margin-top: 10px; /* 기존 스크롤 마진 유지 */
+}
+/* --- 수정 끝 --- */
+`;
+
     const initialJsContent = `// JavaScript\nconsole.log('Preview script running...');\n\nconst btn = document.getElementById('action-button');\nconst msgArea = document.getElementById('message-area');\n\nif(btn && msgArea) {\n    btn.addEventListener('click', () => {\n        msgArea.textContent = 'Button clicked at ' + new Date().toLocaleTimeString();\n        setTimeout(() => { msgArea.textContent = ''; }, 3000);\n    });\n}\nconsole.log('JS setup complete.');`;
 
     htmlEditor.setValue(initialHtmlContent);
@@ -414,49 +455,171 @@ function updatePreview() {
 
         const finalHtml = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Preview</title>${headElement.innerHTML}</head><body>${bodyElement.innerHTML}</body></html>`;
 
-        const restoreScroll = () => {
+        // --- 수정된 부분 ---
+        const restoreScrollAndAttachListener = () => {
             if (previewFrame.contentWindow && previewFrame.contentWindow.scrollTo) {
                  try {
                      previewFrame.contentWindow.scrollTo(previousScrollLeft, previousScrollTop);
-                     if (currentEditor === 'html') setTimeout(highlightAndScrollPreview, 50);
-                 } catch (e) { console.warn("Error restoring scroll:", e); }
+
+                     // 기존 리스너 제거 (중복 방지)
+                     const previewDoc = previewFrame.contentDocument || previewFrame.contentWindow?.document;
+                     if (previewDoc && previewDoc.body) {
+                         previewDoc.body.removeEventListener('click', handlePreviewClick); // 기존 핸들러 이름으로 제거
+                         // 새 리스너 추가 (이벤트 위임 방식)
+                         previewDoc.body.addEventListener('click', handlePreviewClick);
+                         // console.log("Preview click listener attached."); // 디버깅용
+                     }
+
+                     // HTML 에디터 활성 상태일 때만 하이라이트/스크롤 재실행
+                     if (currentEditor === 'html') {
+                        setTimeout(highlightAndScrollPreview, 50);
+                     }
+                 } catch (e) { console.warn("Error restoring scroll or attaching listener:", e); }
             }
         };
         previewFrame.srcdoc = finalHtml;
-        setTimeout(restoreScroll, 50);
+        // iframe 로드 완료 시점 보장을 위해 'load' 이벤트 사용 고려 (더 안정적일 수 있음)
+        // previewFrame.onload = restoreScrollAndAttachListener;
+        // setTimeout 방식 유지 시 (기존 코드 방식)
+        setTimeout(restoreScrollAndAttachListener, 100); // 시간 약간 늘림 (로드 보장 위해)
+        // --- 수정 끝 ---
+
     } catch (e) {
         console.error("Error updating preview:", e);
         previewFrame.srcdoc = `<html><body>Preview Error: ${e.message}</body></html>`;
     }
 }
 
+
+/**
+ * 미리보기 클릭 핸들러: 클릭된 요소의 소스 라인으로 HTML 에디터 커서 이동
+ * @param {MouseEvent} event
+ */
+function handlePreviewClick(event) {
+    let target = event.target;
+    let sourceLine = null;
+
+    // 클릭된 요소부터 상위로 탐색하며 data-source-line 속성 찾기
+    while (target && target !== document.body) {
+        if (target.hasAttribute('data-source-line')) {
+            sourceLine = target.getAttribute('data-source-line');
+            break;
+        }
+        target = target.parentElement;
+    }
+
+    if (sourceLine) {
+        const lineNumber = parseInt(sourceLine, 10);
+        if (!isNaN(lineNumber) && lineNumber > 0) {
+            console.log(`Preview clicked on element from line: ${lineNumber}`); // 디버깅 로그
+
+            // HTML 탭으로 전환
+            if (currentEditor !== 'html') {
+                switchTab('html');
+            }
+
+            // CodeMirror 에디터 커서 이동 및 스크롤 (0-based index 사용)
+            if (htmlEditor) {
+                const lineIndex = lineNumber - 1;
+                // 에디터가 완전히 표시된 후 커서 이동 및 스크롤 실행
+                setTimeout(() => {
+                    try {
+                        htmlEditor.focus(); // 에디터에 포커스
+                        htmlEditor.setCursor({ line: lineIndex, ch: 0 }); // 해당 줄의 시작으로 커서 이동
+                        // 화면 중앙으로 스크롤 (center 옵션 사용)
+                        const coords = htmlEditor.charCoords({ line: lineIndex, ch: 0 }, "local");
+                        const scrollInfo = htmlEditor.getScrollInfo();
+                        const targetScrollTop = coords.top - (scrollInfo.clientHeight / 2);
+                        htmlEditor.scrollTo(null, targetScrollTop);
+                        // highlightAndScrollPreview 함수도 호출하여 즉시 하이라이트 반영
+                        highlightAndScrollPreview();
+                    } catch (e) {
+                        console.error("Error moving cursor or scrolling editor:", e);
+                    }
+                }, 100); // 탭 전환 및 에디터 렌더링 시간 고려
+            }
+        }
+    } else {
+        // console.log("Preview clicked, but no source line found."); // 디버깅용
+    }
+}
+
+// highlightAndScrollPreview 함수는 기존 로직 유지 (CSS 변경으로 하이라이트 스타일은 자동 변경됨)
+
 /**
  * 미리보기 하이라이트 및 스크롤 함수 (HTML 에디터용)
+ * - 에디터 커서 라인을 포함하는 가장 가까운 상위 블록 요소를 찾아 하이라이트
+ * - 해당 요소를 항상 미리보기 중앙으로 스크롤
  */
 function highlightAndScrollPreview() {
-    if (currentEditor !== 'html' || !htmlEditor) {
-         if (previousHighlightElement) try { if (previousHighlightElement.ownerDocument === (previewFrame.contentDocument || previewFrame.contentWindow?.document)) previousHighlightElement.classList.remove('preview-highlight'); } catch (e) {} finally { previousHighlightElement = null; }
+    const previewDoc = previewFrame.contentDocument || previewFrame.contentWindow?.document;
+
+    // --- 기존 하이라이트 모두 제거 ---
+    if (previewDoc) {
+        const currentlyHighlighted = previewDoc.querySelectorAll('.preview-highlight');
+        currentlyHighlighted.forEach(el => {
+            el.classList.remove('preview-highlight');
+        });
+    } else {
+        console.warn("highlightAndScrollPreview: Preview document not ready.");
         return;
     }
+    // --- 제거 끝 ---
+
+    // HTML 에디터가 아니면 여기서 종료
+    if (currentEditor !== 'html' || !htmlEditor) {
+        return;
+    }
+
     try {
-        const previewDoc = previewFrame.contentDocument || previewFrame.contentWindow?.document;
-        if (!previewDoc || !previewDoc.body || previewDoc.readyState !== 'complete') { if (previewDoc && previewDoc.readyState === 'loading') setTimeout(highlightAndScrollPreview, 100); return; }
-        if (previousHighlightElement && previewDoc.contains(previousHighlightElement)) previousHighlightElement.classList.remove('preview-highlight');
-        previousHighlightElement = null;
+        // previewDoc 유효성 확인
+        if (!previewDoc.body || previewDoc.readyState !== 'complete') {
+            // 로딩 중이면 잠시 후 다시 시도
+            if (previewDoc.readyState === 'loading') setTimeout(highlightAndScrollPreview, 100);
+            return;
+        }
+
+        // 현재 에디터 커서 라인 가져오기 (1-based)
         const cursor = htmlEditor.getCursor();
         const currentLine = cursor.line + 1;
-        const targetElement = previewDoc.querySelector(`[data-source-line="${currentLine}"]`);
+
+        // --- 하이라이트 대상 요소 찾는 로직 변경 ---
+        let targetElement = null;
+        let maxLineNumFound = -1; // 찾은 요소 중 가장 큰 data-source-line 값
+
+        // data-source-line 속성을 가진 모든 요소 가져오기
+        const potentialElements = previewDoc.querySelectorAll('[data-source-line]');
+
+        potentialElements.forEach(el => {
+            const lineAttr = el.getAttribute('data-source-line');
+            const elementLineNum = parseInt(lineAttr, 10);
+
+            // 요소의 라인 번호가 유효하고, 현재 커서 라인보다 작거나 같으면서,
+            // 이전에 찾은 요소의 라인 번호보다 크면, 이 요소를 대상으로 선택
+            if (!isNaN(elementLineNum) && elementLineNum <= currentLine && elementLineNum > maxLineNumFound) {
+                maxLineNumFound = elementLineNum;
+                targetElement = el;
+            }
+        });
+        // --- 대상 요소 찾기 끝 ---
+
+        // 대상 요소를 찾았으면 하이라이트 및 스크롤 실행
         if (targetElement) {
+            console.log(`Highlighting element for editor line ${currentLine}: Found block starting at line ${maxLineNumFound}`, targetElement); // 디버깅 로그
+
+            // 새 하이라이트 적용
             targetElement.classList.add('preview-highlight');
-            previousHighlightElement = targetElement;
-            const rect = targetElement.getBoundingClientRect();
-            const previewWindow = previewFrame.contentWindow;
-            const isVisible = (rect.top >= 0 && rect.left >= 0 && rect.bottom <= (previewWindow.innerHeight || previewDoc.documentElement.clientHeight) && rect.right <= (previewWindow.innerWidth || previewDoc.documentElement.clientWidth));
-            if (!isVisible) targetElement.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+
+            // --- 스크롤 로직 (isVisible 조건 없이 항상 실행, 중앙 정렬) ---
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+            // --- 스크롤 로직 끝 ---
+
+        } else {
+             console.log(`No suitable element found to highlight for editor line ${currentLine}`); // 디버깅 로그
         }
+
     } catch (e) {
          console.error("Error during highlight/scroll:", e);
-         if (previousHighlightElement) try { if (previousHighlightElement.ownerDocument === (previewFrame.contentDocument || previewFrame.contentWindow?.document)) previousHighlightElement.classList.remove('preview-highlight'); } catch (ignore) {} finally { previousHighlightElement = null; }
     }
 }
 

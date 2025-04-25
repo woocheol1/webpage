@@ -226,3 +226,19 @@ body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family:
 .dark-mode .editor-control-button { color: #bdc3c7; }
 .dark-mode .editor-control-button:hover { background-color: #34495e; color: #fff; }
 .dark-mode .editor-control-input { background-color: #455a64; border-color: #2c3e50; color: #fff; }
+
+/* editor/style.css 파일 */
+
+.preview-highlight {
+    /* 기존 스타일 제거 또는 덮어쓰기 */
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 0; /* 패딩 제거 */
+    border-radius: 0; /* 둥근 모서리 제거 */
+
+    /* 이미지와 유사한 연한 하늘색 배경 적용 */
+    background-color: rgba(135, 206, 250, 0.5); /* LightSkyBlue 색상에 50% 투명도 적용 */
+
+    transition: background-color 0.1s ease-in-out; /* 부드러운 전환 효과 */
+    scroll-margin-top: 10px; /* 스크롤 시 상단 여백 유지 (기존 유지) */
+}
