@@ -327,12 +327,20 @@ button:hover { background-color: #0056b3; }
     if (sizeButtons.length > 0) sizeButtons.forEach(button => button.addEventListener('click', handleSizeButtonClick));
 
     // --- Split.js ---
-    try {
-        Split(['#navigator-section', '#editor-section', '#preview-section'], {
-            sizes: [15, 50, 35], minSize: [100, 300, 350], gutterSize: 10, cursor: 'col-resize', direction: 'horizontal',
-            onDrag: () => { const ed = getCurrentActiveEditor(); if(ed) ed.refresh(); debouncedMinimapViewportUpdate(); }
-        });
-    } catch (e) { console.error("Split.js initialization failed:", e); }
+
+// script.js 파일 내 initializeApp 함수 안
+try {
+    // console.log(...) // 이전에 추가한 로그는 그대로 두거나 제거해도 됩니다.
+    Split(['#navigator-section', '#editor-section', '#preview-section'], {
+        sizes: [15, 40, 45], // 이전에 수정한 sizes 값 유지
+        // minSize: [100, 300, 350], // 기존 값
+        minSize: [80, 200, 200],  // 변경 예시: 최소 너비 요구 사항을 낮춤 (80+200+200 + 20(gutter) = 500px 필요)
+        gutterSize: 10,
+        cursor: 'col-resize',
+        direction: 'horizontal',
+        onDrag: () => { const ed = getCurrentActiveEditor(); if(ed) ed.refresh(); debouncedMinimapViewportUpdate(); }
+    });
+} catch (e) { console.error("Split.js initialization failed:", e); }
 
     // --- 초기 상태 ---
     switchTab('html');
