@@ -238,33 +238,51 @@ function clearSelectionHighlights() {
 }
 
 /**
- * Shows red lines at the specified line numbers.
+ * Shows red lines at the specified line numbers based on rendered content height.
  * @param {number[]} lineNumbers - Array of 1-based line numbers.
  */
 function showSelectionHighlights(lineNumbers) {
-    if (!isActive || !currentEditorInstance || !minimapContent || !minimapContainer || lineNumbers.length === 0) {
-        clearSelectionHighlights();
+    // 기본 유효성 검사 (기존과 유사)
+    if (!isActive || !currentEditorInstance || !minimapContent || !minimapContainer || !highlightElements || highlightElements.length === 0) {
+        clearSelectionHighlights(); // highlightElements 없으면 여기서 종료될 수 있음
         return;
     }
-    clearSelectionHighlights();
+
+    clearSelectionHighlights(); // 기존 하이라이트 지우기
 
     const totalLines = currentEditorInstance.lineCount();
-    minimapHeight = minimapContainer.clientHeight;
-    if (totalLines <= 0 || minimapHeight <= 0) return;
+    // --- 수정된 부분: 렌더링된 컨텐츠 높이 사용 ---
+    const contentScrollHeight = minimapContent.scrollHeight; // 실제 렌더링된 내용의 높이
+    // --- 수정 끝 ---
+    const minimapVisibleHeight = minimapContainer.clientHeight; // 컨테이너 높이 (경계 확인용)
 
-    const linesToShow = lineNumbers.slice(0, MAX_HIGHLIGHT_LINES);
+    if (totalLines <= 0 || contentScrollHeight <= 0 || lineNumbers.length === 0) {
+        return; // 계산 불가 또는 그릴 라인 없음
+    }
+
+    // --- 수정된 부분: 라인 높이 추정 및 top 계산 ---
+    // 실제 렌더링된 높이를 기준으로 라인 높이 추정
+    const estimatedLineHeight = contentScrollHeight / totalLines;
+    // --- 수정 끝 ---
+
+    const linesToShow = lineNumbers.slice(0, MAX_HIGHLIGHT_LINES); // 최대 개수 제한
     let highlightIndex = 0;
-    const estimatedLineHeight = (minimapContent.scrollHeight / totalLines) || minimapLineHeight; // Use calculated or default
 
     for (const lineNumber of linesToShow) {
-        if (lineNumber < 1 || lineNumber > totalLines) continue;
+        if (lineNumber < 1 || lineNumber > totalLines) continue; // 유효 라인 번호 확인
+
+        // --- 수정된 부분: 추정된 라인 높이로 top 계산 ---
         const lineTop = (lineNumber - 1) * estimatedLineHeight;
+        // --- 수정 끝 ---
+
         const highlightEl = highlightElements[highlightIndex++];
         if (highlightEl) {
-            highlightEl.style.top = `${Math.min(lineTop, minimapHeight - 1)}px`;
+            // 계산된 top 위치 적용 (컨테이너 높이 - 1px 를 넘지 않도록)
+            highlightEl.style.top = `${Math.min(lineTop, minimapVisibleHeight - 1)}px`;
             highlightEl.style.display = 'block';
         }
     }
+    // console.log(`Show selection highlights. Estimated line height: ${estimatedLineHeight.toFixed(2)}`); // 디버깅
 }
 
 /**
@@ -283,39 +301,42 @@ function hideCursorHighlight() {
 // navigator.js 파일 내
 
 /**
- * Shows the yellow cursor line at the specified line number.
+ * Shows the yellow cursor line at the specified line number based on rendered content height.
  * @param {number} lineNumber - 1-based line number of the cursor.
  */
 function showCursorHighlight(lineNumber) {
-    if (!isActive || !currentEditorInstance || !minimapContainer || !cursorHighlightElement || lineNumber < 1) {
+    // 기본 유효성 검사 (기존과 유사)
+    if (!isActive || !currentEditorInstance || !minimapContainer || !minimapContent || !cursorHighlightElement || lineNumber < 1) {
         hideCursorHighlight();
         return;
     }
 
     const totalLines = currentEditorInstance.lineCount();
-    minimapHeight = minimapContainer.clientHeight; // 현재 미니맵 높이 가져오기
+    // --- 수정된 부분: 렌더링된 컨텐츠 높이 사용 ---
+    const contentScrollHeight = minimapContent.scrollHeight; // 실제 렌더링된 내용의 높이
+    // --- 수정 끝 ---
+    const minimapVisibleHeight = minimapContainer.clientHeight; // 컨테이너 높이 (경계 확인용)
 
-    if (totalLines <= 0 || minimapHeight <= 0 || lineNumber > totalLines) {
+    if (totalLines <= 0 || contentScrollHeight <= 0 || lineNumber > totalLines) {
         hideCursorHighlight();
         return;
     }
 
-    // --- 수정된 계산 방식: 비율 기반 ---
-    // 전체 라인 수 대비 현재 라인의 비율 계산 (0부터 시작하는 비율)
-    const lineRatio = (lineNumber - 1) / totalLines;
-    // 미니맵 전체 높이에 비율을 곱하여 top 위치 계산
-    const lineTop = lineRatio * minimapHeight;
+    // --- 수정된 부분: 라인 높이 추정 및 top 계산 ---
+    // 실제 렌더링된 높이를 기준으로 라인 높이 추정
+    const estimatedLineHeight = contentScrollHeight / totalLines;
+    // 추정된 라인 높이로 top 위치 계산
+    const lineTop = (lineNumber - 1) * estimatedLineHeight;
     // --- 수정 끝 ---
 
-    // 디버깅 로그 (필요시 주석 해제)
-    // console.log(`Cursor Line: ${lineNumber}, Total: ${totalLines}, Ratio: ${lineRatio.toFixed(3)}, Top: ${lineTop.toFixed(1)}`);
+    // console.log(`Cursor Line: ${lineNumber}, Total: ${totalLines}, ContentScrollH: ${contentScrollHeight.toFixed(1)}, EstLineH: ${estimatedLineHeight.toFixed(2)}, Top: ${lineTop.toFixed(1)}`); // 디버깅
 
-    // 커서 하이라이트 요소 위치 설정 및 표시
-    // lineTop 값이 미니맵 높이를 초과하지 않도록 (마지막 라인 근처 처리)
-    // 그리고 높이가 1px이므로 minimapHeight - 1 까지만 허용
-    cursorHighlightElement.style.top = `${Math.min(lineTop, minimapHeight - 1)}px`;
+    // 커서 하이라이트 요소 위치 설정 및 표시 (컨테이너 높이 - 1px 를 넘지 않도록)
+    cursorHighlightElement.style.top = `${Math.min(lineTop, minimapVisibleHeight - 1)}px`;
     cursorHighlightElement.style.display = 'block';
 }
+
+// hideCursorHighlight, clearSelectionHighlights 함수 등은 기존 유지
 
 /**
  * Deactivates the minimap.
