@@ -162,7 +162,7 @@ function initializeFormatter(getActiveEditorFunc) {
                 // tabWidth: 4, // 탭 너비
                 // singleQuote: true, // JS에서 작은따옴표 사용
                 // semi: true, // 세미콜론 항상 사용
-                // printWidth: 80, // 줄 바꿈 너비
+                printWidth: 150, // 줄 바꿈 너비
             });
 
             // 포맷팅된 코드로 에디터 내용 교체

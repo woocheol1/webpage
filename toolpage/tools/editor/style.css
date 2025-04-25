@@ -242,3 +242,45 @@ body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family:
     border-color: #2c3e50;
     color: #fff;
 }
+
+
+/* style.css 파일 */
+
+/* ===== 시작: 파일 관련 버튼 스타일 (선택 사항) ===== */
+/* 기존 .editor-control-button 스타일이 이미 적용됩니다. */
+/* 필요시 특정 버튼 ID(#btn-load-html 등)로 개별 스타일 조정 가능 */
+
+/* 예시: Load 버튼에 아이콘 추가 (FontAwesome 등 라이브러리 필요) */
+/* #btn-load-html::before { content: "\f07c"; font-family: "Font Awesome 5 Free"; margin-right: 5px; } */
+
+/* ===== 끝: 파일 관련 버튼 스타일 ===== */
+
+
+/* --- 기존 style.css 내용 끝에 추가 --- */
+
+/* ... (기존 스타일 코드) ... */
+
+/* 에디터 컨트롤 버튼 영역 스타일 (탭 옆) */
+.editor-controls {
+    display: flex;
+    align-items: center;
+    padding: 0 10px; /* 좌우 여백 */
+    background-color: #37474f; /* 탭 배경과 동일하게 */
+    border-bottom: 1px solid #444; /* 탭 아래 경계선과 동일하게 */
+    flex-shrink: 0; /* 너비가 줄어들 때 버튼들이 밀리지 않도록 */
+    overflow-x: auto; /* 버튼이 많아지면 스크롤 (선택 사항) */
+}
+
+.editor-control-button {
+    background: none;
+    border: none;
+    color: #b0bec5; /* 탭 버튼 기본 색상과 유사하게 */
+    cursor: pointer;
+    padding: 8px 10px;
+    font-size: 12px;
+    margin-left: 5px; /* 버튼 사이 간격 */
+    border-radius: 3px;
+    transition: background-color 0.2s, color 0.2s;
+    white-space: nowrap; /* 버튼 텍스트 줄바꿈 방지 */
+}
+/* ... (이하 기존 스타일) ... */

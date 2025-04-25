@@ -12,6 +12,8 @@ const previewFrame = document.getElementById('preview'); // 미리보기 iframe
 let previousHighlightElement = null; // 이전에 하이라이트된 요소 추적
 let currentEditor = 'html'; // 현재 활성 에디터 ('html', 'css', 'js')
 let scrollTimeoutId; // 스크롤 중복 실행 방지용 타이머 ID
+let loadedFileName = 'untitled.html'; // ===== 추가: 불러온 파일 이름 저장용 =====
+let currentFileHandle = null;
 
 // DOM 요소 참조
 const tabHtml = document.getElementById('tab-html');
@@ -24,6 +26,9 @@ const previewWrapper = document.getElementById('preview-wrapper');
 const sizeButtons = document.querySelectorAll('.size-button');
 const foldAllButton = document.getElementById('btn-fold-all');
 const unfoldAllButton = document.getElementById('btn-unfold-all');
+const loadHtmlButton = document.getElementById('btn-load-html'); // ===== 추가 =====
+const saveButton = document.getElementById('btn-save');           // ===== 추가 =====
+const saveAsButton = document.getElementById('btn-save-as');     // ===== 추가 =====
 
 
 // --- 디바운스 헬퍼 함수 ---
@@ -66,15 +71,26 @@ function initializeApp() {
             lineNumbers: true,
             lineWrapping: true,
             foldGutter: true,
-            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+            // ===== 추가: Ctrl+S 단축키를 위한 extraKeys =====
+            extraKeys: {
+                "Ctrl-S": function(instance) {
+                    handleSave(); // Ctrl+S 누르면 저장 함수 호출
+                },
+                "Cmd-S": function(instance) {
+                    handleSave(); // Cmd+S (Mac) 누르면 저장 함수 호출
+                }
+            }
         });
+        // CSS, JS 에디터에도 동일하게 extraKeys 추가 (선택사항 - HTML만 저장할 것이므로 필수는 아님)
         cssEditor = CodeMirror.fromTextArea(document.getElementById('css-editor'), {
             mode: 'css',
             theme: 'material',
             lineNumbers: true,
             lineWrapping: true,
             foldGutter: true,
-            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+             extraKeys: { "Ctrl-S": handleSave, "Cmd-S": handleSave } // 필요시 추가
         });
         jsEditor = CodeMirror.fromTextArea(document.getElementById('js-editor'), {
             mode: 'javascript',
@@ -82,7 +98,8 @@ function initializeApp() {
             lineNumbers: true,
             lineWrapping: true,
             foldGutter: true,
-            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+             extraKeys: { "Ctrl-S": handleSave, "Cmd-S": handleSave } // 필요시 추가
         });
 
         // --- 각 에디터에 폴딩 기능 초기화 ---
@@ -106,9 +123,9 @@ function initializeApp() {
        console.error("initializeFormatter function not found. Make sure formatter.js is loaded.");
    }
 
-    } catch (e) {
+   } catch (e) {
         console.error("CodeMirror initialization failed:", e);
-        alert("CodeMirror 에디터를 초기화하는 중 오류가 발생했습니다. 페이지를 새로고침하거나 라이브러리 로드를 확인하세요.");
+        alert("CodeMirror 에디터를 초기화하는 중 오류가 발생했습니다.");
         return;
     }
 
@@ -246,6 +263,26 @@ console.log('미리보기 JavaScript 로드 완료!');
         });
     } else {
         console.warn("Fold All button not found!");
+    }
+
+    if (loadHtmlButton) {
+        // ===== 수정: File System Access API 사용 =====
+        loadHtmlButton.addEventListener('click', handleHtmlFileLoadWithPicker);
+    } else {
+        console.warn("Load HTML button not found!");
+    }
+
+    if (saveButton) {
+        saveButton.addEventListener('click', handleSave); // 저장 함수 연결
+    } else {
+        console.warn("Save button not found!");
+    }
+
+    if (saveAsButton) {
+        // ===== 수정: File System Access API 사용 =====
+        saveAsButton.addEventListener('click', handleSaveAsWithPicker);
+    } else {
+        console.warn("Save As button not found!");
     }
 
     if (unfoldAllButton) {
@@ -509,7 +546,189 @@ function handleSizeButtonClick(event) {
     const activeEditor = getCurrentActiveEditor();
     if(activeEditor) activeEditor.refresh();
 }
+/**
+ * File System Access API를 사용하여 HTML 파일 로드 처리
+ */
+async function handleHtmlFileLoadWithPicker() {
+    // API 지원 여부 확인 (선택 사항)
+    if (!window.showOpenFilePicker) {
+        alert('현재 브라우저에서는 파일 직접 로드 기능을 지원하지 않습니다.');
+        // 필요시 input[type=file]을 이용한 대체 로직 호출
+        // fileInputHtml.click(); // 예시: 숨겨진 input 사용
+        return;
+    }
 
+    try {
+        // 파일 선택기 표시 (HTML 파일만 선택 가능하도록 옵션 설정)
+        const [fileHandle] = await window.showOpenFilePicker({
+            types: [{
+                description: 'HTML Files',
+                accept: { 'text/html': ['.html', '.htm'] }
+            }],
+            multiple: false // 단일 파일만 선택
+        });
+
+        // 파일 핸들 및 이름 저장
+        currentFileHandle = fileHandle;
+        loadedFileName = fileHandle.name;
+
+        // 파일 객체 얻기 및 내용 읽기
+        const file = await fileHandle.getFile();
+        const fileContent = await file.text();
+
+        // 에디터에 내용 설정 및 초기화
+        if (htmlEditor) {
+            htmlEditor.setValue(fileContent);
+            console.log(`Loaded file: ${loadedFileName}`);
+            document.title = `Editor - ${loadedFileName}`; // 페이지 제목 업데이트 (선택 사항)
+
+            if (cssEditor) cssEditor.setValue('');
+            if (jsEditor) jsEditor.setValue('');
+            updatePreview();
+            // highlightAndScrollPreview(); // 필요시 호출
+        }
+
+    } catch (err) {
+        // 사용자가 선택을 취소했거나 오류 발생
+        if (err.name === 'AbortError') {
+            console.log('File selection cancelled by user.');
+        } else {
+            console.error("Error loading file with picker:", err);
+            alert('파일을 불러오는 중 오류가 발생했습니다.');
+        }
+        // 오류 발생 시 핸들 초기화 (선택 사항)
+        // currentFileHandle = null;
+        // loadedFileName = 'untitled.html';
+        // document.title = 'Editor';
+    }
+}
+
+/**
+ * File System Access API를 사용하여 파일 저장 (직접 저장)
+ */
+async function handleSave() {
+    if (!htmlEditor) return;
+
+    if (!currentFileHandle) {
+        // 저장된 파일 핸들이 없으면 '다른 이름으로 저장' 실행
+        console.log("No file handle found, initiating Save As...");
+        await handleSaveAsWithPicker();
+        return;
+    }
+
+    // API 지원 여부 확인
+    if (!currentFileHandle.createWritable) {
+         alert('현재 브라우저에서는 파일 직접 저장 기능을 지원하지 않습니다. "Save As"를 사용해주세요.');
+         // 필요시 다운로드 방식의 handleSaveAs 호출
+         return;
+    }
+
+    console.log(`Attempting to save: ${currentFileHandle.name}`);
+
+    try {
+        // 쓰기 권한 확인 및 요청 (필요시 브라우저가 자동으로 요청)
+        // const permission = await currentFileHandle.queryPermission({ mode: 'readwrite' });
+        // if (permission !== 'granted') {
+        //     const request = await currentFileHandle.requestPermission({ mode: 'readwrite' });
+        //     if (request !== 'granted') {
+        //         alert('파일 쓰기 권한이 필요합니다.');
+        //         return;
+        //     }
+        // }
+
+        // 쓰기 가능한 스트림 생성
+        const writable = await currentFileHandle.createWritable();
+
+        // 현재 HTML 에디터 내용 가져오기
+        const content = htmlEditor.getValue();
+
+        // 파일에 내용 쓰기
+        await writable.write(content);
+
+        // 스트림 닫기 (실제 저장 발생)
+        await writable.close();
+
+        console.log(`File saved successfully: ${currentFileHandle.name}`);
+        // 사용자에게 성공 피드백 (예: 잠시 메시지 표시)
+        showTemporaryStatus("File saved!");
+
+    } catch (err) {
+        console.error("Error saving file:", err);
+        alert(`파일 저장 중 오류 발생: ${err.message}`);
+    }
+}
+
+/**
+ * File System Access API를 사용하여 다른 이름으로 저장
+ */
+async function handleSaveAsWithPicker() {
+    if (!htmlEditor) return;
+
+    // API 지원 여부 확인
+    if (!window.showSaveFilePicker) {
+        alert('현재 브라우저에서는 "다른 이름으로 저장" 기능을 지원하지 않습니다.');
+        // 필요시 다운로드 방식의 handleSaveAs (prompt 사용) 호출
+        // handleSaveAs(); // 이전 코드의 함수 이름
+        return;
+    }
+
+    try {
+        // '다른 이름으로 저장' 파일 선택기 표시
+        const fileHandle = await window.showSaveFilePicker({
+            suggestedName: loadedFileName, // 기본 파일 이름 제안
+            types: [{
+                description: 'HTML Files',
+                accept: { 'text/html': ['.html', '.htm'] }
+            }]
+        });
+
+        // 새 핸들 및 이름 저장
+        currentFileHandle = fileHandle;
+        loadedFileName = fileHandle.name;
+        document.title = `Editor - ${loadedFileName}`; // 페이지 제목 업데이트
+
+        console.log(`Attempting to save as: ${fileHandle.name}`);
+
+        // 쓰기 가능한 스트림 생성
+        const writable = await fileHandle.createWritable();
+
+        // 현재 HTML 에디터 내용 가져오기
+        const content = htmlEditor.getValue();
+
+        // 파일에 내용 쓰기
+        await writable.write(content);
+
+        // 스트림 닫기
+        await writable.close();
+
+        console.log(`File saved successfully as: ${fileHandle.name}`);
+        showTemporaryStatus("File saved as!");
+
+    } catch (err) {
+        if (err.name === 'AbortError') {
+            console.log('Save As cancelled by user.');
+        } else {
+            console.error("Error saving file as:", err);
+            alert(`파일 저장 중 오류 발생: ${err.message}`);
+        }
+    }
+}
+
+/**
+ * (헬퍼 함수 예시) 잠시 상태 메시지를 화면에 표시
+ * @param {string} message - 표시할 메시지
+ * @param {number} duration - 표시 시간 (밀리초)
+ */
+function showTemporaryStatus(message, duration = 2000) {
+    // 간단한 예시: 콘솔 출력 또는 상태 표시줄 요소 업데이트
+    console.log(`Status: ${message}`);
+    // 실제 구현 시: 페이지 특정 위치에 메시지 표시 후 setTimeout으로 제거
+    // const statusElement = document.getElementById('status-bar');
+    // if (statusElement) {
+    //     statusElement.textContent = message;
+    //     setTimeout(() => { statusElement.textContent = ''; }, duration);
+    // }
+}
 
 // --- 스크립트 실행 시작점 ---
 document.addEventListener('DOMContentLoaded', initializeApp);
