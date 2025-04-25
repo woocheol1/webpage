@@ -16,43 +16,41 @@
 <body>
     <div class="container split-container">
 
+        <div id="navigator-section" class="navigator-section split">
+            <div id="minimap-container" class="minimap-container">
+                <div id="minimap-content" class="minimap-content"></div>
+                <div id="minimap-viewport" class="minimap-viewport"></div>
+                </div>
+            <div id="minimap-scrollbar-track" class="minimap-scrollbar-track">
+                 <div id="minimap-scrollbar-thumb" class="minimap-scrollbar-thumb"></div>
+            </div>
+        </div>
+
         <div id="editor-section" class="editor-section split">
-
-
             <div style="display: flex; border-bottom: 1px solid #444;">
-
-                <div class="editor-tabs" style="border-bottom: none; flex-grow: 1;"> 
+                <div class="editor-tabs" style="border-bottom: none; flex-grow: 1;">
                     <button id="tab-html" class="tab-button active">HTML</button>
                     <button id="tab-css" class="tab-button">CSS</button>
                     <button id="tab-js" class="tab-button">JavaScript</button>
                 </div>
-
                 <div class="editor-controls" style="border-bottom: none;">
-                    <button id="btn-load-html" class="editor-control-button" title="Load HTML File">Load</button>
-                    <button id="btn-save" class="editor-control-button" title="Save HTML File (Ctrl+S)">Save</button> <button id="btn-save-as" class="editor-control-button" title="Save HTML As...">Save As</button>
-
-
-                    <div class="editor-controls" style="border-bottom: none;"> 
-                        <input type="text" id="color-picker-input" data-coloris class="editor-control-input" value="#000000" title="Color Picker">
-                        <button id="btn-format-code" class="editor-control-button" title="Format Code">Auto Format</button>
-                        <button id="btn-fold-all" class="editor-control-button" title="Fold All">Fold All</button>
-                        <button id="btn-unfold-all" class="editor-control-button" title="Unfold All">Unfold All</button>
-                    </div>
+                     <button id="btn-load-html" class="editor-control-button" title="Load HTML File">Load</button>
+                    <button id="btn-save" class="editor-control-button" title="Save HTML File (Ctrl+S)">Save</button>
+                    <button id="btn-save-as" class="editor-control-button" title="Save HTML As...">Save As</button>
+                    <input type="text" id="color-picker-input" data-coloris class="editor-control-input" value="#000000" title="Color Picker">
+                    <button id="btn-format-code" class="editor-control-button" title="Format Code">Auto Format</button>
+                    <button id="btn-fold-all" class="editor-control-button" title="Fold All">Fold All</button>
+                    <button id="btn-unfold-all" class="editor-control-button" title="Unfold All">Unfold All</button>
                 </div>
             </div>
 
-
-
             <div class="editor-panes">
-
                 <div id="html-editor-pane" class="pane editor-pane active">
                     <textarea id="html-editor"></textarea>
                 </div>
-
                 <div id="css-editor-pane" class="pane editor-pane">
                     <textarea id="css-editor"></textarea>
                 </div>
-
                 <div id="js-editor-pane" class="pane editor-pane">
                     <textarea id="js-editor"></textarea>
                 </div>
@@ -61,7 +59,6 @@
 
 
         <div id="preview-section" class="preview-section split">
-
             <div class="preview-controls">
                 <span>Preview Size:</span>
                 <button class="size-button active" data-size="100%">Fit</button>
@@ -69,7 +66,6 @@
                 <button class="size-button" data-size="768px">Tablet</button>
                 <button class="size-button" data-size="375px">Mobile</button>
             </div>
-
             <div id="preview-wrapper">
                 <iframe id="preview"></iframe>
             </div>
@@ -87,17 +83,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/addon/fold/xml-fold.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/addon/fold/comment-fold.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
-
-
-    <script src="script.js"></script>
-    <script src="color-tools.js"></script>
-    <script src="folding.js"></script>
-
     <script src="https://unpkg.com/prettier@2.8.8/standalone.js"></script>
     <script src="https://unpkg.com/prettier@2.8.8/parser-html.js"></script>
     <script src="https://unpkg.com/prettier@2.8.8/parser-postcss.js"></script>
     <script src="https://unpkg.com/prettier@2.8.8/parser-babel.js"></script>
-    <script src="formatter.js"></script>
 
+    <script src="script.js"></script>
+    <script src="color-tools.js"></script>
+    <script src="folding.js"></script>
+    <script src="formatter.js"></script>
+    <script src="navigator.js"></script>
 </body>
 </html>
