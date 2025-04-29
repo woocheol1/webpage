@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트 도구 - 웹 도구 모음집</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="text-tools.css">
+    <style>
+        /* 사용자 친화적 Color Picker 스타일 차용 */
+        .text-tool-container {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            padding: 32px 24px 24px 24px;
+            margin: 32px auto 32px auto;
+            max-width: 720px;
+            min-width: 320px;
+        }
+        .tab-menu {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+        .tab-btn {
+            flex: 1 1 0;
+            padding: 14px 0 12px 0;
+            font-size: 1.08rem;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            background: #f5f6fa;
+            color: #333;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.18s, color 0.18s;
+        }
+        .tab-btn.active {
+            background: #3498db;
+            color: #fff;
+        }
+        .tab-content {
+            display: none;
+            margin-top: 0;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .input-section, .form-group {
+            margin-bottom: 18px;
+        }
+        .input-section textarea, .form-group textarea {
+            width: 100%;
+            min-height: 120px;
+            font-size: 1.08rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 12px;
+            margin-top: 7px;
+            background: #fafbfc;
+            resize: vertical;
+        }
+        .tool-action-row {
+            display: flex;
+            gap: 10px;
+            margin: 18px 0 10px 0;
+        }
+        .tool-action-row button, .copy-result button, .action-button {
+            padding: 10px 18px;
+            border-radius: 7px;
+            border: none;
+            background: #3498db;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-right: 8px;
+            transition: background 0.17s;
+        }
+        .tool-action-row button.secondary, .copy-result .action-button.secondary, .action-button.secondary {
+            background: #bdc3c7;
+            color: #222;
+        }
+        .tool-action-row button:hover, .copy-result button:hover, .action-button:hover {
+            background: #217dbb;
+        }
+        .tool-action-row button.secondary:hover, .copy-result .action-button.secondary:hover, .action-button.secondary:hover {
+            background: #95a5a6;
+        }
+        .result-box {
+            background: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+            padding: 18px 16px;
+            margin: 14px 0 0 0;
+        }
+        .tool-section-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #2980b9;
+        }
+        @media (max-width: 600px) {
+            .text-tool-container {
+                padding: 16px 2vw 16px 2vw;
+            }
+            .tab-btn {
+                font-size: 0.97rem;
+                padding: 10px 0 9px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="window.location.href='../index.html'">← 메인으로 돌아가기</button>
+    <div class="container text-tool-container">
+        <h1 style="margin-bottom:24px; color:#3498db; font-size:2rem;">텍스트 도구</h1>
+        <div class="tab-menu">
+            <button class="tab-btn active" data-tab="text-stats">텍스트 통계</button>
+            <button class="tab-btn" data-tab="case-converter">대소문자 변환</button>
+            <button class="tab-btn" data-tab="text-formatter">포맷 변환</button>
+            <button class="tab-btn" data-tab="text-diff">텍스트 비교</button>
+            <button class="tab-btn" data-tab="remove-spaces">공백 제거</button>
+            <button class="tab-btn" data-tab="line-sorter">줄 정렬</button>
+        </div>
+        <div id="text-stats" class="tab-content active">
+            <div class="tool-section-title">텍스트 통계 분석</div>
+            <div class="input-section">
+                <label for="statsInputText">분석할 텍스트:</label>
+                <textarea id="statsInputText" placeholder="분석할 텍스트를 입력하세요..." onkeyup="analyzeText()"></textarea>
+            </div>
+            <div class="result-box">
+                <div><strong>문자 수:</strong> <span id="charCount">0</span></div>
+                <div><strong>단어 수:</strong> <span id="wordCount">0</span></div>
+                <div><strong>줄 수:</strong> <span id="lineCount">0</span></div>
+                <div><strong>문단 수:</strong> <span id="paragraphCount">0</span></div>
+                <div><strong>공백 포함 문자 수:</strong> <span id="charCountWithSpaces">0</span></div>
+                <div><strong>예상 읽기 시간:</strong> <span id="readingTime">0</span> <span class="stats-hint"></span></div>
+            </div>
+            <div class="tool-action-row">
+                <button class="action-button" onclick="analyzeText()">분석 새로고침</button>
+                <button class="action-button secondary" onclick="clearText('statsInputText'); analyzeText();">지우기</button>
+            </div>
+        </div>
+        <div id="case-converter" class="tab-content">
+            <div class="tool-section-title">대소문자 변환</div>
+            <div class="input-section">
+                <label for="caseInputText">변환할 텍스트:</label>
+                <textarea id="caseInputText" placeholder="변환할 텍스트를 입력하세요..."></textarea>
+            </div>
+            <div class="tool-action-row">
+                <button class="action-button" onclick="convertCase('upper')">대문자로 변환</button>
+                <button class="action-button" onclick="convertCase('lower')">소문자로 변환</button>
+                <button class="action-button" onclick="convertCase('title')">제목 형식으로 변환</button>
+                <button class="action-button" onclick="convertCase('sentence')">문장 형식으로 변환</button>
+                <button class="action-button" onclick="convertCase('toggle')">대소문자 반전</button>
+                <button class="action-button secondary" onclick="clearText('caseInputText')">지우기</button>
+                <button class="action-button secondary" onclick="copyConvertedText()">결과 복사</button>
+            </div>
+            <div id="case-result" class="result-box"></div>
+        </div>
+        <div id="text-formatter" class="tab-content">
+            <div class="tool-section-title">텍스트 포맷 변환</div>
+            <div class="input-section">
+                <label for="formatInputText">변환할 텍스트:</label>
+                <textarea id="formatInputText" placeholder="변환할 텍스트를 입력하세요..."></textarea>
+            </div>
+            <fieldset class="form-group">
+                <legend>각 줄에 추가할 내용 선택:</legend>
+                <div class="radio-group-item">
+                    <input type="radio" id="modeNumbered" name="prefixMode" value="numbered" checked>
+                    <label for="modeNumbered">순차 번호 (1., 2., 3., ...)</label>
+                </div>
+                <div class="radio-group-item">
+                    <input type="radio" id="modeCustomPrefix" name="prefixMode" value="customPrefix">
+                    <label for="modeCustomPrefix">사용자 지정 문자열</label>
+                </div>
+            </fieldset>
+            <div id="customPrefixInputGroup" class="form-group">
+                <label for="lineSeparatorInput">사용할 문자열 입력:</label>
+                <input type="text" id="lineSeparatorInput" value=". " placeholder="예: . , => , : ">
+            </div>
+            <div class="tool-action-row">
+                <button class="action-button" onclick="formatText('addPrefix', document.getElementById('lineSeparatorInput').value)">적용하기</button>
+                <button class="action-button" onclick="formatText('singleLine', document.getElementById('lineSeparatorInput').value)">한 줄로 합치기</button>
+                <button class="action-button secondary" onclick="clearText('formatInputText')">지우기</button>
+                <button class="action-button secondary" onclick="copyFormattedText()">결과 복사</button>
+            </div>
+            <div id="format-result" class="result-box"></div>
+        </div>
+        <div id="text-diff" class="tab-content">
+            <div class="tool-section-title">텍스트 비교</div>
+            <div class="input-section">
+                <label for="diffText1">첫 번째 텍스트:</label>
+                <textarea id="diffText1" placeholder="첫 번째 텍스트를 입력하세요..."></textarea>
+            </div>
+            <div class="input-section">
+                <label for="diffText2">두 번째 텍스트:</label>
+                <textarea id="diffText2" placeholder="두 번째 텍스트를 입력하세요..."></textarea>
+            </div>
+            <div class="tool-action-row">
+                <button class="action-button" onclick="compareTexts()">텍스트 비교하기</button>
+                <button class="action-button secondary" onclick="clearDiffTexts()">모두 지우기</button>
+            </div>
+            <div id="diff-result" class="result-box"></div>
+        </div>
+        <div id="remove-spaces" class="tab-content">
+            <div class="tool-section-title">공백 제거 도구</div>
+            <div class="input-section">
+                <label for="spacesInputText">처리할 텍스트:</label>
+                <textarea id="spacesInputText" placeholder="공백을 제거할 텍스트를 입력하세요..."></textarea>
+            </div>
+            <div class="tool-action-row">
+                <button class="action-button" onclick="removeSpaces('all')">모든 공백 제거</button>
+                <button class="action-button" onclick="removeSpaces('leading')">앞쪽 공백 제거</button>
+                <button class="action-button" onclick="removeSpaces('trailing')">뒤쪽 공백 제거</button>
+                <button class="action-button" onclick="removeSpaces('duplicate')">중복 공백 제거</button>
+                <button class="action-button secondary" onclick="clearText('spacesInputText')">지우기</button>
+                <button class="action-button secondary" onclick="copySpacesResult()">결과 복사</button>
+            </div>
+            <div id="spaces-result" class="result-box"></div>
+        </div>
+        <div id="line-sorter" class="tab-content">
+            <div class="tool-section-title">줄 정렬 도구</div>
+            <div class="input-section">
+                <label for="sortInputText">정렬할 텍스트:</label>
+                <textarea id="sortInputText" placeholder="줄별로 정렬할 텍스트를 입력하세요..."></textarea>
+            </div>
+            <div class="tool-action-row">
+                <button class="action-button" onclick="sortLines('asc')">오름차순 정렬</button>
+                <button class="action-button" onclick="sortLines('desc')">내림차순 정렬</button>
+                <button class="action-button" onclick="sortLines('length')">길이순 정렬</button>
+                <button class="action-button" onclick="sortLines('random')">무작위 정렬</button>
+                <button class="action-button" onclick="sortLines('reverse')">줄 역순 배치</button>
+                <button class="action-button" onclick="sortLines('unique')">중복 줄 제거</button>
+                <button class="action-button secondary" onclick="clearText('sortInputText')">지우기</button>
+                <button class="action-button secondary" onclick="copySortResult()">결과 복사</button>
+            </div>
+            <div id="sort-result" class="result-box"></div>
+        </div>
+    </div>
+    <script src="text-tools.js"></script>
+    <script>
+    // Color Picker 스타일의 탭 전환 UX 적용
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+            this.classList.add('active');
+            document.getElementById(this.dataset.tab).classList.add('active');
+        });
+    });
+    </script>
+</body>
+</html>

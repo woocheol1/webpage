@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이미지 도구 - 웹 도구 모음집</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../file/file-tools.css" />
+    <!-- 기존 style 태그는 유지하되, 중복되는 .container 등은 file-tools.css에 맞게 조정 권장 -->
+    <style>
+      /* 기존 스타일은 필요시 유지, 중복되는 부분은 file-tools.css 우선 적용 */
+    </style>
+  </head>
+  <body>
+    <button class="back-button" onclick="window.location.href='../../index.html'">← 메인으로 돌아가기</button>
+    <div class="container file-tool-container">
+      <h1>이미지 도구</h1>
+      <div class="tab-menu">
+        <button class="tab-btn active" data-tab="tab-convert">이미지 변환</button>
+        <button class="tab-btn" data-tab="tab-crop">회전/자르기</button>
+        <button class="tab-btn" data-tab="tab-watermark">워터마크</button>
+      </div>
+      <!-- 탭 1: 이미지 변환 -->
+      <div class="tab-content active" id="tab-convert">
+        <div class="image-area">
+          <input type="file" id="image-upload" accept="image/*" style="display: none;" />
+          <button class="action-button primary" onclick="document.getElementById('image-upload').click();">이미지 업로드</button>
+          <p id="upload-prompt" style="margin-top: 15px;">편집할 이미지를 업로드하세요.</p>
+          <canvas id="image-canvas"></canvas>
+        </div>
+        <div class="options">
+          <label>해상도:
+            <input type="number" id="resize-width" placeholder="가로(px)" min="1" style="width:90px;">
+            x
+            <input type="number" id="resize-height" placeholder="세로(px)" min="1" style="width:90px;">
+            <label><input type="checkbox" id="aspect-ratio" checked> 비율 유지</label>
+          </label>
+          <label>포맷:
+            <select id="output-format">
+              <option value="image/png">PNG</option>
+              <option value="image/jpeg">JPEG</option>
+              <option value="image/webp">WebP</option>
+            </select>
+          </label>
+          <label>품질:
+            <input type="range" id="jpeg-quality" min="10" max="100" value="90"> <span id="jpeg-quality-val">90%</span>
+          </label>
+          <button class="action-button primary" id="btn-download">이미지 다운로드</button>
+        </div>
+        <div class="progress-bar" id="progress-bar-image" style="display:none;"></div>
+        <div class="result-area" id="result-area-image"></div>
+      </div>
+      <!-- 탭 2: 회전/자르기 -->
+      <div class="tab-content" id="tab-crop">
+        <div class="control-section">
+          <h4>회전 & 자르기</h4>
+          <div class="button-group">
+            <button class="action-button" id="btn-rotate-left" title="왼쪽으로 90도 회전">좌 90°</button>
+            <button class="action-button" id="btn-rotate-right" title="오른쪽으로 90도 회전">우 90°</button>
+            <button class="action-button" id="btn-flip-h" title="좌우 반전">좌우 반전</button>
+            <button class="action-button" id="btn-flip-v" title="상하 반전">상하 반전</button>
+          </div>
+          <div class="button-group" id="crop-actions">
+            <button class="action-button" id="btn-crop-start" title="캔버스에서 영역을 드래그하세요">자르기 시작</button>
+            <button class="action-button primary" id="btn-crop-apply" style="display: none;" title="선택한 영역으로 자르기">자르기 적용</button>
+            <button class="action-button secondary" id="btn-crop-cancel" style="display: none;" title="자르기 취소">취소</button>
+          </div>
+          <p id="crop-info" style="font-size: 0.85em; color: #666; margin-top: 10px;"></p>
+        </div>
+      </div>
+      <!-- 탭 3: 워터마크 -->
+      <div class="tab-content" id="tab-watermark">
+        <div class="control-section">
+          <h4>워터마크</h4>
+          <div class="form-group">
+            <label for="watermark-text">텍스트:</label>
+            <input type="text" id="watermark-text" placeholder="워터마크 내용 입력">
+          </div>
+          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <div class="form-group" style="flex: 1; min-width: 80px;">
+              <label for="watermark-size">크기(px):</label>
+              <input type="number" id="watermark-size" value="30" min="10">
+            </div>
+            <div class="form-group" style="flex: 1; min-width: 80px;">
+              <label for="watermark-color">색상:</label>
+              <input type="text" id="watermark-color-input" data-coloris value="#ffffff" style="width: 100%; padding: 5px;">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="watermark-opacity">불투명도:</label>
+            <input type="range" id="watermark-opacity" min="0" max="100" value="50"> <span id="watermark-opacity-val">50%</span>
+          </div>
+          <div class="form-group">
+            <label for="watermark-position">위치:</label>
+            <select id="watermark-position">
+              <option value="bottom-right">오른쪽 하단</option>
+              <option value="bottom-left">왼쪽 하단</option>
+              <option value="top-right">오른쪽 상단</option>
+              <option value="top-left">왼쪽 상단</option>
+              <option value="center">중앙</option>
+            </select>
+          </div>
+          <div class="button-group">
+            <button class="action-button" id="btn-add-watermark">워터마크 적용</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="toast" class="toast" style="display:none;"></div>
+    <script src="../js/common.js"></script>
+    <script src="image-tools.js"></script>
+    <script>
+      // 탭 전환 스크립트
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+          this.classList.add('active');
+          document.getElementById(this.dataset.tab).classList.add('active');
+        });
+      });
+    </script>
+  </body>
+</html>

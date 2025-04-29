@@ -1,0 +1,98 @@
+body { font-family: 'Segoe UI', sans-serif; background: #f7f7f7; margin: 0; }
+.container {
+    max-width: 1500px;
+    width: 95%;
+    min-width: 280px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 32px 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+h1 { text-align: center; color: #2c3e50; }
+input[type="file"] { margin-bottom: 16px; }
+button { padding: 8px 20px; border: none; background: #3498db; color: #fff; border-radius: 5px; cursor: pointer; font-size: 1rem; }
+button:hover { background: #217dbb; }
+#resultContainer { margin-top: 32px; }
+#resultText { background: #f4f4f4; padding: 16px; border-radius: 8px; min-height: 120px; white-space: pre-wrap; font-size: 1rem; }
+
+.markdown-preview {
+    background: #fff;
+    color: #222;
+    padding: 18px 20px;
+    border-radius: 8px;
+    border: 1px solid #e1e4e8;
+    font-size: 1.06rem;
+    line-height: 1.7;
+    margin-bottom: 1em;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3,
+.markdown-preview h4 {
+    color: #2c3e50;
+    margin-top: 1.6em;
+    margin-bottom: 0.6em;
+    font-weight: 700;
+}
+.markdown-preview ul, .markdown-preview ol {
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+.markdown-preview table {
+    border-collapse: collapse;
+    margin: 1em 0;
+}
+.markdown-preview th, .markdown-preview td {
+    border: 1px solid #bbb;
+    padding: 6px 12px;
+}
+.markdown-preview blockquote {
+    border-left: 4px solid #3498db;
+    background: #f8fbff;
+    color: #555;
+    padding: 8px 16px;
+    margin: 1em 0;
+}
+.markdown-preview code {
+    background: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.98em;
+}
+
+.json-preview {
+    background: #fff;
+    color: #222;
+    padding: 18px 20px;
+    border-radius: 8px;
+    border: 1px solid #e1e4e8;
+    font-size: 1.06rem;
+    line-height: 1.7;
+    margin-bottom: 1em;
+    overflow-x: auto;
+    white-space: pre;
+    max-width: 100%;
+}
+
+@media (max-width: 900px) {
+    .container {
+        max-width: 98vw;
+        padding: 18px 5vw;
+    }
+    #resultText {
+        font-size: 0.97rem;
+    }
+}
+@media (max-width: 600px) {
+    .container {
+        max-width: 100vw;
+        padding: 8px 2vw;
+        border-radius: 0;
+        margin: 0;
+    }
+    h1 { font-size: 1.1rem; }
+    #resultText { font-size: 0.93rem; }
+}

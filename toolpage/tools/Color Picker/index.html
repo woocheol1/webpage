@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Picker - 팔레트/그라데이션 추천</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../file/file-tools.css">
+    <style>
+    .gradient-preset-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        padding: 8px 0;
+        justify-content: flex-start;
+    }
+    .gradient-preset-item {
+        width: 240px;
+        min-width: 180px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        padding: 16px 12px 12px 12px;
+        margin-bottom: 0;
+    }
+    .gradient-preset-title {
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 8px;
+        color: #222;
+    }
+    .gradient-preset-preview {
+        width: 220px;
+        height: 56px;
+        border-radius: 28px;
+        background: #eee;
+        margin-bottom: 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        border: none;
+        flex: 0 1 calc(50% - 24px);
+    }
+    .gradient-preset-list > .gradient-preset-preview {
+        margin-bottom: 24px;
+    }
+    .gradient-preset-controls {
+        margin-bottom: 16px;
+        display: flex;
+        gap: 10px;
+    }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="window.location.href='../../index.html'">← 메인으로 돌아가기</button>
+    <div class="container file-tool-container">
+        <h1>Color Palette & Gradient Generator</h1>
+        <div class="tab-menu">
+            <button class="tab-btn active" data-tab="tab-palette">팔레트 생성</button>
+            <button class="tab-btn" data-tab="tab-gradient">그라데이션</button>
+            <button class="tab-btn" data-tab="tab-convert">HEX → RGB ↔ HSL 변환</button>
+        </div>
+        <div class="tab-content active" id="tab-palette">
+            <div class="random-section" style="margin-bottom:18px;">
+                <button id="randomPaletteBtn">랜덤 팔레트 생성</button>
+                <select id="randomTone">
+                    <option value="pastel">파스텔톤</option>
+                    <option value="neon">네온톤</option>
+                    <option value="mono">모노톤</option>
+                </select>
+            </div>
+            <div class="input-section">
+                <input type="text" id="colorInput" placeholder="#845EC2" maxlength="7">
+                <button id="generateBtn">Generate</button>
+            </div>
+            <div class="main-flex-layout">
+                <div id="paletteResults" class="main-palettes"></div>
+                <div id="randomPaletteArea" style="margin-top:32px;"></div>
+                <div id="shadeSetPanel"></div>
+            </div>
+        </div>
+        <div class="tab-content" id="tab-gradient">
+            <div class="gradient-preview-section">
+                <h3>그라데이션 애니메이션 미리보기</h3>
+                <div class="gradient-preview-controls-top">
+                    <button id="gradientRandomBtn">랜덤</button>
+                    <button id="gradientPlayPauseBtn">재생</button>
+                    <button id="colorPickerBtn">피커(색상선택)</button>
+                </div>
+                <div id="gradientPreview" class="gradient-preview"></div>
+                <div class="gradient-preview-controls-bottom">
+                    <label>왼쪽 색상 <input type="text" id="gradientLeft" value="#845EC2" maxlength="7" style="width:80px;"></label>
+                    <label>오른쪽 색상 <input type="text" id="gradientRight" value="#FF6F91" maxlength="7" style="width:80px;"></label>
+                </div>
+            </div>
+            <div class="gradient-presets-section" style="margin-top:32px;">
+                <div class="random-section">
+                    <button id="gradientPresetRandomBtn">프리셋 랜덤 그라데이션 생성</button>
+                </div>
+                <div id="gradientPresetResult" class="gradient-preset-list" style="margin-top:20px;"></div>
+            </div>
+        </div>
+        <div class="tab-content" id="tab-convert">
+            <div class="convert-section">
+                <h3>HEX → RGB ↔ HSL 변환</h3>
+                <input type="text" id="multiColorInput" placeholder="#845EC2, #FF6F91 ...">
+                <button id="convertBtn">변환</button>
+                <div id="convertResults"></div>
+            </div>
+            <div class="css-code-section">
+                <h3>CSS 변수 코드</h3>
+                <div class="css-code-box">
+                    <span id="cssVarCode">#845EC2</span>
+                    <button id="copyCssBtn">복사</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/colorUtils.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    // 탭 전환 스크립트
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+            this.classList.add('active');
+            document.getElementById(this.dataset.tab).classList.add('active');
+            // 그라데이션 탭 진입 시 버튼 이벤트 재연결
+            if (this.dataset.tab === 'tab-gradient') {
+                const presetRandomBtn = document.getElementById('gradientPresetRandomBtn');
+                if (presetRandomBtn && window.applyRandomGradientPreset) {
+                    presetRandomBtn.onclick = window.applyRandomGradientPreset;
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html>

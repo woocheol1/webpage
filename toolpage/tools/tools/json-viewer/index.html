@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Viewer & MCP Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <button class="back-button" onclick="window.location.href='../../../index.html'">← 메인으로 돌아가기</button>
+        <h1>JSON Viewer & MCP Servers Editor</h1>
+        <div class="toolbar">
+            <button id="add-server">Add Server</button>
+            <button id="load-json">Load JSON</button>
+            <button id="save-json">Save JSON</button>
+            <button id="copy-json">Copy JSON</button>
+            <button id="share-json">Share</button>
+        </div>
+        <div id="mcp-editor"></div>
+        <div style="position:relative;">
+            <h2 style="display:flex;align-items:center;gap:8px;">JSON Preview
+                <button id="preview-fullscreen" title="전체화면">⛶</button>
+                <button id="preview-edit" title="수정">✎</button>
+                <button id="preview-save" title="저장" style="display:none;">💾</button>
+            </h2>
+            <pre id="json-preview" tabindex="0"></pre>
+            <button id="preview-exit-fullscreen" title="되돌아가기" style="display:none;position:absolute;right:38px;top:18px;z-index:10000;">⛶</button>
+        </div>
+        <h2>JSON Tree Viewer</h2>
+        <div id="json-tree-viewer" style="background:#181a20;padding:18px;border-radius:8px;margin-top:16px;min-height:80px;"></div>
+        <h2>General JSON Editor</h2>
+        <textarea id="general-json-editor" placeholder="Paste or edit any JSON here" style="width:100%;min-height:100px;background:#23262f;color:#fff;border-radius:8px;padding:12px;margin-top:16px;font-size:1rem;"></textarea>
+        <div id="general-json-error" style="color:#f78c6c;margin-top:6px;"></div>
+        <button id="apply-general-json" style="margin-top:10px;">Apply to Tree Viewer</button>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일 변환 도구</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="file-tools.css">
+</head>
+<body>
+    <button class="back-button" onclick="window.location.href='../../index.html'">← 메인으로 돌아가기</button>
+    <div class="container file-tool-container">
+        <h1>파일 변환/관리 도구</h1>
+        <div class="tab-menu">
+            <button class="tab-btn active" data-tab="tab-text">텍스트 변환</button>
+            <button class="tab-btn" data-tab="tab-image">이미지 변환</button>
+            <button class="tab-btn" data-tab="tab-manage">파일 일괄 리네이밍</button>
+            <button class="tab-btn" data-tab="tab-utils">편의 기능</button>
+        </div>
+        <div class="tab-content active" id="tab-text">
+            <h2>텍스트 변환</h2>
+            <div class="drop-area" id="drop-area-text">텍스트 파일을 드래그하거나 클릭하여 업로드하세요.</div>
+            <div class="options">
+                <label>인코딩:
+                    <select id="encoding-select">
+                        <option value="utf-8">UTF-8</option>
+                        <option value="euc-kr">EUC-KR</option>
+                        <option value="utf-16le">UTF-16 LE</option>
+                    </select>
+                </label>
+                <label>포맷:
+                    <select id="format-select">
+                        <option value="txt">TXT</option>
+                        <option value="md">Markdown</option>
+                        <option value="json">JSON</option>
+                    </select>
+                </label>
+                <button id="convert-text-btn">변환</button>
+            </div>
+            <div class="progress-bar" id="progress-bar-text" style="display:none;"></div>
+            <div class="result-area" id="result-area-text"></div>
+        </div>
+        <div class="tab-content" id="tab-image">
+            <h2>이미지 변환</h2>
+            <div class="drop-area" id="drop-area-image">이미지 파일을 드래그하거나 클릭하여 업로드하세요.</div>
+            <div class="options">
+                <label>해상도:
+                    <input type="number" id="image-width" placeholder="가로(px)" min="1">
+                    x
+                    <input type="number" id="image-height" placeholder="세로(px)" min="1">
+                    <label><input type="checkbox" id="keep-aspect" checked> 비율 유지</label>
+                </label>
+                <label>포맷:
+                    <select id="image-format-select">
+                        <option value="jpeg">JPEG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WebP</option>
+                    </select>
+                </label>
+                <label>품질:
+                    <input type="range" id="image-quality" min="10" max="100" value="90"> <span id="quality-val">90</span>%
+                </label>
+                <button id="convert-image-btn">변환</button>
+            </div>
+            <div class="progress-bar" id="progress-bar-image" style="display:none;"></div>
+            <div class="result-area" id="result-area-image"></div>
+        </div>
+        <div class="tab-content" id="tab-manage">
+            <h2>파일 일괄 리네이밍</h2>
+            <div class="drop-area" id="drop-area-manage">여러 파일을 드래그하거나 클릭하여 업로드하세요.</div>
+            <div class="options">
+                <button id="rename-btn">일괄 리네이밍</button>
+                <br>
+                <textarea id="rename-pattern" placeholder="예시: photo_{num}.{ext}\n예시: {name}_복사본.{ext}\n예시: 새이름_{{num}}.확장자\n\n사용 가능 치환자: {num}=번호, {name}=원본명, {ext}=확장자" style="margin:8px 0;width:420px;height:56px;font-size:1.1em;resize:horizontal;display:block;"></textarea>
+경                <div style="font-size:13px;color:#666;line-height:1.6;margin-bottom:4px;">
+                  <b>리네이밍 예시</b><br>
+                  <span style="color:#228be6">photo_{num}.{ext}</span> → photo_1.jpg, photo_2.png ...<br>
+                  <span style="color:#228be6">{name}_복사본.{ext}</span> → image_복사본.jpg ...<br>
+                  <span style="color:#228be6">새파일_{num}.{ext}</span> → 새파일_1.txt ...<br>
+                  <span style="color:#228be6">report_{num}_{name}.{ext}</span> → report_1_보고서.hwp ...<br>
+                  <span style="color:#228be6">{name}.{ext}</span> → 원본명 그대로<br>
+                  <b>치환자</b>: <span style="color:#228be6">{num}</span>=번호, <span style="color:#228be6">{name}</span>=원본명, <span style="color:#228be6">{ext}</span>=확장자
+                </div>
+            </div>
+            <div class="progress-bar" id="progress-bar-manage" style="display:none;"></div>
+            <div class="result-area" id="result-area-manage"></div>
+        </div>
+        <div class="tab-content" id="tab-utils">
+            <h2>편의 기능</h2>
+            <div class="options">
+                <button id="preview-btn">미리보기</button>
+                <button id="save-options-btn">옵션 저장</button>
+                <button id="load-options-btn">옵션 불러오기</button>
+                <button id="export-log-btn">변환 기록 내보내기</button>
+                <label><input type="checkbox" id="auto-save"> 자동 저장</label>
+                <label><input type="checkbox" id="i18n"> 다국어 지원</label>
+            </div>
+            <div class="result-area" id="result-area-utils"></div>
+        </div>
+    </div>
+    <div id="toast" class="toast" style="display:none;"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="file-tools.js"></script>
+    <script src="file-encoding.js"></script>
+    <script src="file-image.js"></script>
+    <script src="file-manage.js"></script>
+</body>
+</html>
